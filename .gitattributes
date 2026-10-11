@@ -2,3 +2,6 @@
 # El script los escribe con LF; sin esta regla, Git en Windows (core.autocrlf=true)
 # los extrae con CRLF y el árbol queda modificado después de cada ejecución.
 *.csv text eol=lf
+
+# Mismo caso para el informe que escribe scripts/validar_datos.py con LF.
+reports/*.md text eol=lf
