@@ -1,0 +1,33 @@
+clave_fuente,corte_desde,corte_hasta,empresa_id,empresa,entidad,estado,en_total_simple,evento,fuente_evento
+AUGUSTAR,2025-12-31,2099-12-31,AUGUSTAR,AuguStar,AuguStar Seguros y Reaseguros,vigente,true,"Cambio de denominación de Ohio National Seguros de Vida y Reaseguros","Resolución SBS N.º 04016-2025 (10/10/2025)"
+OHIO NATIONAL VIDA,2019-12-31,2025-08-31,AUGUSTAR,AuguStar,Ohio National Seguros de Vida y Reaseguros,vigente,true,"Antes de su cambio de denominación a AuguStar","Resolución SBS N.º 04016-2025 (10/10/2025)"
+AVLA PERU,2019-12-31,2099-12-31,AVLA,Avla Perú,Avla Perú Compañía de Seguros,vigente,true,,
+BNP PARIBAS CARDIF,2019-12-31,2099-12-31,CARDIF,BNP Paribas Cardif,BNP Paribas Cardif,vigente,true,,
+CARDIF,2019-12-31,2025-12-31,CARDIF,BNP Paribas Cardif,BNP Paribas Cardif,vigente,true,"Rótulo abreviado en P001, P002 y P009 a P016 hasta diciembre de 2025",
+CESCE PERU,2025-08-31,2099-12-31,CESCE,Cesce Perú,Cesce Perú Compañía de Seguros,vigente,true,"Cambio de denominación de Secrex Compañía de Seguros de Crédito y Garantías","Resolución SBS N.º 01822-2025 (20/05/2025)"
+SECREX,2019-12-31,2025-05-31,CESCE,Cesce Perú,Secrex Compañía de Seguros de Crédito y Garantías,vigente,true,"Antes de su cambio de denominación a Cesce Perú","Resolución SBS N.º 01822-2025 (20/05/2025)"
+CHUBB PERU,2026-01-01,2099-12-31,CHUBB,Chubb Perú,Chubb Seguros Perú,vigente,true,"Rótulo desde 2026",
+CHUBB SEGUROS,2019-12-31,2025-12-31,CHUBB,Chubb Perú,Chubb Seguros Perú,vigente,true,,
+COFACE SEGUROS,2019-12-31,2019-12-31,COFACE,Coface Seguros,Coface Seguro de Crédito Perú,vigente,true,,
+COFACE SEGUROS,2020-12-31,2020-12-31,COFACE,Coface Seguros,Coface Seguro de Crédito Perú,liquidada,false,"Flujos de enero a noviembre de 2020, antes de su liquidación","Resolución SBS N.º 3286-2020 (28/12/2020)"
+CRECER SEGUROS,2019-12-31,2099-12-31,CRECER,Crecer Seguros,Crecer Seguros,vigente,true,,
+INSUR,2019-12-31,2099-12-31,INSUR,Insur,Insur,vigente,true,,
+INTERSEGURO,2019-12-31,2099-12-31,INTERSEGURO,Interseguro,Interseguro Compañía de Seguros,vigente,true,,
+LA POSITIVA,2019-12-31,2099-12-31,LA_POSITIVA,La Positiva,La Positiva,vigente,true,,
+LA POSITIVA VIDA,2019-12-31,2099-12-31,LA_POSITIVA_VIDA,La Positiva Vida,La Positiva Vida,vigente,true,,
+LIBERTY,2026-01-01,2099-12-31,LIBERTY,Liberty,Liberty Seguros,vigente,true,"Rótulo desde 2026",
+LIBERTY SEGUROS,2019-12-31,2025-12-31,LIBERTY,Liberty,Liberty Seguros,vigente,true,,
+MAPFRE PERU,2019-12-31,2021-12-31,MAPFRE,Mapfre Perú,Mapfre Perú (ramos generales),vigente,true,"Absorbida en 2022 por Mapfre Perú Vida","Resolución SBS N.º 1724-2022 (25/05/2022)"
+MAPFRE PERU VIDA,2019-12-31,2021-12-31,MAPFRE,Mapfre Perú,Mapfre Perú Vida,vigente,true,"Absorbente en la fusión de 2022; desde entonces se denomina Mapfre Perú","Resolución SBS N.º 1724-2022 (25/05/2022)"
+MAPFRE PERU (ABS),2022-12-31,2022-12-31,MAPFRE,Mapfre Perú,Mapfre Perú (ramos generales),absorbida,false,"Flujos de enero a mayo de 2022, antes de la fusión","Resolución SBS N.º 1724-2022 (25/05/2022)"
+MAPFRE PERU,2022-01-01,2099-12-31,MAPFRE,Mapfre Perú,Mapfre Perú (antes Mapfre Perú Vida),vigente,true,"Incluye los flujos de Mapfre Perú Vida previos a la fusión","Resolución SBS N.º 1724-2022 (25/05/2022)"
+NACIONAL DE SEGUROS,2026-01-01,2099-12-31,NACIONAL,Nacional de Seguros,Nacional de Seguros,vigente,true,"Aparece por primera vez en el corte de agosto de 2026",
+PACIFICO,2026-01-01,2099-12-31,PACIFICO,Pacífico,Pacífico Compañía de Seguros y Reaseguros,vigente,true,"Rótulo desde 2026",
+PACIFICO SEGUROS,2019-12-31,2025-12-31,PACIFICO,Pacífico,Pacífico Compañía de Seguros y Reaseguros,vigente,true,,
+PROTECTA,2019-12-31,2099-12-31,PROTECTA,Protecta,Protecta,vigente,true,,
+QUALITAS,2019-12-31,2099-12-31,QUALITAS,Quálitas,Quálitas Compañía de Seguros,vigente,true,,
+RIGEL,2019-12-31,2019-12-31,RIGEL,Rigel,Rigel Perú Compañía de Seguros de Vida,vigente,true,,
+RIGEL,2020-12-31,2020-12-31,RIGEL,Rigel,Rigel Perú Compañía de Seguros de Vida,liquidada,false,"Flujos de enero a mayo de 2020, antes de su liquidación","Resolución SBS N.º 1749-2020 (01/07/2020)"
+RIMAC,2019-12-31,2099-12-31,RIMAC,Rímac,Rímac,vigente,true,,
+VIDA CAMARA,2019-12-31,2020-12-31,VIVIR,Vivir Seguros,Compañía de Seguros de Vida Cámara,vigente,true,"Antes de su cambio de denominación a Vivir Seguros","Resolución SBS N.º 278-2021 (28/01/2021)"
+VIVIR SEGUROS,2021-01-01,2099-12-31,VIVIR,Vivir Seguros,Vivir Seguros Compañía de Seguros de Vida,vigente,true,"Cambio de denominación de Compañía de Seguros de Vida Cámara","Resolución SBS N.º 278-2021 (28/01/2021)"

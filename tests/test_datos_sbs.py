@@ -43,3 +43,36 @@ def test_boletin_igual_a_cuadros_s401_s403_agosto_2026():
     comunes = boletin.index.intersection(cuadros.index)
     assert len(comunes) == len(cuadros)
     assert (boletin[comunes] - cuadros[comunes]).abs().max() == 0
+
+
+@pytest.mark.parametrize(
+    "control",
+    [
+        "estructura",
+        "cuadre",
+        "jerarquia",
+        "balance",
+        "monedas",
+        "consistencia",
+        "acumuladas",
+        "plan",
+    ],
+)
+def test_controles_del_paquete_2_2(control):
+    from pf_01_siniestralidad_sbs import validacion as v
+
+    tablas = v.leer_interim(INTERIM)
+    cortes = v.leer_catalogo("cortes")
+    todas = pd.concat(tablas.values(), ignore_index=True)
+    ejecutar = {
+        "estructura": lambda: v.validar_estructura(tablas, cortes),
+        "cuadre": lambda: v.cuadre_totales(todas),
+        "jerarquia": lambda: v.jerarquia_riesgos(tablas["riesgos"]),
+        "balance": lambda: v.balance(tablas["estados_financieros"]),
+        "monedas": lambda: v.monedas(tablas["estados_financieros"]),
+        "consistencia": lambda: v.consistencia_cuadros(tablas["riesgos"]),
+        "acumuladas": lambda: v.cifras_acumuladas(tablas, cortes),
+        "plan": lambda: v.plan_de_cuentas(v.leer_notas_plan(INTERIM.parent / "raw"), cortes),
+    }
+    resultado = ejecutar[control]()
+    assert resultado.ok, resultado.detalle.head(10).to_string()
