@@ -1,7 +1,7 @@
 """Prueba de humo: el paquete se importa."""
 
-import plantilla_proyecto_datos
+import pf_01_siniestralidad_sbs
 
 
 def test_version():
-    assert plantilla_proyecto_datos.__version__
+    assert pf_01_siniestralidad_sbs.__version__
