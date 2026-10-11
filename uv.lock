@@ -75,7 +75,7 @@ wheels = [
 ]
 
 [[package]]
-name = "plantilla-proyecto-datos"
+name = "pf-01-siniestralidad-sbs"
 version = "0.1.0"
 source = { editable = "." }
 

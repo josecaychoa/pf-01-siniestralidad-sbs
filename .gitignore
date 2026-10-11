@@ -10,3 +10,10 @@ data/external/*
 !data/**/.gitkeep
 .ipynb_checkpoints/
 *.pbix
+
+# Power BI (PBIP): configuración local y caché del modelo, propias de cada equipo
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+
+# Claude Code: configuración local de la sesión, no se comparte
+.claude/settings.local.json

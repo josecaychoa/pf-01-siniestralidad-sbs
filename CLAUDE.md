@@ -1,4 +1,4 @@
-# CLAUDE.md · PF-XX <Titulo del proyecto>
+# CLAUDE.md · PF-01 Producción y siniestralidad por riesgo del mercado asegurador peruano, 2019-2026
 
 ## Contexto
 Proyecto de portafolio personal de analítica de datos (seguros y finanzas del Perú).
