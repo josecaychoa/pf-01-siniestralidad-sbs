@@ -1,0 +1,4 @@
+# Finales de línea LF en los CSV versionados (data/raw/manifest.csv).
+# El script los escribe con LF; sin esta regla, Git en Windows (core.autocrlf=true)
+# los extrae con CRLF y el árbol queda modificado después de cada ejecución.
+*.csv text eol=lf
