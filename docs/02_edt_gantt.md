@@ -93,7 +93,7 @@ La Baseline se fijó en Microsoft Project el 2026-10-11 (`gestion/cronograma/`: 
 |---|---|---|---|
 | 2026-10-11 | Se incluyen 2.4 Arquitectura y modelo de datos en Visio (#24) y 3.4 Proceso AS-IS y TO-BE en Bizagi (#25), 2 h cada uno | Opcionales de 4.0 a 8.0 h; núcleo sin cambios (23.0 h). 2.4 sigue a 2.3 y 3.4 sigue a 3.3; ninguno es predecesor del núcleo, por lo que no mueven la publicación | Control de cambios en el issue #1 |
 
-Las fechas de 2.4 y 3.4 son las previstas con el avance real del 2026-10-11 (2.1 terminada tres semanas antes de la línea base). En Project se agregan como tareas nuevas, con línea base propia; el Gantt de la sección 3 queda congelado como línea base v1.0.
+Las fechas de 2.4 y 3.4 son las previstas con el avance real del 2026-10-11 (2.1 terminada tres semanas antes de la línea base). En Project se agregan como tareas nuevas y el plan replanificado se guarda en Baseline1 (skill `portafolio-ms-project`, sección B.2); Baseline, la línea base v1.0, no se sobrescribe, y el Gantt de la sección 3 queda congelado como su vista resumida.
 
 ## 5. Hitos y milestones de GitHub
 
