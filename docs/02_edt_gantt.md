@@ -1,12 +1,12 @@
 # EDT y Gantt · PF-01: Producción y siniestralidad por riesgo del mercado asegurador peruano, 2019-2026
 
-`Portafolio · PF-01` · Versión 1.3 · 2026-10-11 · Estado: aprobado el 2026-10-11 · Cambio v1.3: nota sobre la Baseline fijada en Microsoft Project y su calendario (sección 3) · Cambio v1.2: el paquete 2.1 se llama «Extracción» (antes «Adquisición»), a pedido del director del proyecto; no cambian el alcance, las fechas ni las horas
+`Portafolio · PF-01` · Versión 1.4 · 2026-10-11 · Estado: aprobado el 2026-10-11 · Cambio v1.4: se incluyen los paquetes opcionales 2.4 (Visio) y 3.4 (Bizagi) por control de cambios (issue #1), fuera de la línea base v1.0 (sección 4) · Cambio v1.3: nota sobre la Baseline fijada en Microsoft Project y su calendario (sección 3) · Cambio v1.2: el paquete 2.1 se llama «Extracción» (antes «Adquisición»), a pedido del director del proyecto; no cambian el alcance, las fechas ni las horas
 
 La línea base formal es la Baseline del cronograma de Microsoft Project en `gestion/cronograma/PF-01_cronograma.mpp`. El Gantt de este archivo es su vista resumida y queda congelado como línea base v1.0 cuando se aprueba el plan.
 
 ## 1. Estructura de desglose del trabajo
 
-Los paquetes marcados con (o) son opcionales. No entran en el plan el paquete 2.4 (arquitectura en Visio), por capacidad del mes, ni el 3.4 (proceso en Bizagi), porque el análisis no modela un proceso de negocio.
+Los paquetes marcados con (o) son opcionales. Los paquetes 2.4 (arquitectura en Visio) y 3.4 (proceso en Bizagi) se excluyeron en la línea base y se incluyeron el 2026-10-11 por control de cambios (sección 4).
 
 ```mermaid
 flowchart TD
@@ -16,8 +16,8 @@ flowchart TD
     P --> R[4 Producto]
     P --> C[5 Comunicación]
     G --> G1[1.1 Acta] & G2[1.2 Plan y línea base en Project] & G3[1.3 Cierre]
-    D --> D1[2.1 Extracción] & D2[2.2 Validación] & D3[2.3 Modelo de datos Oracle]
-    A --> A1[3.1 Exploración] & A2[3.2 Indicadores y matriz] & A3[3.3 Validación de resultados]
+    D --> D1[2.1 Extracción] & D2[2.2 Validación] & D3[2.3 Modelo de datos Oracle] & D4["2.4 Arquitectura y modelo en Visio (o)"]
+    A --> A1[3.1 Exploración] & A2[3.2 Indicadores y matriz] & A3[3.3 Validación de resultados] & A4["3.4 Proceso AS-IS y TO-BE en Bizagi (o)"]
     R --> R1["4.1 Tablero Power BI (o)"] & R2[4.2 Informe] & R3[4.3 README]
     C --> C1[5.1 Post] & C2[5.2 Documento PDF] & C3[5.3 Destacados y registro]
 ```
@@ -33,9 +33,11 @@ flowchart TD
 | 2.1 | Extracción | `scripts/descargar_sbs.py`, `data/raw/manifest.csv` y tablas en formato largo en `data/interim/` | Descarga los 9 boletines mensuales S-367 (ZIP) y los cuadros S-401, S-402 y S-403 de agosto de 2026, con pausa y reintentos; registra URL, fecha y SHA-256; lleva P001 a P004 (con moneda MN, ME y total) y P009 a P016 a formato largo sin pasos manuales | tipo:datos | alta | PF-01 · 2 Ejecución | 2026-11-02 | 2026-11-03 | Núcleo | 4.5 |
 | 2.2 | Validación | Pruebas de datos en `tests/`; tabla de equivalencias de empresas; catálogo de riesgos por corte | Cuadre del 100 % de los totales con la columna Total (tolerancia: 1 mil soles); Activo = Pasivo + Patrimonio por empresa; P009 a P016 iguales a S-401, S-402 y S-403 de agosto de 2026; estructura validada por corte; versión del plan de cuentas registrada; cifras acumuladas confirmadas | tipo:datos | alta | PF-01 · 2 Ejecución | 2026-11-04 | 2026-11-05 | Núcleo | 2.5 |
 | 2.3 | Modelo de datos Oracle | `docker-compose.yml` con `gvenzl/oracle-free:23.26.3` en `127.0.0.1:1522`; DDL y vistas en `sql/oracle/` para estados financieros, indicadores y producción y siniestralidad; carga con python-oracledb; `docs/03_diccionario_datos.md` | Scripts idempotentes; la base se reconstruye desde cero; O1 cumplido | tipo:datos | alta | PF-01 · 2 Ejecución | 2026-11-06 | 2026-11-09 | Núcleo | 3.5 |
+| 2.4 | Arquitectura y modelo de datos en Visio | `docs/diagramas/`: `.vsdx`, SVG por página y PDF | Arquitectura del flujo de datos y modelo Oracle en pata de gallo; SVG en `docs/04_arquitectura.md` y el README como figura APA; skill `portafolio-visio` | tipo:datos | media | PF-01 · 2 Ejecución | 2026-10-16 | 2026-10-16 | Opcional (cambio del 2026-10-11) | 2.0 |
 | 3.1 | Exploración | `notebooks/01-jc-exploracion.ipynb` | Hallazgos y casos atípicos documentados | tipo:analisis | media | PF-01 · 2 Ejecución | 2026-11-10 | 2026-11-10 | Núcleo | 1.0 |
 | 3.2 | Indicadores y matriz | Código en `src/`; vistas `vw_` de crecimiento y siniestralidad | Crecimiento interanual (agosto de 2026 frente a agosto de 2025), TCAC 2019-2025, siniestralidad directa y retenida, umbral de S/ 5 millones y cuadrantes; pruebas en verde | tipo:analisis | alta | PF-01 · 2 Ejecución | 2026-11-11 | 2026-11-12 | Núcleo | 2.0 |
 | 3.3 | Validación de resultados | Nota de validación en `reports/` | La siniestralidad total replica la hoja P015 (S-403) con una diferencia no mayor de 0.1 p. p.; O2 cumplido | tipo:analisis | alta | PF-01 · 2 Ejecución | 2026-11-13 | 2026-11-13 | Núcleo | 1.0 |
+| 3.4 | Proceso AS-IS y TO-BE en Bizagi | `docs/procesos/`: `.bpm`, `.bpmn`, SVG AS-IS y TO-BE y PDF | BPMN 2.0 validado en Bizagi Modeler; SVG en el README como figura APA; skill `portafolio-bizagi` | tipo:analisis | media | PF-01 · 2 Ejecución | 2026-10-22 | 2026-10-22 | Opcional (cambio del 2026-10-11) | 2.0 |
 | 4.1 | Tablero Power BI | PBIP (TMDL y PBIR) en `dashboards/powerbi/` | Capturas en `reports/figures/` con nota APA; `.gitignore` con las exclusiones de PBIP | tipo:producto | media | PF-01 · 2 Ejecución | 2026-11-16 | 2026-11-18 | Opcional | 4.0 |
 | 4.2 | Informe | `reports/informe.md` | Citas, figuras, tablas y referencias en APA 7; ortografía RAE | tipo:producto | alta | PF-01 · 2 Ejecución | 2026-11-19 | 2026-11-19 | Núcleo | 1.5 |
 | 4.3 | README | `README.md` (03f) | Reproducción probada desde un clon limpio | tipo:producto | alta | PF-01 · 2 Ejecución | 2026-11-20 | 2026-11-20 | Núcleo | 1.0 |
@@ -44,9 +46,9 @@ flowchart TD
 | 5.2 | Documento PDF | `linkedin/documento.pdf` (6 a 8 páginas, 1080 × 1350) | `scripts/verificar_pdf.py` sin errores; checklist de la skill de marca | tipo:comunicacion | alta | PF-01 · 3 Cierre | 2026-11-24 | 2026-11-25 | Núcleo | 1.5 |
 | 5.3 | Destacados y registro | URL del post en 06 y en el tablero | Corte Cierre registrado | tipo:comunicacion | media | PF-01 · 3 Cierre | 2026-11-26 | 2026-11-26 | Núcleo | 0.5 |
 | | | | | | | | | | **Total del núcleo** | **23.0** |
-| | | | | | | | | | **Total de opcionales** | **4.0** |
+| | | | | | | | | | **Total de opcionales** | **8.0** |
 
-**Control de capacidad:** el núcleo suma 23 h, dentro del rango de 20 a 30 h de 03b. Las 2.5 h de planificación caen en octubre; en noviembre quedan 20.5 h de núcleo y 4 h opcionales, en total 24.5 h frente a las 20 a 25 h disponibles (margen: 0.5 h). La inclusión del Boletín Mensual (v1.1) sumó 2 h a los paquetes de datos; la primera semana concentra hasta 2.5 h por día hábil. Si el tablero se cae, sus 3 días hábiles pasan a ser holgura antes del cierre.
+**Control de capacidad:** el núcleo suma 23 h, dentro del rango de 20 a 30 h de 03b. Las 2.5 h de planificación caen en octubre; en noviembre quedan 20.5 h de núcleo y 4 h opcionales, en total 24.5 h frente a las 20 a 25 h disponibles (margen: 0.5 h). La inclusión del Boletín Mensual (v1.1) sumó 2 h a los paquetes de datos; la primera semana concentra hasta 2.5 h por día hábil. Si el tablero se cae, sus 3 días hábiles pasan a ser holgura antes del cierre. Actualización del 2026-10-11: la ejecución empezó tres semanas antes de la línea base y la mayor parte del trabajo cae en octubre, por lo que el límite de capacidad de noviembre deja de ser restrictivo; con 2.4 y 3.4, el total es de 31 h (23 h de núcleo y 8 h opcionales).
 
 ## 3. Línea base v1.0 · aprobada el 2026-10-11
 
@@ -85,7 +87,15 @@ La Baseline se fijó en Microsoft Project el 2026-10-11 (`gestion/cronograma/`: 
 
 *Nota.* Elaboración propia. Las mismas tareas, duraciones y feriados se cargan en Microsoft Project, para que este Gantt y la Baseline coincidan.
 
-## 4. Hitos y milestones de GitHub
+## 4. Cambios aprobados después de la línea base
+
+| Fecha | Cambio | Efecto | Registro |
+|---|---|---|---|
+| 2026-10-11 | Se incluyen 2.4 Arquitectura y modelo de datos en Visio (#24) y 3.4 Proceso AS-IS y TO-BE en Bizagi (#25), 2 h cada uno | Opcionales de 4.0 a 8.0 h; núcleo sin cambios (23.0 h). 2.4 sigue a 2.3 y 3.4 sigue a 3.3; ninguno es predecesor del núcleo, por lo que no mueven la publicación | Control de cambios en el issue #1 |
+
+Las fechas de 2.4 y 3.4 son las previstas con el avance real del 2026-10-11 (2.1 terminada tres semanas antes de la línea base). En Project se agregan como tareas nuevas, con línea base propia; el Gantt de la sección 3 queda congelado como línea base v1.0.
+
+## 5. Hitos y milestones de GitHub
 
 | Hito | Fecha | Milestone |
 |---|---|---|
@@ -93,7 +103,7 @@ La Baseline se fijó en Microsoft Project el 2026-10-11 (`gestion/cronograma/`: 
 | Fin de la ejecución | 2026-11-20 | PF-01 · 2 Ejecución |
 | Publicación | 2026-11-26, 08:00 | PF-01 · 3 Cierre |
 
-## 5. Iteraciones del GitHub Project
+## 6. Iteraciones del GitHub Project
 
 | Iteración | Semana | Paquetes |
 |---|---|---|
