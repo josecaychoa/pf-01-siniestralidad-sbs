@@ -69,7 +69,7 @@ gantt
     3.1 Exploración                    :e4, after e3, 1d
     3.2 Indicadores y matriz           :e5, after e4, 2d
     3.3 Validación de resultados       :e6, after e5, 1d
-    4.1 Tablero Power BI (opcional)    :e7, after e6, 3d
+    4.1 Tablero Power BI               :e7, after e6, 3d
     4.2 Informe                        :e8, after e7, 1d
     4.3 README                         :e9, after e8, 1d
     section 3 Cierre
