@@ -1,6 +1,6 @@
 # Acta de constitución · PF-01: Producción y siniestralidad por riesgo del mercado asegurador peruano, 2019-2026
 
-`Portafolio · PF-01` · Versión 1.2 · 2026-10-11
+`Portafolio · PF-01` · Versión 1.3 · 2026-10-11
 
 | Campo | Valor |
 |---|---|
@@ -9,7 +9,7 @@
 | Issue padre | #1 |
 | Fechas planificadas | Planificación: 2026-10-12 a 2026-10-16 · Ejecución y cierre: 2026-11-02 a 2026-11-26 |
 | Publicación en LinkedIn | Jueves 2026-11-26, 08:00 (hora de Lima) |
-| Esfuerzo estimado | 27 h: 23 h de núcleo y 4 h del tablero opcional |
+| Esfuerzo estimado | 31 h: 23 h de núcleo y 8 h opcionales (tablero Power BI, 4 h; arquitectura en Visio, 2 h; proceso en Bizagi, 2 h) |
 | Estado | Aprobado el 2026-10-11 |
 
 ## 1. Problema de negocio
@@ -42,6 +42,8 @@ Construir una base reproducible con los estados financieros, los indicadores y l
 - Un umbral de materialidad de S/ 5 millones de primas netas acumuladas en el corte, tanto para los riesgos de la matriz como para las celdas empresa × riesgo.
 - Informe, README, cronograma con línea base en Microsoft Project, post y documento PDF.
 - Opcional: tablero Power BI en formato PBIP, si las horas del mes lo permiten.
+- Arquitectura y modelo de datos en Visio (paquete 2.4): arquitectura del flujo de datos y modelo de datos Oracle en notación pata de gallo, con SVG y PDF en `docs/diagramas/` (incluido por control de cambios del 2026-10-11).
+- Proceso AS-IS y TO-BE en Bizagi (paquete 3.4): elaboración manual del reporte de siniestralidad por riesgo frente al flujo reproducible del proyecto, con BPMN, SVG y PDF en `docs/procesos/` (incluido por control de cambios del 2026-10-11).
 
 **Excluye:**
 - Datos personales reales.
@@ -52,7 +54,6 @@ Construir una base reproducible con los estados financieros, los indicadores y l
 - Series mensuales obtenidas por diferencia de acumulados, estacionalidad y proyecciones.
 - Las demás hojas del Boletín Mensual (rankings, reservas, retribuciones, gastos de administración y estructuras porcentuales).
 - La interpretación actuarial de los riesgos de rentas y del Sistema Privado de Pensiones: aparecen en la matriz con una nota que explica por qué su siniestralidad no es comparable con la de los ramos generales.
-- Arquitectura en Visio, por capacidad del mes (decisión del director del proyecto); la arquitectura se documenta con un diagrama Mermaid en `docs/04_arquitectura.md`. Proceso en Bizagi, porque el análisis no modela un proceso de negocio.
 
 ## 5. Fuentes de datos
 
@@ -79,6 +80,8 @@ Construir una base reproducible con los estados financieros, los indicadores y l
 | Informe | `reports/`: matriz, tablas y figuras con citas, notas y referencias en APA 7 y ortografía RAE |
 | README | Problema, datos, método, resultados, reproducción y limitaciones (plantilla 03f) |
 | Cronograma | `gestion/cronograma/`: `.mpp` con Baseline, XML (MSPDI) y PDF de línea base y de seguimiento |
+| Diagramas en Visio | `docs/diagramas/`: `.vsdx`, SVG por página y PDF; SVG en `docs/04_arquitectura.md` y en el README como figura APA 7 |
+| Proceso en Bizagi | `docs/procesos/`: `.bpm`, `.bpmn` (BPMN 2.0), SVG AS-IS y TO-BE y PDF; diagrama validado en Bizagi Modeler |
 | Tablero Power BI (opcional) | PBIP en `dashboards/powerbi/`; capturas en `reports/figures/` con nota APA |
 | Post + documento PDF | Documento de 6 a 8 páginas de 1080 × 1350 con la matriz en la portada; checklist de la guía editorial y de la skill de marca; revisión anti-estilo-IA |
 
@@ -98,6 +101,8 @@ El documento PDF es el entregable que se muestra en LinkedIn.
 | Oracle SQL Developer | 26.2.0.186.2220 | Desarrollo y prueba interactiva del DDL, las vistas y las consultas sobre la base del contenedor | `12_ficha_sql-developer.md` (2026-10-11); Oracle (s. f.-c, s. f.-d) |
 | Power BI Desktop (opcional) | 2.158.1177.0 (septiembre de 2026) | Tablero PBIP | `12_ficha_powerbi-pbip.md` (2026-10-10); Microsoft (s. f., 2026) |
 | Microsoft Project | Professional 2021 | Línea base y seguimiento | `12_ficha_ms-project.md` (2026-10-10) |
+| Microsoft Visio | Professional 2021 | Arquitectura y modelo de datos | `12_ficha_visio.md` (2026-10-10) |
+| Bizagi Modeler | 4.3.0008 | Proceso AS-IS y TO-BE en BPMN 2.0 | `12_ficha_bizagi.md` (2026-10-10) |
 
 Los gráficos del informe y del documento PDF siguen el estilo `jc-editorial` definido en `04_estandares_tecnicos.md`, sección 5.6.
 
@@ -124,6 +129,7 @@ Los gráficos del informe y del documento PDF siguen el estilo `jc-editorial` de
 | R8 | Oracle Free no recibe parches de seguridad (Oracle, s. f.-a) | B | B | Contenedor solo local, puerto publicado únicamente en `127.0.0.1`, sin datos sensibles |
 | R9 | La lectura de libros antiguos (.xls) falla | B | M | Prueba en el primer día de 2.1 con openpyxl y xlrd; si falla, se documenta la alternativa en el diccionario de datos |
 | R10 | El equipo de desarrollo ya tiene una instalación nativa de Oracle 23ai Free (versión 23.6) con su listener en el puerto 1521 | A | B | El contenedor se publica en `127.0.0.1:1522` y el DSN del proyecto se declara en `.env` (`12_ficha_oracle-free.md`) |
+| R11 | Microsoft Project 2021 y Visio 2021 terminan su soporte el 2026-10-14; siguen funcionando, pero sin actualizaciones de seguridad (fichas `ms-project` y `visio`) | A | B | Uso local, sin macros de terceros; se publican SVG, PDF y XML, que no dependen de la versión instalada |
 
 ## 10. Criterios de éxito y de cierre
 
@@ -134,7 +140,7 @@ Los gráficos del informe y del documento PDF siguen el estilo `jc-editorial` de
 
 ## 11. Aprobación
 
-Plan aprobado por José Caycho A. el 2026-10-11. En la misma fecha se incorporó Oracle SQL Developer al stack (versión 1.2 del acta).
+Plan aprobado por José Caycho A. el 2026-10-11. En la misma fecha se incorporó Oracle SQL Developer al stack (versión 1.2 del acta) y, por control de cambios registrado en el issue #1, se incluyeron los paquetes 2.4 (Visio, #24) y 3.4 (Bizagi, #25), sin modificar la línea base del núcleo (versión 1.3).
 
 ## Referencias
 
