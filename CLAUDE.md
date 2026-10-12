@@ -34,4 +34,5 @@ Claude Code no los modifica ni los regenera.
 - Rama por issue: <tipo>/<n>-<descripcion-corta> (feat, fix, docs, data, test, refactor, ci, chore).
 - Commits (Conventional Commits 1.0.0): <tipo>(<ámbito opcional>): <descripción en español>,
   en minúscula y sin punto final; pie Refs #<n>.
-- Los cambios entran a main solo por PR; el PR incluye "Closes #<n>".
+- Los cambios entran a main solo por PR.
+- "Closes #<n>" solo si el PR cumple todo el criterio de aceptación del issue; si es parcial, "Refs #<n>".
