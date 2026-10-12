@@ -1,6 +1,7 @@
 # Changelog
 
 ## [Sin publicar]
+- Contenedor Oracle AI Database 26ai Free (`gvenzl/oracle-free:23.26.3`) en `docker-compose.yml`, `.env.example` con cuatro variables, dependencia python-oracledb 26.0.1 y convención de nombres SQL en español (D-PF01-05) (#6).
 - Plantilla de PR con «Prueba local antes del merge: sí / no» (lección L-PF01-11).
 - Acta 1.3 y EDT 1.4: se incluyen los paquetes 2.4 (Visio, #24) y 3.4 (Bizagi, #25) por control de cambios (#1).
 - Catálogos versionados de empresas (equivalencias), riesgos (jerarquía y agrupación comparable), cortes (plan de cuentas) y excepciones de la fuente (#5).
