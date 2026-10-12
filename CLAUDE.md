@@ -23,7 +23,7 @@ Claude Code no los modifica ni los regenera.
 - Pruebas: `uv run pytest` · Oracle: `docker compose up -d` (python-oracledb, modo Thin).
 
 ## Convenciones
-- Nombres en inglés técnico; comentarios y docstrings en español.
+- Nombres en inglés técnico en Python; en SQL, español en snake_case con prefijos stg_, dim_, fct_ y vw_ (D-PF01-05); comentarios y docstrings en español.
 - SQL Oracle-first en sql/oracle/; variante T-SQL en sql/sqlserver/ si aplica.
 - Scripts SQL idempotentes, numerados (01_, 02_ ...) y con variables enlazadas.
 - data/raw es inmutable; las transformaciones escriben en data/interim y data/processed.

@@ -1,0 +1,22 @@
+# docker-compose.yml · Oracle AI Database 26ai Free (etiqueta fija; nunca latest)
+services:
+  oracle:
+    image: gvenzl/oracle-free:23.26.3
+    container_name: pf-oracle
+    ports:
+      - "127.0.0.1:1522:1521"   # solo localhost; 1522 porque el ThinkPad ya usa 1521
+    environment:
+      ORACLE_PASSWORD: ${ORACLE_SYS_PASSWORD}   # SYS y SYSTEM; solo en el primer arranque
+      APP_USER: ${ORACLE_USER}                  # esquema del proyecto
+      APP_USER_PASSWORD: ${ORACLE_PASSWORD}
+    volumes:
+      - oracle-data:/opt/oracle/oradata          # persistencia entre reinicios
+    healthcheck:
+      test: ["CMD", "healthcheck.sh"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+      start_interval: 5s
+volumes:
+  oracle-data:
