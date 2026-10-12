@@ -1,0 +1,107 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="68BA5A21-D48C-A8A1-CC4A-F3B342734101" name="Cifra_riesgo">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:19:15 UTC</createdTime>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="valor" id="A893EB21-8CDC-DE0C-B657-EF809EC331D7">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:19:21 UTC</createdTime>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha_corte" id="9F031BA5-CF4F-7FD9-D2F0-79AAEC092C53">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:44:02 UTC</createdTime>
+<generatorID>A26310FC-4BC5-7637-7611-AF3C8AFD9D93</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<referedAttribute>2344E88A-F522-28F9-7DFE-9F9761CF7D41</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="columna_id" id="0A6BDF81-90E3-D55A-F980-2E8B07DCEDEE">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:44:19 UTC</createdTime>
+<generatorID>A4781301-5CC1-81B4-A011-EF5B9CDA2D50</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<referedAttribute>23FF2B06-0B54-B2A3-709E-411E6A6147F6</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="riesgo_id" id="AADDECE5-6BB1-158B-2CCB-A0B6CEB2A8BA">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:44:41 UTC</createdTime>
+<generatorID>353B3B96-CFE6-A664-EF6A-CBA27DCD0074</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<referedAttribute>ADF2B7E7-DF63-A498-EF70-0EE0DBB0200D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="hoja" id="BF12E25A-0AD5-A758-F3EA-7324AACB14EC">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:45:07 UTC</createdTime>
+<generatorID>2519D593-7A8F-61BC-45D4-A4A14F975752</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<referedAttribute>CF596B2C-6BE1-462B-9480-DCEE90D4CF59</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="F6E26B99-D9BF-5E4F-EFB1-65B22E3FDAEA" name="Cifra_riesgo PK">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:44:02 UTC</createdTime>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>9F031BA5-CF4F-7FD9-D2F0-79AAEC092C53</attributeRef>
+<attributeRef>0A6BDF81-90E3-D55A-F980-2E8B07DCEDEE</attributeRef>
+<attributeRef>AADDECE5-6BB1-158B-2CCB-A0B6CEB2A8BA</attributeRef>
+<attributeRef>BF12E25A-0AD5-A758-F3EA-7324AACB14EC</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

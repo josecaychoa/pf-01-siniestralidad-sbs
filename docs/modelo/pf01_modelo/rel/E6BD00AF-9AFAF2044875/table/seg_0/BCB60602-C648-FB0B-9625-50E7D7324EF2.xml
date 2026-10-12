@@ -1,0 +1,132 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BCB60602-C648-FB0B-9625-50E7D7324EF2" name="fct_estado_financiero">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>8A880ECB-D6AC-72BE-1A75-67EB0171F09E</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="moneda" id="938E71C4-4295-FF49-379B-94B7ACCF1068">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>88B100E1-A6BA-F5F5-8CE3-12CF78EF3BC7</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>5</dataTypeSize>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="valor" id="C23CA8EA-EFD2-82D0-3304-C547A9FADCC7">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>50B0D9A1-1AFB-8FD0-B003-49361AE534B3</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="columna_id" id="5CEB6830-F7DE-9410-E014-3F166F61A964">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>A3B25818-EEC6-4D37-DC3E-4ECE7BE25535</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1837F58E-2D6E-144F-E72B-A456AF63B2EF" referredColumn="34D6FB90-8CA3-317F-73AB-66E46F64A57C"/>
+</associations>
+</Column>
+<Column name="cuenta_id" id="D33918CF-7690-6807-4758-CEB6A5AB258E">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>90533564-DB64-625A-70E0-B147915BC60A</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FC952CC4-E2C8-23B6-137A-7E5E5FFC7B3F" referredColumn="32B2ED0F-7E2A-4F7A-5307-347961F61237"/>
+</associations>
+</Column>
+<Column name="fecha_corte" id="452F346F-C1EF-BF26-5AE5-B217CF4FE660">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>C37BAEC2-FA2A-2564-9C24-05C04B37C1CF</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="544FC495-6412-8E6E-CBF1-9131D6927FE9" referredColumn="23D2CC76-89AD-1379-44BA-E36B00D1547D"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3FAE2A85-08F8-7E93-26C6-90DC9B533519" name="pk_fct_estado_financiero">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>0A6045B0-5BA4-1544-170A-D345A940A4D7</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="938E71C4-4295-FF49-379B-94B7ACCF1068"/>
+<colUsage columnID="5CEB6830-F7DE-9410-E014-3F166F61A964"/>
+<colUsage columnID="D33918CF-7690-6807-4758-CEB6A5AB258E"/>
+<colUsage columnID="452F346F-C1EF-BF26-5AE5-B217CF4FE660"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="881B49D4-FC5F-B71D-05E3-D06262FF16E5" name="fk_fct_estfin_columna">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>409885E5-8DE5-4313-95BF-C5E98F9CF2BA</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5CEB6830-F7DE-9410-E014-3F166F61A964"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="51C50567-E558-49DF-5BFC-542C7B0EAFDA" name="fk_fct_estfin_corte">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>A48E598A-DF76-6D88-0CCF-E27919CC25FB</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="452F346F-C1EF-BF26-5AE5-B217CF4FE660"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="738DBB98-E201-4C15-3E20-63393D79B84B" name="fk_fct_estfin_cuenta">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>23795C53-F402-04EF-28D7-25678273DC67</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D33918CF-7690-6807-4758-CEB6A5AB258E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,101 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="846391DC-9F18-E5E5-5FB9-1E85E75987FA" name="Indicador">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 03:59:14 UTC</createdTime>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="indicador_id" id="50ED6B75-A025-0307-8446-3B1D54AC1FBB">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 03:59:24 UTC</createdTime>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="seccion" id="0ECCAE92-A30E-EEB5-AE16-FC230BE062C1">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 03:59:35 UTC</createdTime>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="clave" id="178D8987-AF72-CE64-EAF8-26F531FBBADC">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 03:59:47 UTC</createdTime>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>150</dataTypeSize>
+<ownDataTypeParameters>150,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="indicador" id="135E1806-B062-BFAE-34AE-8FF439001A60">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:00:16 UTC</createdTime>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>150</dataTypeSize>
+<ownDataTypeParameters>150,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="hoja" id="1F640FD2-9CCA-1DA7-989F-2390EBBA80F9">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:28:34 UTC</createdTime>
+<generatorID>957C44E0-4D33-E0F4-240E-12F0B30561CF</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>CF596B2C-6BE1-462B-9480-DCEE90D4CF59</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="AFE36501-6F04-1712-C155-3AB9B1ED7753" name="Indicador PK">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 03:59:34 UTC</createdTime>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>50ED6B75-A025-0307-8446-3B1D54AC1FBB</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

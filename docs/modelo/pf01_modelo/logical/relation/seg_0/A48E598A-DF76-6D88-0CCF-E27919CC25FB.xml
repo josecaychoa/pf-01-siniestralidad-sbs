@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="rel_corte_saldo" directorySegmentName="seg_0" id="A48E598A-DF76-6D88-0CCF-E27919CC25FB">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:36:16 UTC</createdTime>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<sourcePk>D3A15901-06A2-E4AF-55EC-9FA30BA47EEB</sourcePk>
+<identifying>true</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>D0077435-225E-8DB8-370F-AA9D84616A7B</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>8A880ECB-D6AC-72BE-1A75-67EB0171F09E</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,0 +1,101 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C04DAA84-2F53-FE4B-2D8A-EB45C1166386" name="dim_indicador">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>846391DC-9F18-E5E5-5FB9-1E85E75987FA</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="indicador_id" id="4F6C3014-8EAF-BF38-44C4-8FFD91FB6930">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>50ED6B75-A025-0307-8446-3B1D54AC1FBB</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="seccion" id="75C6D789-F2DB-C9D5-9F5B-381E15582F68">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>0ECCAE92-A30E-EEB5-AE16-FC230BE062C1</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="clave" id="A169621E-336D-5A0A-1B16-A4390619075F">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>178D8987-AF72-CE64-EAF8-26F531FBBADC</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>150</dataTypeSize>
+<ownDataTypeParameters>150,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="indicador" id="A5F8047E-1D16-2F28-5C64-822FFCFC3CED">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>135E1806-B062-BFAE-34AE-8FF439001A60</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>150</dataTypeSize>
+<ownDataTypeParameters>150,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="hoja" id="E2CF7C68-C1F4-6F3F-F5F1-516EE06D7FC2">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>1F640FD2-9CCA-1DA7-989F-2390EBBA80F9</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4</dataTypeSize>
+<ownDataTypeParameters>4,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9AF7C416-41D9-EA11-768B-830F519540EC" referredColumn="FD64C4CE-4995-BB1D-5821-D3AFB82A51E2"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F6F674D8-20C1-B896-FB47-F12DE630CA47" name="pk_dim_indicador">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>AFE36501-6F04-1712-C155-3AB9B1ED7753</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4F6C3014-8EAF-BF38-44C4-8FFD91FB6930"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5033BE66-2982-0C06-9731-D179641DA4F0" name="fk_dim_indicador_cuadro">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>957C44E0-4D33-E0F4-240E-12F0B30561CF</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E2CF7C68-C1F4-6F3F-F5F1-516EE06D7FC2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

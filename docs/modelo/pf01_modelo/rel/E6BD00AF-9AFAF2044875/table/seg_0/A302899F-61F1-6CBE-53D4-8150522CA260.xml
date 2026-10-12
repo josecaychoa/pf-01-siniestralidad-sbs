@@ -1,0 +1,163 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A302899F-61F1-6CBE-53D4-8150522CA260" name="dim_riesgo">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>FA2CA30A-2E03-567D-DB73-BB7CDB0ED742</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="riesgo_id" id="0EDD59B8-445B-4F8B-8D4F-57EB093FF930">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>ADF2B7E7-DF63-A498-EF70-0EE0DBB0200D</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="clave" id="4740700D-7BA5-650C-7E28-4DD425FA1AE3">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>88973321-411C-C43D-C1D0-1155ECAAABC3</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>80</dataTypeSize>
+<ownDataTypeParameters>80,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="riesgo" id="C334CE01-A97F-9DFE-39E7-6BCD84F086B6">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>FA9D7460-D515-4E3C-533D-2A64A7D5605B</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nivel" id="2DEC98BA-0821-4BE6-D887-4DD5AE93F794">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>8C829036-04DC-9180-E8B9-A3194C8CA14E</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tipo" id="E0E0CEFF-D344-F20D-1BBC-00185B671271">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>578D38D5-4550-F3F3-05B1-4CB8CB85C853</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ramo" id="C0385941-BB5A-D66F-5D9B-951155AE7D05">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>6255134D-A1D2-AB9A-E7BF-B4164DABED89</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="riesgo_comparable" id="674FD741-7AFF-BBC4-340D-2E0721235183">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>37ACB7E0-E88C-636B-F93A-1E7815413666</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="corte_desde" id="DCCB04F4-B885-6BE0-75FF-F2F9E69F1DF8">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>59E4C900-5632-FE1B-C719-3EC774E37205</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nota" id="B567DA53-9FC7-440F-DB42-9CB4483A3030">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>4EF502B5-F9C9-0E01-D287-BC8782AA1447</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>400</dataTypeSize>
+<ownDataTypeParameters>400,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="riesgo_padre_id" id="2E00FC41-2C12-7DF7-92D6-BECE48418EA9">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>0C317477-A882-AFDD-B6E9-F6F2CA84551E</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B80270CF-9019-CF9B-0E12-3FAA9CF9F687" referredColumn="0EDD59B8-445B-4F8B-8D4F-57EB093FF930"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B8FDA322-BF86-11ED-023C-FCFBB2F9C28F" name="pk_dim_riesgo">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>82514138-7F2A-315F-F49A-8E3FA19880F5</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0EDD59B8-445B-4F8B-8D4F-57EB093FF930"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9858E37F-B68A-D2AB-7C7B-0760C33459D0" name="fk_dim_riesgo_padre">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>E9A0CCEA-BBA5-001B-8679-41648FDF35AE</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2E00FC41-2C12-7DF7-92D6-BECE48418EA9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="rel_cuadro_indicador" directorySegmentName="seg_0" id="957C44E0-4D33-E0F4-240E-12F0B30561CF">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:28:34 UTC</createdTime>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<sourcePk>40B7CC16-A567-2083-D269-1888D795B6BD</sourcePk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>DE470FD0-1961-0C45-5F86-FB6627109046</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>846391DC-9F18-E5E5-5FB9-1E85E75987FA</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

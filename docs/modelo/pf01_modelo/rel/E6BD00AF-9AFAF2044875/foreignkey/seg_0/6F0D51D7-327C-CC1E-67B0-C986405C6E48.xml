@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="6F0D51D7-327C-CC1E-67B0-C986405C6E48" containerWithKeyObject="778100D2-84CB-E9EA-D811-0127E1AEA0F5" localFKIndex="6B8BDC2A-14BD-D4AE-004B-34FD8C171BC1" name="fk_fct_riesgo_columna">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>A4781301-5CC1-81B4-A011-EF5B9CDA2D50</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<referredTableLongName>dim_columna_empresa</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>F95B2288-BF46-E8FB-61F0-C9D7705EDE8C</referredTableID>
+<keyObject>4A95EA49-3DEB-AB89-90EA-177AA35C656D</keyObject>
+<referredKeyID>4A95EA49-3DEB-AB89-90EA-177AA35C656D</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>columna_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

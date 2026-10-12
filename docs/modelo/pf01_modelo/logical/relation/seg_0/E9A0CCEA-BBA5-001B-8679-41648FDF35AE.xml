@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="rel_riesgo_padre" directorySegmentName="seg_0" id="E9A0CCEA-BBA5-001B-8679-41648FDF35AE">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:28:53 UTC</createdTime>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<targetPk>82514138-7F2A-315F-F49A-8E3FA19880F5</targetPk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>FA2CA30A-2E03-567D-DB73-BB7CDB0ED742</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>FA2CA30A-2E03-567D-DB73-BB7CDB0ED742</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="9AF7C416-41D9-EA11-768B-830F519540EC" containerWithKeyObject="C04DAA84-2F53-FE4B-2D8A-EB45C1166386" localFKIndex="5033BE66-2982-0C06-9731-D179641DA4F0" name="fk_dim_indicador_cuadro">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>957C44E0-4D33-E0F4-240E-12F0B30561CF</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<referredTableLongName>dim_cuadro</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>755D730C-1DF1-7E5A-D3C5-2D253A99B784</referredTableID>
+<keyObject>F4053AA3-F42F-4BB6-2714-29BA6582ECAB</keyObject>
+<referredKeyID>F4053AA3-F42F-4BB6-2714-29BA6582ECAB</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>hoja</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

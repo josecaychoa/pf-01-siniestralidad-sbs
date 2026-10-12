@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="rel_corte_cifra" directorySegmentName="seg_0" id="A26310FC-4BC5-7637-7611-AF3C8AFD9D93">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:44:02 UTC</createdTime>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<sourcePk>D3A15901-06A2-E4AF-55EC-9FA30BA47EEB</sourcePk>
+<identifying>true</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>D0077435-225E-8DB8-370F-AA9D84616A7B</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>68BA5A21-D48C-A8A1-CC4A-F3B342734101</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
