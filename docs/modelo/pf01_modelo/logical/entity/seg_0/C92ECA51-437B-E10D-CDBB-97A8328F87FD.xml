@@ -1,0 +1,91 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C92ECA51-437B-E10D-CDBB-97A8328F87FD" name="Valor_indicador">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:18:51 UTC</createdTime>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="valor" id="DC44820B-525E-ADF5-F400-E7D7A0697786">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:19:01 UTC</createdTime>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha_corte" id="3D6C57F7-1C9C-C9DE-8713-D63AC5A09B8D">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:42:31 UTC</createdTime>
+<generatorID>53F33DA8-BEAD-A51B-6BB9-B05F942A81B6</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<referedAttribute>2344E88A-F522-28F9-7DFE-9F9761CF7D41</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="columna_id" id="1503A2BA-E459-3524-69FF-C8705443B5C3">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:42:54 UTC</createdTime>
+<generatorID>FA044F1B-B344-3EE8-7D68-F8603CC822D3</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<referedAttribute>23FF2B06-0B54-B2A3-709E-411E6A6147F6</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="indicador_id" id="3B0EF2AB-18D5-285D-0899-E649717895D1">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:43:48 UTC</createdTime>
+<generatorID>086FA57E-0FFB-3375-EC66-019300EFEC25</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<referedAttribute>50ED6B75-A025-0307-8446-3B1D54AC1FBB</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="4D76E4D1-E3FC-3E1F-ACAD-970CA5269FE8" name="Valor_indicador PK">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:42:31 UTC</createdTime>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>3D6C57F7-1C9C-C9DE-8713-D63AC5A09B8D</attributeRef>
+<attributeRef>1503A2BA-E459-3524-69FF-C8705443B5C3</attributeRef>
+<attributeRef>3B0EF2AB-18D5-285D-0899-E649717895D1</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

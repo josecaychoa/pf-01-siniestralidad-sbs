@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="7096972D-4AFB-6136-C229-BCE725F72532" containerWithKeyObject="778100D2-84CB-E9EA-D811-0127E1AEA0F5" localFKIndex="D23427C7-708F-21AD-B58D-C7562962328F" name="fk_fct_riesgo_cuadro">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>2519D593-7A8F-61BC-45D4-A4A14F975752</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<referredTableLongName>dim_cuadro</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>755D730C-1DF1-7E5A-D3C5-2D253A99B784</referredTableID>
+<keyObject>F4053AA3-F42F-4BB6-2714-29BA6582ECAB</keyObject>
+<referredKeyID>F4053AA3-F42F-4BB6-2714-29BA6582ECAB</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>hoja</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

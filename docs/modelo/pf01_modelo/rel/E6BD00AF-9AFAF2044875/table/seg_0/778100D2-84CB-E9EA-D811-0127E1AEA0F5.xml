@@ -1,0 +1,147 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="778100D2-84CB-E9EA-D811-0127E1AEA0F5" name="fct_riesgo">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>68BA5A21-D48C-A8A1-CC4A-F3B342734101</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="valor" id="ADBA8DCE-FC6D-3E91-F57F-34907DFD0112">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>A893EB21-8CDC-DE0C-B657-EF809EC331D7</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_corte" id="90670507-CC7C-6253-5D59-025663A9D796">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>9F031BA5-CF4F-7FD9-D2F0-79AAEC092C53</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="17B0F761-577A-417C-355B-38D1B56C850B" referredColumn="23D2CC76-89AD-1379-44BA-E36B00D1547D"/>
+</associations>
+</Column>
+<Column name="columna_id" id="DD3F2A5F-884D-48A6-2889-58514D1D2FF4">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>0A6BDF81-90E3-D55A-F980-2E8B07DCEDEE</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6F0D51D7-327C-CC1E-67B0-C986405C6E48" referredColumn="34D6FB90-8CA3-317F-73AB-66E46F64A57C"/>
+</associations>
+</Column>
+<Column name="riesgo_id" id="ED70C068-2DA9-1CC7-3B71-A26F37E0301C">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>AADDECE5-6BB1-158B-2CCB-A0B6CEB2A8BA</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="46812A36-9CBD-3006-FC74-02F4DB4277DC" referredColumn="0EDD59B8-445B-4F8B-8D4F-57EB093FF930"/>
+</associations>
+</Column>
+<Column name="hoja" id="C077FC8C-8C18-21EA-1374-B2A6B7E135D0">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>BF12E25A-0AD5-A758-F3EA-7324AACB14EC</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7096972D-4AFB-6136-C229-BCE725F72532" referredColumn="FD64C4CE-4995-BB1D-5821-D3AFB82A51E2"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="12962528-9268-15C4-E792-43A59D28BD50" name="pk_fct_riesgo">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>F6E26B99-D9BF-5E4F-EFB1-65B22E3FDAEA</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="90670507-CC7C-6253-5D59-025663A9D796"/>
+<colUsage columnID="DD3F2A5F-884D-48A6-2889-58514D1D2FF4"/>
+<colUsage columnID="ED70C068-2DA9-1CC7-3B71-A26F37E0301C"/>
+<colUsage columnID="C077FC8C-8C18-21EA-1374-B2A6B7E135D0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6B8BDC2A-14BD-D4AE-004B-34FD8C171BC1" name="fk_fct_riesgo_columna">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>A4781301-5CC1-81B4-A011-EF5B9CDA2D50</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DD3F2A5F-884D-48A6-2889-58514D1D2FF4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2A9CBA5E-4B9F-5646-8421-7D1ED10FE9F3" name="fk_fct_riesgo_corte">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>A26310FC-4BC5-7637-7611-AF3C8AFD9D93</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="90670507-CC7C-6253-5D59-025663A9D796"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D23427C7-708F-21AD-B58D-C7562962328F" name="fk_fct_riesgo_cuadro">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>2519D593-7A8F-61BC-45D4-A4A14F975752</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C077FC8C-8C18-21EA-1374-B2A6B7E135D0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D1AB3D1F-EEDC-A903-AC85-2EC86126AB2C" name="fk_fct_riesgo_riesgo">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>353B3B96-CFE6-A664-EF6A-CBA27DCD0074</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="ED70C068-2DA9-1CC7-3B71-A26F37E0301C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

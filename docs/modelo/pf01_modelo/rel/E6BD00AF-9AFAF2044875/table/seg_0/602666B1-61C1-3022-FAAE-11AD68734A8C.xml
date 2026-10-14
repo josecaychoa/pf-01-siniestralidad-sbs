@@ -1,0 +1,119 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="602666B1-61C1-3022-FAAE-11AD68734A8C" name="fct_indicador">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>C92ECA51-437B-E10D-CDBB-97A8328F87FD</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="valor" id="B0D890D8-9736-955C-A3B4-FEA6AAC3C5C3">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>DC44820B-525E-ADF5-F400-E7D7A0697786</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_corte" id="D6730941-BCA1-EDAF-8B0C-783DAF9ADCDC">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>3D6C57F7-1C9C-C9DE-8713-D63AC5A09B8D</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6A0774D7-9A29-CB4E-834B-1134F7D5BEC6" referredColumn="23D2CC76-89AD-1379-44BA-E36B00D1547D"/>
+</associations>
+</Column>
+<Column name="columna_id" id="26A7D156-1A39-08E6-735E-4BA8C51493DD">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>1503A2BA-E459-3524-69FF-C8705443B5C3</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="94C0B4C4-EEE4-5DAB-0266-457DA094B45B" referredColumn="34D6FB90-8CA3-317F-73AB-66E46F64A57C"/>
+</associations>
+</Column>
+<Column name="indicador_id" id="B8D9921D-71B5-3BC5-921E-93A16A801BF0">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>3B0EF2AB-18D5-285D-0899-E649717895D1</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5ED347B3-9749-6CD0-89B3-801B8726AD8F" referredColumn="4F6C3014-8EAF-BF38-44C4-8FFD91FB6930"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="22B9C7F6-5788-0326-2812-0B9CB966B4FA" name="pk_fct_indicador">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>4D76E4D1-E3FC-3E1F-ACAD-970CA5269FE8</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D6730941-BCA1-EDAF-8B0C-783DAF9ADCDC"/>
+<colUsage columnID="26A7D156-1A39-08E6-735E-4BA8C51493DD"/>
+<colUsage columnID="B8D9921D-71B5-3BC5-921E-93A16A801BF0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="20DD86F6-6324-D1AC-8B7A-0933F704DA6C" name="fk_fct_indicador_columna">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>FA044F1B-B344-3EE8-7D68-F8603CC822D3</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="26A7D156-1A39-08E6-735E-4BA8C51493DD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4A201D70-2D9A-45ED-B437-26C1FFF21B5E" name="fk_fct_indicador_corte">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>53F33DA8-BEAD-A51B-6BB9-B05F942A81B6</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D6730941-BCA1-EDAF-8B0C-783DAF9ADCDC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C7D6E7B5-468A-509D-365A-201E04451A48" name="fk_fct_indicador_indicador">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>086FA57E-0FFB-3375-EC66-019300EFEC25</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B8D9921D-71B5-3BC5-921E-93A16A801BF0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

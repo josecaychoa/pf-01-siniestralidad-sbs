@@ -23,7 +23,8 @@ Claude Code no los modifica ni los regenera.
 - Pruebas: `uv run pytest` · Oracle: `docker compose up -d` (python-oracledb, modo Thin).
 
 ## Convenciones
-- Nombres en inglés técnico en Python; en SQL, español en snake_case con prefijos stg_, dim_, fct_ y vw_ (D-PF01-05); comentarios y docstrings en español.
+- Nombres en español, snake_case, también en Python (identificadores, funciones y módulos); comentarios y docstrings en español.
+- En SQL, español en snake_case con prefijos stg_, dim_, fct_ y vw_ (D-PF01-05).
 - SQL Oracle-first en sql/oracle/; variante T-SQL en sql/sqlserver/ si aplica.
 - Scripts SQL idempotentes, numerados (01_, 02_ ...) y con variables enlazadas.
 - data/raw es inmutable; las transformaciones escriben en data/interim y data/processed.
@@ -34,4 +35,5 @@ Claude Code no los modifica ni los regenera.
 - Rama por issue: <tipo>/<n>-<descripcion-corta> (feat, fix, docs, data, test, refactor, ci, chore).
 - Commits (Conventional Commits 1.0.0): <tipo>(<ámbito opcional>): <descripción en español>,
   en minúscula y sin punto final; pie Refs #<n>.
-- Los cambios entran a main solo por PR; el PR incluye "Closes #<n>".
+- Los cambios entran a main solo por PR.
+- "Closes #<n>" solo si el PR cumple todo el criterio de aceptación del issue; si es parcial, "Refs #<n>".

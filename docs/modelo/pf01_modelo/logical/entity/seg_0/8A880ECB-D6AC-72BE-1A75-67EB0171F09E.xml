@@ -1,0 +1,105 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="8A880ECB-D6AC-72BE-1A75-67EB0171F09E" name="Saldo_estado_financiero">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:17:57 UTC</createdTime>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="moneda" id="88B100E1-A6BA-F5F5-8CE3-12CF78EF3BC7">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:18:11 UTC</createdTime>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>5</dataTypeSize>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="valor" id="50B0D9A1-1AFB-8FD0-B003-49361AE534B3">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:18:27 UTC</createdTime>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="columna_id" id="A3B25818-EEC6-4D37-DC3E-4ECE7BE25535">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:36:56 UTC</createdTime>
+<generatorID>409885E5-8DE5-4313-95BF-C5E98F9CF2BA</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<referedAttribute>23FF2B06-0B54-B2A3-709E-411E6A6147F6</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cuenta_id" id="90533564-DB64-625A-70E0-B147915BC60A">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:38:59 UTC</createdTime>
+<generatorID>23795C53-F402-04EF-28D7-25678273DC67</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<referedAttribute>384B5BC2-167F-7813-CB48-F63520993BBF</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha_corte" id="C37BAEC2-FA2A-2564-9C24-05C04B37C1CF">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:41:41 UTC</createdTime>
+<generatorID>A48E598A-DF76-6D88-0CCF-E27919CC25FB</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<referedAttribute>2344E88A-F522-28F9-7DFE-9F9761CF7D41</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="0A6045B0-5BA4-1544-170A-D345A940A4D7" name="Saldo_estado_financiero PK">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:18:26 UTC</createdTime>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>88B100E1-A6BA-F5F5-8CE3-12CF78EF3BC7</attributeRef>
+<attributeRef>A3B25818-EEC6-4D37-DC3E-4ECE7BE25535</attributeRef>
+<attributeRef>90533564-DB64-625A-70E0-B147915BC60A</attributeRef>
+<attributeRef>C37BAEC2-FA2A-2564-9C24-05C04B37C1CF</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

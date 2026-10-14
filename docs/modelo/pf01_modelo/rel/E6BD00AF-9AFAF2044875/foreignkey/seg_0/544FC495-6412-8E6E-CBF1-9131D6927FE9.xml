@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="544FC495-6412-8E6E-CBF1-9131D6927FE9" containerWithKeyObject="BCB60602-C648-FB0B-9625-50E7D7324EF2" localFKIndex="51C50567-E558-49DF-5BFC-542C7B0EAFDA" name="fk_fct_estfin_corte">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-12 04:59:23 UTC</createdTime>
+<generatorID>A48E598A-DF76-6D88-0CCF-E27919CC25FB</generatorID>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<referredTableLongName>dim_corte</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>248A3A47-6904-BCC5-27D2-AAA4B24D32FF</referredTableID>
+<keyObject>8610BD0C-FC35-D434-76E1-E78B31583D20</keyObject>
+<referredKeyID>8610BD0C-FC35-D434-76E1-E78B31583D20</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>fecha_corte</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

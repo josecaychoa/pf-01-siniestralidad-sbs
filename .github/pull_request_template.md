@@ -9,4 +9,5 @@
 - [ ] Prueba local en Windows (si aplica): resultado esperado frente a obtenido
 - [ ] Cifras nuevas con su cita APA 7 y ortografía RAE
 
+<!-- Closes #<n> solo si el PR cumple todo el criterio de aceptación del issue; si es parcial, Refs #<n> -->
 Closes #
