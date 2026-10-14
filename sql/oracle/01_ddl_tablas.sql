@@ -730,7 +730,7 @@ BEGIN
     v_comentario('HOJA')              := 'Hoja del libro (P001 … P016), sin espacios';
     v_comentario('CUADRO')            := 'Título de la hoja, sin llamadas a nota';
     v_comentario('UNIDAD')            := 'Unidad declarada bajo el título («En Miles de Soles», «En Porcentaje»); vacía en P004, donde la unidad está en la sección';
-    v_comentario('SECCION')           := 'Solo P004: grupo del indicador (p. ej., «DE SOLVENCIA (N° de veces)»)';
+    v_comentario('SECCION')           := 'Solo P004: grupo del indicador (p. ej., «DE GESTIÓN»)';
     v_comentario('FILA')              := 'Fila de la celda en la hoja, en numeración de Excel (1 = primera)';
     v_comentario('COLUMNA')           := 'Columna de la celda en la hoja, en numeración de Excel (1 = primera)';
     v_comentario('CONCEPTO_ORIGINAL') := 'Etiqueta de la fila tal como se publica (cuenta, riesgo o indicador)';
@@ -755,6 +755,129 @@ BEGIN
             v_columna := v_comentario.NEXT(v_columna);
         END LOOP;
     END LOOP;
+END;
+/
+
+-- Comentarios de columna de las tablas dim_ y fct_: mismo texto que la columna
+-- «Descripción» de la sección 2 de docs/03_diccionario_datos.md. Las columnas
+-- tipo_columna y en_total_simple tienen su COMMENT ON COLUMN más arriba.
+DECLARE
+    PROCEDURE comentar(p_tabla IN VARCHAR2, p_columna IN VARCHAR2, p_texto IN VARCHAR2) IS
+    BEGIN
+        EXECUTE IMMEDIATE 'COMMENT ON COLUMN '
+            || DBMS_ASSERT.SIMPLE_SQL_NAME(p_tabla) || '.'
+            || DBMS_ASSERT.SIMPLE_SQL_NAME(p_columna)
+            || ' IS ' || DBMS_ASSERT.ENQUOTE_LITERAL(p_texto);
+    END comentar;
+BEGIN
+    comentar('dim_columna_empresa', 'columna_id',
+             'Identificador de la columna: 1 a 32 para las empresas, en el orden de empresas.csv, y los siguientes para las columnas Total');
+    comentar('dim_columna_empresa', 'clave_fuente',
+             'Rótulo de la columna en la fuente, normalizado (mayúsculas, sin tildes y sin espacios repetidos)');
+    comentar('dim_columna_empresa', 'corte_desde',
+             'Primer corte en que el rótulo tiene esta equivalencia');
+    comentar('dim_columna_empresa', 'corte_hasta',
+             'Último corte en que el rótulo tiene esta equivalencia');
+    comentar('dim_columna_empresa', 'entidad',
+             'Denominación en ese período según las notas al pie de la SBS; en las columnas Total, el rótulo publicado');
+    comentar('dim_columna_empresa', 'estado',
+             'Situación de la empresa en ese rango de cortes; nulo en las columnas Total');
+    comentar('dim_columna_empresa', 'evento',
+             'Cambio de denominación, fusión o liquidación que explica la equivalencia');
+    comentar('dim_columna_empresa', 'fuente_evento',
+             'Resolución SBS que autoriza el evento');
+    comentar('dim_columna_empresa', 'empresa_id',
+             'Empresa para el análisis en el tiempo; nulo en las columnas Total');
+    comentar('dim_corte', 'fecha_corte',
+             'Fecha de corte del Boletín Mensual (último día del mes)');
+    comentar('dim_corte', 'meses_acumulados',
+             'Meses que acumulan las cifras de flujo en el año: 12 en diciembre y 8 en agosto');
+    comentar('dim_corte', 'plan_de_cuentas',
+             'Versión del plan de cuentas vigente en el corte');
+    comentar('dim_corte', 'resolucion_plan',
+             'Número de la resolución SBS del plan de cuentas; nulo antes de 2021');
+    comentar('dim_cuadro', 'hoja',
+             'Código de la hoja del Boletín Mensual');
+    comentar('dim_cuadro', 'cuadro',
+             'Título de la hoja en el corte más reciente del Boletín Mensual');
+    comentar('dim_cuadro', 'unidad',
+             'Unidad declarada bajo el título en el corte más reciente; nula en P004, donde la unidad va en cada sección');
+    comentar('dim_cuadro', 'grupo',
+             'Tabla de data/interim de la que sale la hoja');
+    comentar('dim_cuadro', 'medida',
+             'Lo que publica la hoja, con el nombre de la columna de las vistas');
+    comentar('dim_cuenta', 'cuenta_id',
+             'Identificador de la cuenta, en el orden de la hoja del corte más reciente en que aparece');
+    comentar('dim_cuenta', 'clave',
+             'Rótulo normalizado de la fila; si el rótulo se repite en la misma hoja y corte, la segunda aparición lleva el sufijo (2)');
+    comentar('dim_cuenta', 'cuenta',
+             'Rótulo publicado de la cuenta en el corte más reciente en que aparece');
+    comentar('dim_cuenta', 'nivel',
+             'Nivel de sangría del rótulo en la hoja (0 = sin sangría), en el corte más reciente en que aparece');
+    comentar('dim_cuenta', 'hoja',
+             'Hoja del estado financiero');
+    comentar('dim_empresa', 'empresa_id',
+             'Código de la empresa para el análisis en el tiempo (catálogo empresas.csv)');
+    comentar('dim_empresa', 'empresa',
+             'Denominación vigente de la empresa');
+    comentar('dim_indicador', 'indicador_id',
+             'Identificador del indicador, en el orden de la hoja del corte más reciente en que aparece');
+    comentar('dim_indicador', 'seccion',
+             'En P004, la sección publicada; en P003, el tramo de la hoja');
+    comentar('dim_indicador', 'clave',
+             'Rótulo normalizado del indicador (mayúsculas, sin tildes y sin espacios repetidos)');
+    comentar('dim_indicador', 'indicador',
+             'Rótulo publicado del indicador en el corte más reciente en que aparece');
+    comentar('dim_indicador', 'hoja',
+             'Hoja de origen del indicador');
+    comentar('dim_riesgo', 'riesgo_id',
+             'Identificador y orden del riesgo en el catálogo riesgos.csv');
+    comentar('dim_riesgo', 'clave',
+             'Rótulo normalizado del riesgo (mayúsculas, sin tildes y sin espacios repetidos)');
+    comentar('dim_riesgo', 'riesgo',
+             'Rótulo vigente del riesgo (agosto de 2026)');
+    comentar('dim_riesgo', 'nivel',
+             'Profundidad en la jerarquía del catálogo (0 = TOTAL)');
+    comentar('dim_riesgo', 'tipo',
+             'Papel del riesgo en la jerarquía; solo los de tipo riesgo suman el total');
+    comentar('dim_riesgo', 'ramo',
+             'Ramo al que pertenece el riesgo; nulo en el TOTAL');
+    comentar('dim_riesgo', 'riesgo_comparable',
+             'Agrupación para comparar en el tiempo (p. ej., Cauciones y fianzas)');
+    comentar('dim_riesgo', 'corte_desde',
+             'Primer corte en que se publica el riesgo');
+    comentar('dim_riesgo', 'nota',
+             'Observaciones del catálogo');
+    comentar('dim_riesgo', 'riesgo_padre_id',
+             'Riesgo o agregado que lo contiene; nulo en el TOTAL');
+    comentar('fct_estado_financiero', 'moneda',
+             'Moneda de la columna publicada');
+    comentar('fct_estado_financiero', 'valor',
+             'Cifra publicada sin redondear (D-PF01-06), en miles de soles; la utilidad por acción va en soles');
+    comentar('fct_estado_financiero', 'columna_id',
+             'Columna de empresa o Total de la fuente');
+    comentar('fct_estado_financiero', 'cuenta_id',
+             'Cuenta de P001 o P002');
+    comentar('fct_estado_financiero', 'fecha_corte',
+             'Fecha de corte');
+    comentar('fct_indicador', 'valor',
+             'Cifra publicada sin redondear (D-PF01-06): miles de soles en P003; porcentaje o número de veces en P004, según la sección');
+    comentar('fct_indicador', 'fecha_corte',
+             'Fecha de corte');
+    comentar('fct_indicador', 'columna_id',
+             'Columna de empresa o Total de la fuente');
+    comentar('fct_indicador', 'indicador_id',
+             'Indicador o cifra para indicadores');
+    comentar('fct_riesgo', 'valor',
+             'Cifra publicada sin redondear (D-PF01-06): miles de soles en P009 a P014; porcentaje en P015 y P016');
+    comentar('fct_riesgo', 'fecha_corte',
+             'Fecha de corte');
+    comentar('fct_riesgo', 'columna_id',
+             'Columna de empresa o Total de la fuente');
+    comentar('fct_riesgo', 'riesgo_id',
+             'Riesgo del catálogo');
+    comentar('fct_riesgo', 'hoja',
+             'Hoja de la cifra; dim_cuadro.medida indica qué publica');
 END;
 /
 
