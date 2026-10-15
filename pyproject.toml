@@ -5,6 +5,7 @@ description = "PF-01 · Producción y siniestralidad por riesgo del mercado aseg
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "matplotlib==3.11.2",
     "openpyxl==3.1.5",
     "oracledb==26.0.1",
     "pandas==3.0.6",
@@ -12,7 +13,14 @@ dependencies = [
 ]
 
 [dependency-groups]
-dev = ["pytest>=9.1", "ruff>=0.17", "pre-commit>=4.6", "pypdf>=6"]
+dev = [
+    "pytest>=9.1",
+    "ruff>=0.17",
+    "pre-commit>=4.6",
+    "pypdf>=6",
+    "ipykernel>=7.4.0",
+    "nbconvert>=7.17.2",
+]
 
 [build-system]
 requires = ["uv_build>=0.13.0,<0.14"]
