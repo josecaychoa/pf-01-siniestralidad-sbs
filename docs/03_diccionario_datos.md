@@ -415,6 +415,7 @@ La llave primaria de `fct_riesgo` no incluye la serie, así que la tabla guarda 
 - Contenedor: `--base contenedor` usa `ORACLE_DSN` de `.env` (`localhost:1522/FREEPDB1`, imagen `gvenzl/oracle-free:23.26.3`); `--dsn` indica otra base.
 - Usuario y contraseña: `ORACLE_USER` y `ORACLE_PASSWORD` del entorno o de `.env`; nunca se imprimen. Conexión con python-oracledb en modo Thin.
 - `scripts/ejecutar_sql.py <archivo.sql> [--base contenedor]` ejecuta un solo script con la misma separación de sentencias que SQL*Plus y SQLcl.
+- Notebook: `PF01_BASE` (`nativa` por omisión o `contenedor`) elige la base en `notebooks/01-jc-exploracion.ipynb`.
 
 ## 5. Cómo reconstruir la base
 
