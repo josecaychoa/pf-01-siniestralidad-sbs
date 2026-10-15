@@ -2,7 +2,7 @@
 
 `Portafolio · PF-01` · Versión 1.0 · 2026-10-14 · Paquete 2.4 (issue #24)
 
-Este documento describe el recorrido de los datos del proyecto, desde los archivos que publica la Superintendencia de Banca, Seguros y AFP (SBS) hasta el informe, el tablero y la pieza de LinkedIn, y presenta el modelo relacional sobre el que se calculan los indicadores. La figura 1 se dibujó en Microsoft Visio Professional 2021 a partir del boceto aprobado el 2026-10-14; la figura 2 la genera Oracle SQL Developer Data Modeler desde el mismo diseño que produjo el DDL de `sql/oracle/`.
+Este documento describe el recorrido de los datos del proyecto, desde los archivos que publica la Superintendencia de Banca, Seguros y AFP (SBS) hasta los productos que los consumen (sección 1.4), y presenta el modelo relacional sobre el que se calculan los indicadores. La figura 1 se dibujó en Microsoft Visio Professional 2021 a partir del boceto aprobado el 2026-10-14; la figura 2 la genera Oracle SQL Developer Data Modeler desde el mismo diseño que produjo el DDL de `sql/oracle/`.
 
 ## 1. Flujo de datos
 
@@ -22,7 +22,7 @@ El flujo se organiza en tres etapas ETL y una de consumo. Cada caja de la figura
 
 ### 1.2 T · Transformación: Python 3.13 con uv
 
-`src/pf_01_siniestralidad_sbs/extraccion.py` lee las hojas P001 a P004 y P009 a P016 de cada libro Excel y las lleva a formato largo (una fila por corte, empresa, rubro o riesgo y valor). El resultado son tres CSV en `data/interim/`: estados financieros, indicadores y riesgos. Los catálogos versionados de `src/pf_01_siniestralidad_sbs/catalogos/` (empresas, riesgos, cortes y excepciones) resuelven los cambios de razón social, la jerarquía de riesgos y el plan de cuentas de cada corte. `scripts/validar_datos.py` aplica los controles de cuadre y de estructura y escribe su resultado en `reports/validacion_datos.md`.
+`src/pf_01_siniestralidad_sbs/extraccion.py` lee las hojas P001 a P004 y P009 a P016 de cada libro Excel y las lleva a formato largo (una fila por corte, empresa, rubro o riesgo y valor). El resultado son tres CSV en `data/interim/`: estados financieros, indicadores y riesgos. En `src/pf_01_siniestralidad_sbs/catalogos/`, el catálogo de empresas resuelve los cambios de razón social y el de riesgos, su jerarquía; el de cortes asigna a cada fecha la versión vigente del plan de cuentas, y el de excepciones documenta las particularidades conocidas de la fuente. `scripts/validar_datos.py` aplica los controles de cuadre y de estructura y escribe su resultado en `reports/validacion_datos.md`.
 
 ### 1.3 L · Carga: Oracle AI Database 26ai Free en Docker
 
