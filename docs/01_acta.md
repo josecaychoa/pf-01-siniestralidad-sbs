@@ -1,6 +1,6 @@
 # Acta de constitución · PF-01: Producción y siniestralidad por riesgo del mercado asegurador peruano, 2019-2026
 
-`Portafolio · PF-01` · Versión 1.3 · 2026-10-11
+`Portafolio · PF-01` · Versión 1.4 · 2026-10-14
 
 | Campo | Valor |
 |---|---|
@@ -9,7 +9,7 @@
 | Issue padre | #1 |
 | Fechas planificadas | Planificación: 2026-10-12 a 2026-10-16 · Ejecución y cierre: 2026-11-02 a 2026-11-26 |
 | Publicación en LinkedIn | Jueves 2026-11-26, 08:00 (hora de Lima) |
-| Esfuerzo estimado | 31 h: 23 h de núcleo y 8 h opcionales (tablero Power BI, 4 h; arquitectura en Visio, 2 h; proceso en Bizagi, 2 h) |
+| Esfuerzo estimado | 32.5 h: 28.5 h de núcleo (incluye el tablero Power BI, 4 h, y el modelo lógico y relacional del Data Modeler, 1.5 h) y 4 h opcionales (arquitectura en Visio, 2 h; proceso en Bizagi, 2 h) |
 | Estado | Aprobado el 2026-10-11 |
 
 ## 1. Problema de negocio
@@ -37,12 +37,12 @@ Construir una base reproducible con los estados financieros, los indicadores y l
 - Los cuadros S-401, S-402 y S-403 de agosto de 2026, solo como prueba de consistencia con el Boletín Mensual.
 - Un script de descarga reproducible que registra la URL, la fecha de descarga y el SHA-256 de cada archivo.
 - La transformación de las hojas a formato largo, con la moneda (MN, ME y total) en los estados financieros, y una tabla de equivalencias de empresas que recoge los cambios de razón social, las fusiones y las liquidaciones que la SBS anota al pie.
-- El modelo de datos en Oracle AI Database 26ai Free, en un contenedor local, con vistas analíticas.
+- El modelo de datos en Oracle AI Database 26ai Free, en un contenedor local, con vistas analíticas, y su modelo lógico y relacional en Oracle SQL Developer Data Modeler (`docs/modelo/`, con diagramas en `docs/diagramas/`; incluido por control de cambios del 2026-10-11, D-PF01-04).
 - Los indicadores del análisis: crecimiento interanual y tasa de crecimiento anual compuesta de las primas netas, siniestralidad directa y retenida, participación de cada empresa en el riesgo y matriz de cuatro cuadrantes.
 - Un umbral de materialidad de S/ 5 millones de primas netas acumuladas en el corte, tanto para los riesgos de la matriz como para las celdas empresa × riesgo.
 - Informe, README, cronograma con línea base en Microsoft Project, post y documento PDF.
-- Opcional: tablero Power BI en formato PBIP, si las horas del mes lo permiten.
-- Arquitectura y modelo de datos en Visio (paquete 2.4): arquitectura del flujo de datos y modelo de datos Oracle en notación pata de gallo, con SVG y PDF en `docs/diagramas/` (incluido por control de cambios del 2026-10-11).
+- Tablero Power BI en formato PBIP (paquete 4.1; núcleo desde el 2026-10-14, D-PF01-10).
+- Arquitectura en Visio (paquete 2.4): una página con la arquitectura del flujo de datos por etapas ETL y consumo, exportada a SVG y PDF en `docs/diagramas/`; el modelo relacional se publica con el diagrama del Data Modeler (incluido por control de cambios del 2026-10-11; alcance ajustado el 2026-10-14, D-PF01-09).
 - Proceso AS-IS y TO-BE en Bizagi (paquete 3.4): elaboración manual del reporte de siniestralidad por riesgo frente al flujo reproducible del proyecto, con BPMN, SVG y PDF en `docs/procesos/` (incluido por control de cambios del 2026-10-11).
 
 **Excluye:**
@@ -80,9 +80,10 @@ Construir una base reproducible con los estados financieros, los indicadores y l
 | Informe | `reports/`: matriz, tablas y figuras con citas, notas y referencias en APA 7 y ortografía RAE |
 | README | Problema, datos, método, resultados, reproducción y limitaciones (plantilla 03f) |
 | Cronograma | `gestion/cronograma/`: `.mpp` con Baseline, XML (MSPDI) y PDF de línea base y de seguimiento |
-| Diagramas en Visio | `docs/diagramas/`: `.vsdx`, SVG por página y PDF; SVG en `docs/04_arquitectura.md` y en el README como figura APA 7 |
+| Modelo lógico y relacional | `docs/modelo/pf01_modelo.dmd` y diagramas `pf01_modelo_logico` y `pf01_modelo_relacional` (SVG y PDF) en `docs/diagramas/`, coherentes con el DDL |
+| Arquitectura en Visio | `docs/diagramas/`: `PF-01_diagramas.vsdx` (una página), `PF-01_arquitectura.svg` y `PF-01_diagramas.pdf`; figura 1 de `docs/04_arquitectura.md` y del README (APA 7); modelo relacional con `pf01_modelo_relacional.svg` del Data Modeler (figura 2) |
 | Proceso en Bizagi | `docs/procesos/`: `.bpm`, `.bpmn` (BPMN 2.0), SVG AS-IS y TO-BE y PDF; diagrama validado en Bizagi Modeler |
-| Tablero Power BI (opcional) | PBIP en `dashboards/powerbi/`; capturas en `reports/figures/` con nota APA |
+| Tablero Power BI | PBIP en `dashboards/powerbi/`; capturas en `reports/figures/` con nota APA |
 | Post + documento PDF | Documento de 6 a 8 páginas de 1080 × 1350 con la matriz en la portada; checklist de la guía editorial y de la skill de marca; revisión anti-estilo-IA |
 
 El documento PDF es el entregable que se muestra en LinkedIn.
@@ -99,9 +100,10 @@ El documento PDF es el entregable que se muestra en LinkedIn.
 | Oracle AI Database 26ai Free | 23.26.3, imagen `gvenzl/oracle-free:23.26.3` | Modelo de datos y vistas analíticas | `12_ficha_oracle-free.md` (2026-10-10); Oracle (s. f.-a, s. f.-b); Venzl (s. f.) |
 | Docker Desktop | 4.84.0, motor WSL2 | Contenedor de Oracle, publicado en `127.0.0.1:1522` | `12_ficha_oracle-free.md` (2026-10-10) |
 | Oracle SQL Developer | 26.2.0.186.2220 | Desarrollo y prueba interactiva del DDL, las vistas y las consultas sobre la base del contenedor | `12_ficha_sql-developer.md` (2026-10-11); Oracle (s. f.-c, s. f.-d) |
-| Power BI Desktop (opcional) | 2.158.1177.0 (septiembre de 2026) | Tablero PBIP | `12_ficha_powerbi-pbip.md` (2026-10-10); Microsoft (s. f., 2026) |
+| Oracle SQL Developer Data Modeler | 23.1 (integrado en SQL Developer 26.2) | Modelo lógico y relacional (D-PF01-04) | `docs/modelo/README.md` (2026-10-11) |
+| Power BI Desktop | 2.158.1177.0 (septiembre de 2026) | Tablero PBIP | `12_ficha_powerbi-pbip.md` (2026-10-10); Microsoft (s. f., 2026) |
 | Microsoft Project | Professional 2021 | Línea base y seguimiento | `12_ficha_ms-project.md` (2026-10-10) |
-| Microsoft Visio | Professional 2021 | Arquitectura y modelo de datos | `12_ficha_visio.md` (2026-10-10) |
+| Microsoft Visio | Professional 2021 | Arquitectura del flujo de datos | `12_ficha_visio.md` (2026-10-10) |
 | Bizagi Modeler | 4.3.0008 | Proceso AS-IS y TO-BE en BPMN 2.0 | `12_ficha_bizagi.md` (2026-10-10) |
 
 Los gráficos del informe y del documento PDF siguen el estilo `jc-editorial` definido en `04_estandares_tecnicos.md`, sección 5.6.
@@ -125,7 +127,7 @@ Los gráficos del informe y del documento PDF siguen el estilo `jc-editorial` de
 | R4 | Condiciones de uso no declaradas | M | M | Solo agregados propios con cita APA; sin redistribuir archivos; `data/raw/` fuera de Git |
 | R5 | El servidor bloquea la descarga automatizada (las páginas del portal ya la bloquean) | M | M | Script con pausa y reintentos; plan B: descarga manual documentada, con verificación del hash |
 | R6 | La mención de empresas por su nombre se lee como juicio sobre una compañía | B | A | Redacción descriptiva, solo cifras públicas citadas, sin calificativos; revisión del director antes de publicar |
-| R7 | Las 20 a 25 horas no alcanzan: el plan de noviembre suma 24.5 h | A | M | El tablero opcional (4 h) es lo primero que se recorta y libera 3 días hábiles; el núcleo no se recorta |
+| R7 | Las 20 a 25 horas no alcanzan: el plan de noviembre suma 24.5 h | A | M | Mitigación original: recortar el tablero opcional (4 h). Desde el 2026-10-14 el tablero es núcleo (D-PF01-10) y la ejecución va adelantada frente a la línea base, así que la capacidad de noviembre deja de ser restrictiva; si hiciera falta, se reduce el alcance del tablero (número de páginas), no el núcleo |
 | R8 | Oracle Free no recibe parches de seguridad (Oracle, s. f.-a) | B | B | Contenedor solo local, puerto publicado únicamente en `127.0.0.1`, sin datos sensibles |
 | R9 | La lectura de libros antiguos (.xls) falla | B | M | Prueba en el primer día de 2.1 con openpyxl y xlrd; si falla, se documenta la alternativa en el diccionario de datos |
 | R10 | El equipo de desarrollo ya tiene una instalación nativa de Oracle 23ai Free (versión 23.6) con su listener en el puerto 1521 | A | B | El contenedor se publica en `127.0.0.1:1522` y el DSN del proyecto se declara en `.env` (`12_ficha_oracle-free.md`) |
@@ -140,7 +142,7 @@ Los gráficos del informe y del documento PDF siguen el estilo `jc-editorial` de
 
 ## 11. Aprobación
 
-Plan aprobado por José Caycho A. el 2026-10-11. En la misma fecha se incorporó Oracle SQL Developer al stack (versión 1.2 del acta) y, por control de cambios registrado en el issue #1, se incluyeron los paquetes 2.4 (Visio, #24) y 3.4 (Bizagi, #25), sin modificar la línea base del núcleo (versión 1.3).
+Plan aprobado por José Caycho A. el 2026-10-11. En la misma fecha se incorporó Oracle SQL Developer al stack (versión 1.2 del acta) y, por control de cambios registrado en el issue #1, se incluyeron los paquetes 2.4 (Visio, #24) y 3.4 (Bizagi, #25), sin modificar la línea base del núcleo (versión 1.3). El 2026-10-14 se ajustó el alcance del paquete 2.4 (una página de arquitectura en Visio; modelo relacional desde el Data Modeler, D-PF01-09) y el tablero Power BI (4.1) pasó al núcleo (D-PF01-10); con el modelo lógico y relacional incorporado a 2.3 el 2026-10-11 (D-PF01-04), el esfuerzo total es de 32.5 h (versión 1.4).
 
 ## Referencias
 
