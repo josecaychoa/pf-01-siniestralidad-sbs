@@ -9,8 +9,17 @@
 | Fuente | Documento o serie | Fecha de corte | Condiciones de uso |
 |---|---|---|---|
 ## Método
-<!-- Arquitectura (Visio): docs/diagramas/ · Proceso (Bizagi): docs/procesos/ -->
-<!-- Cronograma (Project): gestion/cronograma/ · cada SVG como figura APA con «Nota.» -->
+El flujo de datos tiene tres etapas ETL (extracción, transformación y carga) y una de consumo (figura 1). El detalle de cada etapa, las decisiones de diseño y el modelo relacional están en [`docs/04_arquitectura.md`](docs/04_arquitectura.md).
+
+**Figura 1**
+
+*Arquitectura del flujo de datos de PF-01*
+
+![Arquitectura del flujo de datos de PF-01](docs/diagramas/PF-01_arquitectura.svg)
+
+*Nota.* Elaboración propia.
+
+<!-- Proceso (Bizagi): docs/procesos/ · Cronograma (Project): gestion/cronograma/ · cada SVG como figura APA con «Nota.» -->
 ## Gestión del proyecto
 | Elemento | Archivo |
 |---|---|
