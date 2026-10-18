@@ -52,6 +52,12 @@ def matriz(conexion):
     return leer_vista(conexion, "vw_matriz_riesgo")
 
 
+def test_cuadrantes_enteros_con_nulos(matriz):
+    assert matriz["cuadrante_interanual_directa"].dtype == "Int64"
+    assert matriz["cuadrante_interanual_directa"].isna().sum() == 13
+    assert set(matriz["cuadrante_interanual_directa"].dropna()) == {1, 2, 3, 4}
+
+
 def test_cuadrantes_iguales_a_la_vista(matriz):
     resultado = clasificar_matriz(matriz)
     for columna in CUADRANTES:
@@ -97,8 +103,10 @@ def test_clasificacion_igual_a_la_vista(conexion):
     }.items():
         for _, fila in participacion.iterrows():
             s, p = sin_dato(fila[siniestros]), sin_dato(fila[primas])
-            # Celdas de borde: el redondeo a 2 decimales puede cambiar de lado la regla.
-            if s is not None and p is not None and (abs(s - p) <= 0.01 or abs(s) <= 0.01):
+            # Celdas de borde: con primas positivas, el redondeo a 2 decimales puede volcar
+            # negativo en en_rango o mayor_100 en en_rango; con primas 0 o negativas la
+            # clasificación no depende de los siniestros.
+            if s is not None and p is not None and p > 0 and (abs(s - p) <= 0.01 or abs(s) <= 0.01):
                 excluidas += 1
                 continue
             esperado = fila[f"clasificacion_{medida}"]
@@ -107,9 +115,11 @@ def test_clasificacion_igual_a_la_vista(conexion):
                     (fila["empresa"], fila["riesgo"], fila["fecha_corte"], medida, p, s, esperado)
                 )
     celdas = 2 * len(participacion)  # dos medidas por fila
-    resumen = f"{len(discrepancias)} discrepancias; {excluidas} de {celdas} celdas de borde"
+    comparadas = celdas - excluidas
+    resumen = f"{len(discrepancias)} discrepancias; {comparadas} comparadas, {excluidas} excluidas"
+    print(f"clasificación frente a la vista: {resumen}")  # visible con pytest -s
     assert not discrepancias, f"{resumen}: {discrepancias[:5]}"
-    assert celdas - excluidas > 0, resumen
+    assert comparadas > 0, resumen
 
 
 def test_exportar_vistas(conexion, matriz, tmp_path):
@@ -117,8 +127,12 @@ def test_exportar_vistas(conexion, matriz, tmp_path):
     assert set(filas) == set(VISTAS_EXPORTADAS.values())
     for nombre in VISTAS_EXPORTADAS.values():
         assert (tmp_path / nombre).is_file(), nombre
-    exportada = pd.read_csv(tmp_path / "matriz_riesgos.csv")
+    exportada = pd.read_csv(tmp_path / "matriz_riesgos.csv", dtype=str, keep_default_na=False)
     assert len(exportada) == 48 and filas["matriz_riesgos.csv"] == 48
     assert {"cuadrante_interanual_directa", "situacion"} <= set(exportada.columns)
+    # Los cuadrantes se exportan como enteros o vacíos, nunca como «1.0».
+    cuadrantes = exportada["cuadrante_interanual_directa"]
+    assert not cuadrantes.str.contains(".0", regex=False).any()
+    assert set(cuadrantes) <= {"1", "2", "3", "4", ""}
     resumen = resumen_matriz(matriz)
     assert (resumen["filas"], resumen["sobre_umbral"], resumen["no_comparables"]) == (48, 40, 5)

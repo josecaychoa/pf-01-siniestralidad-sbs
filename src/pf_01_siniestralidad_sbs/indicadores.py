@@ -223,10 +223,11 @@ def resumen_matriz(matriz: pd.DataFrame) -> dict[str, object]:
 
 
 def leer_vista(conexion: oracledb.Connection, vista: str) -> pd.DataFrame:
-    """Marco con SELECT * FROM vista; columnas en minúscula y fechas como date.
+    """Marco con SELECT * FROM vista; columnas en minúscula, fechas como date y cuadrantes Int64.
 
     Solo admite las vistas de VISTAS_EXPORTADAS (nombres fijos del modelo, no datos de
-    entrada); otra vista lanza ValueError.
+    entrada); otra vista lanza ValueError. Las columnas cuadrante_* usan el entero con nulos
+    de pandas (Int64) para que el CSV lleve 1 a 4 o vacío, nunca «1.0».
     """
     if vista not in VISTAS_EXPORTADAS:
         raise ValueError(f"vista no exportable: {vista!r}")
@@ -237,6 +238,8 @@ def leer_vista(conexion: oracledb.Connection, vista: str) -> pd.DataFrame:
     for columna in marco.columns:
         if pd.api.types.is_datetime64_any_dtype(marco[columna]):
             marco[columna] = marco[columna].dt.date
+        elif columna.startswith("cuadrante_"):
+            marco[columna] = marco[columna].astype("Int64")
     return marco
 
 
