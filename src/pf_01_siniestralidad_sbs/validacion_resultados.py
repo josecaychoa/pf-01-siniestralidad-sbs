@@ -18,6 +18,7 @@ informan como excepciones de la fuente y no como fallas.
 
 from __future__ import annotations
 
+import re
 from datetime import date
 
 import pandas as pd
@@ -293,7 +294,11 @@ def control_indice_por_riesgo(
         "excepcion",
     ]
     celdas = comparadas.loc[fuera, columnas_celda].assign(tipo="celda")
-    celdas = celdas.sort_values(["fecha_corte", "riesgo_comparable", "hoja"])
+    # Orden por corte, riesgo (sin distinguir mayúsculas ni tildes) y hoja.
+    celdas = celdas.sort_values(
+        ["fecha_corte", "riesgo_comparable", "hoja"],
+        key=lambda c: c.map(normalizar) if c.name == "riesgo_comparable" else c,
+    )
     detalle = pd.concat([pd.DataFrame(maximos), celdas], ignore_index=True)
     return Resultado(
         "Índice por riesgo frente al publicado, 2019-2026",
@@ -369,17 +374,56 @@ def control_primas_matriz(matriz: pd.DataFrame, total_p009: float) -> Resultado:
 # --------------------------------------------------------------------------------------
 
 
+MENOS = "−"  # signo menos tipográfico (U+2212), no el guion
+
+
+def con_menos(texto: str) -> str:
+    """Cambia el guion inicial de una cifra negativa por el signo menos (U+2212)."""
+    return MENOS + texto[1:] if texto.startswith("-") else texto
+
+
 def miles(n: float) -> str:
-    """Entero con separador de millares de espacio (RAE)."""
-    return f"{n:,.0f}".replace(",", " ")
+    """Entero con separador de millares de espacio (RAE) y signo menos tipográfico."""
+    return con_menos(f"{n:,.0f}".replace(",", " "))
 
 
 def decimales(x: float, cifras: int = 4) -> str:
-    """Número con cifras decimales fijas; sin «-0.0000»; «s. d.» si no hay dato."""
+    """Número con cifras decimales fijas y signo menos (U+2212); sin «−0.0000»; «s. d.» sin dato."""
     if pd.isna(x):
         return "s. d."
     redondeado = round(float(x), cifras)
-    return f"{0.0 if redondeado == 0 else redondeado:.{cifras}f}"
+    return con_menos(f"{0.0 if redondeado == 0 else redondeado:.{cifras}f}")
+
+
+def version_legible(banner: str) -> str:
+    """«Oracle Database 23ai Free, versión 23.6.0.24.10» a partir de banner_full de v$version.
+
+    El producto es el texto anterior a « Release» y la versión, el posterior a «Version ». Si
+    el banner no tiene esa forma, devuelve sus líneas unidas con « · ».
+    """
+    lineas = [linea.strip() for linea in banner.splitlines() if linea.strip()]
+    texto = " ".join(lineas)
+    if " Release" in texto and "Version " in texto:
+        producto = texto.split(" Release", 1)[0].strip()
+        version = texto.rsplit("Version ", 1)[1].split()[0]
+        return f"{producto}, versión {version}"
+    return " · ".join(lineas)
+
+
+def resumen_pytest(linea: str) -> str:
+    """«27 pruebas superadas (`27 passed in 5.83s`)» a partir de la línea final de pytest -q."""
+    nombres = {
+        "passed": ("prueba superada", "pruebas superadas"),
+        "skipped": ("prueba omitida", "pruebas omitidas"),
+        "failed": ("prueba fallida", "pruebas fallidas"),
+        "error": ("prueba con error", "pruebas con error"),
+        "errors": ("prueba con error", "pruebas con error"),
+    }
+    partes = [
+        f"{n} {nombres[clave][0] if int(n) == 1 else nombres[clave][1]}"
+        for n, clave in re.findall(r"(\d+) (passed|skipped|failed|errors?)\b", linea)
+    ]
+    return f"{', '.join(partes)} (`{linea}`)" if partes else f"`{linea}`"
 
 
 def mes_y_anio(corte: date) -> str:
@@ -444,10 +488,15 @@ def lectura(resultados: list[Resultado], contraste: pd.DataFrame) -> list[str]:
                 f"{decimales(mayor['absoluta'])} p. p. en la {medida} "
                 f"({mes_y_anio(mayor['fecha_corte'])})"
             )
+    superan = (
+        f"ninguna de las {serie.revisados} combinaciones de corte y medida supera la tolerancia"
+        if serie.fallas == 0
+        else f"{serie.fallas} de {serie.revisados} combinaciones de corte y medida superan la "
+        "tolerancia"
+    )
     frases.append(
         f"En los {len(contraste)} cortes de la serie, la mayor diferencia en valor absoluto es "
-        f"{' y '.join(maximos)}; {serie.fallas} de {serie.revisados} combinaciones de corte y "
-        "medida superan la tolerancia."
+        f"{' y '.join(maximos)}; {superan}."
     )
     return [" ".join(frases), *lectura_excepciones(resultados[2], contraste)]
 
@@ -476,7 +525,8 @@ def lectura_excepciones(por_riesgo: Resultado, contraste: pd.DataFrame) -> list[
     return [
         f"En {mes_y_anio(CORTE_TOTAL_SIMPLE)} el índice publicado por riesgo se calculó con el "
         f"Total simple, sin Rigel ni Coface: {len(excepciones)} celdas superan la tolerancia, "
-        f"con una diferencia máxima de {decimales(mayor['diferencia'])} p. p. "
+        f"con una diferencia máxima, en valor absoluto, de {decimales(abs(mayor['diferencia']))} "
+        "p. p. "
         f"({mayor['riesgo_comparable']}, {mayor['hoja']}), mientras que en "
         f"{mes_y_anio(CORTE_TOTAL_AMPLIADO)} corresponde al Total ampliado, con una diferencia "
         f"máxima de {maximo_2022}. La serie usa el Total ampliado en los dos cortes "
@@ -647,7 +697,8 @@ def informe(
         "",
         "## Pruebas automatizadas citadas",
         "",
-        f"Corrida: `{pruebas.get('comando', '')}` · Resumen: {pruebas.get('resumen', '')}",
+        f"Corrida: `{pruebas.get('comando', '')}` · Resumen: "
+        f"{resumen_pytest(str(pruebas.get('resumen', '')))}",
         "",
         *tabla_markdown(["Prueba", "Archivo", "Qué verifica", "Resultado"], citadas),
         "",

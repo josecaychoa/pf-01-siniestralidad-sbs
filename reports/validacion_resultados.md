@@ -5,7 +5,7 @@
 ## Entorno
 
 - Base: nativa
-- Versión del motor: Oracle Database 23ai Free Release 23.0.0.0.0 - Develop, Learn, and Run for Free · Version 23.6.0.24.10
+- Versión del motor: Oracle Database 23ai Free, versión 23.6.0.24.10
 - Corte actual: 2026-08-31 (agosto de 2026)
 - Fecha de descarga de los datos (data/raw/manifest.csv): 2026-10-11
 
@@ -26,7 +26,7 @@ Montos en miles de soles; índices en porcentaje; diferencias en puntos porcentu
 | Corte | Meses | Primas netas | Siniestros netos | Directa calculada | Directa publicada | Diferencia (p. p.) | Retenida calculada | Retenida publicada | Diferencia (p. p.) |
 |---|---|---|---|---|---|---|---|---|---|
 | 2019-12-31 | 12 | 14 113 517 | 7 479 280 | 52.9937 | 52.9937 | 0.0000 | 45.9940 | 45.9940 | 0.0000 |
-| 2020-12-31 | 12 | 14 021 356 | 7 248 490 | 51.6961 | 51.6962 | -0.0001 | 51.8621 | 51.8606 | 0.0015 |
+| 2020-12-31 | 12 | 14 021 356 | 7 248 490 | 51.6961 | 51.6962 | −0.0001 | 51.8621 | 51.8606 | 0.0015 |
 | 2021-12-31 | 12 | 17 695 457 | 10 495 248 | 59.3104 | 59.3104 | 0.0000 | 52.8718 | 52.8718 | 0.0000 |
 | 2022-12-31 | 12 | 18 746 277 | 10 114 531 | 53.9549 | 53.9549 | 0.0000 | 44.7619 | 44.7619 | 0.0000 |
 | 2023-12-31 | 12 | 20 265 843 | 9 678 626 | 47.7583 | 47.7583 | 0.0000 | 45.8840 | 45.8840 | 0.0000 |
@@ -86,23 +86,23 @@ Celdas que superan la tolerancia de 0.1 p. p.; índices en porcentaje y diferenc
 
 | Corte | Hoja | Riesgo | Calculado | Publicado | Diferencia (p. p.) | Observación |
 |---|---|---|---|---|---|---|
-| 2020-12-31 | P015 | Crédito Interno | 41.093782 | 44.747437 | -3.653655 | El índice publicado (44.747437) se calculó con el Total simple, sin Rigel ni Coface; el proyecto usa el Total ampliado (41.093782; D-PF01-12 y D-PF01-18): diferencia de -3.653655 p. p. |
-| 2020-12-31 | P016 | Crédito Interno | 16.842451 | 20.665698 | -3.823247 | El índice publicado (20.665698) se calculó con el Total simple, sin Rigel ni Coface; el proyecto usa el Total ampliado (16.842451; D-PF01-12 y D-PF01-18): diferencia de -3.823247 p. p. |
 | 2020-12-31 | P015 | Crédito a la Exportación | 57.307244 | 54.426822 | 2.880422 | El índice publicado (54.426822) se calculó con el Total simple, sin Rigel ni Coface; el proyecto usa el Total ampliado (57.307244; D-PF01-12 y D-PF01-18): diferencia de 2.880422 p. p. |
 | 2020-12-31 | P016 | Crédito a la Exportación | 38.735398 | 35.184965 | 3.550433 | El índice publicado (35.184965) se calculó con el Total simple, sin Rigel ni Coface; el proyecto usa el Total ampliado (38.735398; D-PF01-12 y D-PF01-18): diferencia de 3.550433 p. p. |
+| 2020-12-31 | P015 | Crédito Interno | 41.093782 | 44.747437 | −3.653655 | El índice publicado (44.747437) se calculó con el Total simple, sin Rigel ni Coface; el proyecto usa el Total ampliado (41.093782; D-PF01-12 y D-PF01-18): diferencia de −3.653655 p. p. |
+| 2020-12-31 | P016 | Crédito Interno | 16.842451 | 20.665698 | −3.823247 | El índice publicado (20.665698) se calculó con el Total simple, sin Rigel ni Coface; el proyecto usa el Total ampliado (16.842451; D-PF01-12 y D-PF01-18): diferencia de −3.823247 p. p. |
 | 2020-12-31 | P016 | Seguros Previsionales | 116.189118 | 116.066594 | 0.122524 | El índice publicado (116.066594) se calculó con el Total simple, sin Rigel ni Coface; el proyecto usa el Total ampliado (116.189118; D-PF01-12 y D-PF01-18): diferencia de 0.122524 p. p. |
 
 *Nota.* Elaboración propia con datos de SBS (s. f.-a, s. f.-b, s. f.-c, s. f.-d).
 
 ## Lectura
 
-En agosto de 2026, el índice total del sistema calculado con las filas de vw_indicadores_riesgo es 48.9141 % en la directa y 45.7487 % en la retenida, frente a 48.9141 % y 45.7487 % publicados. Las diferencias son 0.0000 p. p. y 0.0000 p. p.; O2 se cumple con la tolerancia de 0.1 p. p. En los 9 cortes de la serie, la mayor diferencia en valor absoluto es 0.0001 p. p. en la directa (diciembre de 2020) y 0.0015 p. p. en la retenida (diciembre de 2020); 0 de 18 combinaciones de corte y medida superan la tolerancia.
+En agosto de 2026, el índice total del sistema calculado con las filas de vw_indicadores_riesgo es 48.9141 % en la directa y 45.7487 % en la retenida, frente a 48.9141 % y 45.7487 % publicados. Las diferencias son 0.0000 p. p. y 0.0000 p. p.; O2 se cumple con la tolerancia de 0.1 p. p. En los 9 cortes de la serie, la mayor diferencia en valor absoluto es 0.0001 p. p. en la directa (diciembre de 2020) y 0.0015 p. p. en la retenida (diciembre de 2020); ninguna de las 18 combinaciones de corte y medida supera la tolerancia.
 
-En diciembre de 2020 el índice publicado por riesgo se calculó con el Total simple, sin Rigel ni Coface: 5 celdas superan la tolerancia, con una diferencia máxima de -3.8232 p. p. (Crédito Interno, P016), mientras que en diciembre de 2022 corresponde al Total ampliado, con una diferencia máxima de 0.0000 p. p. en la directa y 0.0000 p. p. en la retenida. La serie usa el Total ampliado en los dos cortes (D-PF01-18) y esas 5 celdas se informan como excepciones de la fuente; el índice total del sistema de diciembre de 2020 difiere del publicado en -0.0001 p. p. en la directa y 0.0015 p. p. en la retenida (tabla 1).
+En diciembre de 2020 el índice publicado por riesgo se calculó con el Total simple, sin Rigel ni Coface: 5 celdas superan la tolerancia, con una diferencia máxima, en valor absoluto, de 3.8232 p. p. (Crédito Interno, P016), mientras que en diciembre de 2022 corresponde al Total ampliado, con una diferencia máxima de 0.0000 p. p. en la directa y 0.0000 p. p. en la retenida. La serie usa el Total ampliado en los dos cortes (D-PF01-18) y esas 5 celdas se informan como excepciones de la fuente; el índice total del sistema de diciembre de 2020 difiere del publicado en −0.0001 p. p. en la directa y 0.0015 p. p. en la retenida (tabla 1).
 
 ## Pruebas automatizadas citadas
 
-Corrida: `uv run pytest -q -p no:cacheprovider tests/test_vistas_analisis.py tests/test_indicadores_oracle.py` · Resumen: 27 passed in 5.83s
+Corrida: `uv run pytest -q -p no:cacheprovider tests/test_vistas_analisis.py tests/test_indicadores_oracle.py` · Resumen: 27 pruebas superadas (`27 passed in 11.40s`)
 
 | Prueba | Archivo | Qué verifica | Resultado |
 |---|---|---|---|

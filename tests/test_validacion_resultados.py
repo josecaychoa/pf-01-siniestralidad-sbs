@@ -15,8 +15,12 @@ from pf_01_siniestralidad_sbs.validacion_resultados import (
     control_o2,
     control_primas_matriz,
     control_serie_total,
+    decimales,
     informe,
     maximos_por_corte,
+    miles,
+    resumen_pytest,
+    version_legible,
 )
 
 CORTE_2020 = date(2020, 12, 31)
@@ -263,7 +267,10 @@ def test_informe(indicadores, publicados, contraste):
         assert seccion in texto, seccion
     assert "| 1 000 |" in texto  # separador de millares de espacio
     assert "p. p." in texto
-    assert "| -0.5000 |" in texto and "| -0.0500 |" in texto
+    assert "| −0.5000 |" in texto and "| −0.0500 |" in texto  # signo menos U+2212
+    assert "| -" not in texto
+    assert "Resumen: 30 pruebas superadas (`30 passed in 2.00s`)" in texto
+    assert "1 de 4 combinaciones de corte y medida superan la tolerancia" in texto
     assert "Con fallas" in texto  # la serie tiene una falla
     assert texto.count("*Nota.* Elaboración propia con datos de SBS") == 6  # una por tabla
     assert "Ninguna celda supera la tolerancia." in texto
@@ -299,13 +306,60 @@ def test_informe_con_excepciones():
     resumen = next(linea for linea in texto.splitlines() if linea.startswith("| Índice por"))
     assert resumen.endswith("| 6 | 2 | 2 | Con fallas |")
     detalle = texto.split("## Detalle: índice por riesgo frente al publicado")[1]
-    assert "| 2020-12-31 | P015 | CREDITO INTERNO | 41.093782 | 44.747437 | -3.653655 |" in detalle
+    assert "| 2020-12-31 | P015 | CREDITO INTERNO | 41.093782 | 44.747437 | −3.653655 |" in detalle
     assert "Falla: sin excepción en el catálogo" in detalle
     tabla_2 = texto.split("## Tabla 2.")[1].split("## Tabla 3.")[0]
     assert "| 2020-12-31 | Directa | 2 | 3.6537 | CREDITO INTERNO |" in tabla_2  # sin «2.0»
     lectura = texto.split("## Lectura")[1].split("## Pruebas")[0]
     assert "diciembre de 2020" in lectura and "diciembre de 2022" in lectura
     assert "D-PF01-18" in lectura and "(tabla 1)" in lectura
-    assert "-3.6537 p. p." in lectura  # mayor diferencia entre las excepciones
+    # Mayor diferencia entre las excepciones, en valor absoluto.
+    assert (
+        "diferencia máxima, en valor absoluto, de 3.6537 p. p. (CREDITO INTERNO, P015)" in lectura
+    )
     # Índice total de 2020: 100 × 71.093782 / 200 = 35.546891 frente a 35.55.
-    assert "difiere del publicado en -0.0031 p. p. en la directa" in lectura
+    assert "difiere del publicado en −0.0031 p. p. en la directa" in lectura
+    assert "ninguna de las 4 combinaciones de corte y medida supera la tolerancia" in lectura
+    assert "-" not in lectura.replace("D-PF01-18", "")
+
+
+def test_detalle_ordenado_por_corte_riesgo_y_hoja():
+    filas = pd.DataFrame(
+        [
+            fila_indicador(CORTE_2020, "Crédito Interno", 100.0, 41.093782, publicado=44.747437),
+            fila_indicador(CORTE_2020, "Crédito a la Exportación", 100.0, 57.307244, 54.426822),
+        ]
+    )
+    celdas = celdas_marcadas(control_indice_por_riesgo(filas).detalle)
+    assert list(zip(celdas["riesgo_comparable"], celdas["hoja"], strict=True)) == [
+        ("Crédito a la Exportación", "P015"),
+        ("Crédito a la Exportación", "P016"),
+        ("Crédito Interno", "P015"),
+        ("Crédito Interno", "P016"),
+    ]
+
+
+def test_signo_menos_en_las_cifras():
+    assert decimales(-0.00012) == "−0.0001"
+    assert decimales(-0.00004) == "0.0000"  # sin «−0.0000»
+    assert decimales(3.5) == "3.5000"
+    assert decimales(-3.653655, 6) == "−3.653655"
+    assert miles(-1234567.4) == "−1 234 567"
+    assert miles(1234567.4) == "1 234 567"
+
+
+def test_version_legible():
+    banner = (
+        "Oracle Database 23ai Free Release 23.0.0.0.0 - Develop, Learn, and Run for Free\n"
+        "Version 23.6.0.24.10"
+    )
+    assert version_legible(banner) == "Oracle Database 23ai Free, versión 23.6.0.24.10"
+    assert version_legible("Otro motor\n1.0") == "Otro motor · 1.0"
+
+
+def test_resumen_pytest():
+    assert resumen_pytest("27 passed in 5.83s") == "27 pruebas superadas (`27 passed in 5.83s`)"
+    assert resumen_pytest("1 passed, 2 skipped in 1.00s") == (
+        "1 prueba superada, 2 pruebas omitidas (`1 passed, 2 skipped in 1.00s`)"
+    )
+    assert resumen_pytest("sin salida") == "`sin salida`"

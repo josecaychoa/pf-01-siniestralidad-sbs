@@ -83,14 +83,15 @@ def leer_publicados(conexion: oracledb.Connection) -> pd.DataFrame:
 
 
 def version_motor(conexion: oracledb.Connection) -> str:
-    """banner_full de v$version; product_component_version si el usuario no tiene acceso."""
+    """«Producto, versión X» de v$version; product_component_version si no hay acceso."""
     cursor = conexion.cursor()
     try:
         cursor.execute("SELECT banner_full FROM v$version")
     except oracledb.DatabaseError:
-        cursor.execute("SELECT version_full FROM product_component_version")
-    texto = str(cursor.fetchone()[0])
-    return " · ".join(linea.strip() for linea in texto.splitlines() if linea.strip())
+        cursor.execute("SELECT product, version_full FROM product_component_version")
+        producto, version = cursor.fetchone()
+        return f"{str(producto).strip()}, versión {version}"
+    return vr.version_legible(str(cursor.fetchone()[0]))
 
 
 def fechas_descarga(ruta: Path) -> str:
