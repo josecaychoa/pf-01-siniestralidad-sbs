@@ -8,6 +8,8 @@ data/interim/*
 data/processed/*
 data/external/*
 !data/**/.gitkeep
+# Matriz de 3.2: agregado propio con cita, publicable (regla de datos del portafolio)
+!data/processed/matriz_riesgos.csv
 # Manifiesto de descargas: referencia de SHA-256 (sin datos de la fuente)
 !data/raw/manifest.csv
 .ipynb_checkpoints/

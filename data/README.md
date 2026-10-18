@@ -33,6 +33,23 @@ El manifiesto funciona como referencia: en un clon limpio, cada archivo descarga
 
 Las columnas se describen en `docs/03_diccionario_datos.md`, sección 1.
 
+## Salidas del análisis (`data/processed/`)
+
+`uv run python scripts/exportar_indicadores.py` escribe las vistas del análisis de 3.2 (`sql/oracle/04_vistas_analisis.sql`, decisiones D-PF01-11 a D-PF01-16) como CSV en UTF-8 con finales de línea LF. Las columnas se describen en `docs/03_diccionario_datos.md`, secciones 3.6 a 3.12.
+
+| Archivo | Vista de origen | Una fila por | Filas |
+|---|---|---|---|
+| `parametros_analisis.csv` | `vw_parametros_analisis` | parámetros del análisis (fila única) | 1 |
+| `cortes_analisis.csv` | `vw_cortes_analisis` | cortes del análisis (fila única) | 1 |
+| `indicadores_riesgo.csv` | `vw_indicadores_riesgo` | riesgo comparable en cada corte | 432 |
+| `crecimiento_riesgos.csv` | `vw_crecimiento_riesgo` | riesgo comparable | 48 |
+| `matriz_riesgos.csv` | `vw_matriz_riesgo` | riesgo comparable en el corte actual | 48 |
+| `participacion_empresa_riesgo.csv` | `vw_participacion_empresa_riesgo` | empresa y riesgo en cada corte | 7 756 |
+
+Solo se versiona `matriz_riesgos.csv`: es un agregado propio (48 filas por riesgo comparable, con sus cuadrantes y cortes) que se publica con su cita, según la regla de datos del portafolio; los otros cinco se regeneran con el script y quedan fuera de Git.
+
+*Nota.* Elaboración propia con datos de SBS (s. f.-b).
+
 ## Referencias
 
 Superintendencia de Banca, Seguros y AFP. (s. f.-a). *Boletín estadístico de seguros*. Recuperado el 10 de octubre de 2026, de https://www.sbs.gob.pe/app/stats_net/stats/EstadisticaBoletinEstadistico.aspx?p=25

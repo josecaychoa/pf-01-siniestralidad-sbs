@@ -325,6 +325,7 @@ def filas_dim_riesgo(riesgos: list[dict[str, str]]) -> list[tuple[object, ...]]:
             f["tipo"],
             f["ramo"] or None,
             f["riesgo_comparable"],
+            f["siniestralidad_comparable"],
             date.fromisoformat(f["corte_desde"]),
             f["nota"] or None,
             ids[f["clave_padre"]] if f["clave_padre"] else None,
@@ -381,9 +382,9 @@ def cargar_catalogos(conexion: oracledb.Connection) -> dict[str, int]:
         ),
         "dim_riesgo": (
             "INSERT INTO dim_riesgo (riesgo_id, clave, riesgo, nivel, tipo, ramo, "
-            "riesgo_comparable, corte_desde, nota, riesgo_padre_id) "
-            "VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9, :10)",
-            (numero, 80, 100, numero, 10, 50, 100, fecha, 400, numero),
+            "riesgo_comparable, siniestralidad_comparable, corte_desde, nota, riesgo_padre_id) "
+            "VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9, :10, :11)",
+            (numero, 80, 100, numero, 10, 50, 100, 1, fecha, 400, numero),
             filas_dim_riesgo(leer_catalogo("riesgos").to_dict("records")),
         ),
         "dim_columna_empresa": (

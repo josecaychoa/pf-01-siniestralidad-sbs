@@ -4,8 +4,9 @@ Uso (desde la raíz del repositorio, después de scripts/descargar_sbs.py):
     uv run python scripts/cargar_oracle.py                    # base nativa (D-PF01-03)
     uv run python scripts/cargar_oracle.py --base contenedor  # ORACLE_DSN de .env
 
-Orden: 01_ddl_tablas.sql -> 02_vistas.sql -> tablas stg_ -> dimensiones de catálogo ->
-03_carga_modelo.sql. Es idempotente: cada ejecución reemplaza los datos y deja las mismas
+Orden: 01_ddl_tablas.sql -> 02_vistas.sql -> 04_vistas_analisis.sql -> tablas stg_ ->
+dimensiones de catálogo -> 03_carga_modelo.sql. Es idempotente: cada ejecución reemplaza los
+datos y deja las mismas
 filas. Al final informa las filas por tabla, el estado de las vistas y los cuadres de O1.
 Devuelve 1 si un paso falla o si alguna vista queda no válida; los incumplimientos de los
 cuadres se informan, pero no detienen la carga.
@@ -59,7 +60,7 @@ def sin_mensajes(_: str) -> None:
 
 def cargar(conexion: oracledb.Connection) -> None:
     """Ejecuta los pasos de la carga en orden e imprime el tiempo de cada uno."""
-    for script in ("01_ddl_tablas.sql", "02_vistas.sql"):
+    for script in ("01_ddl_tablas.sql", "02_vistas.sql", "04_vistas_analisis.sql"):
         inicio = time.perf_counter()
         ejecutadas = ejecutar_script(conexion, DIR_SQL / script, sin_mensajes)
         print(f"  {script}: {ejecutadas} sentencias · {time.perf_counter() - inicio:.1f} s")

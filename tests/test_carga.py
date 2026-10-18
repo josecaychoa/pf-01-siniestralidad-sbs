@@ -54,7 +54,28 @@ def test_riesgos_con_el_padre_antes_que_los_hijos():
     for riesgo_id, *_, padre in filas:
         assert padre is None or padre in vistos
         vistos.add(riesgo_id)
-    assert filas[0][1] == "TOTAL" and filas[0][9] is None
+    assert filas[0][1] == "TOTAL" and filas[0][10] is None
+
+
+def test_siniestralidad_comparable_del_catalogo():
+    riesgos = leer_catalogo("riesgos").to_dict("records")
+    assert {f["siniestralidad_comparable"] for f in riesgos} <= {"S", "N"}
+    assert sum(f["siniestralidad_comparable"] == "N" for f in riesgos) == 10
+    no_comparables = {
+        f["riesgo"]
+        for f in riesgos
+        if f["tipo"] == "riesgo" and f["siniestralidad_comparable"] == "N"
+    }
+    assert no_comparables == {
+        "Renta Particular",
+        "Renta de Jubilados",
+        "Seguros Previsionales",
+        "Pensiones de Invalidez",
+        "Pensiones de Sobrevivencia",
+    }
+    por_id = {int(f["riesgo_id"]): f["siniestralidad_comparable"] for f in riesgos}
+    for fila in filas_dim_riesgo(riesgos):
+        assert fila[7] == por_id[fila[0]]
 
 
 def test_cortes_sin_resolucion_antes_de_2021():

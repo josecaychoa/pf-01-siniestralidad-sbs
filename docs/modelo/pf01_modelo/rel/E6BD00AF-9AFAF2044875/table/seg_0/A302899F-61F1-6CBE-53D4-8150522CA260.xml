@@ -93,6 +93,18 @@
 <ownDataTypeParameters>100,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="siniestralidad_comparable" id="D09E8FA8-B01D-FBF5-6790-8EBF3C695ED9">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-18 08:28:06 UTC</createdTime>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<defaultValue>&apos;S&apos;</defaultValue>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 <Column name="corte_desde" id="DCCB04F4-B885-6BE0-75FF-F2F9E69F1DF8">
 <createdBy>josec</createdBy>
 <createdTime>2026-10-12 04:59:23 UTC</createdTime>

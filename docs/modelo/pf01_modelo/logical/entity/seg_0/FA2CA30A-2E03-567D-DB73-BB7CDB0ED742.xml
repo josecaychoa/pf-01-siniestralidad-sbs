@@ -94,7 +94,7 @@
 <dataTypeSize>50</dataTypeSize>
 <ownDataTypeParameters>50,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="riesgo_comparable" id="37ACB7E0-E88C-636B-F93A-1E7815413666">
+<Attribute name="riesgo comparable" id="37ACB7E0-E88C-636B-F93A-1E7815413666">
 <createdBy>josec</createdBy>
 <createdTime>2026-10-12 04:02:03 UTC</createdTime>
 <ownerDesignName>pf01_modelo</ownerDesignName>
@@ -106,6 +106,20 @@
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>100</dataTypeSize>
 <ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="siniestralidad comparable" id="F58488BE-230C-9295-0D15-1D333589F93A">
+<createdBy>josec</createdBy>
+<createdTime>2026-10-18 08:22:32 UTC</createdTime>
+<comment><![CDATA[S si el índice de siniestralidad del riesgo es comparable con el de los ramos generales; N en rentas y Sistema Privado de Pensiones (D-PF01-15]]></comment>
+<ownerDesignName>pf01_modelo</ownerDesignName>
+<engineerTo>
+<item key="E6BD00AF-35CB-EA4A-E95E-9AFAF2044875" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="corte_desde" id="59E4C900-5632-FE1B-C719-3EC774E37205">
 <createdBy>josec</createdBy>
@@ -147,7 +161,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>3</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

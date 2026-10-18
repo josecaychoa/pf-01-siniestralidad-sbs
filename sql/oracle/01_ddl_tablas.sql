@@ -20,10 +20,11 @@
 -- Orden de ejecución
 --   1. Es el primer script de sql/oracle/; después van 02_vistas_*,
 --      03_plsql_* y 04_cargas_*.
---   2. Dentro del script: tablas stg_, tablas dim_, tablas fct_, llaves
---      primarias, llaves foráneas, restricciones CHECK, índices y
---      comentarios. Las llaves foráneas van después de todas las llaves
---      primarias porque las referencian.
+--   2. Dentro del script: tablas stg_, tablas dim_, tablas fct_, columnas
+--      agregadas después de la primera versión (3b), llaves primarias, llaves
+--      foráneas, restricciones CHECK, índices y comentarios. Las llaves
+--      foráneas van después de todas las llaves primarias porque las
+--      referencian.
 --
 -- Requisitos
 --   - Oracle Database 23ai o posterior: usa CREATE TABLE IF NOT EXISTS y el
@@ -37,12 +38,16 @@
 --
 -- Idempotencia
 --   - Tablas: CREATE TABLE IF NOT EXISTS.
+--   - Columnas agregadas después de la primera versión: un bloque PL/SQL por
+--     columna que consulta USER_TAB_COLUMNS y la agrega solo si falta
+--     (sección 3b).
 --   - Llaves primarias, llaves foráneas, restricciones CHECK e índices: un
 --     bloque PL/SQL por objeto que consulta USER_CONSTRAINTS o USER_INDEXES y
 --     lo crea solo si no existe.
 --   - Comentarios: COMMENT ON reemplaza el texto en cada ejecución.
---   El script no modifica tablas que ya existen: si una tabla existe con otra
---   estructura, la conserva. Los cambios de estructura van en un script nuevo.
+--   El script no modifica tablas que ya existen, salvo para agregar las
+--   columnas de la sección 3b; cualquier otro cambio de estructura va en un
+--   script nuevo.
 --
 -- Tipos de datos
 --   - valor: NUMBER sin precisión en stg_ y fct_ (D-PF01-06).
@@ -54,7 +59,8 @@
 --
 -- Decisiones: D-PF01-03 (desarrollo en la base nativa), D-PF01-05 (nombres en
 -- español, snake_case y prefijos stg_, dim_ y fct_), D-PF01-06 (valor NUMBER
--- sin precisión) y D-PF01-07 (dominios de en_total_simple y tipo_columna).
+-- sin precisión), D-PF01-07 (dominios de en_total_simple y tipo_columna) y
+-- D-PF01-15 (atributo siniestralidad_comparable).
 -- =============================================================================
 
 WHENEVER SQLERROR EXIT FAILURE
@@ -184,16 +190,17 @@ CREATE TABLE IF NOT EXISTS dim_indicador (
 );
 
 CREATE TABLE IF NOT EXISTS dim_riesgo (
-    riesgo_id         NUMBER(3)     NOT NULL,
-    clave             VARCHAR2(80)  NOT NULL,
-    riesgo            VARCHAR2(100) NOT NULL,
-    nivel             NUMBER(1)     NOT NULL,
-    tipo              VARCHAR2(10)  NOT NULL,
-    ramo              VARCHAR2(50),
-    riesgo_comparable VARCHAR2(100) NOT NULL,
-    corte_desde       DATE          NOT NULL,
-    nota              VARCHAR2(400),
-    riesgo_padre_id   NUMBER(3)
+    riesgo_id                 NUMBER(3)     NOT NULL,
+    clave                     VARCHAR2(80)  NOT NULL,
+    riesgo                    VARCHAR2(100) NOT NULL,
+    nivel                     NUMBER(1)     NOT NULL,
+    tipo                      VARCHAR2(10)  NOT NULL,
+    ramo                      VARCHAR2(50),
+    riesgo_comparable         VARCHAR2(100) NOT NULL,
+    siniestralidad_comparable VARCHAR2(1)   DEFAULT 'S' NOT NULL,
+    corte_desde               DATE          NOT NULL,
+    nota                      VARCHAR2(400),
+    riesgo_padre_id           NUMBER(3)
 );
 
 PROMPT == 3. Tablas fct_ ==
@@ -220,6 +227,21 @@ CREATE TABLE IF NOT EXISTS fct_riesgo (
     riesgo_id   NUMBER(3)   NOT NULL,
     hoja        VARCHAR2(4) NOT NULL
 );
+
+PROMPT == 3b. Columnas agregadas después de la primera versión ==
+
+-- Decisión D-PF01-15; la carga vacía dim_riesgo y la vuelve a insertar con los
+-- valores del catálogo.
+DECLARE
+    v_existe PLS_INTEGER;
+BEGIN
+    SELECT COUNT(*) INTO v_existe FROM user_tab_columns
+     WHERE table_name = 'DIM_RIESGO' AND column_name = 'SINIESTRALIDAD_COMPARABLE';
+    IF v_existe = 0 THEN
+        EXECUTE IMMEDIATE 'ALTER TABLE dim_riesgo ADD (siniestralidad_comparable VARCHAR2(1) DEFAULT ''S'' NOT NULL)';
+    END IF;
+END;
+/
 
 PROMPT == 4. Llaves primarias ==
 
@@ -559,6 +581,20 @@ BEGIN
 END;
 /
 
+-- siniestralidad_comparable: S si el índice de siniestralidad del riesgo es
+-- comparable con el de los ramos generales; N en rentas y Sistema Privado de
+-- Pensiones (D-PF01-15).
+DECLARE
+    v_existe PLS_INTEGER;
+BEGIN
+    SELECT COUNT(*) INTO v_existe FROM user_constraints
+     WHERE table_name = 'DIM_RIESGO' AND constraint_name = 'CK_DIM_RIESGO_SINIESTRALIDAD_COMPARABLE';
+    IF v_existe = 0 THEN
+        EXECUTE IMMEDIATE 'ALTER TABLE dim_riesgo ADD CONSTRAINT ck_dim_riesgo_siniestralidad_comparable CHECK (siniestralidad_comparable IN (''S'', ''N''))';
+    END IF;
+END;
+/
+
 PROMPT == 7. Índices de llaves foráneas ==
 
 -- Un índice por llave foránea cuya columna no encabeza la llave primaria de
@@ -844,6 +880,8 @@ BEGIN
              'Ramo al que pertenece el riesgo; nulo en el TOTAL');
     comentar('dim_riesgo', 'riesgo_comparable',
              'Agrupación para comparar en el tiempo (p. ej., Cauciones y fianzas)');
+    comentar('dim_riesgo', 'siniestralidad_comparable',
+             'S si el índice de siniestralidad del riesgo es comparable con el de los ramos generales; N en rentas y Sistema Privado de Pensiones (D-PF01-15)');
     comentar('dim_riesgo', 'corte_desde',
              'Primer corte en que se publica el riesgo');
     comentar('dim_riesgo', 'nota',
