@@ -708,7 +708,7 @@ Se ejecutan con `uv run python scripts/validar_resultados.py`, que lee las vista
 | O2 · índice total del sistema, agosto de 2026 | 100 × Σ siniestros / Σ primas de las filas de `vw_indicadores_riesgo` del corte frente a la fila Total de P015 y P016, en la directa y en la retenida: diferencia de 0.1 p. p. como máximo |
 | Índice total del sistema por corte, 2019-2026 | El mismo contraste en los 9 cortes, con la columna ampliada en diciembre de 2020 y de 2022 |
 | Índice por riesgo frente al publicado, 2019-2026 | Filas con `n_riesgos = 1` y primas positivas: índice calculado frente al publicado, por corte y medida, con 0.1 p. p. como máximo; se informa la diferencia máxima por corte |
-| Cobertura de la matriz | `vw_matriz_riesgo`: 48 filas, 40 sobre el umbral, 5 no comparables, 35 clasificadas y cuadrantes 9, 12, 7 y 7 |
+| Cobertura de la matriz | `vw_matriz_riesgo`: 48 filas; 40 sobre el umbral; 5 no comparables; 35 clasificadas; cuadrantes 9 · 12 · 7 · 7 |
 | Primas de la matriz frente al Total publicado de P009 | Suma de las primas netas de `vw_matriz_riesgo` frente a la fila Total de P009 del corte actual: menos de 1 mil soles |
 
 Excepciones de la fuente: en diciembre de 2020, el índice publicado por riesgo se calculó con el Total simple, sin Rigel ni Coface, mientras que la serie usa el Total ampliado (D-PF01-12 y D-PF01-18). Cinco celdas superan la tolerancia: Crédito a la Exportación en P015 (2.880422 p. p.) y en P016 (3.550433 p. p.), Crédito Interno en P015 (−3.653655 p. p.) y en P016 (−3.823247 p. p.), y Seguros Previsionales en P016 (0.122524 p. p.). Están documentadas en `excepciones.csv` y se informan sin tratarlas como fallas.
