@@ -301,6 +301,8 @@ def test_informe_con_excepciones():
     detalle = texto.split("## Detalle: índice por riesgo frente al publicado")[1]
     assert "| 2020-12-31 | P015 | CREDITO INTERNO | 41.093782 | 44.747437 | -3.653655 |" in detalle
     assert "Falla: sin excepción en el catálogo" in detalle
+    tabla_2 = texto.split("## Tabla 2.")[1].split("## Tabla 3.")[0]
+    assert "| 2020-12-31 | Directa | 2 | 3.6537 | CREDITO INTERNO |" in tabla_2  # sin «2.0»
     lectura = texto.split("## Lectura")[1].split("## Pruebas")[0]
     assert "diciembre de 2020" in lectura and "diciembre de 2022" in lectura
     assert "D-PF01-18" in lectura and "(tabla 1)" in lectura

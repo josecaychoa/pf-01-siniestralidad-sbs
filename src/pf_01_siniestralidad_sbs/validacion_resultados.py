@@ -305,8 +305,12 @@ def control_indice_por_riesgo(
 
 
 def maximos_por_corte(detalle: pd.DataFrame) -> pd.DataFrame:
-    """Filas «maximo» del detalle de control_indice_por_riesgo."""
-    return detalle[detalle["tipo"] == "maximo"].reset_index(drop=True)
+    """Filas «maximo» del detalle de control_indice_por_riesgo, con los recuentos enteros.
+
+    Al unir las filas «maximo» y «celda» en un solo marco, los recuentos pasan a float.
+    """
+    maximos = detalle[detalle["tipo"] == "maximo"].reset_index(drop=True)
+    return maximos.astype({c: int for c in ("filas", "fallas", "excepciones")})
 
 
 def celdas_marcadas(detalle: pd.DataFrame) -> pd.DataFrame:
