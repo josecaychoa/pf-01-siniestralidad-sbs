@@ -113,11 +113,13 @@ PROMPT == 3. vw_base_riesgo_comparable ==
 CREATE OR REPLACE VIEW vw_base_riesgo_comparable AS
 WITH totales AS (
     -- Columna Total de cada corte, hoja y riesgo: la ampliada («Total + …») si la hoja la
-    -- publica (incluye los flujos de las empresas que dejaron de operar en el año y es la que
-    -- usa el índice publicado, hallazgo 10); si no, la simple («Total»). P015 y P016 no
-    -- publican columna ampliada: su índice en «Total» corresponde a las cifras ampliadas de
-    -- P009 a P014 (verificado en Incendio, diciembre de 2022: 21.134744 calculado y
-    -- publicado). El rótulo columna_total se toma de la hoja de primas netas (P009).
+    -- publica (incluye los flujos de las empresas que dejaron de operar en el año, hallazgo
+    -- 10); si no, la simple («Total»). P015 y P016 no publican columna ampliada: en diciembre
+    -- de 2022 su índice en «Total» corresponde a las cifras ampliadas de P009 a P014
+    -- (Incendio: 21.134744 calculado y publicado); en diciembre de 2020, al Total simple,
+    -- sin Rigel ni Coface (D-PF01-18). La serie usa la ampliada en los dos cortes y 3.3
+    -- informa las diferencias de 2020 como excepciones de la fuente. El rótulo columna_total
+    -- se toma de la hoja de primas netas (P009).
     SELECT f.fecha_corte, f.hoja, f.riesgo_id, f.valor, ce.clave_fuente,
            ROW_NUMBER() OVER (
                PARTITION BY f.fecha_corte, f.hoja, f.riesgo_id
@@ -162,7 +164,7 @@ SELECT p.fecha_corte,
 COMMENT ON TABLE vw_base_riesgo_comparable IS 'Base de las vistas de análisis: primas y siniestros sin redondear de la columna Total de cada hoja (la ampliada si existe; si no, la simple) por corte y riesgo comparable, sumando los riesgos de tipo riesgo de cada agrupación (D-PF01-12); no se consume directamente';
 COMMENT ON COLUMN vw_base_riesgo_comparable.n_riesgos IS 'Riesgos de tipo riesgo que suma la agrupación en el corte (3 en Cauciones y fianzas desde diciembre de 2023; 1 en las demás)';
 COMMENT ON COLUMN vw_base_riesgo_comparable.siniestralidad_comparable IS 'S si el índice de siniestralidad de la fila es comparable con el de los ramos generales; N en rentas y Sistema Privado de Pensiones (D-PF01-15)';
-COMMENT ON COLUMN vw_base_riesgo_comparable.columna_total IS 'Rótulo de la columna Total de la que salen las primas netas (P009): la ampliada («Total + …») cuando la hoja la publica (diciembre de 2020 y de 2022), si no, «Total». P015 y P016 no publican columna ampliada: su índice en «Total» corresponde a las cifras ampliadas de P009 a P014 (verificado en Incendio, diciembre de 2022: 21.134744 calculado y publicado); 3.3 lo verifica en todas las filas';
+COMMENT ON COLUMN vw_base_riesgo_comparable.columna_total IS 'Rótulo de la columna Total de la que salen las primas netas (P009): la ampliada («Total + …») cuando la hoja la publica (diciembre de 2020 y de 2022), si no, «Total». P015 y P016 no publican columna ampliada: en diciembre de 2022 su índice en «Total» corresponde a las cifras ampliadas de P009 a P014 (Incendio: 21.134744 calculado y publicado) y en diciembre de 2020 al Total simple, sin Rigel ni Coface (D-PF01-18); la serie usa la ampliada en los dos cortes y 3.3 informa las diferencias de 2020 como excepciones de la fuente';
 COMMENT ON COLUMN vw_base_riesgo_comparable.primas_netas IS 'Primas de seguros netas (P009), en miles de soles, acumuladas en el año; sin redondear';
 COMMENT ON COLUMN vw_base_riesgo_comparable.primas_retenidas IS 'Primas retenidas (P011), en miles de soles, acumuladas en el año; sin redondear';
 COMMENT ON COLUMN vw_base_riesgo_comparable.siniestros_netos IS 'Siniestros de primas de seguros netos (P012), en miles de soles, acumulados en el año; sin redondear';
@@ -196,7 +198,7 @@ SELECT b.fecha_corte,
   JOIN dim_corte co ON co.fecha_corte = b.fecha_corte;
 
 COMMENT ON TABLE vw_indicadores_riesgo IS 'Serie por corte y riesgo comparable: primas y siniestros (miles de soles, 2 decimales), índices de siniestralidad calculados como Σ siniestros / Σ primas (porcentaje, 6 decimales; nulos sin primas, D-PF01-12 y D-PF01-14) y los publicados como control';
-COMMENT ON COLUMN vw_indicadores_riesgo.columna_total IS 'Rótulo de la columna Total de la que salen las primas netas (P009): la ampliada («Total + …») cuando la hoja la publica (diciembre de 2020 y de 2022), si no, «Total». P015 y P016 no publican columna ampliada: su índice en «Total» corresponde a las cifras ampliadas de P009 a P014 (verificado en Incendio, diciembre de 2022: 21.134744 calculado y publicado); 3.3 lo verifica en todas las filas';
+COMMENT ON COLUMN vw_indicadores_riesgo.columna_total IS 'Rótulo de la columna Total de la que salen las primas netas (P009): la ampliada («Total + …») cuando la hoja la publica (diciembre de 2020 y de 2022), si no, «Total». P015 y P016 no publican columna ampliada: en diciembre de 2022 su índice en «Total» corresponde a las cifras ampliadas de P009 a P014 (Incendio: 21.134744 calculado y publicado) y en diciembre de 2020 al Total simple, sin Rigel ni Coface (D-PF01-18); la serie usa la ampliada en los dos cortes y 3.3 informa las diferencias de 2020 como excepciones de la fuente';
 COMMENT ON COLUMN vw_indicadores_riesgo.primas_netas IS 'Primas de seguros netas (P009), en miles de soles, acumuladas en el año; 2 decimales';
 COMMENT ON COLUMN vw_indicadores_riesgo.primas_retenidas IS 'Primas retenidas (P011), en miles de soles, acumuladas en el año; 2 decimales';
 COMMENT ON COLUMN vw_indicadores_riesgo.siniestros_netos IS 'Siniestros de primas de seguros netos (P012), en miles de soles, acumulados en el año; 2 decimales';

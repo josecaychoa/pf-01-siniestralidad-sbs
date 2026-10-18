@@ -1,6 +1,10 @@
 """Detecta rasgos de redacción típicos de IA en textos en español (post, README, informe).
 Uso: python lint_texto.py archivo.md   |   python lint_texto.py - < texto.txt
-Es una ayuda: un rasgo aislado no prueba nada; la acumulación sí. La revisión final es humana."""
+Es una ayuda: un rasgo aislado no prueba nada; la acumulación sí. La revisión final es humana.
+Las líneas que siguen a un encabezado «Referencias» (de cualquier nivel), hasta el siguiente
+encabezado o el final del archivo, no se analizan: los títulos de las fuentes se transcriben
+tal cual en APA 7. Los controles globales («Cifra sin cita» y «Sin referencias») leen el texto
+completo."""
 
 import re
 import sys
@@ -106,6 +110,9 @@ REGLAS = [
 ]
 
 CITA = r"\([^()\n]*\b(?:19|20)\d{2}[a-z]?\)|\bs\. f\.|\bNota\.|Elaboración propia"
+# Encabezados Markdown de cualquier nivel; la sección «Referencias» no se analiza.
+ENCABEZADO = r"^\s{0,3}#{1,6}\s"
+ENCABEZADO_REFERENCIAS = r"^\s{0,3}#{1,6}\s+Referencias\b"
 
 
 def tríadas(linea):
@@ -120,7 +127,12 @@ def main(ruta):
         with open(ruta, encoding="utf-8") as archivo:
             texto = archivo.read()
     hallazgos = []
+    en_referencias = False
     for n, linea in enumerate(texto.splitlines(), 1):
+        if re.match(ENCABEZADO, linea):
+            en_referencias = re.match(ENCABEZADO_REFERENCIAS, linea) is not None
+        elif en_referencias:
+            continue  # títulos de las fuentes transcritos tal cual en APA 7
         if linea.strip().startswith(("```", "    ", "http")):
             continue
         for cat, patron, ayuda in REGLAS:
@@ -144,4 +156,5 @@ def main(ruta):
 
 
 if __name__ == "__main__":
+    sys.stdout.reconfigure(encoding="utf-8")
     sys.exit(main(sys.argv[1] if len(sys.argv) > 1 else "-"))

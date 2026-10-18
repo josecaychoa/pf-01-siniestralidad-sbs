@@ -377,7 +377,7 @@ Cifras sin redondear por corte y riesgo comparable (D-PF01-12): suma los riesgos
 
 Reglas:
 - Prioridad de la columna Total ampliada. Para cada corte, hoja y riesgo toma la columna «Total + …» (`tipo_columna = total_ampliado`) cuando la hoja la publica, en diciembre de 2020 y de 2022, porque incluye los flujos de las empresas que dejaron de operar en el año y es la que usa el índice publicado (hallazgo 10); si no, toma «Total» (`total_simple`). La prioridad se resuelve hoja por hoja con `ROW_NUMBER()`.
-- P015 y P016 no publican columna ampliada: su índice en «Total» corresponde a las cifras ampliadas de P009 a P014 (verificado en Incendio, diciembre de 2022: 21.134744 calculado y publicado); 3.3 lo verifica en todas las filas. El rótulo `columna_total` se toma de la hoja de primas netas (P009).
+- P015 y P016 no publican columna ampliada. En diciembre de 2022 su índice en «Total» corresponde a las cifras ampliadas de P009 a P014 (Incendio: 21.134744 calculado y publicado); en diciembre de 2020 corresponde al Total simple, sin Rigel ni Coface (D-PF01-18). La serie del proyecto usa la columna ampliada en los dos cortes y 3.3 informa las diferencias de 2020 como excepciones de la fuente. El rótulo `columna_total` se toma de la hoja de primas netas (P009).
 - Los índices publicados (P015 y P016) solo se conservan en las filas de un riesgo (`n_riesgos = 1`); en «Cauciones y fianzas», que suma tres riesgos desde diciembre de 2023, son nulos porque los índices no se suman.
 
 | Columna | Tipo | Descripción |
@@ -680,7 +680,7 @@ Observaciones del catálogo:
 
 ### 7.3 `cortes.csv` y `excepciones.csv`
 
-`cortes.csv` registra, por corte, los meses acumulados (12 u 8) y la versión del plan de cuentas: anterior a la Resolución SBS N.º 976-2021 (2019 y 2020), Resolución SBS N.º 976-2021 (desde junio de 2021) y Resolución SBS N.º 085-2026 (desde marzo de 2026). `excepciones.csv` documenta las diferencias de la propia fuente que los controles informan sin tratarlas como fallas.
+`cortes.csv` registra, por corte, los meses acumulados (12 u 8) y la versión del plan de cuentas: anterior a la Resolución SBS N.º 976-2021 (2019 y 2020), Resolución SBS N.º 976-2021 (desde junio de 2021) y Resolución SBS N.º 085-2026 (desde marzo de 2026). `excepciones.csv` documenta las diferencias de la propia fuente que los controles informan sin tratarlas como fallas. Desde 3.3 incluye las cinco celdas del control «Índice por riesgo frente al publicado» de diciembre de 2020, cuyo índice publicado se calculó con el Total simple, sin Rigel ni Coface (D-PF01-18; sección 9).
 
 ## 8. Controles de validación (paquete 2.2)
 
@@ -698,6 +698,20 @@ Se ejecutan con `uv run python scripts/validar_datos.py`, que escribe `reports/v
 | Versión del plan de cuentas | La nota al pie de P001 cita la resolución registrada para el corte |
 
 Excepciones de la fuente: en P001 de diciembre de 2021, 2022 y 2023, la fila «Pérdida neta no realizada por valorización de las inversiones disponibles para la venta» de Avla Perú publica en TOTAL un monto que no figura en MN ni en ME (de −361.983, −282.818 y −141.053 mil soles), y la diferencia se arrastra al total de empresas.
+
+## 9. Controles de validación de resultados (paquete 3.3)
+
+Se ejecutan con `uv run python scripts/validar_resultados.py`, que lee las vistas de la sección 3 en Oracle y escribe `reports/validacion_resultados.md` (D-PF01-17); las reglas están en `src/pf_01_siniestralidad_sbs/validacion_resultados.py`. Tolerancia de O2: 0.1 p. p.
+
+| Control | Regla |
+|---|---|
+| O2 · índice total del sistema, agosto de 2026 | 100 × Σ siniestros / Σ primas de las filas de `vw_indicadores_riesgo` del corte frente a la fila Total de P015 y P016, en la directa y en la retenida: diferencia de 0.1 p. p. como máximo |
+| Índice total del sistema por corte, 2019-2026 | El mismo contraste en los 9 cortes, con la columna ampliada en diciembre de 2020 y de 2022 |
+| Índice por riesgo frente al publicado, 2019-2026 | Filas con `n_riesgos = 1` y primas positivas: índice calculado frente al publicado, por corte y medida, con 0.1 p. p. como máximo; se informa la diferencia máxima por corte |
+| Cobertura de la matriz | `vw_matriz_riesgo`: 48 filas; 40 sobre el umbral; 5 no comparables; 35 clasificadas; cuadrantes 9 · 12 · 7 · 7 |
+| Primas de la matriz frente al Total publicado de P009 | Suma de las primas netas de `vw_matriz_riesgo` frente a la fila Total de P009 del corte actual: menos de 1 mil soles |
+
+Excepciones de la fuente: en diciembre de 2020, el índice publicado por riesgo se calculó con el Total simple, sin Rigel ni Coface, mientras que la serie usa el Total ampliado (D-PF01-12 y D-PF01-18). Cinco celdas superan la tolerancia: Crédito a la Exportación en P015 (2.880422 p. p.) y en P016 (3.550433 p. p.), Crédito Interno en P015 (−3.653655 p. p.) y en P016 (−3.823247 p. p.), y Seguros Previsionales en P016 (0.122524 p. p.). Están documentadas en `excepciones.csv` y se informan sin tratarlas como fallas.
 
 ## Referencias
 

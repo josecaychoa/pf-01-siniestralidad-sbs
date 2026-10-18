@@ -1,6 +1,7 @@
 # Changelog
 
 ## [Sin publicar]
+- Validación de resultados de 3.3: módulo `validacion_resultados.py`, `scripts/validar_resultados.py` y nota `reports/validacion_resultados.md` con el cumplimiento de O2, el control de la serie 2019-2026 y las excepciones de la fuente de diciembre de 2020 (D-PF01-18) (#9).
 - Módulo `indicadores.py` con las reglas de las decisiones D-PF01-11 a D-PF01-16 en Python, script `scripts/exportar_indicadores.py` que escribe las vistas en `data/processed/` (se versiona `matriz_riesgos.csv`) y pruebas unitarias y cruzadas contra las vistas (#8).
 - Vistas de análisis `sql/oracle/04_vistas_analisis.sql`: parámetros, cortes, base por riesgo comparable, indicadores por corte, crecimiento (variación interanual y TCAC), matriz de cuadrantes y participación por empresa (D-PF01-11 a D-PF01-16); pruebas en `tests/test_vistas_analisis.py` (#8).
 - Atributo `siniestralidad_comparable` (S/N) en `riesgos.csv` y `dim_riesgo`, con la sección 3b de evolución del esquema en `01_ddl_tablas.sql`; decisiones D-PF01-11 a D-PF01-16 registradas en #8 (#8).
