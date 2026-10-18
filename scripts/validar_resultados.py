@@ -189,7 +189,10 @@ def main(argv: list[str] | None = None) -> int:
 
     for r in resultados:
         estado = "ok   " if r.ok else "FALLA"
-        print(f"  {estado} {r.control}: {vr.miles(r.revisados)} revisados, {r.fallas} fallas")
+        print(
+            f"  {estado} {r.control}: {vr.miles(r.revisados)} revisados, {r.fallas} fallas, "
+            f"{r.excepciones} excepciones de la fuente"
+        )
     actual = resultados[0].detalle.set_index("medida")
     for medida in vr.MEDIDAS if not actual.empty else ():
         print(

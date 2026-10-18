@@ -2,7 +2,8 @@
 
 Solo lee la base. Se omite si el entorno no tiene ORACLE_USER, ORACLE_PASSWORD y
 ORACLE_DSN, como en GitHub Actions. Ejecutar antes la carga: uv run python
-scripts/cargar_oracle.py. Los cinco controles de D-PF01-17 deben estar conformes.
+scripts/cargar_oracle.py. Los cinco controles de D-PF01-17 deben estar conformes; el índice
+por riesgo, con las 5 excepciones de la fuente de diciembre de 2020 (D-PF01-18).
 """
 
 import os
@@ -82,5 +83,7 @@ def test_controles_conformes(conexion, publicados):
         control_primas_matriz(matriz, float(total_p009)),
     ]
     assert all(r.ok for r in resultados), [(r.control, r.fallas) for r in resultados if not r.ok]
+    por_riesgo = resultados[2]
+    assert (por_riesgo.fallas, por_riesgo.excepciones) == (0, 5)  # diciembre de 2020, D-PF01-18
     assert len(o2.detalle) == 2
     assert (o2.detalle["diferencia"].abs() <= TOLERANCIA_O2).all(), o2.detalle

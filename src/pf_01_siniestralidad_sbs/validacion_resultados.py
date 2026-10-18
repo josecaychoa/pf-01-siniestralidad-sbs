@@ -11,7 +11,9 @@ decisión D-PF01-17 (scripts/validar_resultados.py lee las vistas y escribe la n
 Los controles 6 (cruce SQL frente a Python) y 7 (casos borde) son pruebas ya escritas que la
 nota cita con el resultado de su corrida.
 
-Una diferencia que no se puede calcular (falta el publicado) cuenta como falla.
+Una diferencia que no se puede calcular (falta el publicado) cuenta como falla. En el control
+3, las celdas documentadas en catalogos/excepciones.csv (diciembre de 2020, D-PF01-18) se
+informan como excepciones de la fuente y no como fallas.
 """
 
 from __future__ import annotations
@@ -21,9 +23,16 @@ from datetime import date
 import pandas as pd
 
 from pf_01_siniestralidad_sbs.indicadores import COLUMNAS_MEDIDA, resumen_matriz
-from pf_01_siniestralidad_sbs.validacion import Resultado
+from pf_01_siniestralidad_sbs.validacion import Resultado, leer_catalogo, normalizar
 
 TOLERANCIA_O2 = 0.1  # puntos porcentuales: objetivo O2 del acta
+# Control de excepciones.csv para el índice por riesgo (D-PF01-18) y hoja de cada medida.
+CONTROL_EXCEPCIONES = "Índice por riesgo frente al publicado"
+HOJA_INDICE = {"directa": "P015", "retenida": "P016"}
+# En diciembre de 2020 el índice publicado se calculó con el Total simple; en diciembre de
+# 2022, con el ampliado. La serie usa el ampliado en los dos cortes (D-PF01-18).
+CORTE_TOTAL_SIMPLE = date(2020, 12, 31)
+CORTE_TOTAL_AMPLIADO = date(2022, 12, 31)
 TOLERANCIA_MILES = 1.0  # miles de soles: redondeo de las cifras publicadas (objetivo O1)
 # Resultados de 3.2 (#8): matriz de agosto de 2026 en vw_matriz_riesgo, con la clasificación
 # por variación interanual e índice directo (scripts/exportar_indicadores.py).
@@ -187,13 +196,47 @@ def control_serie_total(contraste: pd.DataFrame) -> Resultado:
     )
 
 
-def control_indice_por_riesgo(indicadores: pd.DataFrame) -> Resultado:
+def marcar_excepciones(celdas: pd.DataFrame, excepciones: pd.DataFrame) -> pd.Series:
+    """Observación del catálogo para cada celda (corte, hoja y riesgo); vacía si no está.
+
+    Mismo mecanismo que validacion.monedas: el riesgo y el concepto del catálogo se comparan
+    con validacion.normalizar.
+    """
+    catalogo = excepciones[excepciones["control"] == CONTROL_EXCEPCIONES].assign(
+        clave=lambda x: x["concepto"].map(normalizar)
+    )
+    catalogo = catalogo.drop_duplicates(["corte", "hoja", "clave"])
+    llaves = pd.DataFrame(
+        {
+            "corte": [f"{corte:%Y-%m-%d}" for corte in celdas["fecha_corte"]],
+            "hoja": celdas["hoja"].to_list(),
+            "clave": celdas["riesgo_comparable"].map(normalizar).to_list(),
+        }
+    )
+    cruce = llaves.merge(
+        catalogo[["corte", "hoja", "clave", "observacion"]],
+        on=["corte", "hoja", "clave"],
+        how="left",
+    )
+    return pd.Series(cruce["observacion"].fillna("").to_list(), index=celdas.index)
+
+
+def control_indice_por_riesgo(
+    indicadores: pd.DataFrame, excepciones: pd.DataFrame | None = None
+) -> Resultado:
     """Índice calculado frente al publicado en las filas de un riesgo con primas positivas.
 
-    Directa: filas con primas netas positivas; retenida: con primas retenidas positivas. El
-    detalle resume cada corte y medida: filas comparadas, diferencia máxima en valor absoluto
-    y el riesgo comparable donde ocurre.
+    Directa: filas con primas netas positivas, frente a P015; retenida: con primas retenidas
+    positivas, frente a P016. Una celda fuera de la tolerancia que figura en el catálogo de
+    excepciones (excepciones.csv, por defecto) cuenta como excepción de la fuente y no como
+    falla. El detalle tiene dos tipos de filas (columna tipo):
+    - «maximo»: por corte y medida, filas comparadas, diferencia máxima en valor absoluto, el
+      riesgo comparable donde ocurre, fallas y excepciones;
+    - «celda»: cada celda fuera de la tolerancia, con hoja, calculado, publicado, diferencia,
+      observación del catálogo (vacía si es falla) y si es excepción.
     """
+    if excepciones is None:
+        excepciones = leer_catalogo("excepciones")
     partes = []
     for medida, (_, primas) in COLUMNAS_MEDIDA.items():
         filas = indicadores[
@@ -206,35 +249,69 @@ def control_indice_por_riesgo(indicadores: pd.DataFrame) -> Resultado:
                 {
                     "fecha_corte": filas["fecha_corte"],
                     "medida": medida,
+                    "hoja": HOJA_INDICE[medida],
                     "riesgo_comparable": filas["riesgo_comparable"],
+                    "calculado": calculado,
+                    "publicado": publicado,
                     "diferencia": calculado - publicado,
                 }
             )
         )
     comparadas = pd.concat(partes, ignore_index=True)
     comparadas["absoluta"] = comparadas["diferencia"].abs()
-    comparadas["falla"] = fuera_de_tolerancia(comparadas["diferencia"])
-    resumen = []
+    fuera = fuera_de_tolerancia(comparadas["diferencia"])
+    comparadas["observacion"] = ""
+    comparadas.loc[fuera, "observacion"] = marcar_excepciones(comparadas[fuera], excepciones)
+    comparadas["excepcion"] = fuera & (comparadas["observacion"] != "")
+    comparadas["falla"] = fuera & ~comparadas["excepcion"]
+    maximos = []
     for (corte, medida), grupo in comparadas.groupby(["fecha_corte", "medida"], sort=True):
         # Una diferencia sin publicado (NaN) se muestra como el máximo: es una falla.
         orden = grupo.sort_values("absoluta", ascending=False, na_position="first")
         mayor = orden.iloc[0]
-        resumen.append(
+        maximos.append(
             {
+                "tipo": "maximo",
                 "fecha_corte": corte,
                 "medida": medida,
                 "filas": len(grupo),
                 "diferencia_maxima": mayor["absoluta"],
                 "riesgo_comparable": mayor["riesgo_comparable"],
                 "fallas": int(grupo["falla"].sum()),
+                "excepciones": int(grupo["excepcion"].sum()),
             }
         )
+    columnas_celda = [
+        "fecha_corte",
+        "medida",
+        "hoja",
+        "riesgo_comparable",
+        "calculado",
+        "publicado",
+        "diferencia",
+        "observacion",
+        "excepcion",
+    ]
+    celdas = comparadas.loc[fuera, columnas_celda].assign(tipo="celda")
+    celdas = celdas.sort_values(["fecha_corte", "riesgo_comparable", "hoja"])
+    detalle = pd.concat([pd.DataFrame(maximos), celdas], ignore_index=True)
     return Resultado(
         "Índice por riesgo frente al publicado, 2019-2026",
         len(comparadas),
         int(comparadas["falla"].sum()),
-        pd.DataFrame(resumen),
+        detalle,
+        excepciones=int(comparadas["excepcion"].sum()),
     )
+
+
+def maximos_por_corte(detalle: pd.DataFrame) -> pd.DataFrame:
+    """Filas «maximo» del detalle de control_indice_por_riesgo."""
+    return detalle[detalle["tipo"] == "maximo"].reset_index(drop=True)
+
+
+def celdas_marcadas(detalle: pd.DataFrame) -> pd.DataFrame:
+    """Filas «celda» (fuera de la tolerancia) del detalle de control_indice_por_riesgo."""
+    return detalle[detalle["tipo"] == "celda"].reset_index(drop=True)
 
 
 def control_cobertura_matriz(matriz: pd.DataFrame) -> Resultado:
@@ -368,7 +445,42 @@ def lectura(resultados: list[Resultado], contraste: pd.DataFrame) -> list[str]:
         f"{' y '.join(maximos)}; {serie.fallas} de {serie.revisados} combinaciones de corte y "
         "medida superan la tolerancia."
     )
-    return [" ".join(frases)]
+    return [" ".join(frases), *lectura_excepciones(resultados[2], contraste)]
+
+
+def lectura_excepciones(por_riesgo: Resultado, contraste: pd.DataFrame) -> list[str]:
+    """Párrafo del hallazgo de diciembre de 2020 frente a diciembre de 2022 (D-PF01-18).
+
+    Vacío si el detalle no tiene excepciones de diciembre de 2020 o si falta alguno de los
+    dos cortes en el contraste.
+    """
+    celdas = celdas_marcadas(por_riesgo.detalle)
+    excepciones = celdas[celdas["excepcion"].astype(bool)]
+    excepciones = excepciones[excepciones["fecha_corte"] == CORTE_TOTAL_SIMPLE]
+    total = contraste.set_index("fecha_corte")
+    if excepciones.empty or not {CORTE_TOTAL_SIMPLE, CORTE_TOTAL_AMPLIADO} <= set(total.index):
+        return []
+    mayor = excepciones.loc[excepciones["diferencia"].abs().idxmax()]
+    maximos = maximos_por_corte(por_riesgo.detalle)
+    en_2022 = maximos[maximos["fecha_corte"] == CORTE_TOTAL_AMPLIADO].set_index("medida")
+    maximo_2022 = " y ".join(
+        f"{decimales(en_2022.loc[medida, 'diferencia_maxima'])} p. p. en la {medida}"
+        for medida in MEDIDAS
+        if medida in en_2022.index
+    )
+    total_2020 = total.loc[CORTE_TOTAL_SIMPLE]
+    return [
+        f"En {mes_y_anio(CORTE_TOTAL_SIMPLE)} el índice publicado por riesgo se calculó con el "
+        f"Total simple, sin Rigel ni Coface: {len(excepciones)} celdas superan la tolerancia, "
+        f"con una diferencia máxima de {decimales(mayor['diferencia'])} p. p. "
+        f"({mayor['riesgo_comparable']}, {mayor['hoja']}), mientras que en "
+        f"{mes_y_anio(CORTE_TOTAL_AMPLIADO)} corresponde al Total ampliado, con una diferencia "
+        f"máxima de {maximo_2022}. La serie usa el Total ampliado en los dos cortes "
+        f"(D-PF01-18) y esas {len(excepciones)} celdas se informan como excepciones de la "
+        f"fuente; el índice total del sistema de {mes_y_anio(CORTE_TOTAL_SIMPLE)} difiere del "
+        f"publicado en {decimales(total_2020['diferencia_directa'])} p. p. en la directa y "
+        f"{decimales(total_2020['diferencia_retenida'])} p. p. en la retenida (tabla 1)."
+    ]
 
 
 def informe(
@@ -386,7 +498,13 @@ def informe(
     pruebas: comando, resumen (línea final de pytest -q) y codigo (código de salida).
     """
     resumen = [
-        [r.control, miles(r.revisados), str(r.fallas), "Conforme" if r.ok else "Con fallas"]
+        [
+            r.control,
+            miles(r.revisados),
+            str(r.fallas),
+            str(r.excepciones),
+            "Conforme" if r.ok else "Con fallas",
+        ]
         for r in resultados
     ]
     serie = [
@@ -412,7 +530,19 @@ def informe(
             decimales(fila.diferencia_maxima),
             str(fila.riesgo_comparable),
         ]
-        for fila in detalle_por_riesgo.itertuples(index=False)
+        for fila in maximos_por_corte(detalle_por_riesgo).itertuples(index=False)
+    ]
+    marcadas = [
+        [
+            f"{fila.fecha_corte:%Y-%m-%d}",
+            fila.hoja,
+            str(fila.riesgo_comparable),
+            decimales(fila.calculado, 6),
+            decimales(fila.publicado, 6),
+            decimales(fila.diferencia, 6),
+            fila.observacion or "Falla: sin excepción en el catálogo",
+        ]
+        for fila in celdas_marcadas(detalle_por_riesgo).itertuples(index=False)
     ]
     magnitudes = [
         [fila.magnitud, str(fila.esperado), str(fila.obtenido)]
@@ -436,7 +566,9 @@ def informe(
         f"- Corte actual: {entorno['corte_actual']}",
         f"- Fecha de descarga de los datos (data/raw/manifest.csv): {entorno['fecha_descarga']}",
         "",
-        *tabla_markdown(["Control", "Revisados", "Fallas", "Resultado"], resumen),
+        *tabla_markdown(
+            ["Control", "Revisados", "Fallas", "Excepciones de la fuente", "Resultado"], resumen
+        ),
         "",
         NOTA_TABLA,
         "",
@@ -480,9 +612,34 @@ def informe(
         "",
         NOTA_TABLA,
         "",
+        "## Detalle: índice por riesgo frente al publicado",
+        "",
+        "Celdas que superan la tolerancia de 0.1 p. p.; índices en porcentaje y diferencia en "
+        "p. p., calculado menos publicado. Las excepciones de la fuente están documentadas en "
+        "`src/pf_01_siniestralidad_sbs/catalogos/excepciones.csv`.",
+        "",
+        *(
+            tabla_markdown(
+                [
+                    "Corte",
+                    "Hoja",
+                    "Riesgo",
+                    "Calculado",
+                    "Publicado",
+                    "Diferencia (p. p.)",
+                    "Observación",
+                ],
+                marcadas,
+            )
+            if marcadas
+            else ["Ninguna celda supera la tolerancia."]
+        ),
+        "",
+        NOTA_TABLA,
+        "",
         "## Lectura",
         "",
-        *lectura(resultados, contraste),
+        "\n\n".join(lectura(resultados, contraste)),
         "",
         "## Pruebas automatizadas citadas",
         "",
