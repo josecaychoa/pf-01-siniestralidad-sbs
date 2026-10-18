@@ -187,6 +187,7 @@ Una fila por riesgo del catálogo `riesgos.csv` (sección 7.2), con su jerarquí
 | `tipo` | `VARCHAR2(10)` | No |  | Papel del riesgo en la jerarquía; solo los de tipo riesgo suman el total | `total`, `agregado`, `riesgo` (50 filas que suman el total) o `detalle` (no suma) |
 | `ramo` | `VARCHAR2(50)` | Sí |  | Ramo al que pertenece el riesgo; nulo en el TOTAL | Ramos generales, Ramos de accidentes y enfermedades, Ramos de vida o nulo |
 | `riesgo_comparable` | `VARCHAR2(100)` | No |  | Agrupación para comparar en el tiempo (p. ej., Cauciones y fianzas) | 58 agrupaciones |
+| `siniestralidad_comparable` | `VARCHAR2(1)` | No |  | S si el índice de siniestralidad del riesgo es comparable con el de los ramos generales; N en rentas y Sistema Privado de Pensiones (D-PF01-15) | S (50 filas) o N (10 filas) |
 | `corte_desde` | `DATE` | No |  | Primer corte en que se publica el riesgo | 2019-12-31, o 2023-12-31 en las dos filas de Fianzas |
 | `nota` | `VARCHAR2(400)` | Sí |  | Observaciones del catálogo | Texto; 5 riesgos con nota |
 | `riesgo_padre_id` | `NUMBER(3)` | Sí | FK a `dim_riesgo` | Riesgo o agregado que lo contiene; nulo en el TOTAL | `riesgo_id` de otro riesgo o nulo |
@@ -495,6 +496,7 @@ Equivalencias que cambian el análisis por empresa: Ohio National Vida pasa a Au
 | `tipo` | `total`, `agregado`, `riesgo` (50 filas que suman el total) o `detalle` («del cual», no suma) |
 | `ramo` | Ramos generales, Ramos de accidentes y enfermedades o Ramos de vida |
 | `riesgo_comparable` | Agrupación para comparar en el tiempo: Cauciones y las dos filas de Fianzas forman «Cauciones y fianzas» |
+| `siniestralidad_comparable` | S si el índice de siniestralidad del riesgo es comparable con el de los ramos generales; N en rentas y Sistema Privado de Pensiones (D-PF01-15) |
 | `corte_desde`, `nota` | Primer corte en que se publica y observaciones |
 
 Observaciones del catálogo:
@@ -502,6 +504,7 @@ Observaciones del catálogo:
 - El «Seguro de Invalidez, Sobrevivencia y Gastos de Sepelio» es un detalle de Seguros Previsionales; en las hojas de siniestros (P012 a P014) se abre a su vez en una fila por cada uno de esos tres componentes.
 - Las dos filas de Fianzas se publican desde diciembre de 2023. Ese año, las primas de Cauciones bajaron de 420 667 a 155 098 mil soles y aparecieron 299 897 mil soles en «Fianzas que garantizan otras obligaciones» (SBS, s. f.-a): es una reclasificación, por lo que Cauciones solo se compara en el tiempo junto con las Fianzas.
 - Las diferencias de rótulo entre cortes («Miscelaneos», «Vida Ley ex-trabajadores») se resuelven con el rótulo normalizado.
+- Renta Particular y los seguros del Sistema Privado de Pensiones llevan siniestralidad_comparable = N: sus índices no se comparan con los de los ramos generales (acta, sección 4); entran en la matriz de 3.2 con esa marca y no participan en el corte de siniestralidad de los cuadrantes (D-PF01-16).
 
 ### 7.3 `cortes.csv` y `excepciones.csv`
 

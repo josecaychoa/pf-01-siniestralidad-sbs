@@ -64,3 +64,11 @@ def test_vistas_validas(cursor):
 def test_cuadres_de_o1(cursor, vista):
     assert contar(cursor, f"SELECT COUNT(*) FROM {vista}") > 0
     assert contar(cursor, f"SELECT COUNT(*) FROM {vista} WHERE NOT cumple") == 0
+
+
+def test_siniestralidad_comparable_en_dim_riesgo(cursor):
+    cursor.execute(
+        "SELECT siniestralidad_comparable, COUNT(*) FROM dim_riesgo "
+        "GROUP BY siniestralidad_comparable"
+    )
+    assert dict(cursor.fetchall()) == {"S": 50, "N": 10}

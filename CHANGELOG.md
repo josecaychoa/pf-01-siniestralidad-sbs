@@ -1,6 +1,7 @@
 # Changelog
 
 ## [Sin publicar]
+- Atributo `siniestralidad_comparable` (S/N) en `riesgos.csv` y `dim_riesgo`, con la sección 3b de evolución del esquema en `01_ddl_tablas.sql`; decisiones D-PF01-11 a D-PF01-16 registradas en #8 (#8).
 - Notebook de exploración `notebooks/01-jc-exploracion.ipynb` (8 tablas, 5 figuras, 12 hallazgos y 11 casos atípicos) sobre las vistas vw_; dependencias matplotlib 3.11.2, ipykernel y nbconvert; variable `PF01_BASE` (#7).
 - Diagrama de arquitectura del flujo de datos en Visio (`docs/diagramas/PF-01_diagramas.vsdx`, `PF-01_arquitectura.svg` y `PF-01_diagramas.pdf`), `docs/04_arquitectura.md` con las figuras 1 (arquitectura) y 2 (modelo relacional), figura 1 en el README, acta 1.4 y EDT 1.5 (#24).
 - Contenedor Oracle AI Database 26ai Free (`gvenzl/oracle-free:23.26.3`) en `docker-compose.yml`, `.env.example` con cuatro variables, dependencia python-oracledb 26.0.1 y convención de nombres SQL en español (D-PF01-05) (#6).
