@@ -227,9 +227,9 @@ Primas, siniestros e índices de siniestralidad de P009 a P016, solo de la serie
 | `riesgo_id` | `NUMBER(3)` | No | PK, FK a `dim_riesgo` | Riesgo del catálogo | 60 riesgos |
 | `hoja` | `VARCHAR2(4)` | No | PK, FK a `dim_cuadro` | Hoja de la cifra; dim_cuadro.medida indica qué publica | `P009` a `P016` |
 
-## 3. Vistas (`sql/oracle/02_vistas.sql`)
+## 3. Vistas (`sql/oracle/02_vistas.sql` y `sql/oracle/04_vistas_analisis.sql`)
 
-Cinco vistas `vw_`: dos analíticas y tres de cuadre para el objetivo O1. Todas se crean con `CREATE OR REPLACE VIEW` y tienen `COMMENT ON TABLE`.
+Doce vistas `vw_`. `02_vistas.sql` crea cinco: dos analíticas y tres de cuadre para el objetivo O1 (secciones 3.1 a 3.5). `04_vistas_analisis.sql` crea siete para el análisis de 3.2, que programan las decisiones D-PF01-11 a D-PF01-16 (secciones 3.6 a 3.12). Todas se crean con `CREATE OR REPLACE VIEW` y tienen `COMMENT ON TABLE`.
 
 Reglas comunes:
 - Redondeo solo en las vistas (D-PF01-06), con la escala del estándar 6.1: montos en miles de soles a 2 decimales e índices en porcentaje a 6 decimales. Las tablas guardan la cifra publicada.
@@ -244,8 +244,15 @@ Reglas comunes:
 | `vw_cuadre_balance` | Activo = Pasivo + Patrimonio (P001, moneda TOTAL) | corte y columna publicada | 168 |
 | `vw_cuadre_totales` | Suma de las empresas frente a la columna Total | corte, hoja, concepto, moneda y tipo de total | 7 196 |
 | `vw_cuadre_cuadros_sbs` | Boletín Mensual frente a S-401, S-402 y S-403 | celda de los cuadros de agosto de 2026 | 8 778 |
+| `vw_parametros_analisis` | Umbral de primas y corte de crecimiento | parámetros del análisis (fila única) | 1 |
+| `vw_cortes_analisis` | Cortes actual, anterior e inicio y fin de la TCAC | cortes del análisis (fila única) | 1 |
+| `vw_base_riesgo_comparable` | Cifras sin redondear de la columna Total por riesgo comparable | riesgo comparable en cada corte | 432 |
+| `vw_indicadores_riesgo` | Serie de primas, siniestros e índices calculados y publicados | riesgo comparable en cada corte | 432 |
+| `vw_crecimiento_riesgo` | Variación interanual, TCAC y umbral | riesgo comparable | 48 |
+| `vw_matriz_riesgo` | Matriz de cuatro cuadrantes en el corte actual | riesgo comparable | 48 |
+| `vw_participacion_empresa_riesgo` | Apertura por empresa con clasificación de los índices | empresa y riesgo en cada corte | 7 756 |
 
-*Nota.* Elaboración propia con datos de SBS (s. f.-a, s. f.-b, s. f.-c, s. f.-d). Filas tras la carga del 2026-10-14.
+*Nota.* Elaboración propia con datos de SBS (s. f.-a, s. f.-b, s. f.-c, s. f.-d). Filas tras la carga del 2026-10-14 (`02_vistas.sql`) y del 2026-10-18 (`04_vistas_analisis.sql`).
 
 ### 3.1 `vw_produccion_riesgo`
 
@@ -343,27 +350,192 @@ Control de O1: cada celda de los cuadros S-401, S-402 y S-403 de agosto de 2026 
 | `diferencia` | `NUMBER` | valor del Boletín - valor del cuadro, sin redondear, para que una diferencia mínima no quede oculta |
 | `cumple` | `BOOLEAN` | Verdadero si las dos cifras son iguales; falso si difieren o si la celda no está en el Boletín |
 
+### 3.6 `vw_parametros_analisis`
+
+Parámetros con nombre del análisis de 3.2, en una fila constante sobre `dual`. Las vistas 3.10 a 3.12 los leen, de modo que el umbral y el corte de crecimiento se declaran una sola vez y se citan en la nota de la matriz (D-PF01-16). No usa tablas.
+
+| Columna | Tipo | Descripción |
+|---|---|---|
+| `umbral_primas` | `NUMBER` | Umbral de materialidad: primas netas acumuladas en el corte, en miles de soles (5 000; acta, sección 4; O2) |
+| `corte_crecimiento` | `NUMBER` | Corte de crecimiento de los cuadrantes, en porcentaje: una fila crece si su variación es mayor o igual que este valor (0; D-PF01-16) |
+
+### 3.7 `vw_cortes_analisis`
+
+Cortes del análisis derivados de `dim_corte`, en una fila: el corte actual es el último con 8 meses acumulados; el anterior, 12 meses antes; el inicio y el fin de la TCAC son el primer y el último corte con 12 meses acumulados (D-PF01-11). Con la carga actual: 2026-08-31, 2025-08-31, 2019-12-31, 2025-12-31 y 6 años. Si la SBS publica un corte nuevo, los cortes se mueven solos. Tabla: `dim_corte`.
+
+| Columna | Tipo | Descripción |
+|---|---|---|
+| `corte_actual` | `DATE` | Corte más reciente con 8 meses acumulados (agosto de 2026) |
+| `corte_anterior` | `DATE` | Corte actual menos 12 meses: base de la variación interanual |
+| `corte_inicio_tcac` | `DATE` | Primer corte con 12 meses acumulados: inicio de la TCAC (diciembre de 2019) |
+| `corte_fin_tcac` | `DATE` | Último corte con 12 meses acumulados: fin de la TCAC (diciembre de 2025) |
+| `anios_tcac` | `NUMBER` | Años entre el inicio y el fin de la TCAC: meses entre los dos cortes divididos entre 12 |
+
+### 3.8 `vw_base_riesgo_comparable`
+
+Cifras sin redondear por corte y riesgo comparable (D-PF01-12): suma los riesgos de tipo `riesgo` de cada agrupación de `riesgo_comparable` (48 filas por corte, 432 en total). Es la base de las secciones 3.9 a 3.11 y no se consume directamente; por eso no redondea. Tablas: `fct_riesgo`, `dim_columna_empresa` y `dim_riesgo`.
+
+Reglas:
+- Prioridad de la columna Total ampliada. Para cada corte, hoja y riesgo toma la columna «Total + …» (`tipo_columna = total_ampliado`) cuando la hoja la publica, en diciembre de 2020 y de 2022, porque incluye los flujos de las empresas que dejaron de operar en el año y es la que usa el índice publicado (hallazgo 10); si no, toma «Total» (`total_simple`). La prioridad se resuelve hoja por hoja con `ROW_NUMBER()`.
+- P015 y P016 no publican columna ampliada: su índice en «Total» corresponde a las cifras ampliadas de P009 a P014 (verificado en Incendio, diciembre de 2022: 21.134744 calculado y publicado); 3.3 lo verifica en todas las filas. El rótulo `columna_total` se toma de la hoja de primas netas (P009).
+- Los índices publicados (P015 y P016) solo se conservan en las filas de un riesgo (`n_riesgos = 1`); en «Cauciones y fianzas», que suma tres riesgos desde diciembre de 2023, son nulos porque los índices no se suman.
+
+| Columna | Tipo | Descripción |
+|---|---|---|
+| `fecha_corte` | `DATE` | Fecha de corte |
+| `riesgo_comparable` | `VARCHAR2(100)` | Agrupación para comparar en el tiempo (catálogo de riesgos) |
+| `n_riesgos` | `NUMBER` | Riesgos de tipo riesgo que suma la agrupación en el corte (3 en Cauciones y fianzas desde diciembre de 2023; 1 en las demás) |
+| `ramo` | `VARCHAR2(50)` | Ramo de la agrupación |
+| `siniestralidad_comparable` | `VARCHAR2(1)` | S si el índice de siniestralidad es comparable con el de los ramos generales; N en rentas y Sistema Privado de Pensiones (D-PF01-15) |
+| `columna_total` | `VARCHAR2(120)` | Rótulo de la columna Total de la que salen las primas netas (P009): la ampliada («Total + …») cuando la hoja la publica (diciembre de 2020 y de 2022), si no, «Total» |
+| `primas_netas` | `NUMBER` | Primas de seguros netas (P009), en miles de soles, acumuladas en el año; sin redondear |
+| `primas_retenidas` | `NUMBER` | Primas retenidas (P011), en miles de soles, acumuladas en el año; sin redondear |
+| `siniestros_netos` | `NUMBER` | Siniestros de primas de seguros netos (P012), en miles de soles, acumulados en el año; sin redondear |
+| `siniestros_retenidos` | `NUMBER` | Siniestros retenidos (P014), en miles de soles, acumulados en el año; sin redondear |
+| `indice_directa_publicado` | `NUMBER` | Índice de siniestralidad directa publicado (P015), en porcentaje, sin redondear; solo en las filas de un riesgo |
+| `indice_retenida_publicado` | `NUMBER` | Índice de siniestralidad retenida publicado (P016), en porcentaje, sin redondear; solo en las filas de un riesgo |
+
+### 3.9 `vw_indicadores_riesgo`
+
+Serie por corte y riesgo comparable (432 filas) con los montos redondeados y los índices de siniestralidad calculados como Σ siniestros / Σ primas del mismo corte: directa con netos y netas, retenida con retenidos y retenidas (D-PF01-12). El índice calculado es nulo cuando el denominador es 0 o negativo (D-PF01-14). Los índices publicados acompañan como columna de control; 3.3 prueba que coinciden con los calculados en las filas de un riesgo. Origen: `vw_base_riesgo_comparable` y `dim_corte`.
+
+| Columna | Tipo | Descripción |
+|---|---|---|
+| `fecha_corte` | `DATE` | Fecha de corte |
+| `meses_acumulados` | `NUMBER(2)` | Meses acumulados en el año (12 u 8) |
+| `riesgo_comparable` | `VARCHAR2(100)` | Agrupación para comparar en el tiempo |
+| `n_riesgos` | `NUMBER` | Riesgos de tipo riesgo que suma la agrupación en el corte |
+| `ramo` | `VARCHAR2(50)` | Ramo de la agrupación |
+| `siniestralidad_comparable` | `VARCHAR2(1)` | S o N (D-PF01-15) |
+| `columna_total` | `VARCHAR2(120)` | Rótulo de la columna Total de la que salen las primas netas (P009); véase la sección 3.8 |
+| `primas_netas` | `NUMBER` | Primas de seguros netas (P009), en miles de soles, acumuladas en el año; 2 decimales |
+| `primas_retenidas` | `NUMBER` | Primas retenidas (P011), en miles de soles, acumuladas en el año; 2 decimales |
+| `siniestros_netos` | `NUMBER` | Siniestros de primas de seguros netos (P012), en miles de soles, acumulados en el año; 2 decimales |
+| `siniestros_retenidos` | `NUMBER` | Siniestros retenidos (P014), en miles de soles, acumulados en el año; 2 decimales |
+| `indice_siniestralidad_directa` | `NUMBER` | 100 × siniestros netos / primas netas, en porcentaje; 6 decimales; nulo si las primas netas son 0 o negativas (D-PF01-12 y D-PF01-14) |
+| `indice_siniestralidad_retenida` | `NUMBER` | 100 × siniestros retenidos / primas retenidas, en porcentaje; 6 decimales; nulo si las primas retenidas son 0 o negativas (D-PF01-12 y D-PF01-14) |
+| `indice_directa_publicado` | `NUMBER` | Índice de siniestralidad directa publicado (P015), en porcentaje; 6 decimales; columna de control, solo en las filas de un riesgo |
+| `indice_retenida_publicado` | `NUMBER` | Índice de siniestralidad retenida publicado (P016), en porcentaje; 6 decimales; columna de control, solo en las filas de un riesgo |
+
+### 3.10 `vw_crecimiento_riesgo`
+
+Una fila por riesgo comparable (48) con el crecimiento de las primas netas (D-PF01-11): la variación interanual, corte actual frente al anterior, define el eje de crecimiento y el cuadrante; la TCAC entre el inicio y el fin de la TCAC acompaña como segundo atributo, con la marca `signos_coinciden` para destacar las filas donde ambas discrepan. Fórmulas: variación = 100 × (actual / anterior − 1); TCAC = 100 × ((fin / inicio)^(1 / años) − 1). Las dos son nulas si alguna prima del denominador es 0 o negativa. Origen: `vw_base_riesgo_comparable`, `vw_cortes_analisis` y `vw_parametros_analisis`.
+
+| Columna | Tipo | Descripción |
+|---|---|---|
+| `riesgo_comparable` | `VARCHAR2(100)` | Agrupación para comparar en el tiempo |
+| `n_riesgos` | `NUMBER` | Riesgos de tipo riesgo que suma la agrupación en el corte actual |
+| `ramo` | `VARCHAR2(50)` | Ramo de la agrupación |
+| `siniestralidad_comparable` | `VARCHAR2(1)` | S o N (D-PF01-15) |
+| `corte_actual`, `corte_anterior`, `corte_inicio_tcac`, `corte_fin_tcac` | `DATE` | Cortes de `vw_cortes_analisis` (sección 3.7) |
+| `primas_actual` | `NUMBER` | Primas netas acumuladas en el corte actual, en miles de soles; 2 decimales |
+| `primas_anterior` | `NUMBER` | Primas netas acumuladas en el corte anterior, en miles de soles; 2 decimales |
+| `primas_inicio_tcac` | `NUMBER` | Primas netas del primer corte de 12 meses, en miles de soles; 2 decimales |
+| `primas_fin_tcac` | `NUMBER` | Primas netas del último corte de 12 meses, en miles de soles; 2 decimales |
+| `variacion_interanual` | `NUMBER` | Variación de las primas netas frente al corte anterior, en porcentaje; 6 decimales; nula si las primas anteriores son 0 o negativas; eje de crecimiento por defecto (D-PF01-11) |
+| `tcac` | `NUMBER` | Tasa de crecimiento anual compuesta de las primas netas entre el inicio y el fin de la TCAC, en porcentaje; 6 decimales; nula si alguna de las dos primas es 0 o negativa (D-PF01-11) |
+| `signos_coinciden` | `CHAR(1)` | S si la variación interanual y la TCAC tienen el mismo signo; N si discrepan; nulo si falta alguna |
+| `umbral_primas` | `NUMBER` | Umbral de materialidad de `vw_parametros_analisis`, en miles de soles |
+| `sobre_umbral` | `CHAR(1)` | S si las primas netas del corte actual alcanzan el umbral; N si no |
+
+### 3.11 `vw_matriz_riesgo`
+
+Matriz de cuatro cuadrantes de crecimiento y siniestralidad en el corte actual, una fila por riesgo comparable (48: 35 en la matriz, 5 rentas y SPP, 8 bajo el umbral). Origen: `vw_base_riesgo_comparable`, `vw_crecimiento_riesgo`, `vw_cortes_analisis` y `vw_parametros_analisis`.
+
+Reglas:
+- Corte de siniestralidad (D-PF01-16): índice agregado de las filas con `siniestralidad_comparable = 'S'` y `sobre_umbral = 'S'` en el corte actual, 100 × Σ siniestros / Σ primas, directo (netos y netas) y retenido (retenidos y retenidas). Es un solo valor por corte, repetido en todas las filas; con la carga actual, 43.960234 % y 39.453458 %. El corte de crecimiento es `corte_crecimiento` (0 %).
+- Codificación de los cuadrantes: 1 crece con siniestralidad sobre el corte; 2 crece con siniestralidad bajo el corte; 3 decrece con siniestralidad sobre el corte; 4 decrece con siniestralidad bajo el corte. Crece: variación (o TCAC) mayor o igual que `corte_crecimiento`; sobre el corte: índice mayor que el corte de siniestralidad. El cuadrante es nulo si la fila está bajo el umbral, no es comparable (rentas y SPP, D-PF01-15) o no tiene crecimiento o índice definidos. Hay cuatro cuadrantes: por variación interanual (el de la matriz por defecto, D-PF01-11) y por TCAC, cada uno con el índice directo y el retenido.
+- Los índices negativos o mayores que 100 % se conservan y se marcan; no se truncan ni se excluyen (D-PF01-13).
+- `situacion` explica por qué la fila entra o no en los cuadrantes.
+
+| Columna | Tipo | Descripción |
+|---|---|---|
+| `riesgo_comparable` | `VARCHAR2(100)` | Agrupación para comparar en el tiempo |
+| `n_riesgos` | `NUMBER` | Riesgos de tipo riesgo que suma la agrupación en el corte actual |
+| `ramo` | `VARCHAR2(50)` | Ramo de la agrupación |
+| `siniestralidad_comparable` | `VARCHAR2(1)` | S o N (D-PF01-15) |
+| `corte_actual`, `corte_anterior`, `corte_inicio_tcac`, `corte_fin_tcac` | `DATE` | Cortes de `vw_cortes_analisis` (sección 3.7) |
+| `primas_netas` | `NUMBER` | Primas de seguros netas (P009) del corte actual, en miles de soles; 2 decimales |
+| `primas_retenidas` | `NUMBER` | Primas retenidas (P011) del corte actual, en miles de soles; 2 decimales |
+| `siniestros_netos` | `NUMBER` | Siniestros de primas de seguros netos (P012) del corte actual, en miles de soles; 2 decimales |
+| `siniestros_retenidos` | `NUMBER` | Siniestros retenidos (P014) del corte actual, en miles de soles; 2 decimales |
+| `participacion_sistema` | `NUMBER` | Primas netas de la fila sobre la suma de todas las filas del corte actual, en porcentaje; 6 decimales |
+| `variacion_interanual` | `NUMBER` | Variación de las primas netas frente al corte anterior, en porcentaje; 6 decimales (D-PF01-11) |
+| `tcac` | `NUMBER` | Tasa de crecimiento anual compuesta 2019-2025, en porcentaje; 6 decimales (D-PF01-11) |
+| `signos_coinciden` | `CHAR(1)` | S si la variación interanual y la TCAC tienen el mismo signo; N si discrepan; nulo si falta alguna |
+| `indice_siniestralidad_directa` | `NUMBER` | 100 × siniestros netos / primas netas, en porcentaje; 6 decimales; nulo sin primas (D-PF01-12 y D-PF01-14); no se trunca (D-PF01-13) |
+| `indice_siniestralidad_retenida` | `NUMBER` | 100 × siniestros retenidos / primas retenidas, en porcentaje; 6 decimales; nulo sin primas (D-PF01-12 y D-PF01-14); no se trunca (D-PF01-13) |
+| `indice_directa_publicado` | `NUMBER` | Índice de siniestralidad directa publicado (P015), en porcentaje; 6 decimales; control, solo en las filas de un riesgo |
+| `indice_retenida_publicado` | `NUMBER` | Índice de siniestralidad retenida publicado (P016), en porcentaje; 6 decimales; control, solo en las filas de un riesgo |
+| `umbral_primas` | `NUMBER` | Umbral de materialidad, en miles de soles |
+| `sobre_umbral` | `CHAR(1)` | S si las primas netas del corte actual alcanzan el umbral; N si no (la fila sale de los cuadrantes) |
+| `corte_crecimiento` | `NUMBER` | Corte de crecimiento, en porcentaje (D-PF01-16) |
+| `corte_siniestralidad_directa` | `NUMBER` | Corte de siniestralidad directa: índice agregado de las filas comparables sobre el umbral, en porcentaje; 6 decimales; el mismo valor en todas las filas (D-PF01-16) |
+| `corte_siniestralidad_retenida` | `NUMBER` | Corte de siniestralidad retenida, con la misma regla (D-PF01-16) |
+| `cuadrante_interanual_directa` | `NUMBER` | Cuadrante por variación interanual e índice directo: 1 a 4 o nulo; es el cuadrante por defecto del informe y el tablero (D-PF01-11 y D-PF01-16) |
+| `cuadrante_interanual_retenida` | `NUMBER` | Cuadrante por variación interanual e índice retenido: 1 a 4 o nulo |
+| `cuadrante_tcac_directa` | `NUMBER` | Cuadrante por TCAC e índice directo: 1 a 4 o nulo; segundo atributo |
+| `cuadrante_tcac_retenida` | `NUMBER` | Cuadrante por TCAC e índice retenido: 1 a 4 o nulo; segundo atributo |
+| `situacion` | `VARCHAR2(28)` | «En la matriz», «Bajo el umbral», «No comparable (rentas y SPP)» o «Sin medida definida» |
+
+### 3.12 `vw_participacion_empresa_riesgo`
+
+Apertura por corte, empresa y riesgo de tipo `riesgo` (7 756 filas), para el análisis por empresa de O2 y los casos atípicos de 3.1. Tablas: `fct_riesgo`, `dim_columna_empresa`, `dim_riesgo`, `dim_empresa` y `dim_corte`; parámetros de `vw_parametros_analisis`.
+
+Reglas:
+- Las columnas de la fuente se agrupan por `empresa_id`: Mapfre Perú publica dos columnas hasta 2022 (hallazgo 1) y aquí es una sola empresa, con `n_columnas = 2`. Los índices publicados solo se muestran cuando la empresa tiene una columna, porque no se suman.
+- La participación se calcula sobre la suma de las columnas de empresa del riesgo en el corte, no sobre la columna Total, para que sume 100 % en cada riesgo; es nula si esa suma es 0 o negativa.
+- Clasificación de celdas (D-PF01-13 y D-PF01-14), con netos y netas para la directa y con retenidos y retenidas para la retenida: `sin_dato` si falta una cifra, `sin_primas` si las primas son 0, `primas_negativas` si son negativas, `negativo` si los siniestros son negativos, `mayor_100` si el índice supera 100 % y `en_rango` en los demás casos. Las celdas negativas cuentan en las sumas, como en el total de la SBS; en las figuras solo se recorta el eje.
+- El índice calculado es nulo cuando las primas son 0 o negativas (D-PF01-14); el índice 0 publicado sin primas queda como celda sin dato.
+
+| Columna | Tipo | Descripción |
+|---|---|---|
+| `fecha_corte` | `DATE` | Fecha de corte |
+| `meses_acumulados` | `NUMBER(2)` | Meses acumulados en el año (12 u 8) |
+| `empresa_id` | `VARCHAR2(30)` | Empresa para el análisis en el tiempo |
+| `empresa` | `VARCHAR2(100)` | Denominación vigente de la empresa |
+| `riesgo_id` | `NUMBER(3)` | Riesgo del catálogo (solo tipo riesgo) |
+| `riesgo` | `VARCHAR2(100)` | Rótulo vigente del riesgo |
+| `ramo` | `VARCHAR2(50)` | Ramo del riesgo |
+| `riesgo_comparable` | `VARCHAR2(100)` | Agrupación para comparar en el tiempo |
+| `siniestralidad_comparable` | `VARCHAR2(1)` | S o N (D-PF01-15) |
+| `n_columnas` | `NUMBER` | Columnas de la fuente agrupadas en la empresa en ese corte (2 en Mapfre Perú hasta 2022; 1 en las demás) |
+| `primas_netas` | `NUMBER` | Primas de seguros netas (P009), en miles de soles, acumuladas en el año; 2 decimales |
+| `primas_retenidas` | `NUMBER` | Primas retenidas (P011), en miles de soles, acumuladas en el año; 2 decimales |
+| `siniestros_netos` | `NUMBER` | Siniestros de primas de seguros netos (P012), en miles de soles, acumulados en el año; 2 decimales |
+| `siniestros_retenidos` | `NUMBER` | Siniestros retenidos (P014), en miles de soles, acumulados en el año; 2 decimales |
+| `participacion_riesgo` | `NUMBER` | Primas netas de la empresa sobre la suma de las columnas de empresa del riesgo en el corte, en porcentaje; 6 decimales; nula si esa suma es 0 o negativa |
+| `indice_siniestralidad_directa` | `NUMBER` | 100 × siniestros netos / primas netas, en porcentaje; 6 decimales; nulo si las primas netas son 0 o negativas (D-PF01-14); no se trunca (D-PF01-13) |
+| `indice_siniestralidad_retenida` | `NUMBER` | 100 × siniestros retenidos / primas retenidas, en porcentaje; 6 decimales; nulo si las primas retenidas son 0 o negativas (D-PF01-14); no se trunca (D-PF01-13) |
+| `indice_directa_publicado` | `NUMBER` | Índice de siniestralidad directa publicado (P015), en porcentaje; 6 decimales; solo si `n_columnas = 1` |
+| `indice_retenida_publicado` | `NUMBER` | Índice de siniestralidad retenida publicado (P016), en porcentaje; 6 decimales; solo si `n_columnas = 1` |
+| `clasificacion_directa` | `VARCHAR2(16)` | `sin_dato`, `sin_primas`, `primas_negativas`, `negativo`, `mayor_100` o `en_rango`, con netos y netas (D-PF01-13) |
+| `clasificacion_retenida` | `VARCHAR2(16)` | Los mismos valores, con retenidos y retenidas (D-PF01-13) |
+| `umbral_primas` | `NUMBER` | Umbral de materialidad, en miles de soles |
+| `sobre_umbral` | `CHAR(1)` | S si las primas netas de la celda alcanzan el umbral; N si no |
+
 ## 4. Reglas de carga
 
 ### 4.1 Orden de ejecución
 
-`scripts/cargar_oracle.py` ejecuta los cinco pasos en este orden; `src/pf_01_siniestralidad_sbs/carga.py` contiene la lógica.
+`scripts/cargar_oracle.py` ejecuta los seis pasos en este orden; `src/pf_01_siniestralidad_sbs/carga.py` contiene la lógica.
 
 | Paso | Archivo o función | Qué hace | Transacción |
 |---|---|---|---|
 | 1 | `sql/oracle/01_ddl_tablas.sql` | Crea las tablas, llaves, restricciones CHECK, índices y comentarios | DDL; cada sentencia confirma |
-| 2 | `sql/oracle/02_vistas.sql` | Crea o reemplaza las 5 vistas | DDL |
-| 3 | `carga.cargar_stg` | Vacía las tablas `stg_` (TRUNCATE) y las llena desde `data/interim/` con `executemany` por lotes de 20 000 filas; después reúne sus estadísticas del optimizador | Una por tabla |
-| 4 | `carga.cargar_catalogos` | Borra los hechos y reemplaza `dim_empresa`, `dim_corte`, `dim_riesgo` y las columnas de empresa de `dim_columna_empresa` desde los catálogos | Abierta, sin confirmar |
-| 5 | `sql/oracle/03_carga_modelo.sql` | Llena `dim_cuadro`, `dim_cuenta`, `dim_indicador`, las columnas Total y las tres tablas de hechos; controla los conteos y confirma; luego reúne las estadísticas de `dim_` y `fct_` | Confirma los pasos 4 y 5 juntos |
+| 2 | `sql/oracle/02_vistas.sql` | Crea o reemplaza las 5 vistas del modelo y de los cuadres de O1 | DDL |
+| 3 | `sql/oracle/04_vistas_analisis.sql` | Crea o reemplaza las 7 vistas del análisis de 3.2 (sección 3.6 a 3.12) | DDL |
+| 4 | `carga.cargar_stg` | Vacía las tablas `stg_` (TRUNCATE) y las llena desde `data/interim/` con `executemany` por lotes de 20 000 filas; después reúne sus estadísticas del optimizador | Una por tabla |
+| 5 | `carga.cargar_catalogos` | Borra los hechos y reemplaza `dim_empresa`, `dim_corte`, `dim_riesgo` y las columnas de empresa de `dim_columna_empresa` desde los catálogos | Abierta, sin confirmar |
+| 6 | `sql/oracle/03_carga_modelo.sql` | Llena `dim_cuadro`, `dim_cuenta`, `dim_indicador`, las columnas Total y las tres tablas de hechos; controla los conteos y confirma; luego reúne las estadísticas de `dim_` y `fct_` | Confirma los pasos 5 y 6 juntos |
 
 Los catálogos se cargan desde Python directo a `dim_` porque son pocos (60 filas o menos) y su traducción (true y false a S y N, padre de cada riesgo) son funciones puras con pruebas en `tests/test_carga.py`; una tabla `stg_` de catálogo no aportaba control adicional. Al final, el programa informa las filas por tabla, el estado de las vistas y los cuadres de O1, y devuelve 1 si un paso falla o si alguna vista queda no válida.
 
 ### 4.2 Idempotencia y control de conteos
 
 - `01_ddl_tablas.sql` usa `CREATE TABLE IF NOT EXISTS` y crea cada llave, restricción CHECK e índice en un bloque PL/SQL que consulta `USER_CONSTRAINTS` o `USER_INDEXES`. Los comentarios se reescriben en cada ejecución.
-- `02_vistas.sql` usa `CREATE OR REPLACE VIEW` (Oracle no admite `IF NOT EXISTS` junto con `OR REPLACE`: ORA-11541).
-- Los pasos 4 y 5 reemplazan los datos en una sola transacción: borran y vuelven a insertar con `INSERT ... SELECT`. Con los mismos datos, la segunda ejecución deja las mismas filas y los mismos identificadores; la huella por fila de `dim_` y `fct_` se comprobó idéntica entre dos ejecuciones y entre la base nativa y el contenedor.
+- `02_vistas.sql` y `04_vistas_analisis.sql` usan `CREATE OR REPLACE VIEW` (Oracle no admite `IF NOT EXISTS` junto con `OR REPLACE`: ORA-11541).
+- Los pasos 5 y 6 reemplazan los datos en una sola transacción: borran y vuelven a insertar con `INSERT ... SELECT`. Con los mismos datos, la segunda ejecución deja las mismas filas y los mismos identificadores; la huella por fila de `dim_` y `fct_` se comprobó idéntica entre dos ejecuciones y entre la base nativa y el contenedor.
 - Antes del `COMMIT`, `03_carga_modelo.sql` comprueba que cada tabla de hechos tenga tantas filas como su tabla `stg_` en la serie S-367. Si no, lanza `ORA-20001` («una celda no tiene equivalencia única en alguna dimensión») y la transacción se deshace, incluidos los catálogos del paso 4.
 
 ### 4.3 Rótulos normalizados y cuentas repetidas
@@ -454,7 +626,7 @@ Resultados esperados (carga del 2026-10-14, iguales en las dos bases):
 
 *Nota.* Elaboración propia con datos de SBS (s. f.-a, s. f.-b, s. f.-c, s. f.-d).
 
-El programa termina con código 0 y las 5 vistas en estado VALID. Una ejecución completa tarda de 30 a 70 segundos. La prueba de integración `tests/test_carga_oracle.py` repite estas comprobaciones contra la base que indiquen `ORACLE_USER`, `ORACLE_PASSWORD` y `ORACLE_DSN` en el entorno, y se omite si faltan esas variables, como en GitHub Actions.
+El programa termina con código 0 y las 12 vistas en estado VALID (5 de `02_vistas.sql` y 7 de `04_vistas_analisis.sql`, que el programa ejecuta antes de cargar los datos). Una ejecución completa tarda de 30 a 70 segundos en el contenedor. Las pruebas de integración `tests/test_carga_oracle.py` (tablas, cuadres y estado de las vistas) y `tests/test_vistas_analisis.py` (cifras de las vistas de análisis frente al notebook de 3.1) repiten estas comprobaciones contra la base que indiquen `ORACLE_USER`, `ORACLE_PASSWORD` y `ORACLE_DSN` en el entorno, y se omiten si faltan esas variables, como en GitHub Actions.
 
 ## 6. Observaciones de estructura (verificadas el 2026-10-11)
 
