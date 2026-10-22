@@ -1,6 +1,6 @@
 # Acta de constitución · PF-01: Producción y siniestralidad por riesgo del mercado asegurador peruano, 2019-2026
 
-`Portafolio · PF-01` · Versión 1.4 · 2026-10-14
+`Portafolio · PF-01` · Versión 1.5 · 2026-10-21
 
 | Campo | Valor |
 |---|---|
@@ -9,7 +9,7 @@
 | Issue padre | #1 |
 | Fechas planificadas | Planificación: 2026-10-12 a 2026-10-16 · Ejecución y cierre: 2026-11-02 a 2026-11-26 |
 | Publicación en LinkedIn | Jueves 2026-11-26, 08:00 (hora de Lima) |
-| Esfuerzo estimado | 32.5 h: 28.5 h de núcleo (incluye el tablero Power BI, 4 h, y el modelo lógico y relacional del Data Modeler, 1.5 h) y 4 h opcionales (arquitectura en Visio, 2 h; proceso en Bizagi, 2 h) |
+| Esfuerzo estimado | 34.0 h: 28.5 h de núcleo (incluye el tablero Power BI, 4 h, y el modelo lógico y relacional del Data Modeler, 1.5 h) y 5.5 h opcionales (arquitectura en Visio, 2 h; proceso en Bizagi, 3.5 h) |
 | Estado | Aprobado el 2026-10-11 |
 
 ## 1. Problema de negocio
@@ -43,7 +43,7 @@ Construir una base reproducible con los estados financieros, los indicadores y l
 - Informe, README, cronograma con línea base en Microsoft Project, post y documento PDF.
 - Tablero Power BI en formato PBIP (paquete 4.1; núcleo desde el 2026-10-14, D-PF01-10).
 - Arquitectura en Visio (paquete 2.4): una página con la arquitectura del flujo de datos por etapas ETL y consumo, exportada a SVG y PDF en `docs/diagramas/`; el modelo relacional se publica con el diagrama del Data Modeler (incluido por control de cambios del 2026-10-11; alcance ajustado el 2026-10-14, D-PF01-09).
-- Proceso AS-IS y TO-BE en Bizagi (paquete 3.4): elaboración manual del reporte de siniestralidad por riesgo frente al flujo reproducible del proyecto, con BPMN, SVG y PDF en `docs/procesos/` (incluido por control de cambios del 2026-10-11).
+- Proceso AS-IS y TO-BE en Bizagi (paquete 3.4): elaboración manual del reporte de siniestralidad por riesgo frente al flujo reproducible del proyecto, con el modelo `.bpm`, un BPMN por diagrama, SVG y PDF en `docs/procesos/` (incluido por control de cambios del 2026-10-11). Desde el 2026-10-18 incluye una tabla de tiempos por actividad, AS-IS frente a TO-BE (D-PF01-19, con su enmienda del 2026-10-19: AS-IS estimado por el autor y TO-BE medido), y los diagramas conservan el formato estándar de Bizagi (D-PF01-20).
 
 **Excluye:**
 - Datos personales reales.
@@ -82,7 +82,7 @@ Construir una base reproducible con los estados financieros, los indicadores y l
 | Cronograma | `gestion/cronograma/`: `.mpp` con Baseline, XML (MSPDI) y PDF de línea base y de seguimiento |
 | Modelo lógico y relacional | `docs/modelo/pf01_modelo.dmd` y diagramas `pf01_modelo_logico` y `pf01_modelo_relacional` (SVG y PDF) en `docs/diagramas/`, coherentes con el DDL |
 | Arquitectura en Visio | `docs/diagramas/`: `PF-01_diagramas.vsdx` (una página), `PF-01_arquitectura.svg` y `PF-01_diagramas.pdf`; figura 1 de `docs/04_arquitectura.md` y del README (APA 7); modelo relacional con `pf01_modelo_relacional.svg` del Data Modeler (figura 2) |
-| Proceso en Bizagi | `docs/procesos/`: `.bpm`, `.bpmn` (BPMN 2.0), SVG AS-IS y TO-BE y PDF; diagrama validado en Bizagi Modeler |
+| Proceso en Bizagi | `docs/procesos/`: `PF-01_proceso.bpm`, `PF-01_proceso_asis.bpmn` y `PF-01_proceso_tobe.bpmn` (BPMN 2.0), SVG AS-IS y TO-BE y `PF-01_proceso.pdf`; tabla de tiempos `PF-01_tiempos` en CSV, SVG y PDF; diagramas validados en Bizagi Modeler; figuras 2 y 3 y tabla 1 del README (APA 7) |
 | Tablero Power BI | PBIP en `dashboards/powerbi/`; capturas en `reports/figures/` con nota APA |
 | Post + documento PDF | Documento de 6 a 8 páginas de 1080 × 1350 con la matriz en la portada; checklist de la guía editorial y de la skill de marca; revisión anti-estilo-IA |
 
@@ -142,7 +142,7 @@ Los gráficos del informe y del documento PDF siguen el estilo `jc-editorial` de
 
 ## 11. Aprobación
 
-Plan aprobado por José Caycho A. el 2026-10-11. En la misma fecha se incorporó Oracle SQL Developer al stack (versión 1.2 del acta) y, por control de cambios registrado en el issue #1, se incluyeron los paquetes 2.4 (Visio, #24) y 3.4 (Bizagi, #25), sin modificar la línea base del núcleo (versión 1.3). El 2026-10-14 se ajustó el alcance del paquete 2.4 (una página de arquitectura en Visio; modelo relacional desde el Data Modeler, D-PF01-09) y el tablero Power BI (4.1) pasó al núcleo (D-PF01-10); con el modelo lógico y relacional incorporado a 2.3 el 2026-10-11 (D-PF01-04), el esfuerzo total es de 32.5 h (versión 1.4).
+Plan aprobado por José Caycho A. el 2026-10-11. En la misma fecha se incorporó Oracle SQL Developer al stack (versión 1.2 del acta) y, por control de cambios registrado en el issue #1, se incluyeron los paquetes 2.4 (Visio, #24) y 3.4 (Bizagi, #25), sin modificar la línea base del núcleo (versión 1.3). El 2026-10-14 se ajustó el alcance del paquete 2.4 (una página de arquitectura en Visio; modelo relacional desde el Data Modeler, D-PF01-09) y el tablero Power BI (4.1) pasó al núcleo (D-PF01-10); con el modelo lógico y relacional incorporado a 2.3 el 2026-10-11 (D-PF01-04), el esfuerzo total es de 32.5 h (versión 1.4). El 2026-10-18 el paquete 3.4 incorporó la tabla de tiempos AS-IS frente a TO-BE (D-PF01-19, enmendada el 2026-10-19) y el formato estándar de Bizagi en los diagramas (D-PF01-20), con 1.5 h más; el esfuerzo total es de 34.0 h (versión 1.5).
 
 ## Referencias
 
