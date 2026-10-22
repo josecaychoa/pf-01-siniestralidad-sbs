@@ -1,0 +1,17 @@
+proceso,actividad,tarea,metodo,cantidad,unidad,minutos_por_unidad,minutos,supuesto_o_fuente
+AS-IS,Obtención,Descargar los boletines desde el portal,Estimación del autor,2,boletín,3,6,"Agosto de 2025 y agosto de 2026; portal, corte, descarga y descompresión"
+AS-IS,Consolidación,Copiar las hojas al libro consolidado,Estimación del autor,9,hoja,2,18,P009 a P016 de agosto de 2026 y P009 de agosto de 2025
+AS-IS,Consolidación,Homologar empresas entre cortes,Estimación del autor,6,caso,3,18,5 cambios de denominación o abreviatura y 1 empresa nueva (catalogos/empresas.csv)
+AS-IS,Consolidación,Alinear las filas de riesgos,Estimación del autor,1,revisión,10,10,60 filas del catálogo de riesgos (catalogos/riesgos.csv)
+AS-IS,Cálculo,Armar y copiar las fórmulas,Estimación del autor,1,conjunto,5,5,43 riesgos con primas en agosto de 2026 por 3 indicadores
+AS-IS,Cálculo,Revisar las fórmulas,Estimación del autor,1,revisión,10,10,"Errores, divisiones por cero y agregados"
+AS-IS,Control,Cuadrar con la columna Total,Estimación del autor,9,hoja,2,18,Una comparación por hoja copiada
+AS-IS,Control,Corregir diferencias,Estimación del autor,1,ciclo,10,10,Un ciclo de corrección supuesto
+TO-BE,Obtención,uv run python scripts/descargar_sbs.py --sin-extraccion,Mediana de 3 corridas medidas,1,corrida,0.69,0.69,Segundos por corrida: 98.98; 41.17; 29.54
+TO-BE,Consolidación,uv run python scripts/descargar_sbs.py --sin-descarga,Mediana de 3 corridas medidas,1,corrida,1.54,1.54,Segundos por corrida: 138.01; 92.49; 62.25
+TO-BE,Control,uv run python scripts/validar_datos.py,Mediana de 3 corridas medidas,1,corrida,0.44,0.44,Segundos por corrida: 35.66; 19.21; 26.48
+TO-BE,Cálculo,uv run python scripts/cargar_oracle.py,Mediana de 3 corridas medidas,1,corrida,0.73,0.73,Segundos por corrida: 185.94; 43.56; 42.21
+TO-BE,Cálculo,uv run python scripts/exportar_indicadores.py,Mediana de 3 corridas medidas,1,corrida,0.1,0.1,Segundos por corrida: 9.93; 5.98; 5.02
+TO-BE,Control,uv run python scripts/validar_resultados.py,Mediana de 3 corridas medidas,1,corrida,0.39,0.39,Segundos por corrida: 137.50; 23.57; 21.64
+TO-BE,Control,Leer la nota reports/validacion_datos.md,Estimación del autor,1,nota,3,3,Estimación del autor
+TO-BE,Control,Leer la nota reports/validacion_resultados.md,Estimación del autor,1,nota,3,3,Estimación del autor
