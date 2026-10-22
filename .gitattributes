@@ -5,3 +5,9 @@
 
 # Mismo caso para el informe que escribe scripts/validar_datos.py con LF.
 reports/*.md text eol=lf
+
+# Exportaciones de Bizagi (CRLF) y figura de tiempos de 3.4: se versionan tal como se
+# verificaron, sin conversión de finales de línea; así no cambian los bytes del SVG que
+# lleva el manifiesto de procedencia (Content Credentials).
+docs/procesos/*.svg -text
+docs/procesos/*.bpmn -text
