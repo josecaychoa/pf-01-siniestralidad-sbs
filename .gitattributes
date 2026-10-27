@@ -16,3 +16,9 @@ docs/procesos/*.bpmn -text
 # docs/procesos/: bytes estables para la prueba de coincidencia con el script y para
 # el manifiesto de procedencia (Content Credentials).
 reports/figures/*.svg -text
+
+# Exportación XML de Microsoft Project (gestion/cronograma/): normalizada a LF como el
+# resto del historial. Project la exporta con CRLF en Windows y, si el commit se hace
+# desde un entorno sin autocrlf (p. ej., la sesión de Claude en Linux), el blob quedaría
+# con CRLF y el árbol de Windows aparecería modificado tras cada checkout.
+gestion/cronograma/*.xml text eol=lf
