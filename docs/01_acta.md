@@ -1,6 +1,6 @@
 # Acta de constitución · PF-01: Producción y siniestralidad por riesgo del mercado asegurador peruano, 2019-2026
 
-`Portafolio · PF-01` · Versión 1.6 · 2026-10-25
+`Portafolio · PF-01` · Versión 1.7 · 2026-10-26
 
 | Campo | Valor |
 |---|---|
@@ -9,7 +9,7 @@
 | Issue padre | #1 |
 | Fechas planificadas | Planificación: 2026-10-12 a 2026-10-16 · Ejecución y cierre: 2026-11-02 a 2026-11-26 |
 | Publicación en LinkedIn | Jueves 2026-11-26, 08:00 (hora de Lima) |
-| Esfuerzo estimado | 34.0 h: 28.5 h de núcleo (incluye el tablero Power BI, 4 h, y el modelo lógico y relacional del Data Modeler, 1.5 h) y 5.5 h opcionales (arquitectura en Visio, 2 h; proceso en Bizagi, 3.5 h) |
+| Esfuerzo estimado | 34.5 h: 29.0 h de núcleo (incluye el tablero Power BI, 4 h; el informe, 2 h, y el modelo lógico y relacional del Data Modeler, 1.5 h) y 5.5 h opcionales (arquitectura en Visio, 2 h; proceso en Bizagi, 3.5 h) |
 | Estado | Aprobado el 2026-10-11 |
 
 ## 1. Problema de negocio
@@ -77,7 +77,7 @@ Construir una base reproducible con los estados financieros, los indicadores y l
 |---|---|
 | Repositorio reproducible | `uv sync --locked`, `docker compose up -d` y el script de descarga reconstruyen la base desde cero, sin pasos manuales no documentados |
 | Modelo de datos Oracle | DDL idempotente y vistas en `sql/oracle/` para estados financieros, indicadores y producción y siniestralidad; diccionario en `docs/03_diccionario_datos.md` |
-| Informe | `reports/`: matriz, tablas y figuras con citas, notas y referencias en APA 7 y ortografía RAE |
+| Informe | `reports/informe.md`: serie 2019-2026 del sistema (tabla y figura generadas por script, D-PF01-24), matriz de riesgos, proceso AS-IS frente a TO-BE y limitaciones, con citas, notas y referencias en APA 7 y ortografía RAE |
 | README | Problema, datos, método, resultados, reproducción y limitaciones (plantilla 03f) |
 | Cronograma | `gestion/cronograma/`: `.mpp` con Baseline, XML (MSPDI) y PDF de línea base y de seguimiento |
 | Modelo lógico y relacional | `docs/modelo/pf01_modelo.dmd` y diagramas `pf01_modelo_logico` y `pf01_modelo_relacional` (SVG y PDF) en `docs/diagramas/`, coherentes con el DDL |
@@ -93,6 +93,8 @@ El documento PDF es el entregable que se muestra en LinkedIn.
 Por la decisión D-PF01-22 (2026-10-22), el PBIP tiene una página de 1280 × 720, «Matriz de riesgos»: cuatro tarjetas (siniestralidad directa y retenida del sistema, primas netas y su variación interanual), la segmentación de la medida (directa o retenida), la dispersión de los riesgos clasificados y la tabla de riesgos por cuadrante. La segunda página, «Serie y empresas» (serie 2019-2025 del índice del sistema y participación de cada empresa en un riesgo), queda solo en el prototipo del tablero de Claude, para mantener el esfuerzo de 4 h (riesgo R7). El prototipo y la maqueta en Design fueron aprobados el 2026-10-22.
 
 Por la decisión D-PF01-23 (2026-10-25), el PBIP lee tres CSV de `data/processed/`, exportados de las vistas con `scripts/exportar_indicadores.py`: `matriz_riesgos.csv`, `indicadores_riesgo.csv` y `crecimiento_riesgos.csv`. Los tres son agregados propios por riesgo comparable y se versionan con su cita, de modo que el PBIP abre desde un clon sin la base Oracle.
+
+Por la decisión D-PF01-24 (2026-10-26), el informe incluye la tabla y la figura de la serie 2019-2026 del índice del sistema, generadas por script desde `data/processed/indicadores_riesgo.csv` (`scripts/figura_serie.py`, módulo `serie_sistema.py` y pruebas que cuadran la serie con la nota de validación). La serie quedó fuera del PBIP por D-PF01-22, así que el informe es su lugar de publicación; 4.2 pasa de 1.5 a 2.0 h.
 
 Cada indicador tiene una sola fórmula de referencia: su vista `vw_`. La medida DAX y el cálculo del prototipo la replican y se comprueban con una prueba de cuadre antes de mostrarse.
 
@@ -162,7 +164,7 @@ Los gráficos del informe y del documento PDF siguen el estilo `jc-editorial` de
 
 ## 11. Aprobación
 
-Plan aprobado por José Caycho A. el 2026-10-11. En la misma fecha se incorporó Oracle SQL Developer al stack (versión 1.2 del acta) y, por control de cambios registrado en el issue #1, se incluyeron los paquetes 2.4 (Visio, #24) y 3.4 (Bizagi, #25), sin modificar la línea base del núcleo (versión 1.3). El 2026-10-14 se ajustó el alcance del paquete 2.4 (una página de arquitectura en Visio; modelo relacional desde el Data Modeler, D-PF01-09) y el tablero Power BI (4.1) pasó al núcleo (D-PF01-10); con el modelo lógico y relacional incorporado a 2.3 el 2026-10-11 (D-PF01-04), el esfuerzo total es de 32.5 h (versión 1.4). El 2026-10-18 el paquete 3.4 incorporó la tabla de tiempos AS-IS frente a TO-BE (D-PF01-19, enmendada el 2026-10-19) y el formato estándar de Bizagi en los diagramas (D-PF01-20), con 1.5 h más; el esfuerzo total es de 34.0 h (versión 1.5). El 2026-10-22 se fijó el alcance del tablero Power BI en una página, con la segunda solo en el prototipo (D-PF01-22), y el 2026-10-25 se decidió versionar `indicadores_riesgo.csv` y `crecimiento_riesgos.csv` (D-PF01-23); se agregan las fichas de indicadores de la sección 6.1 y el esfuerzo no cambia (versión 1.6).
+Plan aprobado por José Caycho A. el 2026-10-11. En la misma fecha se incorporó Oracle SQL Developer al stack (versión 1.2 del acta) y, por control de cambios registrado en el issue #1, se incluyeron los paquetes 2.4 (Visio, #24) y 3.4 (Bizagi, #25), sin modificar la línea base del núcleo (versión 1.3). El 2026-10-14 se ajustó el alcance del paquete 2.4 (una página de arquitectura en Visio; modelo relacional desde el Data Modeler, D-PF01-09) y el tablero Power BI (4.1) pasó al núcleo (D-PF01-10); con el modelo lógico y relacional incorporado a 2.3 el 2026-10-11 (D-PF01-04), el esfuerzo total es de 32.5 h (versión 1.4). El 2026-10-18 el paquete 3.4 incorporó la tabla de tiempos AS-IS frente a TO-BE (D-PF01-19, enmendada el 2026-10-19) y el formato estándar de Bizagi en los diagramas (D-PF01-20), con 1.5 h más; el esfuerzo total es de 34.0 h (versión 1.5). El 2026-10-22 se fijó el alcance del tablero Power BI en una página, con la segunda solo en el prototipo (D-PF01-22), y el 2026-10-25 se decidió versionar `indicadores_riesgo.csv` y `crecimiento_riesgos.csv` (D-PF01-23); se agregan las fichas de indicadores de la sección 6.1 y el esfuerzo no cambia (versión 1.6). El 2026-10-26 el informe (4.2) incorporó la tabla y la figura de la serie 2019-2026 generadas por script (D-PF01-24), con 0.5 h más; el esfuerzo total es de 34.5 h (versión 1.7).
 
 ## Referencias
 
