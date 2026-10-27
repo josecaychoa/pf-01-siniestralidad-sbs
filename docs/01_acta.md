@@ -1,6 +1,6 @@
 # Acta de constitución · PF-01: Producción y siniestralidad por riesgo del mercado asegurador peruano, 2019-2026
 
-`Portafolio · PF-01` · Versión 1.5 · 2026-10-21
+`Portafolio · PF-01` · Versión 1.6 · 2026-10-25
 
 | Campo | Valor |
 |---|---|
@@ -83,10 +83,30 @@ Construir una base reproducible con los estados financieros, los indicadores y l
 | Modelo lógico y relacional | `docs/modelo/pf01_modelo.dmd` y diagramas `pf01_modelo_logico` y `pf01_modelo_relacional` (SVG y PDF) en `docs/diagramas/`, coherentes con el DDL |
 | Arquitectura en Visio | `docs/diagramas/`: `PF-01_diagramas.vsdx` (una página), `PF-01_arquitectura.svg` y `PF-01_diagramas.pdf`; figura 1 de `docs/04_arquitectura.md` y del README (APA 7); modelo relacional con `pf01_modelo_relacional.svg` del Data Modeler (figura 2) |
 | Proceso en Bizagi | `docs/procesos/`: `PF-01_proceso.bpm`, `PF-01_proceso_asis.bpmn` y `PF-01_proceso_tobe.bpmn` (BPMN 2.0), SVG AS-IS y TO-BE y `PF-01_proceso.pdf`; tabla de tiempos `PF-01_tiempos` en CSV, SVG y PDF; diagramas validados en Bizagi Modeler; figuras 2 y 3 y tabla 1 del README (APA 7) |
-| Tablero Power BI | PBIP en `dashboards/powerbi/`; capturas en `reports/figures/` con nota APA |
+| Tablero Power BI | PBIP de una página (matriz de riesgos) en `dashboards/powerbi/`, con el tema `assets/jc-powerbi-tema.json` e indicadores con ficha (sección 6.1); capturas en `reports/figures/` con nota APA (D-PF01-22) |
 | Post + documento PDF | Documento de 6 a 8 páginas de 1080 × 1350 con la matriz en la portada; checklist de la guía editorial y de la skill de marca; revisión anti-estilo-IA |
 
 El documento PDF es el entregable que se muestra en LinkedIn.
+
+### 6.1 Tablero Power BI: alcance e indicadores
+
+Por la decisión D-PF01-22 (2026-10-22), el PBIP tiene una página de 1280 × 720, «Matriz de riesgos»: cuatro tarjetas (siniestralidad directa y retenida del sistema, primas netas y su variación interanual), la segmentación de la medida (directa o retenida), la dispersión de los riesgos clasificados y la tabla de riesgos por cuadrante. La segunda página, «Serie y empresas» (serie 2019-2025 del índice del sistema y participación de cada empresa en un riesgo), queda solo en el prototipo del tablero de Claude, para mantener el esfuerzo de 4 h (riesgo R7). El prototipo y la maqueta en Design fueron aprobados el 2026-10-22.
+
+Por la decisión D-PF01-23 (2026-10-25), el PBIP lee tres CSV de `data/processed/`, exportados de las vistas con `scripts/exportar_indicadores.py`: `matriz_riesgos.csv`, `indicadores_riesgo.csv` y `crecimiento_riesgos.csv`. Los tres son agregados propios por riesgo comparable y se versionan con su cita, de modo que el PBIP abre desde un clon sin la base Oracle.
+
+Cada indicador tiene una sola fórmula de referencia: su vista `vw_`. La medida DAX y el cálculo del prototipo la replican y se comprueban con una prueba de cuadre antes de mostrarse.
+
+| ID | Indicador y pregunta | Definición y fórmula | Unidad y formato | Implementación | Limitaciones |
+|---|---|---|---|---|---|
+| IA-PF01-01 | Índice de siniestralidad directa. ¿Qué parte de las primas netas se va en siniestros? | 100 × Σ siniestros netos / Σ primas netas; nulo si las primas son 0 o negativas | Porcentaje con un decimal y espacio: 48.9 % | Vista `vw_indicadores_riesgo` (por riesgo; la suma por corte da el sistema) · medida DAX `Siniestralidad directa` · cálculo `sistema_corte` del prototipo | El total del sistema incluye rentas y SPP, cuya siniestralidad no es comparable (D-PF01-15) |
+| IA-PF01-02 | Índice de siniestralidad retenida. ¿Y después del reaseguro? | 100 × Σ siniestros retenidos / Σ primas retenidas; nulo si las primas son 0 o negativas | Igual que IA-PF01-01 | Vista `vw_indicadores_riesgo` · medida DAX `Siniestralidad retenida` · cálculo `sistema_corte` | Depende de la política de reaseguro de cada empresa |
+| IA-PF01-03 | Variación interanual de las primas netas. ¿El riesgo crece? | 100 × (primas del corte actual / primas del corte anterior − 1); agosto de 2026 frente a agosto de 2025; nula si las primas anteriores son 0 o negativas | Porcentaje con un decimal: 9.0 % | Vista `vw_crecimiento_riesgo` · medida DAX `Variación interanual de primas` · cálculo `resumen_actual` | Montos nominales, sin ajuste por inflación; ocho meses acumulados |
+| IA-PF01-04 | TCAC de las primas netas, 2019-2025. ¿El crecimiento es sostenido? | 100 × ((primas de diciembre de 2025 / primas de diciembre de 2019) elevado a 1/6 − 1) | Porcentaje con un decimal | Vista `vw_crecimiento_riesgo` · columna `tcac` en la ventana emergente de la dispersión | Segundo atributo de la matriz (D-PF01-11); no define el cuadrante por defecto |
+| IA-PF01-05 | Participación en las primas del sistema. ¿Cuánto pesa el riesgo? | 100 × primas netas del riesgo / Σ primas netas de los 48 riesgos del corte | Porcentaje con un decimal | Vista `vw_matriz_riesgo` · columna `participacion_sistema` en la ventana emergente | Incluye filas con primas negativas, que restan |
+| IA-PF01-06 | Participación de la empresa en el riesgo. ¿Quién concentra el riesgo? | 100 × primas netas de la empresa / Σ primas netas de las empresas del riesgo comparable | Porcentaje con un decimal | Vista `vw_participacion_empresa_riesgo` · cálculo `participacion_rc` del prototipo (no está en el PBIP, D-PF01-22) | Mapfre Perú suma dos columnas hasta 2022; describe cifras, no juzga la gestión de las empresas |
+| IA-PF01-07 | Cuadrante de la matriz. ¿Qué riesgos crecen con una siniestralidad mayor que la del conjunto? | 1 crece y está sobre el corte; 2 crece bajo el corte; 3 decrece sobre el corte; 4 decrece bajo el corte. Crece: variación mayor o igual que 0 %. Corte: índice agregado de los riesgos clasificados (43.96 % directa y 39.45 % retenida en agosto de 2026); nulo bajo el umbral de S/ 5 millones o si el riesgo no es comparable | Categoría de 1 a 4 | Vista `vw_matriz_riesgo` · columnas `cuadrante_interanual_directa` y `cuadrante_interanual_retenida` · cálculo `cuadrantes` | El corte no es una meta y cambia con cada corte de datos (D-PF01-16) |
+
+Los siete indicadores salen del Boletín mensual S-367 (SBS, s. f.-b), con corte en agosto de 2026, y se actualizan con cada corte de datos. No tienen meta: son descriptivos y el alcance excluye juicios sobre la gestión de las empresas (sección 4). Los montos se muestran en millones de soles con un decimal y millares con espacio según la RAE, con un formato dinámico por magnitud (`0.0` bajo 10 000 y `# ##0.0` desde 10 000), porque el separador de millares estándar de Power BI es la coma (prueba mínima del 2026-10-25). En la prueba de cuadre, la medida DAX y el cálculo del prototipo igualan su vista, y el total del sistema iguala la tabla 1 de `reports/validacion_resultados.md`.
 
 ## 7. Stack tecnológico
 
@@ -142,7 +162,7 @@ Los gráficos del informe y del documento PDF siguen el estilo `jc-editorial` de
 
 ## 11. Aprobación
 
-Plan aprobado por José Caycho A. el 2026-10-11. En la misma fecha se incorporó Oracle SQL Developer al stack (versión 1.2 del acta) y, por control de cambios registrado en el issue #1, se incluyeron los paquetes 2.4 (Visio, #24) y 3.4 (Bizagi, #25), sin modificar la línea base del núcleo (versión 1.3). El 2026-10-14 se ajustó el alcance del paquete 2.4 (una página de arquitectura en Visio; modelo relacional desde el Data Modeler, D-PF01-09) y el tablero Power BI (4.1) pasó al núcleo (D-PF01-10); con el modelo lógico y relacional incorporado a 2.3 el 2026-10-11 (D-PF01-04), el esfuerzo total es de 32.5 h (versión 1.4). El 2026-10-18 el paquete 3.4 incorporó la tabla de tiempos AS-IS frente a TO-BE (D-PF01-19, enmendada el 2026-10-19) y el formato estándar de Bizagi en los diagramas (D-PF01-20), con 1.5 h más; el esfuerzo total es de 34.0 h (versión 1.5).
+Plan aprobado por José Caycho A. el 2026-10-11. En la misma fecha se incorporó Oracle SQL Developer al stack (versión 1.2 del acta) y, por control de cambios registrado en el issue #1, se incluyeron los paquetes 2.4 (Visio, #24) y 3.4 (Bizagi, #25), sin modificar la línea base del núcleo (versión 1.3). El 2026-10-14 se ajustó el alcance del paquete 2.4 (una página de arquitectura en Visio; modelo relacional desde el Data Modeler, D-PF01-09) y el tablero Power BI (4.1) pasó al núcleo (D-PF01-10); con el modelo lógico y relacional incorporado a 2.3 el 2026-10-11 (D-PF01-04), el esfuerzo total es de 32.5 h (versión 1.4). El 2026-10-18 el paquete 3.4 incorporó la tabla de tiempos AS-IS frente a TO-BE (D-PF01-19, enmendada el 2026-10-19) y el formato estándar de Bizagi en los diagramas (D-PF01-20), con 1.5 h más; el esfuerzo total es de 34.0 h (versión 1.5). El 2026-10-22 se fijó el alcance del tablero Power BI en una página, con la segunda solo en el prototipo (D-PF01-22), y el 2026-10-25 se decidió versionar `indicadores_riesgo.csv` y `crecimiento_riesgos.csv` (D-PF01-23); se agregan las fichas de indicadores de la sección 6.1 y el esfuerzo no cambia (versión 1.6).
 
 ## Referencias
 
