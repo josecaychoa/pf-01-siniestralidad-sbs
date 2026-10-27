@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "ebe64e768c10f5e8044e",
+  "position": {
+    "x": 957,
+    "y": 150,
+    "z": 130,
+    "height": 96,
+    "width": 299,
+    "tabOrder": 130
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "matriz_riesgos"
+                    }
+                  },
+                  "Property": "Variación interanual de primas"
+                }
+              },
+              "queryRef": "matriz_riesgos.Variación interanual de primas",
+              "nativeQueryRef": "Variación interanual de primas"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "matriz_riesgos"
+                  }
+                },
+                "Property": "Variación interanual de primas"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "453aaea87e3d50174a80",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "matriz_riesgos"
+              }
+            },
+            "Property": "Variación interanual de primas"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

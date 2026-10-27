@@ -1,0 +1,164 @@
+table crecimiento_riesgos
+	lineageTag: 2de28b02-aa8d-470b-81a0-0e3b3a55df57
+
+	column riesgo_comparable
+		dataType: string
+		lineageTag: 70d8999a-e2e9-4f91-b28d-6bdfb6910d77
+		summarizeBy: none
+		sourceColumn: riesgo_comparable
+
+		annotation SummarizationSetBy = Automatic
+
+	column n_riesgos
+		dataType: int64
+		formatString: 0
+		lineageTag: d79a9432-4b85-4835-92f7-b1170f29ba80
+		summarizeBy: sum
+		sourceColumn: n_riesgos
+
+		annotation SummarizationSetBy = Automatic
+
+	column ramo
+		dataType: string
+		lineageTag: ae5ae7b9-1c6b-4a75-9f29-917d7e4345be
+		summarizeBy: none
+		sourceColumn: ramo
+
+		annotation SummarizationSetBy = Automatic
+
+	column siniestralidad_comparable
+		dataType: string
+		lineageTag: 2b64c6d6-97fb-4f14-bc40-285ae3882c18
+		summarizeBy: none
+		sourceColumn: siniestralidad_comparable
+
+		annotation SummarizationSetBy = Automatic
+
+	column corte_actual
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b3faa36e-a9c6-4abd-ad67-3f79c153f494
+		summarizeBy: none
+		sourceColumn: corte_actual
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column corte_anterior
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 38d62dd8-071e-4a48-82a2-1a3f0434430b
+		summarizeBy: none
+		sourceColumn: corte_anterior
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column corte_inicio_tcac
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6b89add5-f87e-47a4-aedf-5fd2d8f351fa
+		summarizeBy: none
+		sourceColumn: corte_inicio_tcac
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column corte_fin_tcac
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2cd717ea-4acd-471e-b0c5-999d8d90ae21
+		summarizeBy: none
+		sourceColumn: corte_fin_tcac
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column primas_actual
+		dataType: double
+		lineageTag: 4d7c34b5-f1ba-4eda-a578-691bcf095b0f
+		summarizeBy: sum
+		sourceColumn: primas_actual
+
+		annotation SummarizationSetBy = Automatic
+
+	column primas_anterior
+		dataType: double
+		lineageTag: 1980fb5f-1b3e-45a1-9fba-a472a80e6406
+		summarizeBy: sum
+		sourceColumn: primas_anterior
+
+		annotation SummarizationSetBy = Automatic
+
+	column primas_inicio_tcac
+		dataType: double
+		lineageTag: 32b5d4d5-8f71-406f-9f02-03d64ce0100f
+		summarizeBy: sum
+		sourceColumn: primas_inicio_tcac
+
+		annotation SummarizationSetBy = Automatic
+
+	column primas_fin_tcac
+		dataType: double
+		lineageTag: 7d7ff349-7293-4645-8482-d3f554923912
+		summarizeBy: sum
+		sourceColumn: primas_fin_tcac
+
+		annotation SummarizationSetBy = Automatic
+
+	column variacion_interanual
+		dataType: double
+		lineageTag: 53396ca8-a196-485e-81ac-3c0277afc4f9
+		summarizeBy: sum
+		sourceColumn: variacion_interanual
+
+		annotation SummarizationSetBy = Automatic
+
+	column tcac
+		dataType: double
+		lineageTag: 59f549e3-f5d5-41ea-a0c0-62694db64deb
+		summarizeBy: sum
+		sourceColumn: tcac
+
+		annotation SummarizationSetBy = Automatic
+
+	column signos_coinciden
+		dataType: string
+		lineageTag: 37825e7d-80ce-4cf5-adc2-7527b39306be
+		summarizeBy: none
+		sourceColumn: signos_coinciden
+
+		annotation SummarizationSetBy = Automatic
+
+	column umbral_primas
+		dataType: double
+		lineageTag: dfc1254c-cb22-4524-a7dd-4910173b31b5
+		summarizeBy: sum
+		sourceColumn: umbral_primas
+
+		annotation SummarizationSetBy = Automatic
+
+	column sobre_umbral
+		dataType: string
+		lineageTag: ee6bb5dc-90e1-4245-9043-bf623049ee3b
+		summarizeBy: none
+		sourceColumn: sobre_umbral
+
+		annotation SummarizationSetBy = Automatic
+
+	partition crecimiento_riesgos = m
+		mode: import
+		source =
+				let
+				  Origen = Csv.Document(File.Contents(RutaDatos & "crecimiento_riesgos.csv"), [Delimiter = ",", Columns = 17, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos", {{"riesgo_comparable", type text}, {"n_riesgos", Int64.Type}, {"ramo", type text}, {"siniestralidad_comparable", type text}, {"corte_actual", type date}, {"corte_anterior", type date}, {"corte_inicio_tcac", type date}, {"corte_fin_tcac", type date}, {"primas_actual", type number}, {"primas_anterior", type number}, {"primas_inicio_tcac", type number}, {"primas_fin_tcac", type number}, {"variacion_interanual", type number}, {"tcac", type number}, {"signos_coinciden", type text}, {"umbral_primas", type number}, {"sobre_umbral", type text}}, "en-US")
+				in
+				  #"Tipo de columna cambiado"
+
+	annotation PBI_ResultType = Table
+

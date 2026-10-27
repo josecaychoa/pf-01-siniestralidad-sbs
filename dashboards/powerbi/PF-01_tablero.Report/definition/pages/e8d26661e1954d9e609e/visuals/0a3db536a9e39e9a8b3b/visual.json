@@ -1,0 +1,109 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "0a3db536a9e39e9a8b3b",
+  "position": {
+    "x": 858,
+    "y": 258,
+    "z": 160,
+    "height": 244,
+    "width": 398,
+    "tabOrder": 160
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Cuadrante"
+                    }
+                  },
+                  "Property": "Etiqueta"
+                }
+              },
+              "queryRef": "Cuadrante.Etiqueta",
+              "nativeQueryRef": "Etiqueta",
+              "displayName": "Cuadrante"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "matriz_riesgos"
+                    }
+                  },
+                  "Property": "Riesgos en el cuadrante"
+                }
+              },
+              "queryRef": "matriz_riesgos.Riesgos en el cuadrante",
+              "nativeQueryRef": "Riesgos en el cuadrante",
+              "displayName": "Riesgos"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "matriz_riesgos"
+                    }
+                  },
+                  "Property": "Primas en el cuadrante (millones)"
+                }
+              },
+              "queryRef": "matriz_riesgos.Primas en el cuadrante (millones)",
+              "nativeQueryRef": "Primas en el cuadrante (millones)",
+              "displayName": "Primas (millones)"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Riesgos por cuadrante'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#141822'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

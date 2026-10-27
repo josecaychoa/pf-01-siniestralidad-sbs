@@ -1,0 +1,10 @@
+relationship AutoDetected_66888b52-32c4-4b84-af29-799074eed6a2
+	fromColumn: indicadores_riesgo.riesgo_comparable
+	toColumn: matriz_riesgos.riesgo_comparable
+
+relationship AutoDetected_d1c9895e-6f52-446c-b4db-b713fae209bb
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: crecimiento_riesgos.riesgo_comparable
+	toColumn: matriz_riesgos.riesgo_comparable
+

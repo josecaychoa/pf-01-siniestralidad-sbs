@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "20dd4485a4a8615f2f34",
+  "position": {
+    "x": 24,
+    "y": 150,
+    "z": 100,
+    "height": 96,
+    "width": 299,
+    "tabOrder": 100
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "matriz_riesgos"
+                    }
+                  },
+                  "Property": "Siniestralidad directa"
+                }
+              },
+              "queryRef": "matriz_riesgos.Siniestralidad directa",
+              "nativeQueryRef": "Siniestralidad directa"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "matriz_riesgos"
+                  }
+                },
+                "Property": "Siniestralidad directa"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "0b074f2a937d44b2e04c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "matriz_riesgos"
+              }
+            },
+            "Property": "Siniestralidad directa"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

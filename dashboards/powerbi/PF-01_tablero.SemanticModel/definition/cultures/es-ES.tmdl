@@ -1,0 +1,179 @@
+cultureInfo es-ES
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "cuadrante.etiqueta": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Cuadrante",
+			          "ConceptualProperty": "Etiqueta"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Cuadrante": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "matriz_riesgos.riesgos_en_el_cuadrante": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "matriz_riesgos",
+			          "ConceptualProperty": "Riesgos en el cuadrante"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Riesgos": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "matriz_riesgos.primas_en_el_cuadrante_millones": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "matriz_riesgos",
+			          "ConceptualProperty": "Primas en el cuadrante (millones)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Primas (millones)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "matriz_riesgos.situacion": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "matriz_riesgos",
+			          "ConceptualProperty": "situacion"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Situación": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "matriz_riesgos.riesgos_fuera_de_la_matriz": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "matriz_riesgos",
+			          "ConceptualProperty": "Riesgos fuera de la matriz"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Riesgos": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "matriz_riesgos.primas_fuera_de_la_matriz_millones": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "matriz_riesgos",
+			          "ConceptualProperty": "Primas fuera de la matriz (millones)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Primas (millones)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "crecimiento_riesgos.riesgo_comparable": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "crecimiento_riesgos",
+			          "ConceptualProperty": "riesgo_comparable"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Riesgo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "matriz_riesgos.primas_netas_millones": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "matriz_riesgos",
+			          "ConceptualProperty": "Primas netas (millones)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Primas netas (millones de S/)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

@@ -46,7 +46,7 @@ Las columnas se describen en `docs/03_diccionario_datos.md`, sección 1.
 | `matriz_riesgos.csv` | `vw_matriz_riesgo` | riesgo comparable en el corte actual | 48 |
 | `participacion_empresa_riesgo.csv` | `vw_participacion_empresa_riesgo` | empresa y riesgo en cada corte | 7 756 |
 
-Solo se versiona `matriz_riesgos.csv`: es un agregado propio (48 filas por riesgo comparable, con sus cuadrantes y cortes) que se publica con su cita, según la regla de datos del portafolio; los otros cinco se regeneran con el script y quedan fuera de Git.
+Se versionan `matriz_riesgos.csv`, `indicadores_riesgo.csv` y `crecimiento_riesgos.csv`, que lee el tablero Power BI (D-PF01-23): son agregados propios por riesgo comparable (48 filas en la matriz y en el crecimiento; 432 en la serie de 9 cortes) que se publican con su cita, según la regla de datos del portafolio. Los otros tres se regeneran con el script y quedan fuera de Git.
 
 *Nota.* Elaboración propia con datos de SBS (s. f.-b).
 

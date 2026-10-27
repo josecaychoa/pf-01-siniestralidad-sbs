@@ -1,0 +1,29 @@
+table Cuadrante
+	lineageTag: 0c53a4ae-9de4-4c60-a997-6c053cde2ef1
+
+	column Cuadrante
+		dataType: int64
+		formatString: 0
+		lineageTag: d9766975-786a-492e-a84d-7eea196df63d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Cuadrante]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Etiqueta
+		dataType: string
+		lineageTag: 2dc73cc5-4ef3-444b-90d4-aa8a74a0f4f0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Etiqueta]
+		sortByColumn: Cuadrante
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Cuadrante = calculated
+		mode: import
+		source = DATATABLE ( "Cuadrante", INTEGER, "Etiqueta", STRING, { { 1, "Crece, sobre el corte" }, { 2, "Crece, bajo el corte" }, { 3, "Decrece, sobre el corte" }, { 4, "Decrece, bajo el corte" } } )
+
+	annotation PBI_Id = a2ab244334184707a970ccbb45dc7014
+

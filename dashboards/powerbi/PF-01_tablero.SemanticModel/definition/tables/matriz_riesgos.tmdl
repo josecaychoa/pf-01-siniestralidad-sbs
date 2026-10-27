@@ -1,0 +1,487 @@
+table matriz_riesgos
+	lineageTag: b29d0263-e43b-43bb-92b6-08a2fca2aef2
+
+	/// IA-PF01-01: siniestros netos / primas netas; nulo si las primas son 0 o negativas (vw_indicadores_riesgo)
+	measure 'Siniestralidad directa' =
+			VAR primas = SUM ( matriz_riesgos[primas_netas] )
+			RETURN IF ( primas > 0, DIVIDE ( SUM ( matriz_riesgos[siniestros_netos] ), primas ) )
+		formatString: 0.0 %
+		displayFolder: Indicadores
+		lineageTag: ed5333e1-df63-4635-befc-564e304d9961
+
+	/// IA-PF01-02: siniestros retenidos / primas retenidas (vw_indicadores_riesgo)
+	measure 'Siniestralidad retenida' =
+			VAR primas = SUM ( matriz_riesgos[primas_retenidas] )
+			RETURN IF ( primas > 0, DIVIDE ( SUM ( matriz_riesgos[siniestros_retenidos] ), primas ) )
+		formatString: 0.0 %
+		displayFolder: Indicadores
+		lineageTag: 39e7cf25-3f9c-4e1d-87f4-fe852e22dc45
+
+	measure 'Siniestralidad de la medida' =
+			IF (
+			    NOT ISBLANK ( [Cuadrante de la medida] ),
+			    IF ( [Medida seleccionada] = "Retenida", [Siniestralidad retenida], [Siniestralidad directa] )
+			)
+		formatString: 0.0 %
+		displayFolder: Indicadores
+		lineageTag: 021f26cd-518e-4ff9-9343-4193c57ee290
+
+	measure 'Cambio siniestralidad directa (p. p.)' = 100 * ( [Siniestralidad directa] - [Siniestralidad directa anterior] )
+		formatString: 0.0
+		displayFolder: Indicadores
+		lineageTag: 9deb655e-7074-4c87-bdaa-3d1fb42065fc
+
+	measure 'Cambio siniestralidad retenida (p. p.)' = 100 * ( [Siniestralidad retenida] - [Siniestralidad retenida anterior] )
+		formatString: 0.0
+		displayFolder: Indicadores
+		lineageTag: 80a704d6-630e-4b99-b7bd-c5aa7db1b938
+
+	measure 'Primas netas (millones)' = DIVIDE ( SUM ( matriz_riesgos[primas_netas] ), 1000 )
+		displayFolder: Indicadores
+		lineageTag: 32dc15fa-3485-483d-86d5-4729ea7054b1
+
+		formatStringDefinition = IF ( ABS ( SELECTEDMEASURE () ) < 10000, "0.0", "# ##0.0" )
+
+	/// IA-PF01-03: primas del corte actual / primas del corte anterior - 1 (vw_crecimiento_riesgo)
+	measure 'Variación interanual de primas' =
+			VAR actual = SUM ( crecimiento_riesgos[primas_actual] )
+			VAR anterior = SUM ( crecimiento_riesgos[primas_anterior] )
+			RETURN IF ( anterior > 0, DIVIDE ( actual, anterior ) - 1 )
+		formatString: 0.0 %
+		displayFolder: Indicadores
+		lineageTag: 097501c6-caac-4387-9c4e-ac423939a865
+
+	/// IA-PF01-04: columna tcac de vw_crecimiento_riesgo
+	measure 'TCAC de primas' = IF ( HASONEVALUE ( crecimiento_riesgos[riesgo_comparable] ), DIVIDE ( MAX ( crecimiento_riesgos[tcac] ), 100 ) )
+		formatString: 0.0 %
+		displayFolder: Indicadores
+		lineageTag: 5afd6a30-a327-4e1e-87ef-a32118522d41
+
+	/// IA-PF01-05 (vw_matriz_riesgo)
+	measure 'Participación en el sistema' = DIVIDE ( SUM ( matriz_riesgos[primas_netas] ), CALCULATE ( SUM ( matriz_riesgos[primas_netas] ), REMOVEFILTERS ( matriz_riesgos ) ) )
+		formatString: 0.0 %
+		displayFolder: Indicadores
+		lineageTag: 92ceb961-932e-45c9-8c23-c9487826dfa3
+
+	/// IA-PF01-07: corte de siniestralidad de vw_matriz_riesgo (D-PF01-16)
+	measure 'Corte de siniestralidad' =
+			DIVIDE (
+			    CALCULATE (
+			        IF ( [Medida seleccionada] = "Retenida", MAX ( matriz_riesgos[corte_siniestralidad_retenida] ), MAX ( matriz_riesgos[corte_siniestralidad_directa] ) ),
+			        REMOVEFILTERS ( matriz_riesgos )
+			    ),
+			    100
+			)
+		formatString: 0.0 %
+		displayFolder: Indicadores
+		lineageTag: 52432157-2ec4-453a-b457-173d901c6e31
+
+	measure 'Corte de crecimiento' = DIVIDE ( CALCULATE ( MAX ( matriz_riesgos[corte_crecimiento] ), REMOVEFILTERS ( matriz_riesgos ) ), 100 )
+		formatString: 0.0 %
+		displayFolder: Indicadores
+		lineageTag: 8bcf1972-6ae5-4d9b-be86-0b550acb78ec
+
+	/// IA-PF01-07: riesgos por cuadrante de la medida elegida; en el total, los clasificados
+	measure 'Riesgos en el cuadrante' =
+			VAR m = [Medida seleccionada]
+			VAR clasificados = FILTER ( matriz_riesgos, NOT ISBLANK ( IF ( m = "Retenida", matriz_riesgos[cuadrante_interanual_retenida], matriz_riesgos[cuadrante_interanual_directa] ) ) )
+			VAR q = SELECTEDVALUE ( Cuadrante[Cuadrante] )
+			RETURN
+			    IF (
+			        HASONEVALUE ( Cuadrante[Cuadrante] ),
+			        COUNTROWS ( FILTER ( clasificados, IF ( m = "Retenida", matriz_riesgos[cuadrante_interanual_retenida], matriz_riesgos[cuadrante_interanual_directa] ) = q ) ),
+			        COUNTROWS ( clasificados )
+			    )
+		formatString: 0
+		displayFolder: Indicadores
+		lineageTag: 1eebf11b-0b10-4f15-9b2b-57e5ba15fe1b
+
+	measure 'Primas en el cuadrante (millones)' =
+			VAR m = [Medida seleccionada]
+			VAR clasificados = FILTER ( matriz_riesgos, NOT ISBLANK ( IF ( m = "Retenida", matriz_riesgos[cuadrante_interanual_retenida], matriz_riesgos[cuadrante_interanual_directa] ) ) )
+			VAR q = SELECTEDVALUE ( Cuadrante[Cuadrante] )
+			VAR primas =
+			    IF (
+			        HASONEVALUE ( Cuadrante[Cuadrante] ),
+			        SUMX ( FILTER ( clasificados, IF ( m = "Retenida", matriz_riesgos[cuadrante_interanual_retenida], matriz_riesgos[cuadrante_interanual_directa] ) = q ), matriz_riesgos[primas_netas] ),
+			        SUMX ( clasificados, matriz_riesgos[primas_netas] )
+			    )
+			RETURN DIVIDE ( primas, 1000 )
+		displayFolder: Indicadores
+		lineageTag: 4dc8e71a-565e-4d11-bf30-21595ed013a8
+
+		formatStringDefinition = IF ( ABS ( SELECTEDMEASURE () ) < 10000, "0.0", "# ##0.0" )
+
+	measure 'Riesgos clasificados' = CALCULATE ( [Riesgos en el cuadrante], REMOVEFILTERS ( Cuadrante ) )
+		formatString: 0
+		displayFolder: Indicadores
+		lineageTag: b3ef7bc7-8835-4884-8caf-f2d3facea7f6
+
+	measure 'Riesgos que crecen sobre el corte' = CALCULATE ( [Riesgos en el cuadrante], Cuadrante[Cuadrante] = 1 )
+		formatString: 0
+		displayFolder: Indicadores
+		lineageTag: 328c5641-e873-4476-8e34-f7a87bf957d5
+
+	measure Riesgos = COUNTROWS ( matriz_riesgos )
+		formatString: 0
+		displayFolder: Indicadores
+		lineageTag: 2aef5e41-0d4c-42b3-84a0-4941c39072fc
+
+	/// Riesgos fuera de la matriz por situación (bajo el umbral; rentas y SPP, D-PF01-15); vacío en el total
+	measure 'Riesgos fuera de la matriz' = IF ( HASONEVALUE ( matriz_riesgos[situacion] ) && SELECTEDVALUE ( matriz_riesgos[situacion] ) <> "En la matriz", [Riesgos] )
+		formatString: 0
+		displayFolder: Indicadores
+		lineageTag: ffc716d8-a325-4da4-ba08-9c9217556ffa
+
+	measure 'Primas fuera de la matriz (millones)' = IF ( HASONEVALUE ( matriz_riesgos[situacion] ) && SELECTEDVALUE ( matriz_riesgos[situacion] ) <> "En la matriz", [Primas netas (millones)] )
+		displayFolder: Indicadores
+		lineageTag: 297fba38-42bd-4895-a68d-3038e9912b7b
+
+		formatStringDefinition = IF ( ABS ( SELECTEDMEASURE () ) < 10000, "0.0", "# ##0.0" )
+
+	measure 'Frase del titular' =
+			FORMAT ( [Riesgos que crecen sobre el corte], "0" ) & " de "
+			    & FORMAT ( [Riesgos clasificados], "0" ) & " riesgos crecen con una siniestralidad "
+			    & LOWER ( [Medida seleccionada] ) & " mayor que el corte de "
+			    & FORMAT ( [Corte de siniestralidad], "0.0 %", "en-US" ) & "."
+		displayFolder: Textos
+		lineageTag: 632bfc21-b293-46ac-bbec-645808325b29
+
+	measure 'Texto corte actual' = LOWER ( FORMAT ( [Corte actual], "mmmm", "es-PE" ) ) & " de " & FORMAT ( [Corte actual], "yyyy" )
+		displayFolder: Textos
+		lineageTag: d4955a54-677b-462a-80eb-9d1d1f3d1ea3
+
+	measure 'Texto corte anterior' = LOWER ( FORMAT ( [Corte anterior], "mmmm", "es-PE" ) ) & " de " & FORMAT ( [Corte anterior], "yyyy" )
+		displayFolder: Textos
+		lineageTag: db189034-7998-4877-9d34-6ad75f10e273
+
+	measure 'Nota cambio directa' =
+			VAR d = [Cambio siniestralidad directa (p. p.)]
+			RETURN IF ( d < 0, "−", "+" ) & FORMAT ( ABS ( d ), "0.0", "en-US" ) & " p. p. frente a " & [Texto corte anterior]
+		displayFolder: Textos
+		lineageTag: ff0b80f8-f7e1-47ef-876b-eab8b5d1ba1f
+
+	measure 'Nota cambio retenida' =
+			VAR d = [Cambio siniestralidad retenida (p. p.)]
+			RETURN IF ( d < 0, "−", "+" ) & FORMAT ( ABS ( d ), "0.0", "en-US" ) & " p. p. frente a " & [Texto corte anterior]
+		displayFolder: Textos
+		lineageTag: e7b4d322-cee0-405e-a60f-a49fbf8df804
+
+	measure 'Corte actual' = MAX ( matriz_riesgos[corte_actual] )
+		formatString: yyyy-mm-dd
+		isHidden
+		displayFolder: _Auxiliares
+		lineageTag: ff0909a2-1888-439d-848d-a9c1a20b9897
+
+	measure 'Corte anterior' = MAX ( matriz_riesgos[corte_anterior] )
+		formatString: yyyy-mm-dd
+		isHidden
+		displayFolder: _Auxiliares
+		lineageTag: 46d25925-d8df-472d-9121-e19768833645
+
+	measure 'Medida seleccionada' = SELECTEDVALUE ( Medida[Medida], "Directa" )
+		isHidden
+		displayFolder: _Auxiliares
+		lineageTag: 67d3c611-35cd-4b6f-86f5-d459d2d60364
+
+	measure 'Siniestralidad directa anterior' =
+			VAR corte = CALCULATE ( [Corte anterior], REMOVEFILTERS ( matriz_riesgos ) )
+			VAR primas = CALCULATE ( SUM ( indicadores_riesgo[primas_netas] ), indicadores_riesgo[fecha_corte] = corte )
+			VAR siniestros = CALCULATE ( SUM ( indicadores_riesgo[siniestros_netos] ), indicadores_riesgo[fecha_corte] = corte )
+			RETURN IF ( primas > 0, DIVIDE ( siniestros, primas ) )
+		formatString: 0.0 %
+		isHidden
+		displayFolder: _Auxiliares
+		lineageTag: 735fe9cd-2f28-455d-a306-3d565a98f58d
+
+	measure 'Siniestralidad retenida anterior' =
+			VAR corte = CALCULATE ( [Corte anterior], REMOVEFILTERS ( matriz_riesgos ) )
+			VAR primas = CALCULATE ( SUM ( indicadores_riesgo[primas_retenidas] ), indicadores_riesgo[fecha_corte] = corte )
+			VAR siniestros = CALCULATE ( SUM ( indicadores_riesgo[siniestros_retenidos] ), indicadores_riesgo[fecha_corte] = corte )
+			RETURN IF ( primas > 0, DIVIDE ( siniestros, primas ) )
+		formatString: 0.0 %
+		isHidden
+		displayFolder: _Auxiliares
+		lineageTag: 4f6976ce-cdfa-41bd-b809-b164ca9b8b14
+
+	measure 'Cuadrante de la medida' =
+			VAR m = [Medida seleccionada]
+			RETURN IF ( m = "Retenida", MAX ( matriz_riesgos[cuadrante_interanual_retenida] ), MAX ( matriz_riesgos[cuadrante_interanual_directa] ) )
+		formatString: 0
+		isHidden
+		displayFolder: _Auxiliares
+		lineageTag: 4eb52f28-3d7e-4cbe-9890-a1233e180db7
+
+	measure 'Color del punto' = IF ( [Cuadrante de la medida] = 1, "#2A5CDA", "#C8CBCF" )
+		displayFolder: Formato
+		lineageTag: 982ef146-79f3-4257-b988-2b107e139012
+
+	column riesgo_comparable
+		dataType: string
+		lineageTag: 8c4a7d49-a584-4229-ade3-0b218e406d2b
+		summarizeBy: none
+		sourceColumn: riesgo_comparable
+
+		annotation SummarizationSetBy = Automatic
+
+	column n_riesgos
+		dataType: int64
+		formatString: 0
+		lineageTag: 8c79996f-b6f4-4855-ac61-34f41a36c36d
+		summarizeBy: none
+		sourceColumn: n_riesgos
+
+		annotation SummarizationSetBy = Automatic
+
+	column ramo
+		dataType: string
+		lineageTag: d3812707-1572-4096-a3d7-affa996ee7e2
+		summarizeBy: none
+		sourceColumn: ramo
+
+		annotation SummarizationSetBy = Automatic
+
+	column siniestralidad_comparable
+		dataType: string
+		lineageTag: dee12c7b-fb2e-442f-91e1-156d84535173
+		summarizeBy: none
+		sourceColumn: siniestralidad_comparable
+
+		annotation SummarizationSetBy = Automatic
+
+	column corte_actual
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 34f76bb4-7349-44ff-bc3a-6c60f8e95cc9
+		summarizeBy: none
+		sourceColumn: corte_actual
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column corte_anterior
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 95ff58c6-9017-48b1-abeb-2246ef52bd40
+		summarizeBy: none
+		sourceColumn: corte_anterior
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column corte_inicio_tcac
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8347a538-6a08-4342-b4fa-aa3d5d203403
+		summarizeBy: none
+		sourceColumn: corte_inicio_tcac
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column corte_fin_tcac
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 31b4a22e-f2e2-4099-8859-9612bc8cb8ae
+		summarizeBy: none
+		sourceColumn: corte_fin_tcac
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column primas_netas
+		dataType: double
+		lineageTag: 3b9b8979-63ad-4097-9adf-6b0eb92086b8
+		summarizeBy: none
+		sourceColumn: primas_netas
+
+		annotation SummarizationSetBy = Automatic
+
+	column primas_retenidas
+		dataType: double
+		lineageTag: 5c03f366-d9fe-432b-ac4d-a4336758ec52
+		summarizeBy: none
+		sourceColumn: primas_retenidas
+
+		annotation SummarizationSetBy = Automatic
+
+	column siniestros_netos
+		dataType: double
+		lineageTag: dfd110a0-d7fe-4734-a08c-78fb34dfa6d7
+		summarizeBy: none
+		sourceColumn: siniestros_netos
+
+		annotation SummarizationSetBy = Automatic
+
+	column siniestros_retenidos
+		dataType: double
+		lineageTag: b358c0f7-4f29-4650-89e2-89f9b50e4493
+		summarizeBy: none
+		sourceColumn: siniestros_retenidos
+
+		annotation SummarizationSetBy = Automatic
+
+	column participacion_sistema
+		dataType: double
+		lineageTag: c2cea69d-d828-48bb-b7b1-e1c1a5e93d34
+		summarizeBy: none
+		sourceColumn: participacion_sistema
+
+		annotation SummarizationSetBy = Automatic
+
+	column variacion_interanual
+		dataType: double
+		lineageTag: 9f3db1e1-f787-4566-9209-24a3a9ba4a56
+		summarizeBy: none
+		sourceColumn: variacion_interanual
+
+		annotation SummarizationSetBy = Automatic
+
+	column tcac
+		dataType: double
+		lineageTag: c15580a3-c317-4fe9-bc76-1d9c40457920
+		summarizeBy: none
+		sourceColumn: tcac
+
+		annotation SummarizationSetBy = Automatic
+
+	column signos_coinciden
+		dataType: string
+		lineageTag: 66e0b00d-9371-4c99-8ed3-916f2aa0c616
+		summarizeBy: none
+		sourceColumn: signos_coinciden
+
+		annotation SummarizationSetBy = Automatic
+
+	column indice_siniestralidad_directa
+		dataType: double
+		lineageTag: 45e6f89a-6527-4d9d-931b-6172455895af
+		summarizeBy: none
+		sourceColumn: indice_siniestralidad_directa
+
+		annotation SummarizationSetBy = Automatic
+
+	column indice_siniestralidad_retenida
+		dataType: double
+		lineageTag: b0e83c5f-80f7-4f5e-aebd-ffb6b35017f2
+		summarizeBy: none
+		sourceColumn: indice_siniestralidad_retenida
+
+		annotation SummarizationSetBy = Automatic
+
+	column indice_directa_publicado
+		dataType: double
+		lineageTag: 6829ce1b-852d-4985-b5be-145f049bb9d1
+		summarizeBy: none
+		sourceColumn: indice_directa_publicado
+
+		annotation SummarizationSetBy = Automatic
+
+	column indice_retenida_publicado
+		dataType: double
+		lineageTag: 67d79c3d-88a9-4994-bb48-3d56b667d0f3
+		summarizeBy: none
+		sourceColumn: indice_retenida_publicado
+
+		annotation SummarizationSetBy = Automatic
+
+	column umbral_primas
+		dataType: double
+		lineageTag: 0f41d9a6-b604-4d65-90a4-2dbed3cb4dbf
+		summarizeBy: none
+		sourceColumn: umbral_primas
+
+		annotation SummarizationSetBy = Automatic
+
+	column sobre_umbral
+		dataType: string
+		lineageTag: 73b7652d-e443-4cb5-8cad-6a2eed06b60a
+		summarizeBy: none
+		sourceColumn: sobre_umbral
+
+		annotation SummarizationSetBy = Automatic
+
+	column corte_crecimiento
+		dataType: double
+		lineageTag: 755a1ecd-68a6-45d1-b083-e004c1df9c51
+		summarizeBy: none
+		sourceColumn: corte_crecimiento
+
+		annotation SummarizationSetBy = Automatic
+
+	column corte_siniestralidad_directa
+		dataType: double
+		lineageTag: 7f7900f0-54aa-4c6a-9cba-dbf842557cb4
+		summarizeBy: none
+		sourceColumn: corte_siniestralidad_directa
+
+		annotation SummarizationSetBy = Automatic
+
+	column corte_siniestralidad_retenida
+		dataType: double
+		lineageTag: 554dd9f4-6da5-4daf-bd3a-affda0e3ac45
+		summarizeBy: none
+		sourceColumn: corte_siniestralidad_retenida
+
+		annotation SummarizationSetBy = Automatic
+
+	column cuadrante_interanual_directa
+		dataType: int64
+		formatString: 0
+		lineageTag: c1d7828e-187f-4599-9f56-6c59017f7ae1
+		summarizeBy: none
+		sourceColumn: cuadrante_interanual_directa
+
+		annotation SummarizationSetBy = Automatic
+
+	column cuadrante_interanual_retenida
+		dataType: int64
+		formatString: 0
+		lineageTag: 8d0c3cd8-7376-44e3-a7e6-2e9e55faad5c
+		summarizeBy: none
+		sourceColumn: cuadrante_interanual_retenida
+
+		annotation SummarizationSetBy = Automatic
+
+	column cuadrante_tcac_directa
+		dataType: int64
+		formatString: 0
+		lineageTag: 55418877-6a68-44e1-8bff-ad279715efde
+		summarizeBy: none
+		sourceColumn: cuadrante_tcac_directa
+
+		annotation SummarizationSetBy = Automatic
+
+	column cuadrante_tcac_retenida
+		dataType: int64
+		formatString: 0
+		lineageTag: 8705789e-d4a8-45c5-893d-e00bbc0c1456
+		summarizeBy: none
+		sourceColumn: cuadrante_tcac_retenida
+
+		annotation SummarizationSetBy = Automatic
+
+	column situacion
+		dataType: string
+		lineageTag: 3e7679e7-f68a-4d86-ac4d-4c25c22e7124
+		summarizeBy: none
+		sourceColumn: situacion
+
+		annotation SummarizationSetBy = Automatic
+
+	partition matriz_riesgos = m
+		mode: import
+		source =
+				let
+				  Origen = Csv.Document(File.Contents(RutaDatos & "matriz_riesgos.csv"), [Delimiter = ",", Columns = 30, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos", {{"riesgo_comparable", type text}, {"n_riesgos", Int64.Type}, {"ramo", type text}, {"siniestralidad_comparable", type text}, {"corte_actual", type date}, {"corte_anterior", type date}, {"corte_inicio_tcac", type date}, {"corte_fin_tcac", type date}, {"primas_netas", type number}, {"primas_retenidas", type number}, {"siniestros_netos", type number}, {"siniestros_retenidos", type number}, {"participacion_sistema", type number}, {"variacion_interanual", type number}, {"tcac", type number}, {"signos_coinciden", type text}, {"indice_siniestralidad_directa", type number}, {"indice_siniestralidad_retenida", type number}, {"indice_directa_publicado", type number}, {"indice_retenida_publicado", type number}, {"umbral_primas", type number}, {"sobre_umbral", type text}, {"corte_crecimiento", type number}, {"corte_siniestralidad_directa", type number}, {"corte_siniestralidad_retenida", type number}, {"cuadrante_interanual_directa", Int64.Type}, {"cuadrante_interanual_retenida", Int64.Type}, {"cuadrante_tcac_directa", Int64.Type}, {"cuadrante_tcac_retenida", Int64.Type}, {"situacion", type text}}, "en-US")
+				in
+				  #"Tipo de columna cambiado"
+
+	annotation PBI_ResultType = Table
+

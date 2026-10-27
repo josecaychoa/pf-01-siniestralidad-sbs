@@ -10,6 +10,9 @@ data/external/*
 !data/**/.gitkeep
 # Matriz de 3.2: agregado propio con cita, publicable (regla de datos del portafolio)
 !data/processed/matriz_riesgos.csv
+# Serie y crecimiento de 3.2: agregados propios con cita, que lee el tablero Power BI (D-PF01-23)
+!data/processed/indicadores_riesgo.csv
+!data/processed/crecimiento_riesgos.csv
 # Manifiesto de descargas: referencia de SHA-256 (sin datos de la fuente)
 !data/raw/manifest.csv
 .ipynb_checkpoints/
@@ -21,3 +24,6 @@ data/external/*
 
 # Claude Code: configuración local de la sesión, no se comparte
 .claude/settings.local.json
+
+# Bóveda local que crearía el hook de commits de mypowers: no se versiona (sesión 9, D9 a)
+vault/

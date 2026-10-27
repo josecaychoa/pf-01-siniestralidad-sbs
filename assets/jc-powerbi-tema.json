@@ -1,0 +1,16 @@
+{
+  "name": "JC. v2.2 · Portafolio",
+  "dataColors": ["#0F1F45", "#2A5CDA", "#7379B4", "#00B4A4", "#636975", "#C8CBCF"],
+  "background": "#FFFFFF",
+  "foreground": "#141822",
+  "tableAccent": "#0F1F45",
+  "good": "#2A5CDA",
+  "neutral": "#636975",
+  "bad": "#0F1F45",
+  "textClasses": {
+    "callout": { "fontSize": 32, "fontFace": "Segoe UI Semibold", "color": "#141822" },
+    "title": { "fontSize": 14, "fontFace": "Segoe UI Semibold", "color": "#141822" },
+    "header": { "fontSize": 12, "fontFace": "Segoe UI Semibold", "color": "#141822" },
+    "label": { "fontSize": 10, "fontFace": "Segoe UI", "color": "#636975" }
+  }
+}

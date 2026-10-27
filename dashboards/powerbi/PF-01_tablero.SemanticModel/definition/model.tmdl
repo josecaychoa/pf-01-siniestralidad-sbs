@@ -1,0 +1,23 @@
+model Model
+	culture: es-ES
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-PE
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["RutaDatos","matriz_riesgos","indicadores_riesgo","crecimiento_riesgos"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table matriz_riesgos
+ref table indicadores_riesgo
+ref table crecimiento_riesgos
+ref table Medida
+ref table Cuadrante
+
+ref cultureInfo es-ES
+
