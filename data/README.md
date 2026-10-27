@@ -50,6 +50,10 @@ Se versionan `matriz_riesgos.csv`, `indicadores_riesgo.csv` y `crecimiento_riesg
 
 *Nota.* Elaboración propia con datos de SBS (s. f.-b).
 
+## Verificación de datos personales
+
+Los datos publicados por la SBS y los agregados del proyecto corresponden a personas jurídicas (empresas de seguros supervisadas) y a totales del sistema: las tablas de `data/interim/` y `data/processed/` y el modelo Oracle solo contienen nombres de empresas, conceptos contables, riesgos y cifras (estructura en `docs/03_diccionario_datos.md`, sección 1, y catálogos versionados en `src/pf_01_siniestralidad_sbs/catalogos/`). Las notas al pie de la fuente se excluyen en la extracción y solo se conservan sus llamadas («1/», «(3)»), salvo la nota «*Actualizado al 01/09/2022» de P001 de diciembre de 2021, que entró como cuenta (limitación conocida, issue #34); los textos libres de los catálogos describen eventos societarios, resoluciones de la SBS y excepciones de la fuente. Verificado el 2026-10-26 sobre la estructura y los catálogos, conforme a la Ley N.º 29733 y su reglamento (D.S. N.º 016-2024-JUS).
+
 ## Referencias
 
 Superintendencia de Banca, Seguros y AFP. (s. f.-a). *Boletín estadístico de seguros*. Recuperado el 10 de octubre de 2026, de https://www.sbs.gob.pe/app/stats_net/stats/EstadisticaBoletinEstadistico.aspx?p=25
