@@ -11,3 +11,8 @@ reports/*.md text eol=lf
 # lleva el manifiesto de procedencia (Content Credentials).
 docs/procesos/*.svg -text
 docs/procesos/*.bpmn -text
+
+# Figura de la serie de 4.2 (reports/figures/PF-01_serie.svg): mismos motivos que en
+# docs/procesos/: bytes estables para la prueba de coincidencia con el script y para
+# el manifiesto de procedencia (Content Credentials).
+reports/figures/*.svg -text
