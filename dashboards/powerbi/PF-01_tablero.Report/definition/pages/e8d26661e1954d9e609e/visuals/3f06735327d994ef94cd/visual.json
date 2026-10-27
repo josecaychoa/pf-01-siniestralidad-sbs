@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "3f06735327d994ef94cd",
+  "position": {
+    "x": 335,
+    "y": 150,
+    "z": 110,
+    "height": 96,
+    "width": 299,
+    "tabOrder": 110
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "matriz_riesgos"
+                    }
+                  },
+                  "Property": "Siniestralidad retenida"
+                }
+              },
+              "queryRef": "matriz_riesgos.Siniestralidad retenida",
+              "nativeQueryRef": "Siniestralidad retenida"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "matriz_riesgos"
+                  }
+                },
+                "Property": "Siniestralidad retenida"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "11fb8e5b32dc1392a0c9",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "matriz_riesgos"
+              }
+            },
+            "Property": "Siniestralidad retenida"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

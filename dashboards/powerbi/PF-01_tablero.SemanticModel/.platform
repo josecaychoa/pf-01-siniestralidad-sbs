@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "PF-01_tablero"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a0f75791-8dd5-4e1a-8540-88bd797c892e"
+  }
+}

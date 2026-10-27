@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "PF-01_tablero"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "32171e44-984c-4c83-8362-732be75d6346"
+  }
+}

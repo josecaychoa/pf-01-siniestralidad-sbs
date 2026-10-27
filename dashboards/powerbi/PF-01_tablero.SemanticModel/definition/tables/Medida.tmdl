@@ -1,0 +1,30 @@
+table Medida
+	lineageTag: e68e6b79-f1bd-4afc-b02c-3e31f50fed9f
+
+	column Medida
+		dataType: string
+		lineageTag: bc6d2eeb-9438-4e80-b239-bf5c964904de
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Medida]
+		sortByColumn: Orden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Orden
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ebf004a9-cf60-4872-86fa-c156e2d4c038
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Orden]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Medida = calculated
+		mode: import
+		source = DATATABLE ( "Medida", STRING, "Orden", INTEGER, { { "Directa", 1 }, { "Retenida", 2 } } )
+
+	annotation PBI_Id = 33df398862a646729372657ee0696860
+

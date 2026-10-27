@@ -1,0 +1,5 @@
+expression RutaDatos = "C:\Portafolio\pf-01-siniestralidad-sbs\data\processed\" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
+	lineageTag: 9f3fce6a-5351-41c5-8df9-e95ee7b09baf
+
+	annotation PBI_ResultType = Text
+

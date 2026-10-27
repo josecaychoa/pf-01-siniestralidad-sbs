@@ -1,0 +1,140 @@
+table indicadores_riesgo
+	lineageTag: 85551629-7437-43f8-accd-c377756ac405
+
+	column fecha_corte
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 01633b64-bfa8-4673-a3d9-9d707c6e0c16
+		summarizeBy: none
+		sourceColumn: fecha_corte
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column meses_acumulados
+		dataType: int64
+		formatString: 0
+		lineageTag: c2752ad6-4905-44d0-8165-a2f3958ced79
+		summarizeBy: sum
+		sourceColumn: meses_acumulados
+
+		annotation SummarizationSetBy = Automatic
+
+	column riesgo_comparable
+		dataType: string
+		lineageTag: 496f6054-1789-4d40-8557-ef9f9835cdd5
+		summarizeBy: none
+		sourceColumn: riesgo_comparable
+
+		annotation SummarizationSetBy = Automatic
+
+	column n_riesgos
+		dataType: int64
+		formatString: 0
+		lineageTag: de5424bf-99a6-4582-9537-7716d91e3401
+		summarizeBy: sum
+		sourceColumn: n_riesgos
+
+		annotation SummarizationSetBy = Automatic
+
+	column ramo
+		dataType: string
+		lineageTag: 0445a451-93ab-4292-9bc2-1c55100cc2c4
+		summarizeBy: none
+		sourceColumn: ramo
+
+		annotation SummarizationSetBy = Automatic
+
+	column siniestralidad_comparable
+		dataType: string
+		lineageTag: 32be2af1-dd71-4284-ae56-28ac207ff45c
+		summarizeBy: none
+		sourceColumn: siniestralidad_comparable
+
+		annotation SummarizationSetBy = Automatic
+
+	column columna_total
+		dataType: string
+		lineageTag: 6d77bbf1-c10e-4b83-9463-268d5cbfaae9
+		summarizeBy: none
+		sourceColumn: columna_total
+
+		annotation SummarizationSetBy = Automatic
+
+	column primas_netas
+		dataType: double
+		lineageTag: 864f17ac-c236-4109-b60a-ccde90bdd0a4
+		summarizeBy: sum
+		sourceColumn: primas_netas
+
+		annotation SummarizationSetBy = Automatic
+
+	column primas_retenidas
+		dataType: double
+		lineageTag: 01e94e53-3553-421d-bc2d-7da64c7a0c58
+		summarizeBy: sum
+		sourceColumn: primas_retenidas
+
+		annotation SummarizationSetBy = Automatic
+
+	column siniestros_netos
+		dataType: double
+		lineageTag: c080c2bf-3e06-4a06-95d1-9e56fff1f482
+		summarizeBy: sum
+		sourceColumn: siniestros_netos
+
+		annotation SummarizationSetBy = Automatic
+
+	column siniestros_retenidos
+		dataType: double
+		lineageTag: d41138a4-91a7-49fc-8bfb-bf1a4a873b9f
+		summarizeBy: sum
+		sourceColumn: siniestros_retenidos
+
+		annotation SummarizationSetBy = Automatic
+
+	column indice_siniestralidad_directa
+		dataType: double
+		lineageTag: 1d39d26a-a88e-489b-8167-f4ede5cce722
+		summarizeBy: sum
+		sourceColumn: indice_siniestralidad_directa
+
+		annotation SummarizationSetBy = Automatic
+
+	column indice_siniestralidad_retenida
+		dataType: double
+		lineageTag: c675f72e-c684-496f-9282-66c0f16887f3
+		summarizeBy: sum
+		sourceColumn: indice_siniestralidad_retenida
+
+		annotation SummarizationSetBy = Automatic
+
+	column indice_directa_publicado
+		dataType: double
+		lineageTag: d190f26f-63d0-4403-9db6-8761c976aca8
+		summarizeBy: sum
+		sourceColumn: indice_directa_publicado
+
+		annotation SummarizationSetBy = Automatic
+
+	column indice_retenida_publicado
+		dataType: double
+		lineageTag: e7ce708d-c834-4da8-8bad-48301cc25fdf
+		summarizeBy: sum
+		sourceColumn: indice_retenida_publicado
+
+		annotation SummarizationSetBy = Automatic
+
+	partition indicadores_riesgo = m
+		mode: import
+		source =
+				let
+				  Origen = Csv.Document(File.Contents(RutaDatos & "indicadores_riesgo.csv"), [Delimiter = ",", Columns = 15, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos", {{"fecha_corte", type date}, {"meses_acumulados", Int64.Type}, {"riesgo_comparable", type text}, {"n_riesgos", Int64.Type}, {"ramo", type text}, {"siniestralidad_comparable", type text}, {"columna_total", type text}, {"primas_netas", type number}, {"primas_retenidas", type number}, {"siniestros_netos", type number}, {"siniestros_retenidos", type number}, {"indice_siniestralidad_directa", type number}, {"indice_siniestralidad_retenida", type number}, {"indice_directa_publicado", type number}, {"indice_retenida_publicado", type number}}, "en-US")
+				in
+				  #"Tipo de columna cambiado"
+
+	annotation PBI_ResultType = Table
+
