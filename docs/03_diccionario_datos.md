@@ -1,6 +1,8 @@
 # Diccionario de datos · PF-01
 
-`Portafolio · PF-01` · Versión 0.3 · 2026-10-14 · Paquetes 2.1 (tablas intermedias), 2.2 (catálogos y validación) y 2.3 (modelo de datos Oracle).
+`Portafolio · PF-01` · Versión 0.4 · 2026-10-26 · Paquetes 2.1 (tablas intermedias), 2.2 (catálogos y validación) y 2.3 (modelo de datos Oracle).
+
+Fuente y condiciones de uso: los 12 archivos de origen de la SBS, con su URL, fecha de corte, fecha de descarga y condiciones de uso, están registrados en [`data/README.md`](../data/README.md) y en `data/raw/manifest.csv`; el portal no declara una licencia, así que el proyecto publica solo agregados propios con su cita y no redistribuye los archivos originales.
 
 ## 1. Tablas intermedias en formato largo (`data/interim/`)
 
@@ -685,6 +687,8 @@ Observaciones del catálogo:
 ## 8. Controles de validación (paquete 2.2)
 
 Se ejecutan con `uv run python scripts/validar_datos.py`, que escribe `reports/validacion_datos.md`, y con `uv run pytest` cuando hay datos en `data/interim/`. Tolerancia: 1 mil soles. Los tres cuadres de O1 se repiten en Oracle con las vistas de la sección 3.
+
+Los controles de nulos, duplicados y rangos del plan (issue #1) se cumplen así: las celdas vacías y los textos «n.a.», «n.d.» y «-» se excluyen en la extracción (sección 1); la llave única `serie`, `corte`, `hoja`, `fila` y `columna` se prueba en `tests/test_datos_sbs.py` (`test_sin_celdas_duplicadas`); y los dominios y rangos se restringen con las restricciones CHECK del DDL (`sql/oracle/01_ddl_tablas.sql`, sección 6) y con la prueba de rangos de cortes sin superposición del catálogo de empresas (`tests/test_validacion.py`).
 
 | Control | Regla |
 |---|---|

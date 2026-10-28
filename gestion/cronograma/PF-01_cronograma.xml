@@ -6,7 +6,7 @@
 	<GUID>0B48048E-41C5-F111-B0C0-60452E4BB1B6</GUID>
 	<Title>PF-01_cronograma</Title>
 	<CreationDate>2026-10-11T09:00:00</CreationDate>
-	<LastSaved>2026-10-26T21:56:00</LastSaved>
+	<LastSaved>2026-10-27T20:12:00</LastSaved>
 	<ScheduleFromStart>1</ScheduleFromStart>
 	<StartDate>2026-10-12T09:00:00</StartDate>
 	<FinishDate>2026-11-26T18:00:00</FinishDate>
@@ -47,7 +47,7 @@
 	<MoveCompletedEndsForward>0</MoveCompletedEndsForward>
 	<BaselineForEarnedValue>0</BaselineForEarnedValue>
 	<AutoAddNewResourcesAndTasks>1</AutoAddNewResourcesAndTasks>
-	<CurrentDate>2026-10-26T08:00:00</CurrentDate>
+	<CurrentDate>2026-10-27T08:00:00</CurrentDate>
 	<MicrosoftProjectServerURL>1</MicrosoftProjectServerURL>
 	<Autolink>0</Autolink>
 	<NewTaskStartDate>0</NewTaskStartDate>
@@ -163,7 +163,7 @@
 	<Calendars>
 		<Calendar>
 			<UID>1</UID>
-			<GUID>7795A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>01D21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<Name>Estándar</Name>
 			<IsBaseCalendar>1</IsBaseCalendar>
 			<IsBaselineCalendar>0</IsBaselineCalendar>
@@ -292,7 +292,7 @@
 		</Calendar>
 		<Calendar>
 			<UID>3</UID>
-			<GUID>7895A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>02D21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<Name>Para calend. de línea base de Microsoft Project 98</Name>
 			<IsBaseCalendar>1</IsBaseCalendar>
 			<IsBaselineCalendar>1</IsBaselineCalendar>
@@ -380,7 +380,7 @@
 		</Calendar>
 		<Calendar>
 			<UID>4</UID>
-			<GUID>E89FE3DF-CF12-F011-AF12-60452E4BB1B6</GUID>
+			<GUID>03D21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<Name>24 horas</Name>
 			<IsBaseCalendar>1</IsBaseCalendar>
 			<IsBaselineCalendar>0</IsBaselineCalendar>
@@ -462,7 +462,7 @@
 	<Tasks>
 		<Task>
 			<UID>0</UID>
-			<GUID>5B95A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>E5D11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>0</ID>
 			<Name>PF-01_cronograma</Name>
 			<Active>1</Active>
@@ -510,19 +510,19 @@
 			<FinishSlack>0</FinishSlack>
 			<FixedCost>0</FixedCost>
 			<FixedCostAccrual>3</FixedCostAccrual>
-			<PercentComplete>72</PercentComplete>
+			<PercentComplete>76</PercentComplete>
 			<PercentWorkComplete>0</PercentWorkComplete>
 			<Cost>0</Cost>
 			<OvertimeCost>0</OvertimeCost>
 			<OvertimeWork>PT0H0M0S</OvertimeWork>
 			<ActualStart>2026-10-10T09:00:00</ActualStart>
-			<ActualDuration>PT206H44M18S</ActualDuration>
+			<ActualDuration>PT220H16M54S</ActualDuration>
 			<ActualCost>0</ActualCost>
 			<ActualOvertimeCost>0</ActualOvertimeCost>
 			<ActualWork>PT0H0M0S</ActualWork>
 			<ActualOvertimeWork>PT0H0M0S</ActualOvertimeWork>
 			<RegularWork>PT0H0M0S</RegularWork>
-			<RemainingDuration>PT81H15M42S</RemainingDuration>
+			<RemainingDuration>PT67H43M6S</RemainingDuration>
 			<RemainingCost>0</RemainingCost>
 			<RemainingWork>PT0H0M0S</RemainingWork>
 			<RemainingOvertimeCost>0</RemainingOvertimeCost>
@@ -565,7 +565,7 @@
 		</Task>
 		<Task>
 			<UID>52</UID>
-			<GUID>5C95A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>E6D11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>1</ID>
 			<Name>1 Gestión</Name>
 			<Active>1</Active>
@@ -578,10 +578,10 @@
 			<OutlineLevel>1</OutlineLevel>
 			<Priority>500</Priority>
 			<Start>2026-10-10T09:00:00</Start>
-			<Finish>2026-10-27T18:00:00</Finish>
+			<Finish>2026-10-27T20:07:00</Finish>
 			<Duration>PT112H0M0S</Duration>
 			<ManualStart>2026-10-10T09:00:00</ManualStart>
-			<ManualFinish>2026-10-27T18:00:00</ManualFinish>
+			<ManualFinish>2026-10-27T20:07:00</ManualFinish>
 			<ManualDuration>PT112H0M0S</ManualDuration>
 			<DurationFormat>21</DurationFormat>
 			<FreeformDurationFormat>7</FreeformDurationFormat>
@@ -601,7 +601,7 @@
 			<IsSubprojectReadOnly>0</IsSubprojectReadOnly>
 			<ExternalTask>0</ExternalTask>
 			<EarlyStart>2026-10-10T09:00:00</EarlyStart>
-			<EarlyFinish>2026-10-27T18:00:00</EarlyFinish>
+			<EarlyFinish>2026-10-27T20:07:00</EarlyFinish>
 			<LateStart>2026-10-10T09:00:00</LateStart>
 			<LateFinish>2026-11-24T09:00:00</LateFinish>
 			<StartVariance>-9600</StartVariance>
@@ -613,19 +613,19 @@
 			<FinishSlack>91200</FinishSlack>
 			<FixedCost>0</FixedCost>
 			<FixedCostAccrual>3</FixedCostAccrual>
-			<PercentComplete>80</PercentComplete>
+			<PercentComplete>99</PercentComplete>
 			<PercentWorkComplete>0</PercentWorkComplete>
 			<Cost>0</Cost>
 			<OvertimeCost>0</OvertimeCost>
 			<OvertimeWork>PT0H0M0S</OvertimeWork>
 			<ActualStart>2026-10-10T09:00:00</ActualStart>
-			<ActualDuration>PT89H36M0S</ActualDuration>
+			<ActualDuration>PT112H0M0S</ActualDuration>
 			<ActualCost>0</ActualCost>
 			<ActualOvertimeCost>0</ActualOvertimeCost>
 			<ActualWork>PT0H0M0S</ActualWork>
 			<ActualOvertimeWork>PT0H0M0S</ActualOvertimeWork>
 			<RegularWork>PT0H0M0S</RegularWork>
-			<RemainingDuration>PT22H24M0S</RemainingDuration>
+			<RemainingDuration>PT0H0M0S</RemainingDuration>
 			<RemainingCost>0</RemainingCost>
 			<RemainingWork>PT0H0M0S</RemainingWork>
 			<RemainingOvertimeCost>0</RemainingOvertimeCost>
@@ -668,7 +668,7 @@
 		</Task>
 		<Task>
 			<UID>53</UID>
-			<GUID>5D95A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>E7D11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>2</ID>
 			<Name>1.1 Acta y alcance</Name>
 			<Active>1</Active>
@@ -800,7 +800,7 @@
 		</Task>
 		<Task>
 			<UID>54</UID>
-			<GUID>5E95A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>E8D11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>3</ID>
 			<Name>1.2 Plan y línea base en Project</Name>
 			<Active>1</Active>
@@ -916,7 +916,7 @@
 		</Task>
 		<Task>
 			<UID>55</UID>
-			<GUID>5F95A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>E9D11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>4</ID>
 			<Name>EDT, Gantt y plan GitHub</Name>
 			<Active>1</Active>
@@ -1043,7 +1043,7 @@
 		</Task>
 		<Task>
 			<UID>56</UID>
-			<GUID>6095A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>EAD11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>5</ID>
 			<Name>Plan aprobado</Name>
 			<Active>1</Active>
@@ -1167,7 +1167,7 @@
 		</Task>
 		<Task>
 			<UID>57</UID>
-			<GUID>6195A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>EBD11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>6</ID>
 			<Name>Línea base, repositorio y plan GitHub</Name>
 			<Active>1</Active>
@@ -1294,7 +1294,7 @@
 		</Task>
 		<Task>
 			<UID>58</UID>
-			<GUID>6295A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>ECD11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>7</ID>
 			<Name>1.3 Cierre y desvíos</Name>
 			<Active>1</Active>
@@ -1306,15 +1306,17 @@
 			<OutlineNumber>1.3</OutlineNumber>
 			<OutlineLevel>2</OutlineLevel>
 			<Priority>500</Priority>
-			<Start>2026-10-27T09:00:00</Start>
-			<Finish>2026-10-27T18:00:00</Finish>
+			<Start>2026-10-26T22:09:00</Start>
+			<Finish>2026-10-27T20:07:00</Finish>
 			<Duration>PT8H0M0S</Duration>
-			<ManualStart>2026-10-27T09:00:00</ManualStart>
-			<ManualFinish>2026-10-27T18:00:00</ManualFinish>
+			<ManualStart>2026-10-26T22:09:00</ManualStart>
+			<ManualFinish>2026-10-27T20:07:00</ManualFinish>
 			<ManualDuration>PT8H0M0S</ManualDuration>
 			<DurationFormat>7</DurationFormat>
 			<FreeformDurationFormat>7</FreeformDurationFormat>
 			<Work>PT0H0M0S</Work>
+			<Stop>2026-10-27T20:07:00</Stop>
+			<Resume>2026-10-27T20:07:00</Resume>
 			<ResumeValid>0</ResumeValid>
 			<EffortDriven>0</EffortDriven>
 			<Recurring>0</Recurring>
@@ -1327,31 +1329,33 @@
 			<IsSubproject>0</IsSubproject>
 			<IsSubprojectReadOnly>0</IsSubprojectReadOnly>
 			<ExternalTask>0</ExternalTask>
-			<EarlyStart>2026-10-27T09:00:00</EarlyStart>
-			<EarlyFinish>2026-10-27T18:00:00</EarlyFinish>
-			<LateStart>2026-11-23T09:00:00</LateStart>
-			<LateFinish>2026-11-23T18:00:00</LateFinish>
+			<EarlyStart>2026-10-26T22:09:00</EarlyStart>
+			<EarlyFinish>2026-10-27T20:07:00</EarlyFinish>
+			<LateStart>2026-10-26T22:09:00</LateStart>
+			<LateFinish>2026-10-27T20:07:00</LateFinish>
 			<StartVariance>-91200</StartVariance>
 			<FinishVariance>-91200</FinishVariance>
 			<WorkVariance>0.00</WorkVariance>
 			<FreeSlack>0</FreeSlack>
-			<TotalSlack>91200</TotalSlack>
-			<StartSlack>91200</StartSlack>
-			<FinishSlack>91200</FinishSlack>
+			<TotalSlack>0</TotalSlack>
+			<StartSlack>0</StartSlack>
+			<FinishSlack>0</FinishSlack>
 			<FixedCost>0</FixedCost>
 			<FixedCostAccrual>3</FixedCostAccrual>
-			<PercentComplete>0</PercentComplete>
-			<PercentWorkComplete>0</PercentWorkComplete>
+			<PercentComplete>100</PercentComplete>
+			<PercentWorkComplete>100</PercentWorkComplete>
 			<Cost>0</Cost>
 			<OvertimeCost>0</OvertimeCost>
 			<OvertimeWork>PT0H0M0S</OvertimeWork>
-			<ActualDuration>PT0H0M0S</ActualDuration>
+			<ActualStart>2026-10-26T22:09:00</ActualStart>
+			<ActualFinish>2026-10-27T20:07:00</ActualFinish>
+			<ActualDuration>PT8H0M0S</ActualDuration>
 			<ActualCost>0</ActualCost>
 			<ActualOvertimeCost>0</ActualOvertimeCost>
 			<ActualWork>PT0H0M0S</ActualWork>
 			<ActualOvertimeWork>PT0H0M0S</ActualOvertimeWork>
 			<RegularWork>PT0H0M0S</RegularWork>
-			<RemainingDuration>PT8H0M0S</RemainingDuration>
+			<RemainingDuration>PT0H0M0S</RemainingDuration>
 			<RemainingCost>0</RemainingCost>
 			<RemainingWork>PT0H0M0S</RemainingWork>
 			<RemainingOvertimeCost>0</RemainingOvertimeCost>
@@ -1410,10 +1414,18 @@
 				<Finish>2026-10-29T18:00:00</Finish>
 				<Duration>PT8H0M0S</Duration>
 			</Baseline>
+			<TimephasedData>
+				<Type>11</Type>
+				<UID>58</UID>
+				<Start>2026-10-27T09:00:00</Start>
+				<Finish>2026-10-27T18:00:00</Finish>
+				<Unit>2</Unit>
+				<Value>100</Value>
+			</TimephasedData>
 		</Task>
 		<Task>
 			<UID>59</UID>
-			<GUID>6395A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>EDD11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>8</ID>
 			<Name>Listo para cierre</Name>
 			<Active>1</Active>
@@ -1425,11 +1437,11 @@
 			<OutlineNumber>1.4</OutlineNumber>
 			<OutlineLevel>2</OutlineLevel>
 			<Priority>500</Priority>
-			<Start>2026-10-27T18:00:00</Start>
-			<Finish>2026-10-27T18:00:00</Finish>
+			<Start>2026-10-27T20:07:00</Start>
+			<Finish>2026-10-27T20:07:00</Finish>
 			<Duration>PT0H0M0S</Duration>
-			<ManualStart>2026-10-27T18:00:00</ManualStart>
-			<ManualFinish>2026-10-27T18:00:00</ManualFinish>
+			<ManualStart>2026-10-27T20:07:00</ManualStart>
+			<ManualFinish>2026-10-27T20:07:00</ManualFinish>
 			<ManualDuration>PT0H0M0S</ManualDuration>
 			<DurationFormat>7</DurationFormat>
 			<FreeformDurationFormat>7</FreeformDurationFormat>
@@ -1446,8 +1458,8 @@
 			<IsSubproject>0</IsSubproject>
 			<IsSubprojectReadOnly>0</IsSubprojectReadOnly>
 			<ExternalTask>0</ExternalTask>
-			<EarlyStart>2026-10-27T18:00:00</EarlyStart>
-			<EarlyFinish>2026-10-27T18:00:00</EarlyFinish>
+			<EarlyStart>2026-10-27T20:07:00</EarlyStart>
+			<EarlyFinish>2026-10-27T20:07:00</EarlyFinish>
 			<LateStart>2026-11-24T09:00:00</LateStart>
 			<LateFinish>2026-11-24T09:00:00</LateFinish>
 			<StartVariance>-91200</StartVariance>
@@ -1525,7 +1537,7 @@
 		</Task>
 		<Task>
 			<UID>60</UID>
-			<GUID>6495A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>EED11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>9</ID>
 			<Name>2 Datos</Name>
 			<Active>1</Active>
@@ -1629,7 +1641,7 @@
 		</Task>
 		<Task>
 			<UID>61</UID>
-			<GUID>6595A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>EFD11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>10</ID>
 			<Name>2.1 Extracción</Name>
 			<Active>1</Active>
@@ -1761,7 +1773,7 @@
 		</Task>
 		<Task>
 			<UID>62</UID>
-			<GUID>6695A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>F0D11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>11</ID>
 			<Name>2.2 Validación</Name>
 			<Active>1</Active>
@@ -1892,7 +1904,7 @@
 		</Task>
 		<Task>
 			<UID>63</UID>
-			<GUID>6795A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>F1D11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>12</ID>
 			<Name>2.3 Modelo de datos Oracle</Name>
 			<Active>1</Active>
@@ -2047,7 +2059,7 @@
 		</Task>
 		<Task>
 			<UID>77</UID>
-			<GUID>7595A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>FFD11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>13</ID>
 			<Name>2.4 Arquitectura y modelo de datos en Visio</Name>
 			<Active>1</Active>
@@ -2168,7 +2180,7 @@
 		</Task>
 		<Task>
 			<UID>64</UID>
-			<GUID>6895A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>F2D11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>14</ID>
 			<Name>3 Análisis</Name>
 			<Active>1</Active>
@@ -2272,7 +2284,7 @@
 		</Task>
 		<Task>
 			<UID>65</UID>
-			<GUID>6995A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>F3D11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>15</ID>
 			<Name>3.1 Exploración</Name>
 			<Active>1</Active>
@@ -2403,7 +2415,7 @@
 		</Task>
 		<Task>
 			<UID>66</UID>
-			<GUID>6A95A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>F4D11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>16</ID>
 			<Name>3.2 Indicadores y matriz</Name>
 			<Active>1</Active>
@@ -2535,7 +2547,7 @@
 		</Task>
 		<Task>
 			<UID>67</UID>
-			<GUID>6B95A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>F5D11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>17</ID>
 			<Name>3.3 Validación de resultados</Name>
 			<Active>1</Active>
@@ -2666,7 +2678,7 @@
 		</Task>
 		<Task>
 			<UID>78</UID>
-			<GUID>7695A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>00D21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>18</ID>
 			<Name>3.4 Proceso AS-IS y TO-BE en Bizagi</Name>
 			<Active>1</Active>
@@ -2812,7 +2824,7 @@
 		</Task>
 		<Task>
 			<UID>68</UID>
-			<GUID>6C95A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>F6D11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>19</ID>
 			<Name>4 Producto</Name>
 			<Active>1</Active>
@@ -2916,7 +2928,7 @@
 		</Task>
 		<Task>
 			<UID>69</UID>
-			<GUID>6D95A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>F7D11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>20</ID>
 			<Name>4.1 Tablero Power BI</Name>
 			<Active>1</Active>
@@ -3080,7 +3092,7 @@
 		</Task>
 		<Task>
 			<UID>70</UID>
-			<GUID>6E95A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>F8D11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>21</ID>
 			<Name>4.2 Informe</Name>
 			<Active>1</Active>
@@ -3267,7 +3279,7 @@
 		</Task>
 		<Task>
 			<UID>71</UID>
-			<GUID>6F95A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>F9D11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>22</ID>
 			<Name>4.3 README</Name>
 			<Active>1</Active>
@@ -3413,7 +3425,7 @@
 		</Task>
 		<Task>
 			<UID>72</UID>
-			<GUID>7095A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>FAD11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>23</ID>
 			<Name>5 Comunicación</Name>
 			<Active>1</Active>
@@ -3513,7 +3525,7 @@
 		</Task>
 		<Task>
 			<UID>73</UID>
-			<GUID>7195A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>FBD11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>24</ID>
 			<Name>5.1 Post</Name>
 			<Active>1</Active>
@@ -3632,7 +3644,7 @@
 		</Task>
 		<Task>
 			<UID>74</UID>
-			<GUID>7295A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>FCD11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>25</ID>
 			<Name>5.2 Documento PDF</Name>
 			<Active>1</Active>
@@ -3751,7 +3763,7 @@
 		</Task>
 		<Task>
 			<UID>75</UID>
-			<GUID>7395A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>FDD11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>26</ID>
 			<Name>Publicación en LinkedIn</Name>
 			<Active>1</Active>
@@ -3871,7 +3883,7 @@
 		</Task>
 		<Task>
 			<UID>76</UID>
-			<GUID>7495A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>FED11B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<ID>27</ID>
 			<Name>5.3 Destacados y registro</Name>
 			<Active>1</Active>
@@ -4040,7 +4052,7 @@
 	<Assignments>
 		<Assignment>
 			<UID>52</UID>
-			<GUID>7995A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>04D21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<TaskUID>53</TaskUID>
 			<ResourceUID>-65535</ResourceUID>
 			<PercentWorkComplete>100</PercentWorkComplete>
@@ -4125,7 +4137,7 @@
 		</Assignment>
 		<Assignment>
 			<UID>54</UID>
-			<GUID>7A95A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>05D21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<TaskUID>55</TaskUID>
 			<ResourceUID>-65535</ResourceUID>
 			<PercentWorkComplete>100</PercentWorkComplete>
@@ -4202,7 +4214,7 @@
 		</Assignment>
 		<Assignment>
 			<UID>55</UID>
-			<GUID>7B95A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>06D21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<TaskUID>56</TaskUID>
 			<ResourceUID>-65535</ResourceUID>
 			<PercentWorkComplete>100</PercentWorkComplete>
@@ -4271,7 +4283,7 @@
 		</Assignment>
 		<Assignment>
 			<UID>56</UID>
-			<GUID>7C95A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>07D21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<TaskUID>57</TaskUID>
 			<ResourceUID>-65535</ResourceUID>
 			<PercentWorkComplete>100</PercentWorkComplete>
@@ -4348,23 +4360,25 @@
 		</Assignment>
 		<Assignment>
 			<UID>57</UID>
-			<GUID>7D95A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>08D21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<TaskUID>58</TaskUID>
 			<ResourceUID>-65535</ResourceUID>
-			<PercentWorkComplete>0</PercentWorkComplete>
+			<PercentWorkComplete>100</PercentWorkComplete>
 			<ActualCost>0</ActualCost>
+			<ActualFinish>2026-10-27T20:07:00</ActualFinish>
 			<ActualOvertimeCost>0</ActualOvertimeCost>
 			<ActualOvertimeWork>PT0H0M0S</ActualOvertimeWork>
-			<ActualWork>PT0H0M0S</ActualWork>
+			<ActualStart>2026-10-26T22:09:00</ActualStart>
+			<ActualWork>PT8H0M0S</ActualWork>
 			<ACWP>0.00</ACWP>
 			<Confirmed>0</Confirmed>
 			<Cost>0</Cost>
 			<CostRateTable>0</CostRateTable>
 			<RateScale>0</RateScale>
 			<CostVariance>0</CostVariance>
-			<CV>0.00</CV>
+			<CV>-0.00</CV>
 			<Delay>0</Delay>
-			<Finish>2026-10-27T18:00:00</Finish>
+			<Finish>2026-10-27T20:07:00</Finish>
 			<FinishVariance>-91200</FinishVariance>
 			<WorkVariance>0.00</WorkVariance>
 			<HasFixedRateUnits>1</HasFixedRateUnits>
@@ -4380,9 +4394,11 @@
 			<RemainingCost>0</RemainingCost>
 			<RemainingOvertimeCost>0</RemainingOvertimeCost>
 			<RemainingOvertimeWork>PT0H0M0S</RemainingOvertimeWork>
-			<RemainingWork>PT8H0M0S</RemainingWork>
+			<RemainingWork>PT0H0M0S</RemainingWork>
 			<ResponsePending>0</ResponsePending>
-			<Start>2026-10-27T09:00:00</Start>
+			<Start>2026-10-26T22:09:00</Start>
+			<Stop>2026-10-27T20:07:00</Stop>
+			<Resume>2026-10-27T20:07:00</Resume>
 			<StartVariance>-91200</StartVariance>
 			<Units>1</Units>
 			<UpdateNeeded>0</UpdateNeeded>
@@ -4390,7 +4406,7 @@
 			<Work>PT8H0M0S</Work>
 			<WorkContour>0</WorkContour>
 			<BCWS>0.00</BCWS>
-			<BCWP>0.00</BCWP>
+			<BCWP>-0.00</BCWP>
 			<BookingType>0</BookingType>
 			<CreationDate>2026-10-11T02:20:00</CreationDate>
 			<BudgetCost>0</BudgetCost>
@@ -4411,7 +4427,7 @@
 				<Finish>2026-10-29T18:00:00</Finish>
 			</Baseline>
 			<TimephasedData>
-				<Type>1</Type>
+				<Type>2</Type>
 				<UID>57</UID>
 				<Start>2026-10-27T09:00:00</Start>
 				<Finish>2026-10-27T18:00:00</Finish>
@@ -4421,7 +4437,7 @@
 		</Assignment>
 		<Assignment>
 			<UID>58</UID>
-			<GUID>7E95A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>09D21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<TaskUID>59</TaskUID>
 			<ResourceUID>-65535</ResourceUID>
 			<PercentWorkComplete>0</PercentWorkComplete>
@@ -4437,7 +4453,7 @@
 			<CostVariance>0</CostVariance>
 			<CV>0.00</CV>
 			<Delay>0</Delay>
-			<Finish>2026-10-27T18:00:00</Finish>
+			<Finish>2026-10-27T20:07:00</Finish>
 			<FinishVariance>-91200</FinishVariance>
 			<WorkVariance>0.00</WorkVariance>
 			<HasFixedRateUnits>1</HasFixedRateUnits>
@@ -4455,7 +4471,7 @@
 			<RemainingOvertimeWork>PT0H0M0S</RemainingOvertimeWork>
 			<RemainingWork>PT0H0M0S</RemainingWork>
 			<ResponsePending>0</ResponsePending>
-			<Start>2026-10-27T18:00:00</Start>
+			<Start>2026-10-27T20:07:00</Start>
 			<StartVariance>-91200</StartVariance>
 			<Units>1</Units>
 			<UpdateNeeded>0</UpdateNeeded>
@@ -4486,7 +4502,7 @@
 		</Assignment>
 		<Assignment>
 			<UID>60</UID>
-			<GUID>7F95A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>0AD21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<TaskUID>61</TaskUID>
 			<ResourceUID>-65535</ResourceUID>
 			<PercentWorkComplete>100</PercentWorkComplete>
@@ -4563,7 +4579,7 @@
 		</Assignment>
 		<Assignment>
 			<UID>61</UID>
-			<GUID>8095A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>0BD21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<TaskUID>62</TaskUID>
 			<ResourceUID>-65535</ResourceUID>
 			<PercentWorkComplete>100</PercentWorkComplete>
@@ -4640,7 +4656,7 @@
 		</Assignment>
 		<Assignment>
 			<UID>62</UID>
-			<GUID>8195A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>0CD21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<TaskUID>63</TaskUID>
 			<ResourceUID>-65535</ResourceUID>
 			<PercentWorkComplete>100</PercentWorkComplete>
@@ -4725,7 +4741,7 @@
 		</Assignment>
 		<Assignment>
 			<UID>64</UID>
-			<GUID>8295A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>0DD21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<TaskUID>65</TaskUID>
 			<ResourceUID>-65535</ResourceUID>
 			<PercentWorkComplete>100</PercentWorkComplete>
@@ -4802,7 +4818,7 @@
 		</Assignment>
 		<Assignment>
 			<UID>65</UID>
-			<GUID>8395A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>0ED21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<TaskUID>66</TaskUID>
 			<ResourceUID>-65535</ResourceUID>
 			<PercentWorkComplete>100</PercentWorkComplete>
@@ -4879,7 +4895,7 @@
 		</Assignment>
 		<Assignment>
 			<UID>66</UID>
-			<GUID>8495A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>0FD21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<TaskUID>67</TaskUID>
 			<ResourceUID>-65535</ResourceUID>
 			<PercentWorkComplete>100</PercentWorkComplete>
@@ -4956,7 +4972,7 @@
 		</Assignment>
 		<Assignment>
 			<UID>68</UID>
-			<GUID>8595A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>10D21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<TaskUID>69</TaskUID>
 			<ResourceUID>-65535</ResourceUID>
 			<PercentWorkComplete>100</PercentWorkComplete>
@@ -5057,7 +5073,7 @@
 		</Assignment>
 		<Assignment>
 			<UID>69</UID>
-			<GUID>8695A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>11D21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<TaskUID>70</TaskUID>
 			<ResourceUID>-65535</ResourceUID>
 			<PercentWorkComplete>100</PercentWorkComplete>
@@ -5126,7 +5142,7 @@
 		</Assignment>
 		<Assignment>
 			<UID>70</UID>
-			<GUID>8795A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>12D21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<TaskUID>71</TaskUID>
 			<ResourceUID>-65535</ResourceUID>
 			<PercentWorkComplete>100</PercentWorkComplete>
@@ -5195,7 +5211,7 @@
 		</Assignment>
 		<Assignment>
 			<UID>72</UID>
-			<GUID>8895A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>13D21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<TaskUID>73</TaskUID>
 			<ResourceUID>-65535</ResourceUID>
 			<PercentWorkComplete>0</PercentWorkComplete>
@@ -5276,7 +5292,7 @@
 		</Assignment>
 		<Assignment>
 			<UID>73</UID>
-			<GUID>8995A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>14D21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<TaskUID>74</TaskUID>
 			<ResourceUID>-65535</ResourceUID>
 			<PercentWorkComplete>0</PercentWorkComplete>
@@ -5357,7 +5373,7 @@
 		</Assignment>
 		<Assignment>
 			<UID>74</UID>
-			<GUID>8A95A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>15D21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<TaskUID>75</TaskUID>
 			<ResourceUID>-65535</ResourceUID>
 			<PercentWorkComplete>0</PercentWorkComplete>
@@ -5422,7 +5438,7 @@
 		</Assignment>
 		<Assignment>
 			<UID>75</UID>
-			<GUID>8B95A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>16D21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<TaskUID>76</TaskUID>
 			<ResourceUID>-65535</ResourceUID>
 			<PercentWorkComplete>0</PercentWorkComplete>
@@ -5495,7 +5511,7 @@
 		</Assignment>
 		<Assignment>
 			<UID>76</UID>
-			<GUID>8C95A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>17D21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<TaskUID>77</TaskUID>
 			<ResourceUID>-65535</ResourceUID>
 			<PercentWorkComplete>100</PercentWorkComplete>
@@ -5567,7 +5583,7 @@
 		</Assignment>
 		<Assignment>
 			<UID>77</UID>
-			<GUID>8D95A997-60C8-F111-B0CB-60452E4BB1B6</GUID>
+			<GUID>18D21B2C-B2D1-F111-B0D5-60452E4BB1B6</GUID>
 			<TaskUID>78</TaskUID>
 			<ResourceUID>-65535</ResourceUID>
 			<PercentWorkComplete>100</PercentWorkComplete>
