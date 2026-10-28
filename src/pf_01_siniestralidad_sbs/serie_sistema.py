@@ -151,14 +151,16 @@ def construir_svg(serie: list[Corte]) -> str:
     piezas: list[str] = []
     y = 64
     # Titular en dos tonos: la idea en Grafito y la continuación en Gris, mismo tamaño
+    verbo = "subió" if delta >= 0 else "bajó"
     idea = (
-        f"La siniestralidad directa del sistema subió a {numero(ultimo.directa)} % "
+        f"La siniestralidad directa del sistema {verbo} a {numero(ultimo.directa)} % "
         f"en {mes_largo(ultimo.fecha)}."
     )
     piezas.append(texto(MARGEN, y, escape(idea), 28, GRAFITO, 600, extra=titular))
     y += 38
     continuacion = (
-        f"Son {numero(delta)} puntos más que en {mes_largo(anterior.fecha)}; "
+        f"Son {numero(abs(delta))} puntos {'más' if delta >= 0 else 'menos'} que en "
+        f"{mes_largo(anterior.fecha)}; "
         f"la retenida llegó a {numero(ultimo.retenida)} %."
     )
     piezas.append(texto(MARGEN, y, escape(continuacion), 28, GRIS, 600, extra=titular))
@@ -243,7 +245,8 @@ def construir_svg(serie: list[Corte]) -> str:
         )
     )
     # Anotación directa sobre el hallazgo
-    anotacion = f"+{numero(delta)} p. p. frente a {mes_largo(anterior.fecha)}"
+    signo = "+" if delta >= 0 else "−"
+    anotacion = f"{signo}{numero(abs(delta))} p. p. frente a {mes_largo(anterior.fecha)}"
     piezas.append(texto(x1, py(ultimo.directa) - 26, escape(anotacion), 13, AZUL, 600, ancla="end"))
 
     # Nota APA 7 («Nota.» en cursiva)

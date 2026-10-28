@@ -23,7 +23,7 @@ from zoneinfo import ZoneInfo
 from pf_01_siniestralidad_sbs.fuentes import ArchivoSBS
 
 ZONA_LIMA = ZoneInfo("America/Lima")
-AGENTE = "pf-01-siniestralidad-sbs/0.1 (portafolio de analitica; descarga de datos publicos)"
+AGENTE = "pf-01-siniestralidad-sbs/1.1 (portafolio de analitica; descarga de datos publicos)"
 
 # Firmas de archivo aceptadas: ZIP/OOXML (xlsx, xlsm) y OLE2 (xls de Excel 97-2003).
 FIRMA_ZIP = b"PK\x03\x04"

@@ -1,6 +1,11 @@
 # Changelog
 
 ## [Sin publicar]
+- Correcciones de la auditoría integral (#57, CC-PF-01-02): README con la receta completa (`uv run --env-file .env`, validaciones de datos y de resultados), versión mínima de Oracle (23ai) y sección «Cómo se construyó» sobre el uso de IA; tabla 1 sin la frase «por corte».
+- Informe: serie con la COVID-19 en 2021 y el acumulado de 12 meses a agosto de 2026 (44.5 %), sección 6 sin la cifra «por corte» y con el carácter indicativo del ahorro, y cuatro limitaciones nuevas (agregados, sensibilidad de la matriz a la TCAC, montos nominales y apertura por empresa) (#57).
+- `docs/04_arquitectura.md` 1.1: 12 vistas, consumo sobre los CSV versionados, serie mensual, versión mínima de Oracle y fuente del modelo; comentario del DDL con el orden real de los scripts (#57).
+- Cierre 0.4: valor ganado en horas (SPI 1.07 y CPI 0.72 frente a la Baseline1) y conciliación del total de horas (#57).
+- Versión 1.1.0 en `pyproject.toml`, `uv.lock`, el paquete y el agente de descarga; `.gitattributes` cuenta el notebook como documentación; `scripts/scaffold.py` con nombres en español y la regla de «Closes»; titular de la figura de la serie según el signo del cambio (#57).
 - Contribución de cada riesgo al cambio de la siniestralidad del sistema entre agosto de 2025 y agosto de 2026 (módulo `contribucion.py`, con la prueba de que las contribuciones suman el cambio): Vida Individual de Largo Plazo aporta +5.12 p. p. e Incendio +2.91 de los +7.54 p. p. de la directa (#56, CC-PF-01-02).
 - Serie mensual de primas y siniestros por riesgo de enero de 2025 a agosto de 2026 (cuadros S-401 y S-402, `scripts/descargar_mensual.py`, `data/raw/mensual/manifest.csv` y `data/processed/serie_mensual_riesgos.csv`), cuadrada con el Boletín mensual: ubica en marzo de 2026 el quiebre de Vida Individual de Largo Plazo que coincide con la Resolución SBS N.º 00085-2026 (#56).
 - Informe 1.1: nueva sección 4 «Qué explica el alza de 2026» con la tabla 2 y las figuras 2 (`PF-01_contribucion.svg`) y 3 (`PF-01_quiebre_vida.svg`); resumen, limitaciones y conclusiones reescritos sin atribuir el alza a un deterioro técnico generalizado; tablas y figuras siguientes renumeradas (#56).

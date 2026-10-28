@@ -1,13 +1,13 @@
 # Cierre · PF-01: Producción y siniestralidad por riesgo del mercado asegurador peruano, 2019-2026
 
-`Portafolio · PF-01` · Versión 0.3 · 2026-10-27 · Paquete 1.3 (#13) terminado y «Listo para cierre» recibido el 2026-10-27; faltan la publicación (O3) y la fecha de cierre del proyecto.
+`Portafolio · PF-01` · Versión 0.4 · 2026-10-27 · Cambio v0.4: valor ganado en horas (sección 3.3), conciliación del total de horas, release v1.0.0 marcado y paquetes 4.4 y 4.5 de CC-PF-01-02 (auditoría integral) · Paquete 1.3 (#13) terminado y «Listo para cierre» recibido el 2026-10-27; faltan la publicación (O3) y la fecha de cierre del proyecto.
 
 ## 1. Criterios de cierre
 
 - [x] Objetivos SMART evaluados con evidencia (sección 2); O3 se completa con la publicación del 2026-11-26.
 - [x] Repositorio reproducible desde un clon limpio: `uv sync --locked` y `uv run pytest` con 129 pruebas superadas y 50 omitidas sin Oracle ni `data/raw/` (PR #51).
 - [x] «Listo para cierre» (puerta 2) recibido del director del proyecto el 2026-10-27.
-- [ ] Release v1.0.0 etiquetado y CHANGELOG actualizado (versión 1.0.0 del 2026-10-27).
+- [x] Release v1.0.0 etiquetado y CHANGELOG actualizado (versión 1.0.0 del 2026-10-27); v1.1.0 con CC-PF-01-02.
 - [ ] Post publicado, añadido a Destacados y registrado en el tablero de indicadores.
 - [x] Gantt de seguimiento exportado de Project (`gestion/cronograma/PF-01_seguimiento.pdf`) y tabla de desvíos (`gestion/cronograma/PF-01_desvios.csv`), generada desde el XML del cronograma (sección 3.1).
 
@@ -76,8 +76,24 @@ Desvíos de duración. 4.2 y 4.3 se trabajaron fuera del horario del calendario 
 | Esfuerzo del núcleo, paquetes terminados (h) | 26.5 | 32.0 | +5.5 h (+20.8 %) |
 | Esfuerzo de los opcionales (h) | 5.5 | 12.6 | +7.1 h (+129.1 %) |
 | Esfuerzo total del PF (h) | 34.5 | Pendiente (faltan 5.1 a 5.3) | Pendiente |
-| Fecha de publicación | 2026-11-26 | Pendiente | Pendiente |
-| Cambios aprobados | No aplica | 9 controles de cambios y 1 enmienda en el issue #1 (el último, CC-PF-01-01) | No aplica |
+| Fecha de publicación | 2026-11-26 (2026-11-12 desde CC-PF-01-02) | Pendiente | Pendiente |
+| Cambios aprobados | No aplica | 9 controles de cambios y 1 enmienda en el issue #1, más las solicitudes CC-PF-01-01 y CC-PF-01-02 | No aplica |
+
+Las filas de la tabla de esfuerzo, redondeadas a un decimal, suman 44.4 h (31.8 h de núcleo y 12.6 h de opcionales); el total validado por el director del proyecto el 2026-10-27 es 44.6 h. La diferencia de 0.2 h no se puede conciliar con los datos disponibles y se revisa en el cierre de 5.3; las cifras de la sección 3.3 usan el total validado.
+
+### 3.3 Valor ganado en horas
+
+Project no registra trabajo ni costo (sin recursos asignados), así que el valor ganado se calcula en horas con la estimación de cada paquete como valor planificado y la Baseline1 como línea base de control. Fecha de estado: 2026-10-27, después de cerrar 1.3.
+
+| Indicador | Fórmula | Valor |
+|---|---|---|
+| Valor planificado (PV) | Horas estimadas de los paquetes que la Baseline1 preveía terminar al 2026-10-27 (todos, menos 4.3 del 28/10 y 1.3 del 29/10) | 30.0 h |
+| Valor ganado (EV) | Horas estimadas de los paquetes terminados | 32.0 h |
+| Costo real (AC) | Horas reales de los paquetes terminados | 44.6 h |
+| Índice de desempeño del cronograma (SPI) | EV / PV | 1.07 |
+| Índice de desempeño del costo (CPI) | EV / AC | 0.72 |
+
+*Nota.* Elaboración propia con las tablas 3.1 y 3.2. Cada hora planificada costó 1.39 h reales (1 / CPI). El SPI frente a la línea base v1.0 no mide desempeño: la v1.0 preveía empezar la ejecución el 2026-11-02 y el proyecto empezó el 2026-10-11, así que casi todo el trabajo terminó antes de su fecha planificada.
 
 ## 4. Lecciones aprendidas
 
