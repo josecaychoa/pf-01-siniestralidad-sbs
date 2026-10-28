@@ -72,3 +72,38 @@ def catalogo() -> list[ArchivoSBS]:
     archivos = [ArchivoSBS("S-367", corte, "ZIP") for corte in sorted(CORTES_BOLETIN)]
     archivos += [ArchivoSBS(serie, CORTE_CONSISTENCIA, "XLS") for serie in SERIES_CONSISTENCIA]
     return archivos
+
+
+# Serie mensual del paquete 4.4 (CC-PF-01-02): primas (S-401) y siniestros (S-402) de cada
+# mes de enero de 2025 a agosto de 2026, para ubicar en el tiempo el quiebre de la Resolución
+# SBS N.º 00085-2026 (información desde marzo de 2026). Se guardan en data/raw/mensual/.
+SERIES_MENSUALES: tuple[str, ...] = ("S-401", "S-402")
+PRIMER_MES_SERIE = date(2025, 1, 31)
+ULTIMO_MES_SERIE = date(2026, 8, 31)
+
+
+def fin_de_mes(anio: int, mes: int) -> date:
+    """Último día del mes (la SBS nombra los archivos por el mes del corte)."""
+    siguiente = date(anio + mes // 12, mes % 12 + 1, 1)
+    return date.fromordinal(siguiente.toordinal() - 1)
+
+
+def cortes_mensuales(
+    primero: date = PRIMER_MES_SERIE, ultimo: date = ULTIMO_MES_SERIE
+) -> list[date]:
+    """Fines de mes desde `primero` hasta `ultimo`, ambos incluidos."""
+    cortes: list[date] = []
+    anio, mes = primero.year, primero.month
+    while (anio, mes) <= (ultimo.year, ultimo.month):
+        cortes.append(fin_de_mes(anio, mes))
+        anio, mes = (anio + 1, 1) if mes == 12 else (anio, mes + 1)
+    return cortes
+
+
+def catalogo_mensual() -> list[ArchivoSBS]:
+    """Devuelve los 40 cuadros del paquete 4.4: S-401 y S-402 de cada mes de la serie."""
+    return [
+        ArchivoSBS(serie, corte, "XLS")
+        for corte in cortes_mensuales()
+        for serie in SERIES_MENSUALES
+    ]
