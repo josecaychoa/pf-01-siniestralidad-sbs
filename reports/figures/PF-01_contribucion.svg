@@ -31,10 +31,10 @@
 <text x="386" y="549" font-size="15" font-weight="700" fill="#141822" text-anchor="end">Sistema (48 riesgos)</text>
 <text x="1004" y="549" font-size="15" font-weight="600" fill="#141822" text-anchor="start">+7.54</text>
 <text x="614" y="172" font-size="12" font-weight="400" fill="#2A5CDA" text-anchor="start">Cambio contable desde marzo de 2026 (Resolución SBS N.º 00085-2026)</text>
-<text x="614" y="222" font-size="12" font-weight="400" fill="#2A5CDA" text-anchor="start">Sin quiebre en marzo: siniestros altos en abril, julio y agosto; índice directo de 224.0 %</text>
+<text x="614" y="222" font-size="12" font-weight="400" fill="#2A5CDA" text-anchor="start">Siniestros elevados en marzo, abril, julio y agosto; índice directo de 224.0 %</text>
 <text x="56" y="608" font-size="13" font-weight="400" fill="#636975" text-anchor="start"><tspan font-style="italic">Nota.</tspan> Elaboración propia con datos de SBS (s. f.-a, s. f.-c, s. f.-d). Contribución de cada riesgo = sus siniestros entre las primas del sistema en agosto de</text>
 <text x="56" y="628" font-size="13" font-weight="400" fill="#636975" text-anchor="start">2026 menos lo mismo en agosto de 2025; las contribuciones suman el cambio del índice del sistema. Cortes de 8 meses acumulados. Desde marzo de 2026, los</text>
-<text x="56" y="648" font-size="13" font-weight="400" fill="#636975" text-anchor="start">siniestros incluyen «otras obligaciones» por la Resolución SBS N.º 00085-2026 (SBS, 2026).</text>
+<text x="56" y="648" font-size="13" font-weight="400" fill="#636975" text-anchor="start">siniestros incluyen «otras obligaciones» por la Resolución SBS N.º 00085-2026 (SBS, s. f.-d, 2026).</text>
 <line x1="56" y1="692" x2="1144" y2="692" stroke="#636975" stroke-width="1"/>
 <text x="60" y="738" font-size="32" font-weight="700" fill="#141822" text-anchor="start" letter-spacing="-1.6">JC<tspan fill="#2A5CDA">.</tspan></text>
 <text x="126" y="724" font-size="14" font-weight="700" fill="#141822" text-anchor="start">Portafolio · PF-01 · Qué explica el alza de 2026</text>

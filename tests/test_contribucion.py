@@ -136,3 +136,54 @@ def test_figuras_publicadas_coinciden_con_las_generadas(directa, archivo, constr
 def test_readme_contiene_la_tabla(directa, retenida):
     readme = (RAIZ / "README.md").read_text(encoding="utf-8")
     assert co.tabla_markdown(directa, retenida) in readme
+
+
+def test_riesgo_que_solo_existe_en_el_corte_inicial():
+    sinteticos = {
+        INICIO: [riesgo("A", 100, 40), riesgo("B", 100, 20)],
+        FIN: [riesgo("A", 100, 50)],
+    }
+    d = co.descomponer(sinteticos, INICIO, FIN)
+    assert d.de("B").contribucion == pytest.approx(-10.0)
+    assert d.de("B").indice_fin != d.de("B").indice_fin  # NaN: sin primas en el corte final
+    assert sum(c.contribucion for c in d.contribuciones) == pytest.approx(d.cambio, abs=1e-12)
+
+
+def test_cifras_citadas_en_el_texto(cortes):
+    """Cifras de la sección 4 del informe y del README calculadas desde los CSV versionados."""
+    from pf_01_siniestralidad_sbs.serie_mensual import leer_csv as leer_mensual
+
+    tabla = leer_mensual(MENSUAL)
+    marzo = date(2026, 3, 31)
+
+    def mensual(nombre):
+        serie = tabla[tabla["riesgo_comparable"] == nombre].set_index("fecha_corte")
+        return serie, serie["siniestros_netos_mes"] / 1000
+
+    vida, s_vida = mensual(co.VIDA_LARGO_PLAZO)
+    assert round(s_vida[s_vida.index < marzo].mean(), 1) == 9.5
+    assert round(s_vida[marzo], 1) == 310.6
+    assert round(s_vida[s_vida.index > marzo].mean(), 1) == 120.9
+    acumulado = 100 * vida["siniestros_netos"] / vida["primas_netas"]
+    assert round(acumulado[date(2026, 2, 28)], 1) == 4.5
+    assert round(acumulado[marzo], 1) == 46.2
+    primas = vida.loc[vida.index >= date(2026, 1, 1), "primas_netas_mes"] / 1000
+    assert (round(primas.min()), round(primas.max())) == (221, 304)
+
+    incendio, s_inc = mensual(co.INCENDIO)
+    assert round(s_inc[s_inc.index < marzo].mean(), 1) == 35.6
+    meses = [
+        date(2026, 3, 31),
+        date(2026, 4, 30),
+        date(2026, 5, 31),
+        date(2026, 7, 31),
+        date(2026, 8, 31),
+    ]
+    assert [round(s_inc[m], 1) for m in meses] == [113.5, 136.9, 12.6, 275.2, 171.8]
+    agosto = incendio.loc[date(2026, 8, 31)]
+    assert round(100 * (1 - agosto.siniestros_retenidos / agosto.siniestros_netos), 1) == 89.1
+
+    _, s_renta = mensual("Renta Particular")
+    assert round(s_renta[s_renta.index < marzo].mean(), 1) == 68.5
+    assert round(s_renta[marzo], 1) == 135.5
+    assert round(s_renta[s_renta.index > marzo].mean(), 1) == 107.7

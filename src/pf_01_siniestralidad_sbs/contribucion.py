@@ -57,13 +57,14 @@ NOTA_CONTRIBUCION = (
     "cada riesgo = sus siniestros entre las primas del sistema en agosto de 2026 menos lo mismo "
     "en agosto de 2025; las contribuciones suman el cambio del índice del sistema. Cortes de 8 "
     "meses acumulados. Desde marzo de 2026, los siniestros incluyen «otras obligaciones» por la "
-    "Resolución SBS N.º 00085-2026 (SBS, 2026)."
+    "Resolución SBS N.º 00085-2026 (SBS, s. f.-d, 2026)."
 )
 NOTA_MENSUAL = (
     "Nota. Elaboración propia con datos de SBS (s. f.-c, s. f.-d, 2026). Siniestros del "
     "mes = acumulado del mes menos el del mes anterior del mismo año, en millones de soles. "
     "Desde marzo de 2026 el cuadro S-402 se titula «Siniestros de Primas de Seguros y Otras "
-    "Obligaciones Netos» y su nota 1/ remite a la Resolución SBS N.º 085-2026."
+    "Obligaciones Netos» y su nota 1/ remite a la Resolución SBS N.º 085-2026; el monto de marzo "
+    "combina el acumulado a marzo con el criterio nuevo y el acumulado a febrero con el anterior."
 )
 
 
@@ -330,10 +331,12 @@ def construir_svg_contribucion(d: Descomposicion) -> str:
     # Anotaciones directas sobre los dos hallazgos
     nota_vida = f"Cambio contable desde marzo de 2026 ({NORMA})"
     nota_incendio = (
-        f"Sin quiebre en marzo: siniestros altos en abril, julio y agosto; índice directo de "
+        f"Siniestros elevados en marzo, abril, julio y agosto; índice directo de "
         f"{numero(incendio.indice_fin)} %"
     )
-    for k, anotacion in ((0, nota_vida), (1, nota_incendio)):
+    nombres = [c.riesgo for c in filas]
+    for riesgo, anotacion in ((VIDA_LARGO_PLAZO, nota_vida), (INCENDIO, nota_incendio)):
+        k = nombres.index(riesgo)
         piezas.append(texto(cero + 8, arriba + k * paso - 6, escape(anotacion), 12, AZUL))
     y = arriba + (len(filas) + 1) * paso + 30
     descripcion = (

@@ -115,3 +115,14 @@ def test_serie_versionada_igual_a_la_reconstruida(serie):
     pd.testing.assert_frame_equal(
         reconstruida.reset_index(drop=True), serie.reset_index(drop=True), atol=0.01
     )
+
+
+def test_verificar_meses_detecta_un_mes_faltante():
+    from pf_01_siniestralidad_sbs.serie_mensual import MesesIncompletosError, _verificar_meses
+
+    completa = pd.DataFrame(
+        {"riesgo_comparable": ["A"] * 3, "fecha_corte": [fin_de_mes(2026, m) for m in (1, 2, 3)]}
+    )
+    _verificar_meses(completa)
+    with pytest.raises(MesesIncompletosError):
+        _verificar_meses(completa.drop(index=1))

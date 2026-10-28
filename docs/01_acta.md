@@ -7,7 +7,7 @@
 | ID / Repositorio | PF-01 / github.com/josecaychoa/pf-01-siniestralidad-sbs |
 | Director del proyecto | José Caycho A. |
 | Issue padre | #1 |
-| Fechas planificadas | Planificación: 2026-10-12 a 2026-10-16 · Ejecución y cierre: 2026-11-02 a 2026-11-26 |
+| Fechas planificadas | Línea base v1.0: planificación del 2026-10-12 al 2026-10-16; ejecución y cierre del 2026-11-02 al 2026-11-26. Vigentes (CC-PF-01-02): ejecución desde el 2026-10-11 hasta 4.5 (2026-11-02) y publicación el 2026-11-12 |
 | Publicación en LinkedIn | Jueves 2026-11-12, 08:00 (hora de Lima); adelantada desde el 2026-11-26 por CC-PF-01-02 |
 | Esfuerzo estimado | 41.5 h: 36.0 h de núcleo (incluye el tablero Power BI, 4 h; el informe, 2 h; el modelo lógico y relacional del Data Modeler, 1.5 h; la contribución por riesgo y el quiebre contable, 2.5 h, y las correcciones de la auditoría, 4.5 h, por CC-PF-01-02) y 5.5 h opcionales (arquitectura en Visio, 2 h; proceso en Bizagi, 3.5 h) |
 | Estado | Aprobado el 2026-10-11 |

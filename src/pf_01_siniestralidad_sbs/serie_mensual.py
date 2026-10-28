@@ -64,6 +64,10 @@ class CuadreError(ValueError):
     """La suma de los riesgos no cuadra con la fila «TOTAL» del cuadro."""
 
 
+class MesesIncompletosError(ValueError):
+    """Falta un mes dentro de un año: el monto del mes saldría mal sin avisar."""
+
+
 def riesgos_por_clave() -> dict[str, dict[str, str]]:
     """Catálogo de riesgos indexado por clave normalizada (solo filas «riesgo» y «total»)."""
     catalogo = leer_catalogo("riesgos")
@@ -159,12 +163,22 @@ def _a_tabla(
             }
         )
     tabla = pd.DataFrame(filas).sort_values(["riesgo_comparable", "fecha_corte"], kind="stable")
+    _verificar_meses(tabla)
     anio = tabla["fecha_corte"].map(lambda d: d.year)
     for medida in MEDIDAS:
         previo = tabla.groupby(["riesgo_comparable", anio])[medida].shift(1).fillna(0.0)
         tabla[f"{medida}_mes"] = tabla[medida] - previo
     tabla = tabla.sort_values(["fecha_corte", "riesgo_comparable"], kind="stable")
     return tabla[COLUMNAS].reset_index(drop=True)
+
+
+def _verificar_meses(tabla: pd.DataFrame) -> None:
+    """Cada riesgo tiene todos los meses de cada año desde enero hasta su último mes."""
+    for riesgo, grupo in tabla.groupby("riesgo_comparable"):
+        for anio, fechas in grupo.groupby(grupo["fecha_corte"].map(lambda d: d.year)):
+            meses = sorted(d.month for d in fechas["fecha_corte"])
+            if meses != list(range(1, meses[-1] + 1)):
+                raise MesesIncompletosError(f"{riesgo} {anio}: meses {meses}")
 
 
 def _cuadrar(tabla: pd.DataFrame, totales: dict[tuple[date, str], float]) -> None:

@@ -52,7 +52,7 @@ Las columnas se describen en `docs/03_diccionario_datos.md`, sección 1.
 
 `scripts/descargar_mensual.py` escribe además `serie_mensual_riesgos.csv` desde los cuadros mensuales (módulo `serie_mensual.py`, sin Oracle): una fila por mes y riesgo comparable (960 filas: 20 meses × 48 riesgos), con primas y siniestros netos y retenidos acumulados en el año y del mes, el título del cuadro S-402 y la nota del plan de cuentas. Sus columnas se describen en `docs/03_diccionario_datos.md`, sección 3.13.
 
-Se versionan `matriz_riesgos.csv`, `indicadores_riesgo.csv`, `crecimiento_riesgos.csv` y `serie_mensual_riesgos.csv` (esta última por CC-PF-01-02); que lee el tablero Power BI (D-PF01-23): son agregados propios por riesgo comparable (48 filas en la matriz y en el crecimiento; 432 en la serie de 9 cortes) que se publican con su cita, según la regla de datos del portafolio. Los otros tres se regeneran con el script y quedan fuera de Git.
+Se versionan `matriz_riesgos.csv`, `indicadores_riesgo.csv` y `crecimiento_riesgos.csv`, que lee el tablero Power BI (D-PF01-23), y `serie_mensual_riesgos.csv`, que leen el informe y sus figuras (CC-PF-01-02). Los tres primeros son agregados propios por riesgo comparable (48 filas en la matriz y en el crecimiento; 432 en la serie de 9 cortes) que se publican con su cita, según la regla de datos del portafolio. Los otros tres se regeneran con el script y quedan fuera de Git.
 
 *Nota.* Elaboración propia con datos de SBS (s. f.-b).
 

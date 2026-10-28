@@ -2,7 +2,7 @@
 
 `Portafolio · PF-01` · José Caycho A. · octubre de 2026
 
-> En agosto de 2026, la siniestralidad directa del sistema asegurador peruano subió a 48.9 %, 7.5 puntos porcentuales (p. p.) más que un año antes (Superintendencia de Banca, Seguros y AFP [SBS], s. f.-a). Dos riesgos explican el alza: Vida Individual de Largo Plazo aporta 5.1 p. p. y su salto coincide con el cambio contable de marzo de 2026 que incorpora «otras obligaciones» de los seguros de vida con ahorro (SBS, 2026); Incendio aporta 2.9 p. p. Sin ambos, el índice del resto del sistema pasa de 44.7 % a 45.0 %. Este repositorio reproduce el análisis completo, de la descarga de los boletines al tablero, y valida cada cifra contra la fuente.
+> En agosto de 2026, la siniestralidad directa del sistema asegurador peruano subió a 48.9 %, 7.5 puntos porcentuales (p. p.) más que un año antes (Superintendencia de Banca, Seguros y AFP [SBS], s. f.-a). Dos riesgos explican el alza: Vida Individual de Largo Plazo aporta 5.1 p. p. y su salto coincide con el cambio contable de marzo de 2026 que incorpora «otras obligaciones» de los seguros de vida con ahorro (SBS, s. f.-d, 2026); Incendio aporta 2.9 p. p. Sin ambos, el índice del resto del sistema pasa de 44.7 % a 45.0 %, con Renta Particular, que también sube en marzo de 2026, incluida. Este repositorio reproduce el análisis completo, de la descarga de los boletines al tablero, y valida cada cifra contra la fuente.
 
 ## Problema
 
@@ -94,7 +94,7 @@ La siniestralidad directa del sistema pasó de 53.0 % en diciembre de 2019 a un 
 
 *Nota.* Elaboración propia con datos de SBS (s. f.-a, s. f.-b, s. f.-c, s. f.-d). Figura y tabla de la serie generadas con `uv run python scripts/figura_serie.py`; los puntos huecos marcan los cortes de agosto (8 meses acumulados).
 
-El alza no es generalizada (figura 5). De los +7.54 p. p. de la directa, Vida Individual de Largo Plazo aporta +5.12: sus siniestros mensuales promediaron 9.5 millones de soles hasta febrero de 2026 y saltaron a 310.6 millones en marzo, el mes desde el cual rige la Resolución SBS N.º 00085-2026, que estandariza el tratamiento contable de los rescates y vencimientos de los seguros de vida con componente de ahorro (SBS, 2026); desde ese mes, el cuadro de siniestros de la SBS incluye «otras obligaciones» (SBS, s. f.-d). Incendio aporta +2.91, con siniestros elevados desde abril de 2026 y cedidos en un 89.1 % en reaseguro. Los otros 46 riesgos suman −0.49. El detalle, con la serie mensual, está en la sección 4 del informe.
+El alza no es generalizada (figura 5 y tabla 2). De los +7.54 p. p. de la directa, Vida Individual de Largo Plazo aporta +5.12: sus siniestros mensuales promediaron 9.5 millones de soles hasta febrero de 2026 y saltaron a 310.6 millones en marzo, el mes desde el cual rige la Resolución SBS N.º 00085-2026, que estandariza el tratamiento contable de los rescates y vencimientos de los seguros de vida con componente de ahorro (SBS, 2026); desde ese mes, el cuadro de siniestros de la SBS incluye «otras obligaciones» (SBS, s. f.-d). Incendio aporta +2.91, con siniestros elevados en marzo, abril, julio y agosto de 2026, cedidos en un 89.1 % en reaseguro. Los otros 46 riesgos suman −0.49; entre ellos, Renta Particular (+1.60), otro seguro con componente de ahorro, también sube en marzo de 2026, y ese efecto no se aisló. El detalle, con la serie mensual, está en la sección 4 del informe.
 
 **Figura 5**
 
@@ -133,7 +133,7 @@ De los 48 riesgos del corte, 35 quedan clasificados en la matriz de cuadrantes: 
 
 ## Cómo reproducir
 
-Sin Oracle, con [uv](https://docs.astral.sh/uv/) instalado (verificado desde un clon limpio el 27 de octubre de 2026: 151 pruebas superadas y 51 omitidas en 3 s):
+Sin Oracle, con [uv](https://docs.astral.sh/uv/) instalado (verificado desde un clon limpio el 27 de octubre de 2026: 154 pruebas superadas y 51 omitidas en 3 s):
 
 ```bash
 git clone https://github.com/josecaychoa/pf-01-siniestralidad-sbs.git
@@ -169,12 +169,12 @@ Los conteos de filas y los cuadres esperados tras la carga están en el dicciona
 ├── scripts/                       # descarga, validación, carga, exportación, figuras y lint de texto
 ├── sql/oracle/                    # scripts idempotentes: DDL · vistas · carga (prefijos stg_, dim_, fct_, vw_)
 ├── src/pf_01_siniestralidad_sbs/  # paquete Python del flujo
-└── tests/                         # 202 pruebas (151 se ejecutan sin Oracle ni datos descargados)
+└── tests/                         # 205 pruebas (154 se ejecutan sin Oracle ni datos descargados)
 ```
 
 ## Limitaciones
 
-- Desde la información de marzo de 2026, los siniestros de la SBS incluyen «otras obligaciones» por la Resolución SBS N.º 00085-2026: el corte de agosto de 2026 no es comparable con los anteriores en Vida Individual de Largo Plazo. No se pudo leer el Anexo de la resolución; la atribución se apoya en el mes del quiebre y en el título y la nota del cuadro de la SBS.
+- Desde la información de marzo de 2026, los siniestros de la SBS incluyen «otras obligaciones» por la Resolución SBS N.º 00085-2026: el corte de agosto de 2026 no es comparable con los anteriores en Vida Individual de Largo Plazo, y probablemente tampoco en Renta Particular. No se pudo leer el Anexo de la resolución; la atribución es una inferencia que se apoya en el mes del quiebre, en el título y la nota del cuadro de la SBS y en el considerando de la norma.
 - Los cortes de agosto acumulan 8 meses y los de diciembre, 12; el índice no está anualizado, así que las comparaciones interanuales válidas son entre cortes del mismo mes.
 - La matriz usa un solo corte (agosto de 2026). Para otro corte hay que regenerar los CSV con `uv run python scripts/exportar_indicadores.py`.
 - 5 riesgos previsionales y 8 riesgos bajo el umbral de materialidad quedan fuera de la clasificación por cuadrante; en diciembre de 2020, 5 celdas del índice publicado difieren del calculado porque la fuente usó el Total simple (D-PF01-18).
@@ -187,9 +187,9 @@ Superintendencia de Banca, Seguros y AFP. (s. f.-a). *Boletín mensual* [Conjunt
 
 Superintendencia de Banca, Seguros y AFP. (s. f.-b). *Índice de siniestralidad directa y retenida según riesgos* [Conjunto de datos]. Recuperado el 11 de octubre de 2026, de https://www.sbs.gob.pe/app/stats_net/stats/EstadisticaSistemaFinancieroResultados.aspx?c=S-403
 
-Superintendencia de Banca, Seguros y AFP. (s. f.-c). *Primas de seguros netas, cedidas y retenidas según riesgos* [Conjunto de datos]. Recuperado el 11 de octubre de 2026, de https://www.sbs.gob.pe/app/stats_net/stats/EstadisticaSistemaFinancieroResultados.aspx?c=S-401
+Superintendencia de Banca, Seguros y AFP. (s. f.-c). *Primas de seguros netas, cedidas y retenidas según riesgos* [Conjunto de datos]. Recuperado el 11 y el 27 de octubre de 2026, de https://www.sbs.gob.pe/app/stats_net/stats/EstadisticaSistemaFinancieroResultados.aspx?c=S-401
 
-Superintendencia de Banca, Seguros y AFP. (s. f.-d). *Siniestros de primas de seguros netas, cedidas y retenidas según riesgos* [Conjunto de datos]. Recuperado el 11 de octubre de 2026, de https://www.sbs.gob.pe/app/stats_net/stats/EstadisticaSistemaFinancieroResultados.aspx?c=S-402
+Superintendencia de Banca, Seguros y AFP. (s. f.-d). *Siniestros de primas de seguros netas, cedidas y retenidas según riesgos* [Conjunto de datos]. Recuperado el 11 y el 27 de octubre de 2026, de https://www.sbs.gob.pe/app/stats_net/stats/EstadisticaSistemaFinancieroResultados.aspx?c=S-402
 
 Superintendencia de Banca, Seguros y AFP. (2026). *Resolución S.B.S. N.º 00085-2026: Modifica el Plan de Cuentas para las Empresas del Sistema Asegurador*. https://intranet2.sbs.gob.pe/dv_int_cn/2551/v1.0/Adjuntos/R.%2000085-2026.pdf
 
