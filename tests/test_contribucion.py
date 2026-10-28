@@ -131,3 +131,8 @@ def test_figuras_publicadas_coinciden_con_las_generadas(directa, archivo, constr
     assert "Portafolio · PF-01" in generada
     publicada = (FIGURAS / archivo).read_text(encoding="utf-8")
     assert sin_procedencia(publicada) == generada
+
+
+def test_readme_contiene_la_tabla(directa, retenida):
+    readme = (RAIZ / "README.md").read_text(encoding="utf-8")
+    assert co.tabla_markdown(directa, retenida) in readme

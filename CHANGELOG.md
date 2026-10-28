@@ -1,6 +1,11 @@
 # Changelog
 
 ## [Sin publicar]
+- Contribución de cada riesgo al cambio de la siniestralidad del sistema entre agosto de 2025 y agosto de 2026 (módulo `contribucion.py`, con la prueba de que las contribuciones suman el cambio): Vida Individual de Largo Plazo aporta +5.12 p. p. e Incendio +2.91 de los +7.54 p. p. de la directa (#56, CC-PF-01-02).
+- Serie mensual de primas y siniestros por riesgo de enero de 2025 a agosto de 2026 (cuadros S-401 y S-402, `scripts/descargar_mensual.py`, `data/raw/mensual/manifest.csv` y `data/processed/serie_mensual_riesgos.csv`), cuadrada con el Boletín mensual: ubica en marzo de 2026 el quiebre de Vida Individual de Largo Plazo que coincide con la Resolución SBS N.º 00085-2026 (#56).
+- Informe 1.1: nueva sección 4 «Qué explica el alza de 2026» con la tabla 2 y las figuras 2 (`PF-01_contribucion.svg`) y 3 (`PF-01_quiebre_vida.svg`); resumen, limitaciones y conclusiones reescritos sin atribuir el alza a un deterioro técnico generalizado; tablas y figuras siguientes renumeradas (#56).
+- README: titular y resultados con la contribución por riesgo, figura 5 nueva, cuadros mensuales en los datos y en la reproducción, limitación del plan de cuentas y referencia de la resolución (#56).
+- Acta 1.8 y EDT 1.8: paquetes 4.4 y 4.5 y publicación el 2026-11-12 por la solicitud de cambio CC-PF-01-02; diccionario de datos, sección 3.13, y `data/README.md` con la serie mensual (#56).
 
 ## [1.0.0] - 2026-10-27
 - Cierre del proyecto en `docs/05_cierre_lecciones.md`: objetivos, desvíos frente a la v1.0 y la Baseline1, esfuerzo real por paquete, lecciones y retrospectiva; brechas de datos del checklist en `docs/03_diccionario_datos.md` y `data/README.md` (#13).
