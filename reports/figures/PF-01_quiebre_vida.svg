@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="718" viewBox="0 0 1200 718" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">PF-01 · Siniestros mensuales de Vida Individual de Largo Plazo, enero de 2025 a agosto de 2026</title>
+<desc id="d">Siniestros mensuales de Vida Individual de Largo Plazo: promedio de 9.5 millones de soles de enero de 2025 a febrero de 2026, 310.6 millones en marzo de 2026 y promedio de 120.9 millones de abril a agosto de 2026.</desc>
+<rect width="1200" height="718" fill="#FFFFFF"/>
+<text x="56" y="64" font-size="28" font-weight="600" fill="#141822" text-anchor="start" letter-spacing="-0.4">Los siniestros de Vida Individual de Largo Plazo saltaron en marzo de 2026.</text>
+<text x="56" y="102" font-size="28" font-weight="600" fill="#636975" text-anchor="start" letter-spacing="-0.4">Ese mes, la SBS empezó a incluir «otras obligaciones» por un cambio contable.</text>
+<text x="56" y="138" font-size="15" font-weight="400" fill="#636975" text-anchor="start">Siniestros netos del mes, en millones de soles. Promedio de 9.5 antes de marzo de 2026 y de 120.9 de abril a agosto.</text>
+<line x1="112" y1="478.0" x2="1144" y2="478.0" stroke="#C8CBCF" stroke-width="0.6"/>
+<text x="102" y="482" font-size="12" font-weight="400" fill="#636975" text-anchor="end">0</text>
+<line x1="112" y1="392.2857142857143" x2="1144" y2="392.2857142857143" stroke="#C8CBCF" stroke-width="0.6"/>
+<text x="102" y="396.286" font-size="12" font-weight="400" fill="#636975" text-anchor="end">100</text>
+<line x1="112" y1="306.57142857142856" x2="1144" y2="306.57142857142856" stroke="#C8CBCF" stroke-width="0.6"/>
+<text x="102" y="310.571" font-size="12" font-weight="400" fill="#636975" text-anchor="end">200</text>
+<line x1="112" y1="220.8571428571429" x2="1144" y2="220.8571428571429" stroke="#C8CBCF" stroke-width="0.6"/>
+<text x="102" y="224.857" font-size="12" font-weight="400" fill="#636975" text-anchor="end">300</text>
+<rect x="121.3" y="473.3" width="33.0" height="4.7" fill="#C8CBCF"/>
+<text x="137.8" y="498" font-size="12" font-weight="400" fill="#636975" text-anchor="middle">ene</text>
+<text x="137.8" y="516" font-size="12" font-weight="600" fill="#141822" text-anchor="middle">2025</text>
+<rect x="172.9" y="471.2" width="33.0" height="6.8" fill="#C8CBCF"/>
+<text x="189.4" y="498" font-size="12" font-weight="400" fill="#636975" text-anchor="middle">feb</text>
+<rect x="224.5" y="472.3" width="33.0" height="5.7" fill="#C8CBCF"/>
+<text x="241" y="498" font-size="12" font-weight="400" fill="#636975" text-anchor="middle">mar</text>
+<rect x="276.1" y="472.7" width="33.0" height="5.3" fill="#C8CBCF"/>
+<text x="292.6" y="498" font-size="12" font-weight="400" fill="#636975" text-anchor="middle">abr</text>
+<rect x="327.7" y="472.3" width="33.0" height="5.7" fill="#C8CBCF"/>
+<text x="344.2" y="498" font-size="12" font-weight="400" fill="#636975" text-anchor="middle">may</text>
+<rect x="379.3" y="468.9" width="33.0" height="9.1" fill="#C8CBCF"/>
+<text x="395.8" y="498" font-size="12" font-weight="400" fill="#636975" text-anchor="middle">jun</text>
+<rect x="430.9" y="463.7" width="33.0" height="14.3" fill="#C8CBCF"/>
+<text x="447.4" y="498" font-size="12" font-weight="400" fill="#636975" text-anchor="middle">jul</text>
+<rect x="482.5" y="469.7" width="33.0" height="8.3" fill="#C8CBCF"/>
+<text x="499" y="498" font-size="12" font-weight="400" fill="#636975" text-anchor="middle">ago</text>
+<rect x="534.1" y="471.9" width="33.0" height="6.1" fill="#C8CBCF"/>
+<text x="550.6" y="498" font-size="12" font-weight="400" fill="#636975" text-anchor="middle">sep</text>
+<rect x="585.7" y="470.8" width="33.0" height="7.2" fill="#C8CBCF"/>
+<text x="602.2" y="498" font-size="12" font-weight="400" fill="#636975" text-anchor="middle">oct</text>
+<rect x="637.3" y="462.4" width="33.0" height="15.6" fill="#C8CBCF"/>
+<text x="653.8" y="498" font-size="12" font-weight="400" fill="#636975" text-anchor="middle">nov</text>
+<rect x="688.9" y="470.1" width="33.0" height="7.9" fill="#C8CBCF"/>
+<text x="705.4" y="498" font-size="12" font-weight="400" fill="#636975" text-anchor="middle">dic</text>
+<rect x="740.5" y="471.2" width="33.0" height="6.8" fill="#C8CBCF"/>
+<text x="757" y="498" font-size="12" font-weight="400" fill="#636975" text-anchor="middle">ene</text>
+<text x="757" y="516" font-size="12" font-weight="600" fill="#141822" text-anchor="middle">2026</text>
+<rect x="792.1" y="467.1" width="33.0" height="10.9" fill="#C8CBCF"/>
+<text x="808.6" y="498" font-size="12" font-weight="400" fill="#636975" text-anchor="middle">feb</text>
+<rect x="843.7" y="211.7" width="33.0" height="266.3" fill="#2A5CDA"/>
+<text x="860.2" y="498" font-size="12" font-weight="400" fill="#636975" text-anchor="middle">mar</text>
+<rect x="895.3" y="382.8" width="33.0" height="95.2" fill="#2A5CDA"/>
+<text x="911.8" y="498" font-size="12" font-weight="400" fill="#636975" text-anchor="middle">abr</text>
+<rect x="946.9" y="368.6" width="33.0" height="109.4" fill="#2A5CDA"/>
+<text x="963.4" y="498" font-size="12" font-weight="400" fill="#636975" text-anchor="middle">may</text>
+<rect x="998.5" y="389.0" width="33.0" height="89.0" fill="#2A5CDA"/>
+<text x="1015" y="498" font-size="12" font-weight="400" fill="#636975" text-anchor="middle">jun</text>
+<rect x="1050.1" y="377.2" width="33.0" height="100.8" fill="#2A5CDA"/>
+<text x="1066.6" y="498" font-size="12" font-weight="400" fill="#636975" text-anchor="middle">jul</text>
+<rect x="1101.7" y="354.5" width="33.0" height="123.5" fill="#2A5CDA"/>
+<text x="1118.2" y="498" font-size="12" font-weight="400" fill="#636975" text-anchor="middle">ago</text>
+<line x1="112" y1="478" x2="1144" y2="478" stroke="#636975" stroke-width="1"/>
+<text x="835.688" y="229.73" font-size="14" font-weight="600" fill="#2A5CDA" text-anchor="end">310.6</text>
+<text x="835.688" y="251.73" font-size="12" font-weight="400" fill="#2A5CDA" text-anchor="end">Desde marzo de 2026: Resolución SBS N.º 00085-2026.</text>
+<text x="835.688" y="269.73" font-size="12" font-weight="400" fill="#2A5CDA" text-anchor="end">El cuadro S-402 pasa a incluir</text>
+<text x="835.688" y="287.73" font-size="12" font-weight="400" fill="#2A5CDA" text-anchor="end">«otras obligaciones».</text>
+<text x="56" y="554" font-size="13" font-weight="400" fill="#636975" text-anchor="start"><tspan font-style="italic">Nota.</tspan> Elaboración propia con datos de SBS (s. f.-c, s. f.-d, 2026). Siniestros del mes = acumulado del mes menos el del mes anterior del mismo año, en</text>
+<text x="56" y="574" font-size="13" font-weight="400" fill="#636975" text-anchor="start">millones de soles. Desde marzo de 2026 el cuadro S-402 se titula «Siniestros de Primas de Seguros y Otras Obligaciones Netos» y su nota 1/ remite a la</text>
+<text x="56" y="594" font-size="13" font-weight="400" fill="#636975" text-anchor="start">Resolución SBS N.º 085-2026; el monto de marzo combina el acumulado a marzo con el criterio nuevo y el acumulado a febrero con el anterior.</text>
+<line x1="56" y1="638" x2="1144" y2="638" stroke="#636975" stroke-width="1"/>
+<text x="60" y="684" font-size="32" font-weight="700" fill="#141822" text-anchor="start" letter-spacing="-1.6">JC<tspan fill="#2A5CDA">.</tspan></text>
+<text x="126" y="670" font-size="14" font-weight="700" fill="#141822" text-anchor="start">Portafolio · PF-01 · Quiebre contable de marzo de 2026</text>
+<text x="126" y="688" font-size="12" font-weight="400" fill="#636975" text-anchor="start">2026-10-27</text>
+<text x="1144" y="680" font-size="12" font-weight="400" fill="#636975" text-anchor="end">github.com/josecaychoa/pf-01-siniestralidad-sbs</text>
+</svg>

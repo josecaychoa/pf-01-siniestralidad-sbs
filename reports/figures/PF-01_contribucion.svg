@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="772" viewBox="0 0 1200 772" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">PF-01 · Contribución de cada riesgo al cambio de la siniestralidad directa del sistema, agosto de 2025 a agosto de 2026</title>
+<desc id="d">El índice directo del sistema subió 7.54 puntos porcentuales: Vida Individual de Largo Plazo aporta 5.12 e Incendio 2.91; el resto de riesgos suma −0.49.</desc>
+<rect width="1200" height="772" fill="#FFFFFF"/>
+<text x="56" y="64" font-size="28" font-weight="600" fill="#141822" text-anchor="start" letter-spacing="-0.4">Dos riesgos explican el alza de 7.5 puntos de la siniestralidad.</text>
+<text x="56" y="102" font-size="28" font-weight="600" fill="#636975" text-anchor="start" letter-spacing="-0.4">Vida Individual de Largo Plazo aporta 5.1 tras un cambio contable; Incendio, 2.9.</text>
+<text x="56" y="138" font-size="15" font-weight="400" fill="#636975" text-anchor="start">Contribución al cambio del índice directo del sistema, agosto de 2025 a agosto de 2026, en puntos porcentuales.</text>
+<line x1="606" y1="166" x2="606" y2="578" stroke="#636975" stroke-width="1"/>
+<rect x="606" y="178" width="263.4" height="30" fill="#2A5CDA"/>
+<text x="386" y="199" font-size="15" font-weight="600" fill="#141822" text-anchor="end">Vida Individual de Largo Plazo</text>
+<text x="879.425" y="199" font-size="15" font-weight="600" fill="#2A5CDA" text-anchor="start">+5.12</text>
+<rect x="606" y="228" width="149.5" height="30" fill="#2A5CDA"/>
+<text x="386" y="249" font-size="15" font-weight="600" fill="#141822" text-anchor="end">Incendio</text>
+<text x="765.537" y="249" font-size="15" font-weight="600" fill="#2A5CDA" text-anchor="start">+2.91</text>
+<rect x="606" y="278" width="82.4" height="30" fill="#C8CBCF"/>
+<text x="386" y="299" font-size="15" font-weight="400" fill="#141822" text-anchor="end">Renta Particular</text>
+<text x="698.408" y="299" font-size="15" font-weight="600" fill="#141822" text-anchor="start">+1.60</text>
+<rect x="606" y="328" width="19.1" height="30" fill="#C8CBCF"/>
+<text x="386" y="349" font-size="15" font-weight="400" fill="#141822" text-anchor="end">Seguro de Bancos (BBB)</text>
+<text x="635.077" y="349" font-size="15" font-weight="600" fill="#141822" text-anchor="start">+0.37</text>
+<rect x="546.8" y="378" width="59.2" height="30" fill="#C8CBCF"/>
+<text x="386" y="399" font-size="15" font-weight="400" fill="#141822" text-anchor="end">Resto (42 riesgos)</text>
+<text x="536.79" y="399" font-size="15" font-weight="600" fill="#141822" text-anchor="end">−1.15</text>
+<rect x="581.5" y="428" width="24.5" height="30" fill="#C8CBCF"/>
+<text x="386" y="449" font-size="15" font-weight="400" fill="#141822" text-anchor="end">Renta de Jubilados</text>
+<text x="571.48" y="449" font-size="15" font-weight="600" fill="#141822" text-anchor="end">−0.48</text>
+<rect x="563.3" y="478" width="42.7" height="30" fill="#C8CBCF"/>
+<text x="386" y="499" font-size="15" font-weight="400" fill="#141822" text-anchor="end">Seguro Complementario de Trabajo de Riesgo</text>
+<text x="553.282" y="499" font-size="15" font-weight="600" fill="#141822" text-anchor="end">−0.83</text>
+<rect x="606" y="528" width="388.0" height="30" fill="#141822"/>
+<text x="386" y="549" font-size="15" font-weight="700" fill="#141822" text-anchor="end">Sistema (48 riesgos)</text>
+<text x="1004" y="549" font-size="15" font-weight="600" fill="#141822" text-anchor="start">+7.54</text>
+<text x="614" y="172" font-size="12" font-weight="400" fill="#2A5CDA" text-anchor="start">Cambio contable desde marzo de 2026 (Resolución SBS N.º 00085-2026)</text>
+<text x="614" y="222" font-size="12" font-weight="400" fill="#2A5CDA" text-anchor="start">Siniestros elevados en marzo, abril, julio y agosto; índice directo de 224.0 %</text>
+<text x="56" y="608" font-size="13" font-weight="400" fill="#636975" text-anchor="start"><tspan font-style="italic">Nota.</tspan> Elaboración propia con datos de SBS (s. f.-a, s. f.-c, s. f.-d). Contribución de cada riesgo = sus siniestros entre las primas del sistema en agosto de</text>
+<text x="56" y="628" font-size="13" font-weight="400" fill="#636975" text-anchor="start">2026 menos lo mismo en agosto de 2025; las contribuciones suman el cambio del índice del sistema. Cortes de 8 meses acumulados. Desde marzo de 2026, los</text>
+<text x="56" y="648" font-size="13" font-weight="400" fill="#636975" text-anchor="start">siniestros incluyen «otras obligaciones» por la Resolución SBS N.º 00085-2026 (SBS, s. f.-d, 2026).</text>
+<line x1="56" y1="692" x2="1144" y2="692" stroke="#636975" stroke-width="1"/>
+<text x="60" y="738" font-size="32" font-weight="700" fill="#141822" text-anchor="start" letter-spacing="-1.6">JC<tspan fill="#2A5CDA">.</tspan></text>
+<text x="126" y="724" font-size="14" font-weight="700" fill="#141822" text-anchor="start">Portafolio · PF-01 · Qué explica el alza de 2026</text>
+<text x="126" y="742" font-size="12" font-weight="400" fill="#636975" text-anchor="start">2026-10-27</text>
+<text x="1144" y="734" font-size="12" font-weight="400" fill="#636975" text-anchor="end">github.com/josecaychoa/pf-01-siniestralidad-sbs</text>
+</svg>

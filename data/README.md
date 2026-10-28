@@ -23,6 +23,10 @@ El manifiesto funciona como referencia: en un clon limpio, cada archivo descarga
 
 *Nota.* Elaboración propia con datos de SBS (s. f.-a, s. f.-b, s. f.-d, s. f.-e, s. f.-f). La fecha de descarga es la del registro de referencia en el manifiesto. Sobre las condiciones de uso: el portal indica «Todos los derechos reservados» y la página de datos abiertos no declara una licencia (SBS, s. f.-c); el proyecto publica solo agregados propios con su cita y no redistribuye los archivos originales.
 
+### Cuadros mensuales (`data/raw/mensual/`)
+
+Para ubicar en el tiempo el cambio del plan de cuentas de marzo de 2026 (Resolución SBS N.º 00085-2026; paquete 4.4, CC-PF-01-02), `uv run python scripts/descargar_mensual.py` descarga los cuadros S-401 (primas) y S-402 (siniestros) de cada mes de enero de 2025 a agosto de 2026: 40 archivos `.XLS` con el mismo patrón de URL que la tabla anterior (p. ej., [S-402-ma2026.XLS](https://intranet2.sbs.gob.pe/estadistica/financiera/2026/Marzo/S-402-ma2026.XLS)). Se descargaron el 2026-10-27; los archivos no se versionan y su propio manifiesto, [`data/raw/mensual/manifest.csv`](raw/mensual/manifest.csv), registra la URL, la fecha de descarga, `Last-Modified` y el SHA-256 de cada uno. Condiciones de uso: las mismas de la tabla anterior.
+
 ## Tablas en formato largo (`data/interim/`)
 
 | Archivo | Hojas | Filas (descarga del 2026-10-11) |
@@ -46,7 +50,9 @@ Las columnas se describen en `docs/03_diccionario_datos.md`, sección 1.
 | `matriz_riesgos.csv` | `vw_matriz_riesgo` | riesgo comparable en el corte actual | 48 |
 | `participacion_empresa_riesgo.csv` | `vw_participacion_empresa_riesgo` | empresa y riesgo en cada corte | 7 756 |
 
-Se versionan `matriz_riesgos.csv`, `indicadores_riesgo.csv` y `crecimiento_riesgos.csv`, que lee el tablero Power BI (D-PF01-23): son agregados propios por riesgo comparable (48 filas en la matriz y en el crecimiento; 432 en la serie de 9 cortes) que se publican con su cita, según la regla de datos del portafolio. Los otros tres se regeneran con el script y quedan fuera de Git.
+`scripts/descargar_mensual.py` escribe además `serie_mensual_riesgos.csv` desde los cuadros mensuales (módulo `serie_mensual.py`, sin Oracle): una fila por mes y riesgo comparable (960 filas: 20 meses × 48 riesgos), con primas y siniestros netos y retenidos acumulados en el año y del mes, el título del cuadro S-402 y la nota del plan de cuentas. Sus columnas se describen en `docs/03_diccionario_datos.md`, sección 3.13.
+
+Se versionan `matriz_riesgos.csv`, `indicadores_riesgo.csv` y `crecimiento_riesgos.csv`, que lee el tablero Power BI (D-PF01-23), y `serie_mensual_riesgos.csv`, que leen el informe y sus figuras (CC-PF-01-02). Los tres primeros son agregados propios por riesgo comparable (48 filas en la matriz y en el crecimiento; 432 en la serie de 9 cortes) que se publican con su cita, según la regla de datos del portafolio. Los otros tres se regeneran con el script y quedan fuera de Git.
 
 *Nota.* Elaboración propia con datos de SBS (s. f.-b).
 

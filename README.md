@@ -2,7 +2,7 @@
 
 `Portafolio · PF-01` · José Caycho A. · octubre de 2026
 
-> En agosto de 2026, la siniestralidad directa del sistema asegurador peruano subió a 48.9 %, 7.5 puntos porcentuales (p. p.) más que un año antes, con primas que crecieron 9.0 % (Superintendencia de Banca, Seguros y AFP [SBS], s. f.-a). Este repositorio reproduce el análisis completo, de la descarga de los boletines al tablero, y deja los indicadores validados en 9.9 minutos por corte, frente a los 95.0 del proceso manual.
+> En agosto de 2026, la siniestralidad directa del sistema asegurador peruano subió a 48.9 %, 7.5 puntos porcentuales (p. p.) más que un año antes (Superintendencia de Banca, Seguros y AFP [SBS], s. f.-a). Dos riesgos explican el alza: Vida Individual de Largo Plazo aporta 5.1 p. p. y su salto coincide con el cambio contable de marzo de 2026 que incorpora «otras obligaciones» de los seguros de vida con ahorro (SBS, s. f.-d, 2026); Incendio aporta 2.9 p. p. Sin ambos, el índice del resto del sistema pasa de 44.7 % a 45.0 %, con Renta Particular, que también sube en marzo de 2026, incluida. Este repositorio reproduce el análisis completo, de la descarga de los boletines al tablero, y valida cada cifra contra la fuente.
 
 ## Problema
 
@@ -16,8 +16,9 @@
 | SBS | S-401 · Primas de seguros netas, cedidas y retenidas según riesgos | 2026-08-31 | No declaradas |
 | SBS | S-402 · Siniestros de primas de seguros netas, cedidas y retenidas según riesgos | 2026-08-31 | No declaradas |
 | SBS | S-403 · Índice de siniestralidad directa y retenida según riesgos | 2026-08-31 | No declaradas |
+| SBS | S-401 y S-402 mensuales, 40 cuadros | Fin de cada mes, de enero de 2025 a agosto de 2026 | No declaradas |
 
-Los datos se descargaron el 11 de octubre de 2026 con `uv run python scripts/descargar_sbs.py`; los archivos originales no se versionan y [`data/raw/manifest.csv`](data/raw/manifest.csv) registra la URL, la fecha de descarga y la huella SHA-256 de cada uno. Sobre las condiciones de uso: el portal de la SBS indica «Todos los derechos reservados» y su página de datos abiertos no declara una licencia, así que el proyecto publica solo agregados propios con su cita y no redistribuye los archivos originales (detalle en [`data/README.md`](data/README.md)). Este proyecto no usa datos personales.
+Los datos se descargaron el 11 de octubre de 2026 con `uv run python scripts/descargar_sbs.py`, y los cuadros mensuales, el 27 de octubre de 2026 con `uv run python scripts/descargar_mensual.py` (manifiesto en [`data/raw/mensual/manifest.csv`](data/raw/mensual/manifest.csv)); los archivos originales no se versionan y [`data/raw/manifest.csv`](data/raw/manifest.csv) registra la URL, la fecha de descarga y la huella SHA-256 de cada uno. Sobre las condiciones de uso: el portal de la SBS indica «Todos los derechos reservados» y su página de datos abiertos no declara una licencia, así que el proyecto publica solo agregados propios con su cita y no redistribuye los archivos originales (detalle en [`data/README.md`](data/README.md)). Este proyecto no usa datos personales.
 
 ## Método
 
@@ -26,7 +27,7 @@ El flujo de datos tiene tres etapas ETL (extracción, transformación y carga) y
 1. Extracción: `scripts/descargar_sbs.py` descarga los boletines por HTTPS, los guarda sin modificar en `data/raw/` y los contrasta con el manifiesto.
 2. Transformación: `src/pf_01_siniestralidad_sbs/extraccion.py` lleva las hojas a formato largo en `data/interim/`; los catálogos resuelven empresas, riesgos, cortes y excepciones, y `scripts/validar_datos.py` aplica los controles de cuadre y de estructura.
 3. Carga: `scripts/cargar_oracle.py` puebla en Oracle las 3 tablas `stg_`, las 7 dimensiones `dim_`, las 3 tablas de hechos `fct_` y las 12 vistas `vw_` de `sql/oracle/`.
-4. Consumo: `scripts/exportar_indicadores.py` escribe los CSV versionados de `data/processed/` que leen el informe, las figuras y el tablero Power BI.
+4. Consumo: `scripts/exportar_indicadores.py` escribe los CSV versionados de `data/processed/` que leen el informe, las figuras y el tablero Power BI. `scripts/descargar_mensual.py` agrega la serie mensual por riesgo (`data/processed/serie_mensual_riesgos.csv`) y `scripts/figura_contribucion.py` descompone el cambio del índice del sistema en la contribución de cada riesgo.
 
 **Figura 1**
 
@@ -93,9 +94,36 @@ La siniestralidad directa del sistema pasó de 53.0 % en diciembre de 2019 a un 
 
 *Nota.* Elaboración propia con datos de SBS (s. f.-a, s. f.-b, s. f.-c, s. f.-d). Figura y tabla de la serie generadas con `uv run python scripts/figura_serie.py`; los puntos huecos marcan los cortes de agosto (8 meses acumulados).
 
-De los 48 riesgos del corte, 35 quedan clasificados en la matriz de cuadrantes: 9 crecen con una siniestralidad directa mayor que el corte de 44.0 % y concentran 5 305.3 millones de soles de primas, con Vida Individual de Largo Plazo, Asistencia Médica y Vehículos a la cabeza (83.7 % del cuadrante). La figura 5 muestra la página «Matriz de riesgos» del tablero Power BI, cuya segmentación «Medida» alterna entre la siniestralidad directa y la retenida ([`dashboards/powerbi/README.md`](dashboards/powerbi/README.md)). Las tablas completas, la lectura con la medida retenida y las conclusiones están en el informe de resultados ([`reports/informe.md`](reports/informe.md)).
+El alza no es generalizada (figura 5 y tabla 2). De los +7.54 p. p. de la directa, Vida Individual de Largo Plazo aporta +5.12: sus siniestros mensuales promediaron 9.5 millones de soles hasta febrero de 2026 y saltaron a 310.6 millones en marzo, el mes desde el cual rige la Resolución SBS N.º 00085-2026, que estandariza el tratamiento contable de los rescates y vencimientos de los seguros de vida con componente de ahorro (SBS, 2026); desde ese mes, el cuadro de siniestros de la SBS incluye «otras obligaciones» (SBS, s. f.-d). Incendio aporta +2.91, con siniestros elevados en marzo, abril, julio y agosto de 2026, cedidos en un 89.1 % en reaseguro. Los otros 46 riesgos suman −0.49; entre ellos, Renta Particular (+1.60), otro seguro con componente de ahorro, también sube en marzo de 2026, y ese efecto no se aisló. El detalle, con la serie mensual, está en la sección 4 del informe.
 
 **Figura 5**
+
+*Contribución de los riesgos al cambio de la siniestralidad directa del sistema, agosto de 2025 a agosto de 2026*
+
+![Barras horizontales: Vida Individual de Largo Plazo aporta +5.12 puntos porcentuales e Incendio +2.91 al alza de +7.54 del índice directo del sistema; el resto de riesgos suma −0.49](reports/figures/PF-01_contribucion.svg)
+
+*Nota.* Elaboración propia con datos de SBS (s. f.-a, s. f.-c, s. f.-d). Figura generada con `uv run python scripts/figura_contribucion.py`; las contribuciones suman el cambio del sistema.
+
+**Tabla 2**
+
+*Contribución de los riesgos al cambio de la siniestralidad del sistema, agosto de 2025 a agosto de 2026*
+
+| Riesgo | Directa, agosto de 2025 (%) | Directa, agosto de 2026 (%) | Contribución a la directa (p. p.) | Contribución a la retenida (p. p.) |
+|---|---:|---:|---:|---:|
+| Vida Individual de Largo Plazo | 4.4 | 45.0 | +5.12 | +6.15 |
+| Incendio | 76.7 | 224.0 | +2.91 | +0.43 |
+| Renta Particular | 20.6 | 27.8 | +1.60 | +1.82 |
+| Seguro de Bancos (BBB) | −479.5 | 69.0 | +0.37 | +0.01 |
+| Resto (42 riesgos) |  |  | −1.15 | −1.80 |
+| Renta de Jubilados | 1 300.7 | 1 853.2 | −0.48 | −0.71 |
+| Seguro Complementario de Trabajo de Riesgo | 72.4 | 56.2 | −0.83 | −0.40 |
+| **Sistema** | **41.4** | **48.9** | **+7.54** | **+5.50** |
+
+*Nota.* Elaboración propia con datos de SBS (s. f.-a, s. f.-c, s. f.-d). Riesgos con mayor contribución al alza y a la baja de la directa; el resto se agrupa en una fila. Los índices propios de las rentas y de Seguro de Bancos (BBB) en agosto de 2025 no son comparables con el resto (informe, tabla 2). Tabla generada con `uv run python scripts/figura_contribucion.py --tabla`.
+
+De los 48 riesgos del corte, 35 quedan clasificados en la matriz de cuadrantes: 9 crecen con una siniestralidad directa mayor que el corte de 44.0 % y concentran 5 305.3 millones de soles de primas, con Vida Individual de Largo Plazo, Asistencia Médica y Vehículos a la cabeza (83.7 % del cuadrante). La figura 6 muestra la página «Matriz de riesgos» del tablero Power BI, cuya segmentación «Medida» alterna entre la siniestralidad directa y la retenida ([`dashboards/powerbi/README.md`](dashboards/powerbi/README.md)). Las tablas completas, la lectura con la medida retenida y las conclusiones están en el informe de resultados ([`reports/informe.md`](reports/informe.md)).
+
+**Figura 6**
 
 *Matriz de riesgos con la siniestralidad directa, agosto de 2026*
 
@@ -105,7 +133,7 @@ De los 48 riesgos del corte, 35 quedan clasificados en la matriz de cuadrantes: 
 
 ## Cómo reproducir
 
-Sin Oracle, con [uv](https://docs.astral.sh/uv/) instalado (verificado desde un clon limpio el 26 de octubre de 2026: 129 pruebas superadas y 50 omitidas en 3 s):
+Sin Oracle, con [uv](https://docs.astral.sh/uv/) instalado (verificado desde un clon limpio el 27 de octubre de 2026: 154 pruebas superadas y 51 omitidas en 3 s):
 
 ```bash
 git clone https://github.com/josecaychoa/pf-01-siniestralidad-sbs.git
@@ -114,12 +142,13 @@ uv sync --locked
 uv run pytest
 ```
 
-Las 50 pruebas omitidas son las de integración, que requieren la base Oracle o los archivos de `data/raw/`. El flujo completo las habilita y requiere Docker:
+Las 51 pruebas omitidas son las de integración, que requieren la base Oracle o los archivos de `data/raw/`. El flujo completo las habilita y requiere Docker:
 
 ```bash
 cp .env.example .env            # completar las variables locales
 docker compose up -d
 uv run python scripts/descargar_sbs.py
+uv run python scripts/descargar_mensual.py
 uv run python scripts/cargar_oracle.py --base contenedor
 uv run python scripts/exportar_indicadores.py --base contenedor
 uv run pytest
@@ -140,11 +169,12 @@ Los conteos de filas y los cuadres esperados tras la carga están en el dicciona
 ├── scripts/                       # descarga, validación, carga, exportación, figuras y lint de texto
 ├── sql/oracle/                    # scripts idempotentes: DDL · vistas · carga (prefijos stg_, dim_, fct_, vw_)
 ├── src/pf_01_siniestralidad_sbs/  # paquete Python del flujo
-└── tests/                         # 179 pruebas (129 se ejecutan sin Oracle)
+└── tests/                         # 205 pruebas (154 se ejecutan sin Oracle ni datos descargados)
 ```
 
 ## Limitaciones
 
+- Desde la información de marzo de 2026, los siniestros de la SBS incluyen «otras obligaciones» por la Resolución SBS N.º 00085-2026: el corte de agosto de 2026 no es comparable con los anteriores en Vida Individual de Largo Plazo, y probablemente tampoco en Renta Particular. No se pudo leer el Anexo de la resolución; la atribución es una inferencia que se apoya en el mes del quiebre, en el título y la nota del cuadro de la SBS y en el considerando de la norma.
 - Los cortes de agosto acumulan 8 meses y los de diciembre, 12; el índice no está anualizado, así que las comparaciones interanuales válidas son entre cortes del mismo mes.
 - La matriz usa un solo corte (agosto de 2026). Para otro corte hay que regenerar los CSV con `uv run python scripts/exportar_indicadores.py`.
 - 5 riesgos previsionales y 8 riesgos bajo el umbral de materialidad quedan fuera de la clasificación por cuadrante; en diciembre de 2020, 5 celdas del índice publicado difieren del calculado porque la fuente usó el Total simple (D-PF01-18).
@@ -157,9 +187,11 @@ Superintendencia de Banca, Seguros y AFP. (s. f.-a). *Boletín mensual* [Conjunt
 
 Superintendencia de Banca, Seguros y AFP. (s. f.-b). *Índice de siniestralidad directa y retenida según riesgos* [Conjunto de datos]. Recuperado el 11 de octubre de 2026, de https://www.sbs.gob.pe/app/stats_net/stats/EstadisticaSistemaFinancieroResultados.aspx?c=S-403
 
-Superintendencia de Banca, Seguros y AFP. (s. f.-c). *Primas de seguros netas, cedidas y retenidas según riesgos* [Conjunto de datos]. Recuperado el 11 de octubre de 2026, de https://www.sbs.gob.pe/app/stats_net/stats/EstadisticaSistemaFinancieroResultados.aspx?c=S-401
+Superintendencia de Banca, Seguros y AFP. (s. f.-c). *Primas de seguros netas, cedidas y retenidas según riesgos* [Conjunto de datos]. Recuperado el 11 y el 27 de octubre de 2026, de https://www.sbs.gob.pe/app/stats_net/stats/EstadisticaSistemaFinancieroResultados.aspx?c=S-401
 
-Superintendencia de Banca, Seguros y AFP. (s. f.-d). *Siniestros de primas de seguros netas, cedidas y retenidas según riesgos* [Conjunto de datos]. Recuperado el 11 de octubre de 2026, de https://www.sbs.gob.pe/app/stats_net/stats/EstadisticaSistemaFinancieroResultados.aspx?c=S-402
+Superintendencia de Banca, Seguros y AFP. (s. f.-d). *Siniestros de primas de seguros netas, cedidas y retenidas según riesgos* [Conjunto de datos]. Recuperado el 11 y el 27 de octubre de 2026, de https://www.sbs.gob.pe/app/stats_net/stats/EstadisticaSistemaFinancieroResultados.aspx?c=S-402
+
+Superintendencia de Banca, Seguros y AFP. (2026). *Resolución S.B.S. N.º 00085-2026: Modifica el Plan de Cuentas para las Empresas del Sistema Asegurador*. https://intranet2.sbs.gob.pe/dv_int_cn/2551/v1.0/Adjuntos/R.%2000085-2026.pdf
 
 ## Licencia
 

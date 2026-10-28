@@ -1,15 +1,15 @@
 # Acta de constitución · PF-01: Producción y siniestralidad por riesgo del mercado asegurador peruano, 2019-2026
 
-`Portafolio · PF-01` · Versión 1.7 · 2026-10-26
+`Portafolio · PF-01` · Versión 1.8 · 2026-10-27 · Cambio v1.8: solicitud de cambio CC-PF-01-02 (paquetes 4.4 y 4.5, publicación el 2026-11-12)
 
 | Campo | Valor |
 |---|---|
 | ID / Repositorio | PF-01 / github.com/josecaychoa/pf-01-siniestralidad-sbs |
 | Director del proyecto | José Caycho A. |
 | Issue padre | #1 |
-| Fechas planificadas | Planificación: 2026-10-12 a 2026-10-16 · Ejecución y cierre: 2026-11-02 a 2026-11-26 |
-| Publicación en LinkedIn | Jueves 2026-11-26, 08:00 (hora de Lima) |
-| Esfuerzo estimado | 34.5 h: 29.0 h de núcleo (incluye el tablero Power BI, 4 h; el informe, 2 h, y el modelo lógico y relacional del Data Modeler, 1.5 h) y 5.5 h opcionales (arquitectura en Visio, 2 h; proceso en Bizagi, 3.5 h) |
+| Fechas planificadas | Línea base v1.0: planificación del 2026-10-12 al 2026-10-16; ejecución y cierre del 2026-11-02 al 2026-11-26. Vigentes (CC-PF-01-02): ejecución desde el 2026-10-11 hasta 4.5 (2026-11-02) y publicación el 2026-11-12 |
+| Publicación en LinkedIn | Jueves 2026-11-12, 08:00 (hora de Lima); adelantada desde el 2026-11-26 por CC-PF-01-02 |
+| Esfuerzo estimado | 41.5 h: 36.0 h de núcleo (incluye el tablero Power BI, 4 h; el informe, 2 h; el modelo lógico y relacional del Data Modeler, 1.5 h; la contribución por riesgo y el quiebre contable, 2.5 h, y las correcciones de la auditoría, 4.5 h, por CC-PF-01-02) y 5.5 h opcionales (arquitectura en Visio, 2 h; proceso en Bizagi, 3.5 h) |
 | Estado | Aprobado el 2026-10-11 |
 
 ## 1. Problema de negocio
@@ -28,13 +28,14 @@ Construir una base reproducible con los estados financieros, los indicadores y l
 |---|---|---|---|
 | O1 | Construir en Oracle una base reproducible a partir del Boletín Mensual de la SBS (S-367) para 9 cortes (diciembre de 2019 a diciembre de 2025, agosto de 2025 y agosto de 2026), con: (a) el estado de situación financiera, el estado de resultados, las cifras consideradas en la elaboración de los indicadores y los indicadores, por empresa de seguros (hojas P001 a P004); y (b) las primas netas, cedidas y retenidas, los siniestros netos, cedidos y retenidos y los índices de siniestralidad directa y retenida, por riesgo y por empresa (hojas P009 a P016) | El 100 % de los totales calculados cuadra con las columnas Total publicadas, con una tolerancia de 1 mil soles por redondeo; el estado de situación financiera cumple Activo = Pasivo + Patrimonio por empresa; las hojas P009 a P016 de agosto de 2026 coinciden con los cuadros S-401, S-402 y S-403 publicados por separado | 2026-11-09 |
 | O2 | Clasificar en una matriz de cuatro cuadrantes todos los riesgos con primas netas de al menos S/ 5 millones en el corte, según el crecimiento de sus primas netas (agosto de 2026 frente a agosto de 2025, y tasa de crecimiento anual compuesta 2019-2025) y su siniestralidad directa y retenida | La siniestralidad calculada replica el índice total del sistema publicado en la hoja P015 (S-403) con una diferencia no mayor de 0.1 puntos porcentuales | 2026-11-16 |
-| O3 | Publicar el release v1.0.0, el README, el documento PDF de 6 a 8 páginas y el post de LinkedIn | URL del post y corte Cierre registrados en el tablero de indicadores. Meta de seguimiento, no de aceptación: tasa de interacción mayor que 5 % en el Día 30 | 2026-11-26 |
+| O3 | Publicar el release v1.0.0, el README, el documento PDF de 6 a 8 páginas y el post de LinkedIn | URL del post y corte Cierre registrados en el tablero de indicadores. Meta de seguimiento, no de aceptación: tasa de interacción mayor que 5 % en el Día 30 | 2026-11-12 (CC-PF-01-02) |
 
 ## 4. Alcance
 
 **Incluye:**
 - El Boletín Mensual de la SBS (S-367) de los 9 cortes de O1: hojas P001 a P004 (estados financieros, cifras para indicadores e indicadores por empresa) y P009 a P016 (primas, siniestros e índices de siniestralidad por riesgo y por empresa).
 - Los cuadros S-401, S-402 y S-403 de agosto de 2026, solo como prueba de consistencia con el Boletín Mensual.
+- Los cuadros mensuales S-401 y S-402 de enero de 2025 a agosto de 2026, para ubicar en el tiempo el cambio del plan de cuentas de marzo de 2026 (Resolución SBS N.º 00085-2026), y la contribución de cada riesgo al cambio del índice del sistema (paquete 4.4, incluido por la solicitud de cambio CC-PF-01-02).
 - Un script de descarga reproducible que registra la URL, la fecha de descarga y el SHA-256 de cada archivo.
 - La transformación de las hojas a formato largo, con la moneda (MN, ME y total) en los estados financieros, y una tabla de equivalencias de empresas que recoge los cambios de razón social, las fusiones y las liquidaciones que la SBS anota al pie.
 - El modelo de datos en Oracle AI Database 26ai Free, en un contenedor local, con vistas analíticas, y su modelo lógico y relacional en Oracle SQL Developer Data Modeler (`docs/modelo/`, con diagramas en `docs/diagramas/`; incluido por control de cambios del 2026-10-11, D-PF01-04).
@@ -51,7 +52,7 @@ Construir una base reproducible con los estados financieros, los indicadores y l
 - Juicios sobre la gestión, la solvencia o la calidad de servicio de las empresas: el análisis describe cifras públicas.
 - La interpretación de los estados financieros y de los indicadores de solvencia, rentabilidad y gestión: PF-01 los carga y valida en la base, y su análisis queda para PF-02 (solvencia y reservas) y PF-03 (ratio combinado y rentabilidad).
 - La comparación de rubros contables entre cortes con planes de cuentas distintos (la SBS anota cambios desde junio de 2021 y desde marzo de 2026).
-- Series mensuales obtenidas por diferencia de acumulados, estacionalidad y proyecciones.
+- Estacionalidad y proyecciones. Las series mensuales obtenidas por diferencia de acumulados se usan solo para ubicar el cambio del plan de cuentas de marzo de 2026 (CC-PF-01-02).
 - Las demás hojas del Boletín Mensual (rankings, reservas, retribuciones, gastos de administración y estructuras porcentuales).
 - La interpretación actuarial de los riesgos de rentas y del Sistema Privado de Pensiones: aparecen en la matriz con una nota que explica por qué su siniestralidad no es comparable con la de los ramos generales.
 
@@ -77,7 +78,7 @@ Construir una base reproducible con los estados financieros, los indicadores y l
 |---|---|
 | Repositorio reproducible | `uv sync --locked`, `docker compose up -d` y el script de descarga reconstruyen la base desde cero, sin pasos manuales no documentados |
 | Modelo de datos Oracle | DDL idempotente y vistas en `sql/oracle/` para estados financieros, indicadores y producción y siniestralidad; diccionario en `docs/03_diccionario_datos.md` |
-| Informe | `reports/informe.md`: serie 2019-2026 del sistema (tabla y figura generadas por script, D-PF01-24), matriz de riesgos, proceso AS-IS frente a TO-BE y limitaciones, con citas, notas y referencias en APA 7 y ortografía RAE |
+| Informe | `reports/informe.md`: serie 2019-2026 del sistema (tabla y figura generadas por script, D-PF01-24), contribución de cada riesgo al alza de 2026 y quiebre contable de marzo de 2026 (tabla y figuras generadas por script, CC-PF-01-02), matriz de riesgos, proceso AS-IS frente a TO-BE y limitaciones, con citas, notas y referencias en APA 7 y ortografía RAE |
 | README | Problema, datos, método, resultados, reproducción y limitaciones (plantilla 03f) |
 | Cronograma | `gestion/cronograma/`: `.mpp` con Baseline, XML (MSPDI) y PDF de línea base y de seguimiento |
 | Modelo lógico y relacional | `docs/modelo/pf01_modelo.dmd` y diagramas `pf01_modelo_logico` y `pf01_modelo_relacional` (SVG y PDF) en `docs/diagramas/`, coherentes con el DDL |
@@ -143,7 +144,7 @@ Los gráficos del informe y del documento PDF siguen el estilo `jc-editorial` de
 
 | ID | Riesgo | Probabilidad (A/M/B) | Impacto (A/M/B) | Respuesta |
 |---|---|---|---|---|
-| R1 | Los cambios del plan de cuentas que anota la SBS (junio de 2021 y marzo de 2026) rompen la comparabilidad de los estados financieros entre cortes | A | M | Cargar las cifras tal como se publican, con la versión del plan de cuentas de cada corte; PF-01 no compara rubros contables entre cortes |
+| R1 | Los cambios del plan de cuentas que anota la SBS (junio de 2021 y marzo de 2026) rompen la comparabilidad de los estados financieros entre cortes | A | M | Cargar las cifras tal como se publican, con la versión del plan de cuentas de cada corte; PF-01 no compara rubros contables entre cortes. Materializado el 2026-10-27 (auditoría integral): desde marzo de 2026 los siniestros por riesgo incluyen «otras obligaciones» (Resolución SBS N.º 00085-2026) y la comparación interanual de agosto lo cruza; respuesta: contribución por riesgo y serie mensual en el informe (CC-PF-01-02) |
 | R2 | La estructura del Boletín Mensual cambia entre 2019 y 2026 (hojas, bloques de empresas, columnas MN y ME, formato .xls o .xlsx); los ZIP pesan entre 265 KB y 783 KB | A | M | Prueba de estructura por corte, tabla de equivalencias de empresas y catálogo de riesgos versionado; los cuadros individuales S-401 a S-403 sirven de respaldo |
 | R3 | La SBS reemplaza archivos ya publicados (el Boletín de diciembre de 2021 se modificó en septiembre de 2023) | M | B | Manifiesto con fecha de descarga y SHA-256; los resultados se fechan con la descarga |
 | R4 | Condiciones de uso no declaradas | M | M | Solo agregados propios con cita APA; sin redistribuir archivos; `data/raw/` fuera de Git |
@@ -158,7 +159,7 @@ Los gráficos del informe y del documento PDF siguen el estilo `jc-editorial` de
 ## 10. Criterios de éxito y de cierre
 
 - [ ] Objetivos O1, O2 y O3 cumplidos o justificados
-- [ ] Release v1.0.0 publicado
+- [x] Release v1.0.0 publicado (2026-10-27); v1.1.0 con CC-PF-01-02
 - [ ] Post publicado y registrado en el tablero de indicadores
 - [ ] Desvíos frente a la línea base explicados en `docs/05_cierre_lecciones.md`
 

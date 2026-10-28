@@ -15,6 +15,11 @@ data/external/*
 !data/processed/crecimiento_riesgos.csv
 # Manifiesto de descargas: referencia de SHA-256 (sin datos de la fuente)
 !data/raw/manifest.csv
+# Serie mensual de 4.4 (CC-PF-01-02): manifiesto de los cuadros y serie por riesgo con cita
+!data/raw/mensual/
+data/raw/mensual/*
+!data/raw/mensual/manifest.csv
+!data/processed/serie_mensual_riesgos.csv
 .ipynb_checkpoints/
 *.pbix
 

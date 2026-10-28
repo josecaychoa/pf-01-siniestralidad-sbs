@@ -1,12 +1,12 @@
 # EDT y Gantt · PF-01: Producción y siniestralidad por riesgo del mercado asegurador peruano, 2019-2026
 
-`Portafolio · PF-01` · Versión 1.7 · 2026-10-26 · Estado: aprobado el 2026-10-11 · Cambio v1.7: 4.2 incorpora la serie 2019-2026 del sistema como tabla y figura generadas por script (D-PF01-24): 4.2 pasa de 1.5 a 2.0 h, núcleo 29.0 h, total 34.5 h (sección 4) · Cambio v1.6: 3.4 incorpora la tabla de tiempos AS-IS frente a TO-BE (D-PF01-19) y conserva el formato estándar de Bizagi (D-PF01-20): 3.4 pasa a 3.5 h, opcionales 5.5 h, total 34.0 h (sección 4) · Cambio v1.5: 2.3 incorpora el modelo lógico y relacional del Data Modeler (5.0 h; control de cambios del 2026-10-11), 2.4 queda con una página de Visio y el modelo relacional del Data Modeler (D-PF01-09) y 4.1 Tablero Power BI pasa al núcleo (D-PF01-10): núcleo 28.5 h, opcionales 4 h, total 32.5 h (sección 4) · Cambio v1.4: se incluyen los paquetes opcionales 2.4 (Visio) y 3.4 (Bizagi) por control de cambios (issue #1), fuera de la línea base v1.0 (sección 4) · Cambio v1.3: nota sobre la Baseline fijada en Microsoft Project y su calendario (sección 3) · Cambio v1.2: el paquete 2.1 se llama «Extracción» (antes «Adquisición»), a pedido del director del proyecto; no cambian el alcance, las fechas ni las horas
+`Portafolio · PF-01` · Versión 1.8 · 2026-10-27 · Estado: aprobado el 2026-10-11 · Cambio v1.8: solicitud de cambio CC-PF-01-02 tras la auditoría integral: paquetes 4.4 Contribución por riesgo y quiebre contable (2.5 h, #56) y 4.5 Correcciones de la auditoría (4.5 h, #57); núcleo 36.0 h, total 41.5 h; publicación adelantada al 2026-11-12 (sección 4) · Cambio v1.7: 4.2 incorpora la serie 2019-2026 del sistema como tabla y figura generadas por script (D-PF01-24): 4.2 pasa de 1.5 a 2.0 h, núcleo 29.0 h, total 34.5 h (sección 4) · Cambio v1.6: 3.4 incorpora la tabla de tiempos AS-IS frente a TO-BE (D-PF01-19) y conserva el formato estándar de Bizagi (D-PF01-20): 3.4 pasa a 3.5 h, opcionales 5.5 h, total 34.0 h (sección 4) · Cambio v1.5: 2.3 incorpora el modelo lógico y relacional del Data Modeler (5.0 h; control de cambios del 2026-10-11), 2.4 queda con una página de Visio y el modelo relacional del Data Modeler (D-PF01-09) y 4.1 Tablero Power BI pasa al núcleo (D-PF01-10): núcleo 28.5 h, opcionales 4 h, total 32.5 h (sección 4) · Cambio v1.4: se incluyen los paquetes opcionales 2.4 (Visio) y 3.4 (Bizagi) por control de cambios (issue #1), fuera de la línea base v1.0 (sección 4) · Cambio v1.3: nota sobre la Baseline fijada en Microsoft Project y su calendario (sección 3) · Cambio v1.2: el paquete 2.1 se llama «Extracción» (antes «Adquisición»), a pedido del director del proyecto; no cambian el alcance, las fechas ni las horas
 
 La línea base formal es la Baseline del cronograma de Microsoft Project en `gestion/cronograma/PF-01_cronograma.mpp`. El Gantt de este archivo es su vista resumida y queda congelado como línea base v1.0 cuando se aprueba el plan.
 
 ## 1. Estructura de desglose del trabajo
 
-Los paquetes marcados con (o) son opcionales. Los paquetes 2.4 (arquitectura en Visio) y 3.4 (proceso en Bizagi) se excluyeron en la línea base y se incluyeron el 2026-10-11 por control de cambios (sección 4). El paquete 4.1 (tablero Power BI) era opcional en la línea base y pasó al núcleo el 2026-10-14 (D-PF01-10, sección 4).
+Los paquetes marcados con (o) son opcionales. Los paquetes 2.4 (arquitectura en Visio) y 3.4 (proceso en Bizagi) se excluyeron en la línea base y se incluyeron el 2026-10-11 por control de cambios (sección 4). El paquete 4.1 (tablero Power BI) era opcional en la línea base y pasó al núcleo el 2026-10-14 (D-PF01-10, sección 4). Los paquetes 4.4 y 4.5 se incluyeron el 2026-10-27 por la solicitud de cambio CC-PF-01-02 (sección 4).
 
 ```mermaid
 flowchart TD
@@ -18,7 +18,7 @@ flowchart TD
     G --> G1[1.1 Acta] & G2[1.2 Plan y línea base en Project] & G3[1.3 Cierre]
     D --> D1[2.1 Extracción] & D2[2.2 Validación] & D3[2.3 Modelo de datos Oracle] & D4["2.4 Arquitectura y modelo en Visio (o)"]
     A --> A1[3.1 Exploración] & A2[3.2 Indicadores y matriz] & A3[3.3 Validación de resultados] & A4["3.4 Proceso AS-IS y TO-BE en Bizagi (o)"]
-    R --> R1[4.1 Tablero Power BI] & R2[4.2 Informe] & R3[4.3 README]
+    R --> R1[4.1 Tablero Power BI] & R2[4.2 Informe] & R3[4.3 README] & R4[4.4 Contribución por riesgo y quiebre contable] & R5[4.5 Correcciones de la auditoría]
     C --> C1[5.1 Post] & C2[5.2 Documento PDF] & C3[5.3 Destacados y registro]
 ```
 
@@ -41,12 +41,16 @@ flowchart TD
 | 4.1 | Tablero Power BI | PBIP (TMDL y PBIR) en `dashboards/powerbi/` | Capturas en `reports/figures/` con nota APA; `.gitignore` con las exclusiones de PBIP | tipo:producto | media | PF-01 · 2 Ejecución | 2026-11-16 | 2026-11-18 | Núcleo (cambio del 2026-10-14, D-PF01-10) | 4.0 |
 | 4.2 | Informe | `reports/informe.md`, `reports/figures/PF-01_serie.svg` y `scripts/figura_serie.py` | Citas, figuras, tablas y referencias en APA 7; ortografía RAE; serie del sistema cuadrada con la nota de validación (D-PF01-24) | tipo:producto | alta | PF-01 · 2 Ejecución | 2026-11-19 | 2026-11-19 | Núcleo | 2.0 |
 | 4.3 | README | `README.md` (03f) | Reproducción probada desde un clon limpio | tipo:producto | alta | PF-01 · 2 Ejecución | 2026-11-20 | 2026-11-20 | Núcleo | 1.0 |
+| 4.4 | Contribución por riesgo y quiebre contable | `src/pf_01_siniestralidad_sbs/contribucion.py` y `serie_mensual.py`, `scripts/descargar_mensual.py` y `scripts/figura_contribucion.py`, `data/raw/mensual/manifest.csv`, `data/processed/serie_mensual_riesgos.csv`, sección 4 del informe y figuras `PF-01_contribucion.svg` y `PF-01_quiebre_vida.svg` | Contribuciones que suman el cambio del sistema (prueba); serie mensual cuadrada con agosto de 2025 y de 2026; titular reescrito; cita APA 7 de la Resolución SBS N.º 00085-2026 | tipo:analisis | alta | PF-01 · 2 Ejecución | 2026-10-28 | 2026-10-28 | Núcleo (CC-PF-01-02, #56) | 2.5 |
+| 4.5 | Correcciones de la auditoría | README, `docs/04_arquitectura.md`, informe, cierre, capturas del tablero, figura 1 de Visio y configuración de GitHub | Hallazgos de los bloques A y B de la auditoría integral resueltos con evidencia; CI en verde y suite completa en el contenedor | tipo:producto | alta | PF-01 · 2 Ejecución | 2026-10-29 | 2026-11-02 | Núcleo (CC-PF-01-02, #57) | 4.5 |
 | 1.3 | Cierre | `docs/05_cierre_lecciones.md` (03e); `PF-01_seguimiento.pdf` y `PF-01_desvios.csv` | Criterios de cierre cumplidos; desvíos explicados | tipo:gestion | media | PF-01 · 3 Cierre | 2026-11-23 | 2026-11-23 | Núcleo | 1.0 |
 | 5.1 | Post | `linkedin/post.md` | Checklist de 08 y skill `revision-anti-estilo-ia` | tipo:comunicacion | alta | PF-01 · 3 Cierre | 2026-11-24 | 2026-11-25 | Núcleo | 0.5 |
 | 5.2 | Documento PDF | `linkedin/documento.pdf` (6 a 8 páginas, 1080 × 1350) | `scripts/verificar_pdf.py` sin errores; checklist de la skill de marca | tipo:comunicacion | alta | PF-01 · 3 Cierre | 2026-11-24 | 2026-11-25 | Núcleo | 1.5 |
 | 5.3 | Destacados y registro | URL del post en 06 y en el tablero | Corte Cierre registrado | tipo:comunicacion | media | PF-01 · 3 Cierre | 2026-11-26 | 2026-11-26 | Núcleo | 0.5 |
-| | | | | | | | | | **Total del núcleo** | **29.0** |
+| | | | | | | | | | **Total del núcleo** | **36.0** |
 | | | | | | | | | | **Total de opcionales** | **5.5** |
+
+*Nota.* Elaboración propia. Las fechas de inicio y fin son las de la línea base v1.0, salvo en 4.4 y 4.5, que no existían en ella y llevan las de la solicitud de cambio CC-PF-01-02; las fechas vigentes de 5.1 a 5.3 están en la sección 4 y en el cronograma de Microsoft Project.
 
 **Control de capacidad:** el núcleo suma 23 h, dentro del rango de 20 a 30 h de 03b. Las 2.5 h de planificación caen en octubre; en noviembre quedan 20.5 h de núcleo y 4 h opcionales, en total 24.5 h frente a las 20 a 25 h disponibles (margen: 0.5 h). La inclusión del Boletín Mensual (v1.1) sumó 2 h a los paquetes de datos; la primera semana concentra hasta 2.5 h por día hábil. Si el tablero se cae, sus 3 días hábiles pasan a ser holgura antes del cierre. Actualización del 2026-10-11: la ejecución empezó tres semanas antes de la línea base y la mayor parte del trabajo cae en octubre, por lo que el límite de capacidad de noviembre deja de ser restrictivo; con 2.4 y 3.4, el total es de 31 h (23 h de núcleo y 8 h opcionales). Actualización del 2026-10-14: 2.3 suma 1.5 h por el modelo lógico y relacional del Data Modeler y 4.1 pasa al núcleo (D-PF01-10); el núcleo queda en 28.5 h, los opcionales (2.4 y 3.4) en 4 h y el total en 32.5 h. La mitigación del riesgo R7 (recortar el tablero) deja de aplicar: la ejecución va adelantada frente a la línea base y la capacidad de noviembre no es restrictiva. Actualización del 2026-10-21: 3.4 suma 1.5 h por la tabla de tiempos (D-PF01-19); los opcionales quedan en 5.5 h y el total en 34.0 h. El paquete 3.4 se ejecutó del 2026-10-18 al 2026-10-21, así que no consume capacidad de noviembre. Actualización del 2026-10-26: 4.2 suma 0.5 h por la serie del sistema (D-PF01-24); el núcleo queda en 29.0 h y el total en 34.5 h, con ejecución desde el 2026-10-26, también fuera de la capacidad de noviembre.
 
@@ -97,6 +101,7 @@ La Baseline se fijó en Microsoft Project el 2026-10-11 (`gestion/cronograma/`: 
 | 2026-10-14 | 4.1 Tablero Power BI pasa de opcional a núcleo | Núcleo de 24.5 a 28.5 h; opcionales de 8 a 4 h; total 32.5 h; fechas sin cambio | Control de cambios en el issue #1 (D-PF01-10) |
 | 2026-10-18 | 3.4 incorpora la tabla de tiempos por actividad, AS-IS frente a TO-BE, de una actualización con un corte nuevo (D-PF01-19; enmienda del 2026-10-19: AS-IS estimado por el autor y TO-BE medido) y conserva el formato estándar de Bizagi en los diagramas (D-PF01-20) | 3.4 de 2.0 a 3.5 h; opcionales de 4.0 a 5.5 h; total de 32.5 a 34.0 h; publicación sin cambio. Ejecución real del 2026-10-18 al 2026-10-21 | Control de cambios y enmienda en el issue #1 |
 | 2026-10-26 | 4.2 incorpora la serie 2019-2026 del índice del sistema como tabla y figura generadas por script desde los CSV versionados (D-PF01-24); la serie quedó fuera del PBIP por D-PF01-22 | 4.2 de 1.5 a 2.0 h; núcleo de 28.5 a 29.0 h; total de 34.0 a 34.5 h; publicación sin cambio. Ejecución real desde el 2026-10-26 | Control de cambios en el issue #1 |
+| 2026-10-27 | Solicitud de cambio CC-PF-01-02 (auditoría integral desde ocho perfiles): 4.4 Contribución por riesgo y quiebre contable (#56) y 4.5 Correcciones de la auditoría (#57); la publicación se adelanta del 2026-11-26 al 2026-11-12 | Núcleo de 29.0 a 36.0 h; total de 34.5 a 41.5 h. Fechas: 4.4 el 2026-10-28; 4.5 del 2026-10-29 al 2026-11-02; 5.1 el 2026-11-03 y 04; 5.2 el 2026-11-05 y 06; revisión el 2026-11-09 y 10; publicación y 5.3 el 2026-11-12. La Baseline1 sigue siendo la de control; solo se fija la línea base de las dos tareas nuevas | Solicitud de cambio CC-PF-01-02 en el issue #1 |
 
 Las fechas de 2.4 y 3.4 son las previstas con el avance real del 2026-10-11 (2.1 terminada tres semanas antes de la línea base). En Project se agregan como tareas nuevas y el plan replanificado se guarda en Baseline1 (skill `portafolio-ms-project`, sección B.2); Baseline, la línea base v1.0, no se sobrescribe, y el Gantt de la sección 3 queda congelado como su vista resumida.
 
@@ -105,8 +110,8 @@ Las fechas de 2.4 y 3.4 son las previstas con el avance real del 2026-10-11 (2.1
 | Hito | Fecha | Milestone |
 |---|---|---|
 | Plan aprobado | 2026-10-15 | PF-01 · 1 Planificación (vence el 2026-10-16, al terminar 1.2) |
-| Fin de la ejecución | 2026-11-20 | PF-01 · 2 Ejecución |
-| Publicación | 2026-11-26, 08:00 | PF-01 · 3 Cierre |
+| Fin de la ejecución | 2026-11-20 (línea base v1.0; vigente: 2026-11-02, al cerrar 4.5) | PF-01 · 2 Ejecución |
+| Publicación | 2026-11-12, 08:00 (antes 2026-11-26; CC-PF-01-02) | PF-01 · 3 Cierre |
 
 ## 6. Iteraciones del GitHub Project
 

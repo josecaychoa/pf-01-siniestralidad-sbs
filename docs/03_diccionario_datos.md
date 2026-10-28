@@ -516,6 +516,22 @@ Reglas:
 | `umbral_primas` | `NUMBER` | Umbral de materialidad, en miles de soles |
 | `sobre_umbral` | `CHAR(1)` | S si las primas netas de la celda alcanzan el umbral; N si no |
 
+### 3.13 `serie_mensual_riesgos.csv` (paquete 4.4, CC-PF-01-02)
+
+Salida de `src/pf_01_siniestralidad_sbs/serie_mensual.py`, que no pasa por Oracle: lee los cuadros mensuales S-401 (hojas P009 y P011) y S-402 (hojas P012 y P014) de `data/raw/mensual/`, toma la columna «TOTAL» del sistema, reconoce cada concepto con el catálogo de riesgos (un concepto desconocido detiene el proceso), descarta agregados y detalles, y suma los riesgos con el mismo `riesgo_comparable`. Control: en cada mes y medida, la suma de los riesgos cuadra con la fila «TOTAL» del cuadro (± 1 mil soles), y agosto de 2025 y de 2026 coinciden con `indicadores_riesgo.csv` (`tests/test_serie_mensual.py`). Una fila por mes y riesgo comparable: 960 filas.
+
+| Columna | Tipo | Descripción |
+|---|---|---|
+| `fecha_corte` | fecha ISO | Último día del mes, de 2025-01-31 a 2026-08-31 |
+| `riesgo_comparable` | texto | Riesgo comparable del catálogo (48) |
+| `ramo` | texto | Ramo del catálogo |
+| `siniestralidad_comparable` | S/N | Igual que en `dim_riesgo` |
+| `primas_netas`, `primas_retenidas` | número (miles de S/) | Acumulado del año al fin del mes (P009 y P011) |
+| `siniestros_netos`, `siniestros_retenidos` | número (miles de S/) | Acumulado del año al fin del mes (P012 y P014); desde marzo de 2026 incluyen «otras obligaciones» |
+| `*_mes` | número (miles de S/) | Monto del mes: acumulado del mes menos el del mes anterior del mismo año (en enero, el acumulado) |
+| `cuadro_siniestros` | texto | Título de la hoja P012 del cuadro S-402 de ese mes |
+| `nota_plan_de_cuentas` | texto | Nota al pie que remite a la Resolución SBS N.º 085-2026; vacía antes de marzo de 2026 |
+
 ## 4. Reglas de carga
 
 ### 4.1 Orden de ejecución
