@@ -1,6 +1,6 @@
 # Cierre · PF-01: Producción y siniestralidad por riesgo del mercado asegurador peruano, 2019-2026
 
-`Portafolio · PF-01` · Versión 0.1 · 2026-10-27 · Borrador del paquete 1.3 (#13): falta la exportación del seguimiento en Project, la publicación (O3) y la fecha de cierre.
+`Portafolio · PF-01` · Versión 0.2 · 2026-10-27 · Paquete 1.3 (#13) terminado el 2026-10-27; faltan la publicación (O3) y la fecha de cierre del proyecto.
 
 ## 1. Criterios de cierre
 
@@ -8,7 +8,7 @@
 - [x] Repositorio reproducible desde un clon limpio: `uv sync --locked` y `uv run pytest` con 129 pruebas superadas y 50 omitidas sin Oracle ni `data/raw/` (PR #51).
 - [ ] Release v1.0.0 etiquetado y CHANGELOG actualizado.
 - [ ] Post publicado, añadido a Destacados y registrado en el tablero de indicadores.
-- [ ] Gantt de seguimiento y tabla de desvíos exportados de Project (`gestion/cronograma/PF-01_seguimiento.pdf` y `PF-01_desvios.csv`).
+- [x] Gantt de seguimiento exportado de Project (`gestion/cronograma/PF-01_seguimiento.pdf`) y tabla de desvíos (`gestion/cronograma/PF-01_desvios.csv`), generada desde el XML del cronograma (sección 3.1).
 
 ## 2. Evaluación de objetivos
 
@@ -41,9 +41,9 @@ El cronograma tiene tres líneas base: la Baseline (v1.0, aprobada el 2026-10-11
 | 4.1 Tablero Power BI | 2026-11-18 | 2026-10-26 | 2026-10-22 | 2026-10-26 | −17 | 0 |
 | 4.2 Informe | 2026-11-19 | 2026-10-27 | 2026-10-26 | 2026-10-26 | −18 | −1 |
 | 4.3 README | 2026-11-20 | 2026-10-28 | 2026-10-26 | 2026-10-26 | −19 | −2 |
-| 1.3 Cierre | 2026-11-23 | 2026-10-29 | 2026-10-26 | Pendiente | Pendiente | Pendiente |
+| 1.3 Cierre | 2026-11-23 | 2026-10-29 | 2026-10-26 | 2026-10-27 | −19 | −2 |
 
-*Nota.* Elaboración propia con la Baseline, la Baseline1 y las fechas reales de `gestion/cronograma/PF-01_cronograma.xml`. Días hábiles de lunes a viernes, sin feriados en la ventana del proyecto; un valor negativo es adelanto. Las cifras se contrastarán con `PF-01_desvios.csv` al exportarlo.
+*Nota.* Elaboración propia con la Baseline, la Baseline1 y las fechas reales de `gestion/cronograma/PF-01_cronograma.xml`. Días hábiles de lunes a viernes, sin feriados en la ventana del proyecto; un valor negativo es adelanto. Las mismas cifras están en `PF-01_desvios.csv`, que se generó desde ese XML con los campos de la tabla Variación de Project más la Baseline1, porque la exportación a CSV de Project quedó bloqueada por la opción de formatos heredados (sección 4).
 
 Desvíos mayores que 2 días hábiles. Todos los paquetes del núcleo terminaron entre 16 y 19 días hábiles antes de la v1.0 por una sola causa: el control de cambios del 2026-10-11 adelantó el inicio de la ejecución tres semanas (de 2026-11-02 a 2026-10-11) y se replanificó en la Baseline1. Frente a la Baseline1 ningún paquete se desvía más de 2 días hábiles. La fecha de publicación (2026-11-26) no se movió, porque la fija el calendario editorial.
 
@@ -65,15 +65,16 @@ Desvíos de duración. 4.2 y 4.3 se trabajaron fuera del horario del calendario 
 | 4.1 Tablero Power BI | 4.0 | 4.3 | +0.3 | Cultura de los CSV y formatos de la cinta (L-PF01-67 y L-PF01-68) |
 | 4.2 Informe | 2.0 | 1.1 | −0.9 | Insumos listos en las notas de validación y el tablero |
 | 4.3 README | 1.0 | 0.6 | −0.4 | Insumos listos; ciclo completo desde el chat |
-| Total de los paquetes terminados | 31.0 | 44.0 | +13.0 | |
+| 1.3 Cierre | 1.0 | 0.6 | −0.4 | Reconstrucción de horas y desvíos delegada en lecturas automáticas de los chats |
+| Total de los paquetes terminados | 32.0 | 44.6 | +12.6 | |
 
-*Nota.* Elaboración propia. Las horas no se cronometraron: son la suma de las ventanas de sesión (del primer al último mensaje; una pausa de más de 60 minutos abre una sesión nueva), tomadas de los resúmenes de continuidad y de las marcas de hora de los chats, y validadas por el director del proyecto el 2026-10-27. Son un piso: no incluyen el trabajo antes del primer mensaje ni después del último, e incluyen la gestión hecha en la misma sesión.
+*Nota.* Elaboración propia. Las horas no se cronometraron: son la suma de las ventanas de sesión (del primer al último mensaje; una pausa de más de 60 minutos abre una sesión nueva), tomadas de los resúmenes de continuidad y de las marcas de hora de los chats, y validadas por el director del proyecto el 2026-10-27; las de 1.3 llegan hasta el registro del avance en Project (2026-10-27, 20:18). Son un piso: no incluyen el trabajo antes del primer mensaje ni después del último, e incluyen la gestión hecha en la misma sesión.
 
 | Indicador | Plan | Real | Desvío |
 |---|---|---|---|
-| Esfuerzo del núcleo, paquetes terminados (h) | 25.5 | 31.4 | +5.9 h (+23.1 %) |
+| Esfuerzo del núcleo, paquetes terminados (h) | 26.5 | 32.0 | +5.5 h (+20.8 %) |
 | Esfuerzo de los opcionales (h) | 5.5 | 12.6 | +7.1 h (+129.1 %) |
-| Esfuerzo total del PF (h) | 34.5 | Pendiente (falta 1.3 y 5.1 a 5.3) | Pendiente |
+| Esfuerzo total del PF (h) | 34.5 | Pendiente (faltan 5.1 a 5.3) | Pendiente |
 | Fecha de publicación | 2026-11-26 | Pendiente | Pendiente |
 | Cambios aprobados | No aplica | 9 controles de cambios y 1 enmienda en el issue #1 (el último, CC-PF-01-01) | No aplica |
 
@@ -92,6 +93,7 @@ Resumen de las lecciones L-PF01-01 a L-PF01-85; el detalle está en el registro 
 | No aplica | Trabajar fuera del horario del calendario convirtió tareas en hitos de duración 0 en cinco paquetes (3.1 a 3.3, 4.2 y 4.3) (L-PF01-06, L-PF01-52 y L-PF01-78) | El calendario del PF tiene la jornada predeterminada, no las horas reales de trabajo | Definir en la Fase 1 un calendario con las horas reales de trabajo | Sí: skill `portafolio-ms-project` |
 | Las reglas de `.gitattributes` por tipo de archivo evitaron cambios espurios entre Windows y Linux (L-PF01-10, L-PF01-64 y L-PF01-83) | Cada tipo nuevo (CSV, SVG, BPMN, XML) necesitó un PR propio para su regla | La plantilla no traía las reglas | Plantilla con todas las reglas desde el inicio | Sí: skill `portafolio-repo-scaffold` |
 | Con las carpetas conectadas, Claude escribió y verificó en el equipo, y el ciclo de un issue de documentación cupo en el chat (L-PF01-37, L-PF01-80 y L-PF01-85) | No aplica | No aplica | Conectar la carpeta del repositorio al iniciar cada sesión | Ya incorporado: instrucciones v1.11 y v1.13 |
+| La tabla de desvíos se generó desde el XML exportado por Project, con los mismos campos y sin tocar la seguridad del equipo | Guardar como CSV falló por la opción «Formatos heredados» del Centro de confianza y, al habilitarla, el asistente usó el mapa genérico de tareas (separado por tabulaciones, en ANSI y sin las variaciones de comienzo y fin) | Project trata el CSV como formato heredado y el asistente no parte de la tabla activa | Generar `PF-XX_desvios.csv` desde el XML del cronograma con un script, en UTF-8 y con LF | Sí: skill `portafolio-ms-project`, sección C.2 |
 
 ## 5. Retrospectiva de la colaboración con Claude
 
