@@ -1,11 +1,11 @@
 # Validación de resultados · PF-01 · Paquete 3.3
 
-`Portafolio · PF-01` · Generado con `scripts/validar_resultados.py` el 2026-10-18 · Tolerancia de O2: 0.1 p. p.
+`Portafolio · PF-01` · Generado con `scripts/validar_resultados.py` el 2026-10-27 · Tolerancia de O2: 0.1 p. p.
 
 ## Entorno
 
-- Base: nativa
-- Versión del motor: Oracle Database 23ai Free, versión 23.6.0.24.10
+- Base: contenedor
+- Versión del motor: Oracle AI Database 26ai Free, versión 23.26.3.0.0
 - Corte actual: 2026-08-31 (agosto de 2026)
 - Fecha de descarga de los datos (data/raw/manifest.csv): 2026-10-11
 
@@ -102,7 +102,7 @@ En diciembre de 2020 el índice publicado por riesgo se calculó con el Total si
 
 ## Pruebas automatizadas citadas
 
-Corrida: `uv run pytest -q -p no:cacheprovider tests/test_vistas_analisis.py tests/test_indicadores_oracle.py` · Resumen: 27 pruebas superadas (`27 passed in 11.40s`)
+Corrida: `uv run pytest -q -p no:cacheprovider tests/test_vistas_analisis.py tests/test_indicadores_oracle.py` · Resumen: 27 pruebas superadas (`27 passed in 31.72s`)
 
 | Prueba | Archivo | Qué verifica | Resultado |
 |---|---|---|---|
