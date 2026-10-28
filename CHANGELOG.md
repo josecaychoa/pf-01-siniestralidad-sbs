@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Sin publicar]
+
+## [1.0.0] - 2026-10-27
 - Cierre del proyecto en `docs/05_cierre_lecciones.md`: objetivos, desvíos frente a la v1.0 y la Baseline1, esfuerzo real por paquete, lecciones y retrospectiva; brechas de datos del checklist en `docs/03_diccionario_datos.md` y `data/README.md` (#13).
 - README del repositorio completado según la plantilla 03f: resumen con el hallazgo de agosto de 2026, problema, datos con sus condiciones de uso, método con las cuatro etapas numeradas, resultados con la serie del sistema (figura 4) y la matriz del tablero (figura 5), reproducción en dos bloques verificada desde un clon limpio (129 pruebas superadas y 50 omitidas sin Oracle), estructura del repositorio, limitaciones y referencias en APA 7 (#12).
 - Informe de resultados de 4.2 en `reports/informe.md`: resumen, datos y método, serie 2019-2026 del sistema (tabla 1 y figura `reports/figures/PF-01_serie.svg`, generadas con el módulo `serie_sistema.py`, el script `scripts/figura_serie.py` y pruebas que cuadran la serie con la nota de validación; D-PF01-24), matriz de agosto de 2026 con los cuadrantes y el detalle del cuadrante 1, proceso AS-IS frente a TO-BE, limitaciones y referencias en APA 7; acta 1.7 y EDT 1.7 (4.2 pasa de 1.5 a 2.0 h) (#11).

@@ -1,12 +1,13 @@
 # Cierre · PF-01: Producción y siniestralidad por riesgo del mercado asegurador peruano, 2019-2026
 
-`Portafolio · PF-01` · Versión 0.2 · 2026-10-27 · Paquete 1.3 (#13) terminado el 2026-10-27; faltan la publicación (O3) y la fecha de cierre del proyecto.
+`Portafolio · PF-01` · Versión 0.3 · 2026-10-27 · Paquete 1.3 (#13) terminado y «Listo para cierre» recibido el 2026-10-27; faltan la publicación (O3) y la fecha de cierre del proyecto.
 
 ## 1. Criterios de cierre
 
 - [x] Objetivos SMART evaluados con evidencia (sección 2); O3 se completa con la publicación del 2026-11-26.
 - [x] Repositorio reproducible desde un clon limpio: `uv sync --locked` y `uv run pytest` con 129 pruebas superadas y 50 omitidas sin Oracle ni `data/raw/` (PR #51).
-- [ ] Release v1.0.0 etiquetado y CHANGELOG actualizado.
+- [x] «Listo para cierre» (puerta 2) recibido del director del proyecto el 2026-10-27.
+- [ ] Release v1.0.0 etiquetado y CHANGELOG actualizado (versión 1.0.0 del 2026-10-27).
 - [ ] Post publicado, añadido a Destacados y registrado en el tablero de indicadores.
 - [x] Gantt de seguimiento exportado de Project (`gestion/cronograma/PF-01_seguimiento.pdf`) y tabla de desvíos (`gestion/cronograma/PF-01_desvios.csv`), generada desde el XML del cronograma (sección 3.1).
 
