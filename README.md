@@ -129,7 +129,7 @@ De los 48 riesgos del corte, 35 quedan clasificados en la matriz de cuadrantes: 
 
 ![Página «Matriz de riesgos» del tablero con la medida Directa: 9 de 35 riesgos crecen con una siniestralidad directa mayor que el corte de 44.0 %](reports/figures/PF-01_tablero_directa.png)
 
-*Nota.* Elaboración propia con datos de SBS (s. f.-a). Los ejes se recortan en 60 % de variación y 100 % de siniestralidad (D-PF01-13): 3 de los 35 riesgos clasificados quedan fuera de escala y no se dibujan, aunque cuentan en las tablas.
+*Nota.* Elaboración propia con datos de SBS (s. f.-a). Los ejes se recortan en 60 % de variación y 100 % de siniestralidad (D-PF01-13): 3 de los 35 riesgos clasificados quedan fuera de escala; no se dibujan, se listan sobre el gráfico y cuentan en las tablas.
 
 ## Cómo reproducir
 
@@ -162,7 +162,7 @@ Los conteos de filas y los cuadres esperados tras la carga están en el dicciona
 
 ## Cómo se construyó
 
-El proyecto se desarrolló con asistencia de inteligencia artificial: Claude Code (Anthropic) escribió la mayor parte del código, las pruebas y los commits, y abrió cada pull request en borrador; Claude, en un chat aparte, ayudó a planificar y revisó cada PR. José Caycho A. definió el problema, aprobó el plan y cada cambio de alcance, validó los resultados y fusionó los PR. La rama `main` exige que la integración continua (ruff y pytest) pase y un estado de revisión (`revision/claude`) que se publica solo después de esa revisión. Ninguna cifra depende del criterio de la IA: las pruebas automáticas la contrastan con la fuente publicada por la SBS.
+El proyecto se desarrolló con asistencia de inteligencia artificial: Claude Code (Anthropic) escribió la mayor parte del código, las pruebas y los commits, y abrió los pull request; Claude, en un chat aparte, ayudó a planificar y revisó cada PR. José Caycho A. definió el problema, aprobó el plan y cada cambio de alcance, validó los resultados y fusionó los PR. La rama `main` exige que la integración continua (ruff y pytest) pase y un estado de revisión (`revision/claude`) que se publica solo después de esa revisión. Las cifras centrales no dependen del criterio de la IA: las pruebas automáticas contrastan los índices calculados con los que publica la SBS y verifican que las contribuciones por riesgo sumen el cambio del sistema.
 
 ## Estructura
 

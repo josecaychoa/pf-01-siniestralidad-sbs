@@ -135,7 +135,7 @@ Las figuras 4 y 5 muestran la página «Matriz de riesgos» del tablero Power BI
 
 ![Página «Matriz de riesgos» del tablero con la medida Directa: 9 de 35 riesgos crecen con una siniestralidad directa mayor que el corte de 44.0 %](figures/PF-01_tablero_directa.png)
 
-*Nota.* Elaboración propia con datos de SBS (s. f.-a). Los ejes se recortan en 60 % de variación y 100 % de siniestralidad (D-PF01-13): 3 de los 35 riesgos clasificados quedan fuera de escala y no se dibujan, aunque cuentan en las tablas.
+*Nota.* Elaboración propia con datos de SBS (s. f.-a). Los ejes se recortan en 60 % de variación y 100 % de siniestralidad (D-PF01-13): 3 de los 35 riesgos clasificados quedan fuera de escala; no se dibujan, se listan sobre el gráfico y cuentan en las tablas.
 
 **Figura 5**
 
@@ -151,9 +151,9 @@ Según la estimación del autor, producir este reporte a mano (descargar los bol
 
 **Figura 6**
 
-*Tiempo del reporte de siniestralidad por corte, AS-IS frente a TO-BE*
+*Tiempo del reporte de siniestralidad, AS-IS estimado frente a TO-BE medido*
 
-![Tabla comparada de tiempos: el proceso manual AS-IS toma 95.0 minutos por corte y el flujo reproducible TO-BE, 9.9; el ahorro es de 85.1 minutos (89.6 %)](../docs/procesos/PF-01_tiempos.svg)
+![Tabla comparada de tiempos: el proceso manual AS-IS se estima en 95.0 minutos y el flujo reproducible TO-BE se midió en 9.9; el ahorro indicativo es de 85.1 minutos (89.6 %)](../docs/procesos/PF-01_tiempos.svg)
 
 *Nota.* Elaboración propia. Medición del 2026-10-19 descrita en `docs/procesos/PF-01_tiempos.csv`; diagramas BPMN del proceso en `docs/procesos/`.
 
