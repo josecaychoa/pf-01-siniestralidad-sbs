@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Sin publicar]
+- Tablero (A-05, #57): nombre en cada burbuja, tabla de los riesgos fuera de escala sobre el gráfico (medidas `Fuera de escala`, `Siniestralidad fuera de escala` y `Variación fuera de escala`), etiquetas de referencia en las cuatro tarjetas (+7.5 p. p. y +5.5 p. p. frente a agosto de 2025; medidas `Nota corte actual` y `Nota corte anterior`) y página «Matriz de riesgos»; capturas regeneradas.
+- Figura 1 de arquitectura 1.1 en Visio (B-02, #57): doce vistas `vw_`, `scripts/exportar_indicadores.py` y los CSV de `data/processed/` como fuente del informe y del tablero, serie mensual de 4.4 y DDL propio para Oracle 23ai o superior; SVG y PDF reexportados.
 - Correcciones de la auditoría integral (#57, CC-PF-01-02): README con la receta completa (`uv run --env-file .env`, validaciones de datos y de resultados), versión mínima de Oracle (23ai) y sección «Cómo se construyó» sobre el uso de IA; tabla 1 sin la frase «por corte».
 - Informe: serie con la COVID-19 en 2021 y el acumulado de 12 meses a agosto de 2026 (44.5 %), sección 6 sin la cifra «por corte» y con el carácter indicativo del ahorro, y cuatro limitaciones nuevas (agregados, sensibilidad de la matriz a la TCAC, montos nominales y apertura por empresa) (#57).
 - `docs/04_arquitectura.md` 1.1: 12 vistas, consumo sobre los CSV versionados, serie mensual, versión mínima de Oracle y fuente del modelo; comentario del DDL con el orden real de los scripts (#57).

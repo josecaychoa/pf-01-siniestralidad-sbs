@@ -29,7 +29,7 @@ El modelo lee `matriz_riesgos.csv`, `indicadores_riesgo.csv` y `crecimiento_ries
 
 ![Página «Matriz de riesgos» con la medida Directa: 9 de 35 riesgos crecen con una siniestralidad directa mayor que el corte de 44.0 %](../../reports/figures/PF-01_tablero_directa.png)
 
-*Nota.* Elaboración propia con datos de SBS (s. f.). Página exportada a PDF desde Power BI Desktop y convertida a PNG de 1920 × 1080 píxeles. Los ejes se recortan en 60 % de variación y 100 % de siniestralidad (D-PF01-13): con la directa, 3 de los 35 riesgos clasificados quedan fuera de escala y no se dibujan, aunque cuentan en las tablas. Primas en millones de soles.
+*Nota.* Elaboración propia con datos de SBS (s. f.). Página exportada a PDF desde Power BI Desktop y convertida a PNG de 1920 × 1080 píxeles. Los ejes se recortan en 60 % de variación y 100 % de siniestralidad (D-PF01-13): con la directa, 3 de los 35 riesgos clasificados (Agricola, Deshonestidad Frente a la Empresa e Incendio) quedan fuera de escala; no se dibujan, se listan sobre el gráfico y cuentan en las tablas. Cada tarjeta muestra el cambio o el período que compara: +7.5 p. p. en la directa y +5.5 p. p. en la retenida frente a agosto de 2025. Primas en millones de soles.
 
 **Figura 2**
 
@@ -37,7 +37,7 @@ El modelo lee `matriz_riesgos.csv`, `indicadores_riesgo.csv` y `crecimiento_ries
 
 ![Página «Matriz de riesgos» con la medida Retenida: 8 de 35 riesgos crecen con una siniestralidad retenida mayor que el corte de 39.5 %](../../reports/figures/PF-01_tablero_retenida.png)
 
-*Nota.* Elaboración propia con datos de SBS (s. f.). Misma página que la figura 1, con la medida Retenida. Con la retenida, 2 de los 35 riesgos clasificados quedan fuera de escala. Primas en millones de soles.
+*Nota.* Elaboración propia con datos de SBS (s. f.). Misma página que la figura 1, con la medida Retenida. Con la retenida, 2 de los 35 riesgos clasificados quedan fuera de escala (Agricola y Deshonestidad Frente a la Empresa); Incendio sí se dibuja, con 55.4 %. Primas en millones de soles.
 
 ## Cuadre
 
