@@ -2,7 +2,7 @@
 
 `Portafolio · PF-01` · Versión 1.1 · 2026-10-27 · Paquetes 2.4 (issue #24) y 4.5 (issue #57) · Cambio v1.1: 12 vistas, tablero sobre los CSV versionados, serie mensual de 4.4, versión mínima de Oracle y fuente del modelo (auditoría integral, CC-PF-01-02)
 
-Este documento describe el recorrido de los datos del proyecto, desde los archivos que publica la Superintendencia de Banca, Seguros y AFP (SBS) hasta los productos que los consumen (sección 1.4), y presenta el modelo relacional sobre el que se calculan los indicadores. La figura 1 se dibujó en Microsoft Visio Professional 2021 a partir del boceto aprobado el 2026-10-14; la figura 2 la genera Oracle SQL Developer Data Modeler desde el mismo diseño que produjo el DDL de `sql/oracle/`.
+Este documento describe el recorrido de los datos del proyecto, desde los archivos que publica la Superintendencia de Banca, Seguros y AFP (SBS) hasta los productos que los consumen (sección 1.4), y presenta el modelo relacional sobre el que se calculan los indicadores. La figura 1 se dibujó en Microsoft Visio Professional 2021 a partir del boceto aprobado el 2026-10-14 y se actualizó el 2026-10-29; la figura 2 la genera Oracle SQL Developer Data Modeler desde el mismo diseño que produjo el DDL de `sql/oracle/`.
 
 ## 1. Flujo de datos
 
@@ -12,7 +12,7 @@ Este documento describe el recorrido de los datos del proyecto, desde los archiv
 
 ![Arquitectura del flujo de datos de PF-01: tres etapas ETL (extracción, transformación y carga) y una de consumo](diagramas/PF-01_arquitectura.svg)
 
-*Nota.* Elaboración propia. Archivo fuente: `diagramas/PF-01_diagramas.vsdx`; versión PDF en `diagramas/PF-01_diagramas.pdf`. La figura es la versión 1.0 del 2026-10-14: la caja de Power BI la muestra leyendo las vistas, y desde la decisión D-PF01-23 lee los CSV de `data/processed/` (sección 1.4); la serie mensual de 4.4 no figura. El texto de esta sección prevalece sobre la figura hasta su actualización en Visio.
+*Nota.* Elaboración propia. Archivo fuente: `diagramas/PF-01_diagramas.vsdx`; versión PDF en `diagramas/PF-01_diagramas.pdf`. Versión 1.1 del 2026-10-29: doce vistas `vw_`, `scripts/exportar_indicadores.py` como origen de los CSV de `data/processed/`, el informe y el tablero sobre esos CSV (D-PF01-23) y la serie mensual de 4.4 (CC-PF-01-02).
 
 El flujo se organiza en tres etapas ETL y una de consumo. Cada caja de la figura nombra el archivo, la carpeta o el objeto real del repositorio.
 

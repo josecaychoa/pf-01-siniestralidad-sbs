@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generado por Microsoft Visio, SVG Export PF-01_diagramas.svg Arquitectura -->
+<!-- Generado por Microsoft Visio, SVG Export PF-01_arquitectura.svg Arquitectura -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
 		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="11.6929in" height="8.26772in"
-		viewBox="0 0 841.89 595.276" xml:space="preserve" color-interpolation-filters="sRGB" class="st26">
+		viewBox="0 0 841.89 595.276" xml:space="preserve" color-interpolation-filters="sRGB" class="st27">
 	<v:documentProperties v:langID="3082" v:metric="true" v:viewMarkup="false">
 		<v:userDefs>
 			<v:ud v:nameU="msvSubprocessMaster" v:prompt="" v:val="VT4(Rectangle)"/>
@@ -29,16 +29,17 @@
 		.st14 {fill:#2a5cda;stroke:none;stroke-width:0.75}
 		.st15 {fill:#ffffff;font-family:Arial;font-size:0.75em;font-weight:bold}
 		.st16 {font-size:0.777771em;font-weight:normal}
-		.st17 {marker-end:url(#mrkr4-74);stroke:#636975;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st17 {marker-end:url(#mrkr4-76);stroke:#636975;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
 		.st18 {fill:#636975;fill-opacity:1;stroke:#636975;stroke-opacity:1;stroke-width:0.16556291390728}
 		.st19 {fill:#636975;font-family:Arial;font-size:0.666664em}
 		.st20 {fill:#000000;font-family:Arial;font-size:0.75em;font-weight:bold}
 		.st21 {fill:#2a5cda;font-size:1em}
 		.st22 {fill:#636975;font-size:0.888885em;font-weight:normal}
-		.st23 {marker-end:url(#mrkr4-136);stroke:#636975;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st23 {marker-end:url(#mrkr4-138);stroke:#636975;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
 		.st24 {fill:#636975;fill-opacity:1;stroke:#636975;stroke-opacity:1;stroke-width:0.28409090909091}
-		.st25 {marker-end:url(#mrkr4-74);stroke:#636975;stroke-dasharray:3.5,2.5;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
-		.st26 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+		.st25 {marker-end:url(#mrkr4-76);stroke:#636975;stroke-dasharray:3.5,2.5;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st26 {marker-end:url(#mrkr4-231);stroke:#636975;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st27 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
 	]]>
 	</style>
 
@@ -46,11 +47,15 @@
 		<g id="lend4">
 			<path d="M 2 1 L 0 0 L 2 -1 L 2 1 " style="stroke:none"/>
 		</g>
-		<marker id="mrkr4-74" class="st18" v:arrowType="4" v:arrowSize="2" v:setback="12.08" refX="-12.08" orient="auto"
+		<marker id="mrkr4-76" class="st18" v:arrowType="4" v:arrowSize="2" v:setback="12.08" refX="-12.08" orient="auto"
 				markerUnits="strokeWidth" overflow="visible">
 			<use xlink:href="#lend4" transform="scale(-6.04,-6.04) "/>
 		</marker>
-		<marker id="mrkr4-136" class="st24" v:arrowType="4" v:arrowSize="2" v:setback="7.04" refX="-7.04" orient="auto"
+		<marker id="mrkr4-138" class="st24" v:arrowType="4" v:arrowSize="2" v:setback="7.04" refX="-7.04" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend4" transform="scale(-3.52,-3.52) "/>
+		</marker>
+		<marker id="mrkr4-231" class="st24" v:arrowType="4" v:arrowSize="2" v:setback="0" refX="-0" orient="auto"
 				markerUnits="strokeWidth" overflow="visible">
 			<use xlink:href="#lend4" transform="scale(-3.52,-3.52) "/>
 		</marker>
@@ -84,7 +89,7 @@
 			<v:textRect cx="392.598" cy="570.553" width="785.2" height="49.4454"/>
 			<rect x="0" y="545.83" width="785.197" height="49.4454" class="st1"/>
 			<text x="4" y="567.85" class="st4" v:langID="10250"><v:paragraph/><v:tabList/>Los archivos originales se descargan con su huella digital (E), se ordenan en tablas y se validan (T) y se cargan en una base Oracle que se reconstruye desde cero y cuadra con las cifras <tspan
-						x="4" dy="1.2em" class="st5">publicadas (L). De esa base salen la exploración, los indicadores, el informe, la guía del repositorio y el tablero.</tspan></text>		</g>
+						x="4" dy="1.2em" class="st5">publicadas (L). De esa base salen la exploración y los indicadores, que se publican como CSV versionados; el informe, la guía</tspan> del repositorio y el tablero leen esos CSV, sin depender de Oracle.</text>		</g>
 		<g id="shape4-11" v:mID="4" v:groupContext="shape" transform="translate(28.3465,-90.7087)">
 			<title>Rectángulo</title>
 			<desc>E · Extracción de la SBS a data/raw</desc>
@@ -169,7 +174,7 @@
 						x="29.43" dy="1.575em" class="st8">análisis, informe, tablero y LinkedIn</tspan></text>		</g>
 		<g id="shape17-51" v:mID="17" v:groupContext="shape" transform="translate(36.8504,-311.022)">
 			<title>Rectángulo.17</title>
-			<desc>SBS · Boletín Mensual S-367 un ZIP por fecha de corte y cuadr...</desc>
+			<desc>SBS · Boletín Mensual S-367 un ZIP por fecha de corte cuadros...</desc>
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
 			</v:userDefs>
@@ -177,12 +182,13 @@
 			<v:textRect cx="83.622" cy="569.764" width="167.25" height="51.0236"/>
 			<rect x="0" y="544.252" width="167.244" height="51.0236" rx="4.25197" ry="4.25197" class="st14"/>
 			<text x="22.61" y="564.06" class="st15" v:langID="10250"><v:paragraph v:horizAlign="1"/><v:tabList/>SBS · Boletín Mensual S-367<v:newlineChar/><tspan
-						x="44.13" dy="1.286em" class="st16">un ZIP por fecha de corte<v:newlineChar/></tspan><tspan x="20.2"
-						dy="1.2em" class="st16">y cuadros S</tspan><tspan class="st16">-</tspan><tspan class="st16">401 a S</tspan><tspan
-						class="st16">-</tspan><tspan class="st16">403 del último corte</tspan></text>		</g>
-		<g id="shape18-60" v:mID="18" v:groupContext="shape" transform="translate(36.8504,-225.354)">
+						x="44.13" dy="1.286em" class="st16">un ZIP por fecha de corte<v:newlineChar/></tspan><tspan x="4.44"
+						dy="1.2em" class="st16">cuadros S</tspan><tspan class="st16">-</tspan><tspan class="st16">401 a S</tspan><tspan
+						class="st16">-</tspan><tspan class="st16">403 y serie mensual 2025</tspan><tspan class="st16">-</tspan><tspan
+						class="st16">2026</tspan></text>		</g>
+		<g id="shape18-62" v:mID="18" v:groupContext="shape" transform="translate(36.8504,-225.354)">
 			<title>Rectángulo.18</title>
-			<desc>scripts/descargar_sbs.py descarga HTTPS · manifest.csv con la...</desc>
+			<desc>scripts/descargar_sbs.py y descargar_mensual.py · HTTPS · man...</desc>
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
 			</v:userDefs>
@@ -190,9 +196,9 @@
 			<v:textRect cx="83.622" cy="569.764" width="167.25" height="51.0236"/>
 			<rect x="0" y="544.252" width="167.244" height="51.0236" rx="4.25197" ry="4.25197" class="st14"/>
 			<text x="29.34" y="564.06" class="st15" v:langID="10250"><v:paragraph v:horizAlign="1"/><v:tabList/>scripts/descargar_sbs.py<v:newlineChar/><tspan
-						x="34.22" dy="1.286em" class="st16">descarga HTTPS · manifest.csv<v:newlineChar/></tspan><tspan x="28.17"
-						dy="1.2em" class="st16">con la huella digital de cada archivo</tspan></text>		</g>
-		<g id="shape19-65" v:mID="19" v:groupContext="shape" transform="translate(36.8504,-111.969)">
+						x="8.35" dy="1.286em" class="st16">y descargar_mensual.py · HTTPS · manifest.csv<v:newlineChar/></tspan><tspan
+						x="28.17" dy="1.2em" class="st16">con la huella digital de cada archivo</tspan></text>		</g>
+		<g id="shape19-67" v:mID="19" v:groupContext="shape" transform="translate(36.8504,-111.969)">
 			<title>Rectángulo.19</title>
 			<desc>data/raw/ archivos originales · inmutable, no versionado</desc>
 			<v:userDefs>
@@ -203,15 +209,15 @@
 			<rect x="0" y="558.425" width="167.244" height="36.8504" rx="4.25197" ry="4.25197" class="st14"/>
 			<text x="64.11" y="575.35" class="st15" v:langID="10250"><v:paragraph v:horizAlign="1"/><v:tabList/>data/raw/<v:newlineChar/><tspan
 						x="12.42" dy="1.286em" class="st16">archivos originales · inmutable, no versionado</tspan></text>		</g>
-		<g id="shape20-69" v:mID="20" v:groupContext="shape" v:layerMember="0" transform="translate(113.386,-311.022)">
+		<g id="shape20-71" v:mID="20" v:groupContext="shape" v:layerMember="0" transform="translate(113.386,-311.022)">
 			<title>Conector dinámico</title>
 			<path d="M7.09 595.28 L7.09 623.88" class="st17"/>
 		</g>
-		<g id="shape21-75" v:mID="21" v:groupContext="shape" v:layerMember="0" transform="translate(113.386,-225.354)">
+		<g id="shape21-77" v:mID="21" v:groupContext="shape" v:layerMember="0" transform="translate(113.386,-225.354)">
 			<title>Conector dinámico.21</title>
 			<path d="M7.09 595.28 L7.09 665.77" class="st17"/>
 		</g>
-		<g id="shape22-80" v:mID="22" v:groupContext="shape" transform="translate(129.244,-283.465)">
+		<g id="shape22-82" v:mID="22" v:groupContext="shape" transform="translate(129.244,-283.465)">
 			<title>Hoja.22</title>
 			<desc>descarga por fecha de corte</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
@@ -219,18 +225,18 @@
 			<rect x="0" y="575.276" width="81.6693" height="20" class="st1"/>
 			<text x="4" y="582.88" class="st19" v:langID="10250"><v:paragraph/><v:tabList/>descarga por fecha <tspan x="4"
 						dy="1.2em" class="st5">de corte</tspan></text>		</g>
-		<g id="shape24-84" v:mID="24" v:groupContext="shape" transform="translate(129.244,-188.425)">
+		<g id="shape24-86" v:mID="24" v:groupContext="shape" transform="translate(129.244,-188.425)">
 			<title>Hoja.24</title>
 			<desc>archivo y huella</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="40.8346" cy="585.276" width="81.67" height="20"/>
 			<rect x="0" y="575.276" width="81.6693" height="20" class="st1"/>
 			<text x="4" y="587.68" class="st19" v:langID="10250"><v:paragraph/><v:tabList/>archivo y huella</text>		</g>
-		<g id="shape25-87" v:mID="25" v:groupContext="shape" transform="translate(28.3465,-68.0315)">
+		<g id="shape25-89" v:mID="25" v:groupContext="shape" transform="translate(28.3465,-68.0315)">
 			<title>Hoja.25</title>
 			<path d="M0 595.28 L785.2 595.28" class="st10"/>
 		</g>
-		<g id="shape26-90" v:mID="26" v:groupContext="shape" transform="translate(28.3465,-35.4331)">
+		<g id="shape26-92" v:mID="26" v:groupContext="shape" transform="translate(28.3465,-35.4331)">
 			<title>Hoja.26</title>
 			<desc>JC. Portafolio · PF-01 · Arquitectura del flujo de datos 2026...</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
@@ -239,15 +245,15 @@
 			<text x="5.59" y="582.65" class="st20" v:langID="10250"><v:paragraph v:horizAlign="1"/><v:tabList/>JC<tspan
 						class="st21">.</tspan>   Portafolio · PF-01 · Arquitectura del flujo de datos<v:newlineChar/><v:paragraph/><tspan
 						x="4" dy="1.35em" class="st22">          </tspan><tspan class="st22">2026</tspan><tspan class="st22">-</tspan><tspan
-						class="st22">10</tspan><tspan class="st22">-</tspan><tspan class="st22">14</tspan></text>		</g>
-		<g id="shape28-100" v:mID="28" v:groupContext="shape" transform="translate(562.677,-36.8504)">
+						class="st22">10</tspan><tspan class="st22">-</tspan><tspan class="st22">29</tspan></text>		</g>
+		<g id="shape28-102" v:mID="28" v:groupContext="shape" transform="translate(562.677,-36.8504)">
 			<title>Hoja.28</title>
 			<desc>Nota. Elaboración propia.</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="122.598" cy="585.354" width="245.2" height="19.8425"/>
 			<rect x="0" y="575.433" width="245.197" height="19.8425" class="st1"/>
 			<text x="150.92" y="588.05" class="st19" v:langID="10250"><v:paragraph v:horizAlign="2"/><v:tabList/>Nota. Elaboración propia.</text>		</g>
-		<g id="shape29-103" v:mID="29" v:groupContext="shape" transform="translate(235.276,-318.109)">
+		<g id="shape29-105" v:mID="29" v:groupContext="shape" transform="translate(235.276,-318.109)">
 			<title>Rectángulo.29</title>
 			<desc>extraccion.py hojas Excel a formato largo</desc>
 			<v:userDefs>
@@ -258,7 +264,7 @@
 			<rect x="0" y="558.425" width="167.244" height="36.8504" rx="4.25197" ry="4.25197" class="st14"/>
 			<text x="54.61" y="575.35" class="st15" v:langID="10250"><v:paragraph v:horizAlign="1"/><v:tabList/>extraccion.py<v:newlineChar/><tspan
 						x="41.21" dy="1.286em" class="st16">hojas Excel a formato largo</tspan></text>		</g>
-		<g id="shape30-107" v:mID="30" v:groupContext="shape" transform="translate(235.276,-240.317)">
+		<g id="shape30-109" v:mID="30" v:groupContext="shape" transform="translate(235.276,-240.317)">
 			<title>Rectángulo.30</title>
 			<desc>data/interim/ 3 CSV: estados financieros, indicadores y riesgos</desc>
 			<v:userDefs>
@@ -269,18 +275,18 @@
 			<rect x="0" y="558.425" width="167.244" height="36.8504" rx="4.25197" ry="4.25197" class="st14"/>
 			<text x="56.87" y="575.35" class="st15" v:langID="10250"><v:paragraph v:horizAlign="1"/><v:tabList/>data/interim/<v:newlineChar/><tspan
 						x="6.58" dy="1.286em" class="st16">3 CSV: estados financieros, indicadores y riesgos</tspan></text>		</g>
-		<g id="shape32-111" v:mID="32" v:groupContext="shape" transform="translate(326.252,-286.142)">
+		<g id="shape32-113" v:mID="32" v:groupContext="shape" transform="translate(326.252,-286.142)">
 			<title>Hoja.32</title>
 			<desc>CSV</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="40.8346" cy="585.276" width="81.67" height="20"/>
 			<rect x="0" y="575.276" width="81.6693" height="20" class="st1"/>
 			<text x="4" y="587.68" class="st19" v:langID="10250"><v:paragraph/><v:tabList/>CSV</text>		</g>
-		<g id="shape34-114" v:mID="34" v:groupContext="shape" v:layerMember="0" transform="translate(311.811,-318.109)">
+		<g id="shape34-116" v:mID="34" v:groupContext="shape" v:layerMember="0" transform="translate(311.811,-318.109)">
 			<title>Conector dinámico.34</title>
 			<path d="M7.09 595.28 L7.09 630.18" class="st17"/>
 		</g>
-		<g id="shape35-119" v:mID="35" v:groupContext="shape" transform="translate(235.276,-179.211)">
+		<g id="shape35-121" v:mID="35" v:groupContext="shape" transform="translate(235.276,-179.211)">
 			<title>Rectángulo.35</title>
 			<desc>scripts/validar_datos.py controles · reports/validacion_datos...</desc>
 			<v:userDefs>
@@ -291,29 +297,29 @@
 			<rect x="0" y="558.425" width="167.244" height="36.8504" rx="4.25197" ry="4.25197" class="st14"/>
 			<text x="32.1" y="575.35" class="st15" v:langID="10250"><v:paragraph v:horizAlign="1"/><v:tabList/>scripts/validar_datos.py<v:newlineChar/><tspan
 						x="22.54" dy="1.286em" class="st16">controles · reports/validacion_datos.md</tspan></text>		</g>
-		<g id="shape36-123" v:mID="36" v:groupContext="shape" v:layerMember="0" transform="translate(311.811,-240.317)">
+		<g id="shape36-125" v:mID="36" v:groupContext="shape" v:layerMember="0" transform="translate(311.811,-240.317)">
 			<title>Conector dinámico.36</title>
 			<path d="M7.09 595.28 L7.09 613.49" class="st17"/>
 		</g>
-		<g id="shape37-128" v:mID="37" v:groupContext="shape" transform="translate(326.252,-211.102)">
+		<g id="shape37-130" v:mID="37" v:groupContext="shape" transform="translate(326.252,-211.102)">
 			<title>Hoja.37</title>
 			<desc>controles</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="40.8346" cy="585.276" width="81.67" height="20"/>
 			<rect x="0" y="575.276" width="81.6693" height="20" class="st1"/>
 			<text x="4" y="587.68" class="st19" v:langID="10250"><v:paragraph/><v:tabList/>controles</text>		</g>
-		<g id="shape38-131" v:mID="38" v:groupContext="shape" v:layerMember="0" transform="translate(204.094,-130.394)">
+		<g id="shape38-133" v:mID="38" v:groupContext="shape" v:layerMember="0" transform="translate(204.094,-130.394)">
 			<title>Conector dinámico.38</title>
 			<path d="M0 595.28 L15 595.28 L15 389.14 L24.14 389.14" class="st23"/>
 		</g>
-		<g id="shape39-137" v:mID="39" v:groupContext="shape" transform="translate(192.52,-212.598)">
+		<g id="shape39-139" v:mID="39" v:groupContext="shape" transform="translate(192.52,-212.598)">
 			<title>Hoja.39</title>
 			<desc>lectura</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="40.8346" cy="585.276" width="81.67" height="20"/>
 			<rect x="0" y="575.276" width="81.6693" height="20" class="st1"/>
 			<text x="28.83" y="587.68" class="st19" v:langID="10250"><v:paragraph v:horizAlign="1"/><v:tabList/>lectura</text>		</g>
-		<g id="shape40-140" v:mID="40" v:groupContext="shape" transform="translate(433.701,-318.109)">
+		<g id="shape40-142" v:mID="40" v:groupContext="shape" transform="translate(433.701,-318.109)">
 			<title>Rectángulo.40</title>
 			<desc>scripts/cargar_oracle.py python-oracledb, modo Thin (sin clie...</desc>
 			<v:userDefs>
@@ -324,7 +330,7 @@
 			<rect x="0" y="558.425" width="167.244" height="36.8504" rx="4.25197" ry="4.25197" class="st14"/>
 			<text x="31.59" y="575.35" class="st15" v:langID="10250"><v:paragraph v:horizAlign="1"/><v:tabList/>scripts/cargar_oracle.py<v:newlineChar/><tspan
 						x="9.89" dy="1.286em" class="st16">python</tspan><tspan class="st16">-</tspan><tspan class="st16">oracledb, modo Thin (sin cliente Oracle)</tspan></text>		</g>
-		<g id="shape41-146" v:mID="41" v:groupContext="shape" transform="translate(433.701,-250.077)">
+		<g id="shape41-148" v:mID="41" v:groupContext="shape" transform="translate(433.701,-250.077)">
 			<title>Rectángulo.41</title>
 			<desc>stg_ (3 tablas) copia de data/interim · se rehace en cada carga</desc>
 			<v:userDefs>
@@ -335,9 +341,9 @@
 			<rect x="0" y="558.425" width="167.244" height="36.8504" rx="4.25197" ry="4.25197" class="st14"/>
 			<text x="53.36" y="575.35" class="st15" v:langID="10250"><v:paragraph v:horizAlign="1"/><v:tabList/>stg_ (3 tablas)<v:newlineChar/><tspan
 						x="9.5" dy="1.286em" class="st16">copia de data/interim · se rehace en cada carga</tspan></text>		</g>
-		<g id="shape42-150" v:mID="42" v:groupContext="shape" transform="translate(433.701,-172.124)">
+		<g id="shape42-152" v:mID="42" v:groupContext="shape" transform="translate(433.701,-172.124)">
 			<title>Rectángulo.42</title>
-			<desc>dim_ (7) y fct_ (3) vw_ (5): producción, siniestralidad y cua...</desc>
+			<desc>dim_ (7) y fct_ (3) vw_ (12): 5 base y de cuadre, 7 del análi...</desc>
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
 			</v:userDefs>
@@ -345,75 +351,77 @@
 			<v:textRect cx="83.622" cy="569.764" width="167.25" height="51.0236"/>
 			<rect x="0" y="544.252" width="167.244" height="51.0236" rx="4.25197" ry="4.25197" class="st14"/>
 			<text x="46.61" y="564.06" class="st15" v:langID="10250"><v:paragraph v:horizAlign="1"/><v:tabList/>dim_ (7) y fct_ (3)<v:newlineChar/><tspan
-						x="16.31" dy="1.286em" class="st16">vw_ (5): producción, siniestralidad y cuadre<v:newlineChar/></tspan><tspan
+						x="16.31" dy="1.286em" class="st16">vw_ (12): 5 base y de cuadre, 7 del análisis<v:newlineChar/></tspan><tspan
 						x="25.84" dy="1.2em" class="st16">dim_corte: una fila por fecha de corte</tspan></text>		</g>
-		<g id="shape43-155" v:mID="43" v:groupContext="shape" transform="translate(433.701,-111.969)">
+		<g id="shape43-157" v:mID="43" v:groupContext="shape" transform="translate(433.701,-104.882)">
 			<title>Rectángulo.43</title>
-			<desc>sql/oracle/ (DDL del Data Modeler) 01_ddl_tablas, 02_vistas y...</desc>
+			<desc>sql/oracle/ 01_ddl_tablas, 02_vistas, 03_carga_modelo y 04_vi...</desc>
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="83.622" cy="576.85" width="167.25" height="36.8504"/>
-			<rect x="0" y="558.425" width="167.244" height="36.8504" rx="4.25197" ry="4.25197" class="st14"/>
-			<text x="10.61" y="575.35" class="st15" v:langID="10250"><v:paragraph v:horizAlign="1"/><v:tabList/>sql/oracle/ (DDL del Data Modeler)<v:newlineChar/><tspan
-						x="13.38" dy="1.286em" class="st16">01_ddl_tablas, 02_vistas y 03_carga_modelo</tspan></text>		</g>
-		<g id="shape44-159" v:mID="44" v:groupContext="shape" v:layerMember="0" transform="translate(510.236,-318.109)">
+			<v:textRect cx="83.622" cy="569.764" width="167.25" height="51.0236"/>
+			<rect x="0" y="544.252" width="167.244" height="51.0236" rx="4.25197" ry="4.25197" class="st14"/>
+			<text x="61.36" y="564.06" class="st15" v:langID="10250"><v:paragraph v:horizAlign="1"/><v:tabList/>sql/oracle/<v:newlineChar/><tspan
+						x="15.13" dy="1.286em" class="st16">01_ddl_tablas, 02_vistas, 03_carga_modelo<v:newlineChar/></tspan><tspan
+						x="14.95" dy="1.2em" class="st16">y 04_vistas_analisis · Oracle 23ai o superior</tspan></text>		</g>
+		<g id="shape44-162" v:mID="44" v:groupContext="shape" v:layerMember="0" transform="translate(510.236,-318.109)">
 			<title>Conector dinámico.44</title>
 			<path d="M7.09 595.28 L7.09 620.42" class="st17"/>
 		</g>
-		<g id="shape45-164" v:mID="45" v:groupContext="shape" v:layerMember="0" transform="translate(510.236,-250.077)">
+		<g id="shape45-167" v:mID="45" v:groupContext="shape" v:layerMember="0" transform="translate(510.236,-250.077)">
 			<title>Conector dinámico.45</title>
 			<path d="M7.09 595.28 L7.09 616.16" class="st17"/>
 		</g>
-		<g id="shape46-169" v:mID="46" v:groupContext="shape" v:layerMember="0" transform="translate(510.236,-148.819)">
+		<g id="shape46-172" v:mID="46" v:groupContext="shape" v:layerMember="0" transform="translate(510.236,-155.906)">
 			<title>Conector dinámico.46</title>
-			<path d="M7.09 595.28 L7.09 578.01" class="st25"/>
+			<path d="M7.09 595.28 L7.09 585.1" class="st25"/>
 		</g>
-		<g id="shape47-174" v:mID="47" v:groupContext="shape" transform="translate(523.26,-291.811)">
+		<g id="shape47-177" v:mID="47" v:groupContext="shape" transform="translate(523.26,-291.811)">
 			<title>Hoja.47</title>
 			<desc>copia de los CSV</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="40.8346" cy="585.276" width="81.67" height="20"/>
 			<rect x="0" y="575.276" width="81.6693" height="20" class="st1"/>
 			<text x="4" y="587.68" class="st19" v:langID="10250"><v:paragraph/><v:tabList/>copia de los CSV</text>		</g>
-		<g id="shape49-177" v:mID="49" v:groupContext="shape" transform="translate(523.26,-226.772)">
+		<g id="shape49-180" v:mID="49" v:groupContext="shape" transform="translate(523.26,-226.772)">
 			<title>Hoja.49</title>
 			<desc>INSERT ... SELECT</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="40.8346" cy="585.276" width="81.67" height="20"/>
 			<rect x="0" y="575.276" width="81.6693" height="20" class="st1"/>
 			<text x="4" y="587.68" class="st19" v:langID="10250"><v:paragraph/><v:tabList/>INSERT ... SELECT</text>		</g>
-		<g id="shape50-180" v:mID="50" v:groupContext="shape" transform="translate(523.26,-150.079)">
+		<g id="shape50-183" v:mID="50" v:groupContext="shape" transform="translate(523.26,-150.079)">
 			<title>Hoja.50</title>
 			<desc>DDL y vistas</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="40.8346" cy="585.276" width="81.67" height="20"/>
 			<rect x="0" y="575.276" width="81.6693" height="20" class="st1"/>
 			<text x="4" y="587.68" class="st19" v:langID="10250"><v:paragraph/><v:tabList/>DDL y vistas</text>		</g>
-		<g id="shape51-183" v:mID="51" v:groupContext="shape" v:layerMember="0" transform="translate(402.52,-258.742)">
+		<g id="shape51-186" v:mID="51" v:groupContext="shape" v:layerMember="0" transform="translate(402.52,-258.742)">
 			<title>Conector dinámico.51</title>
 			<path d="M0 595.28 L16.73 595.28 L16.73 517.48 L24.14 517.48" class="st23"/>
 		</g>
-		<g id="shape52-188" v:mID="52" v:groupContext="shape" transform="translate(417.228,-290.472)">
+		<g id="shape52-191" v:mID="52" v:groupContext="shape" transform="translate(417.228,-290.472)">
 			<title>Hoja.52</title>
 			<desc>carga</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="40.8346" cy="585.276" width="81.67" height="20"/>
 			<rect x="0" y="575.276" width="81.6693" height="20" class="st1"/>
 			<text x="4" y="587.68" class="st19" v:langID="10250"><v:paragraph/><v:tabList/>carga</text>		</g>
-		<g id="shape53-191" v:mID="53" v:groupContext="shape" transform="translate(637.795,-316.063)">
+		<g id="shape53-194" v:mID="53" v:groupContext="shape" transform="translate(637.795,-310.961)">
 			<title>Rectángulo.53</title>
-			<desc>notebooks/ y src/ exploración e indicadores</desc>
+			<desc>scripts/exportar_indicadores.py lee las vw_ y escribe data/pr...</desc>
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="83.622" cy="576.85" width="167.25" height="36.8504"/>
-			<rect x="0" y="558.425" width="167.244" height="36.8504" rx="4.25197" ry="4.25197" class="st14"/>
-			<text x="46.61" y="575.35" class="st15" v:langID="10250"><v:paragraph v:horizAlign="1"/><v:tabList/>notebooks/ y src/<v:newlineChar/><tspan
-						x="43.93" dy="1.286em" class="st16">exploración e indicadores</tspan></text>		</g>
-		<g id="shape54-195" v:mID="54" v:groupContext="shape" transform="translate(637.795,-250.866)">
+			<v:textRect cx="83.622" cy="569.764" width="167.25" height="51.0236"/>
+			<rect x="0" y="544.252" width="167.244" height="51.0236" rx="4.25197" ry="4.25197" class="st14"/>
+			<text x="15.35" y="564.06" class="st15" v:langID="10250"><v:paragraph v:horizAlign="1"/><v:tabList/>scripts/exportar_indicadores.py<v:newlineChar/><tspan
+						x="14.95" dy="1.286em" class="st16">lee las vw_ y escribe data/processed/ (CSV)<v:newlineChar/></tspan><tspan
+						x="5.02" dy="1.2em" class="st16">notebooks/: exploración · serie mensual en Python</tspan></text>		</g>
+		<g id="shape54-199" v:mID="54" v:groupContext="shape" transform="translate(637.795,-250.866)">
 			<title>Rectángulo.54</title>
 			<desc>Informe y guía del repositorio reports/informe.md · página pr...</desc>
 			<v:userDefs>
@@ -424,7 +432,7 @@
 			<rect x="0" y="558.425" width="167.244" height="36.8504" rx="4.25197" ry="4.25197" class="st14"/>
 			<text x="20.36" y="575.35" class="st15" v:langID="10250"><v:paragraph v:horizAlign="1"/><v:tabList/>Informe y guía del repositorio<v:newlineChar/><tspan
 						x="9.89" dy="1.286em" class="st16">reports/informe.md · página principal en GitHub</tspan></text>		</g>
-		<g id="shape55-199" v:mID="55" v:groupContext="shape" transform="translate(637.795,-179.211)">
+		<g id="shape55-203" v:mID="55" v:groupContext="shape" transform="translate(637.795,-179.211)">
 			<title>Rectángulo.55</title>
 			<desc>LinkedIn post y documento PDF</desc>
 			<v:userDefs>
@@ -435,7 +443,7 @@
 			<rect x="0" y="558.425" width="167.244" height="36.8504" rx="4.25197" ry="4.25197" class="st14"/>
 			<text x="65.12" y="575.35" class="st15" v:langID="10250"><v:paragraph v:horizAlign="1"/><v:tabList/>LinkedIn<v:newlineChar/><tspan
 						x="48.02" dy="1.286em" class="st16">post y documento PDF</tspan></text>		</g>
-		<g id="shape56-203" v:mID="56" v:groupContext="shape" transform="translate(636.378,-111.969)">
+		<g id="shape56-207" v:mID="56" v:groupContext="shape" transform="translate(636.378,-111.969)">
 			<title>Rectángulo.56</title>
 			<desc>Power BI (PBIP) tablero</desc>
 			<v:userDefs>
@@ -446,44 +454,45 @@
 			<rect x="0" y="558.425" width="167.244" height="36.8504" rx="4.25197" ry="4.25197" class="st14"/>
 			<text x="49.62" y="575.35" class="st15" v:langID="10250"><v:paragraph v:horizAlign="1"/><v:tabList/>Power BI (PBIP)<v:newlineChar/><tspan
 						x="72.92" dy="1.286em" class="st16">tablero</tspan></text>		</g>
-		<g id="shape57-207" v:mID="57" v:groupContext="shape" v:layerMember="0" transform="translate(714.331,-316.063)">
+		<g id="shape57-211" v:mID="57" v:groupContext="shape" v:layerMember="0" transform="translate(714.331,-310.961)">
 			<title>Conector dinámico.57</title>
-			<path d="M7.09 595.28 L7.09 617.58" class="st17"/>
+			<path d="M7.09 595.28 L7.09 612.48" class="st17"/>
 		</g>
-		<g id="shape58-212" v:mID="58" v:groupContext="shape" v:layerMember="0" transform="translate(714.331,-250.866)">
+		<g id="shape58-216" v:mID="58" v:groupContext="shape" v:layerMember="0" transform="translate(714.331,-250.866)">
 			<title>Conector dinámico.58</title>
 			<path d="M7.09 595.28 L7.09 624.04" class="st17"/>
 		</g>
-		<g id="shape59-217" v:mID="59" v:groupContext="shape" v:layerMember="0" transform="translate(600.945,-197.636)">
+		<g id="shape59-221" v:mID="59" v:groupContext="shape" v:layerMember="0" transform="translate(600.945,-197.636)">
 			<title>Conector dinámico.59</title>
-			<path d="M0 595.28 L17.65 595.28 L17.65 458.42 L29.81 458.42" class="st23"/>
+			<path d="M0 595.28 L17.65 595.28 L17.65 456.44 L29.81 456.44" class="st23"/>
 		</g>
-		<g id="shape61-222" v:mID="61" v:groupContext="shape" v:layerMember="0" transform="translate(600.945,-197.636)">
+		<g id="shape61-226" v:mID="61" v:groupContext="shape" v:layerMember="0" transform="translate(805.039,-336.472)">
 			<title>Conector dinámico.61</title>
-			<path d="M0 595.28 L17.65 595.28 L17.65 662.52 L28.39 662.52" class="st23"/>
+			<path d="M0 595.28 L6 595.28 L6 754.17 L3.17 754.17 L3.17 755.71 L-23.03 755.71 L-23.03 779.76 L-14.8 779.76 L-14.8 782.93"
+					class="st26"/>
 		</g>
-		<g id="shape62-227" v:mID="62" v:groupContext="shape" transform="translate(616.803,-265.216)">
+		<g id="shape62-232" v:mID="62" v:groupContext="shape" transform="translate(616.803,-265.216)">
 			<title>Hoja.62</title>
 			<desc>SQL</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="40.8346" cy="585.276" width="81.67" height="20"/>
 			<rect x="0" y="575.276" width="81.6693" height="20" class="st1"/>
 			<text x="4" y="587.68" class="st19" v:langID="10250"><v:paragraph/><v:tabList/>SQL</text>		</g>
-		<g id="shape63-230" v:mID="63" v:groupContext="shape" transform="translate(616.535,-167.165)">
+		<g id="shape63-235" v:mID="63" v:groupContext="shape" transform="translate(785.181,-154.409)">
 			<title>Hoja.63</title>
-			<desc>SQL</desc>
+			<desc>CSV</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="40.8346" cy="585.276" width="81.67" height="20"/>
 			<rect x="0" y="575.276" width="81.6693" height="20" class="st1"/>
-			<text x="4" y="587.68" class="st19" v:langID="10250"><v:paragraph/><v:tabList/>SQL</text>		</g>
-		<g id="shape64-233" v:mID="64" v:groupContext="shape" transform="translate(726.205,-291.811)">
+			<text x="4" y="587.68" class="st19" v:langID="10250"><v:paragraph/><v:tabList/>CSV</text>		</g>
+		<g id="shape64-238" v:mID="64" v:groupContext="shape" transform="translate(726.205,-291.811)">
 			<title>Hoja.64</title>
-			<desc>hallazgos</desc>
+			<desc>CSV y figuras</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="40.8346" cy="585.276" width="81.67" height="20"/>
 			<rect x="0" y="575.276" width="81.6693" height="20" class="st1"/>
-			<text x="4" y="587.68" class="st19" v:langID="10250"><v:paragraph/><v:tabList/>hallazgos</text>		</g>
-		<g id="shape65-236" v:mID="65" v:groupContext="shape" transform="translate(726.205,-223.78)">
+			<text x="4" y="587.68" class="st19" v:langID="10250"><v:paragraph/><v:tabList/>CSV y figuras</text>		</g>
+		<g id="shape65-241" v:mID="65" v:groupContext="shape" transform="translate(726.205,-223.78)">
 			<title>Hoja.65</title>
 			<desc>cierre</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
