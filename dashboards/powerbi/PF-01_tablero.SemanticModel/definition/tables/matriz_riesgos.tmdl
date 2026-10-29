@@ -216,6 +216,33 @@ table matriz_riesgos
 		displayFolder: Formato
 		lineageTag: 982ef146-79f3-4257-b988-2b107e139012
 
+	measure 'Nota corte actual' = "Acumulado a " & [Texto corte actual]
+		displayFolder: Textos
+
+	measure 'Nota corte anterior' = "Frente a " & [Texto corte anterior]
+		displayFolder: Textos
+
+	/// Límites de los ejes fijos de la dispersión (D-PF01-13): X de −40 % a 60 % e Y de 0 % a 100 %.
+	/// Deben coincidir con categoryAxis y valueAxis del visual; 1 si el riesgo está en la matriz y no se dibuja.
+	measure 'Fuera de escala' =
+			VAR s = [Siniestralidad de la medida]
+			VAR v = [Variación interanual de primas]
+			RETURN IF ( NOT ISBLANK ( s ) && ( s > 1 || s < 0 || v > 0.6 || v < -0.4 ), 1 )
+		formatString: 0
+		isHidden
+		displayFolder: _Auxiliares
+		lineageTag: 2e2b2c3e-90af-44bf-bf4c-8f2d43ee7ceb
+
+	measure 'Siniestralidad fuera de escala' = IF ( [Fuera de escala] = 1, [Siniestralidad de la medida] )
+		formatString: 0.0 %
+		displayFolder: Indicadores
+		lineageTag: 0c592939-b5e5-442b-bd0c-108a7237bae5
+
+	measure 'Variación fuera de escala' = IF ( [Fuera de escala] = 1, [Variación interanual de primas] )
+		formatString: 0.0 %;−0.0 %
+		displayFolder: Indicadores
+		lineageTag: 71485a18-ad96-42a9-9e3a-bfcdd65d16ba
+
 	column riesgo_comparable
 		dataType: string
 		lineageTag: 8c4a7d49-a584-4229-ade3-0b218e406d2b

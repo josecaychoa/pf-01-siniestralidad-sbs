@@ -37,7 +37,7 @@ El flujo de datos tiene tres etapas ETL (extracción, transformación y carga) y
 
 *Nota.* Elaboración propia.
 
-El proceso que el proyecto reemplaza y el que propone están modelados en BPMN 2.0 con Bizagi Modeler 4.3 (figuras 2 y 3). El AS-IS es un supuesto declarado, la elaboración manual del reporte en hoja de cálculo, y no describe la práctica de una empresa en particular. En el TO-BE, seis tareas de servicio, que son los scripts del repositorio, reemplazan la descarga, la copia, la homologación, el cálculo y el cuadre manuales. La tabla 1 compara el tiempo de una actualización con un corte nuevo, desde la publicación del boletín hasta los indicadores validados. Los diagramas conservan el formato estándar de Bizagi (D-PF01-20); el modelo editable, un archivo BPMN por diagrama y la documentación en PDF están en [`docs/procesos/`](docs/procesos/).
+El proceso que el proyecto reemplaza y el que propone están modelados en BPMN 2.0 con Bizagi Modeler 4.3 (figuras 2 y 3). El AS-IS es un supuesto declarado, la elaboración manual del reporte en hoja de cálculo, y no describe la práctica de una empresa en particular. En el TO-BE, seis tareas de servicio, que son los scripts del repositorio, reemplazan la descarga, la copia, la homologación, el cálculo y el cuadre manuales. La tabla 1 compara el tiempo de producir el reporte, desde la descarga de los boletines hasta los indicadores validados: el AS-IS es una estimación del autor y el TO-BE, una medición del flujo, que reprocesa los 9 cortes. Incorporar un corte nuevo exige hoy editar la lista de cortes en `src/pf_01_siniestralidad_sbs/fuentes.py`. Los diagramas conservan el formato estándar de Bizagi (D-PF01-20); el modelo editable, un archivo BPMN por diagrama y la documentación en PDF están en [`docs/procesos/`](docs/procesos/).
 
 **Figura 2**
 
@@ -49,7 +49,7 @@ El proceso que el proyecto reemplaza y el que propone están modelados en BPMN 2
 
 **Tabla 1**
 
-*Tiempo de una actualización con un corte nuevo, AS-IS frente a TO-BE, por actividad*
+*Tiempo del reporte de siniestralidad, AS-IS estimado frente a TO-BE medido, por actividad*
 
 | Actividad | AS-IS (min) | TO-BE (min) | Ahorro (min) | Ahorro (%) |
 |---|---:|---:|---:|---:|
@@ -129,7 +129,7 @@ De los 48 riesgos del corte, 35 quedan clasificados en la matriz de cuadrantes: 
 
 ![Página «Matriz de riesgos» del tablero con la medida Directa: 9 de 35 riesgos crecen con una siniestralidad directa mayor que el corte de 44.0 %](reports/figures/PF-01_tablero_directa.png)
 
-*Nota.* Elaboración propia con datos de SBS (s. f.-a). Los ejes se recortan en 60 % de variación y 100 % de siniestralidad (D-PF01-13): 3 de los 35 riesgos clasificados quedan fuera de escala y no se dibujan, aunque cuentan en las tablas.
+*Nota.* Elaboración propia con datos de SBS (s. f.-a). Los ejes se recortan en 60 % de variación y 100 % de siniestralidad (D-PF01-13): 3 de los 35 riesgos clasificados quedan fuera de escala; no se dibujan, se listan sobre el gráfico y cuentan en las tablas.
 
 ## Cómo reproducir
 
@@ -148,13 +148,21 @@ Las 51 pruebas omitidas son las de integración, que requieren la base Oracle o 
 cp .env.example .env            # completar las variables locales
 docker compose up -d
 uv run python scripts/descargar_sbs.py
+uv run python scripts/validar_datos.py
 uv run python scripts/descargar_mensual.py
-uv run python scripts/cargar_oracle.py --base contenedor
-uv run python scripts/exportar_indicadores.py --base contenedor
-uv run pytest
+uv run --env-file .env python scripts/cargar_oracle.py --base contenedor
+uv run --env-file .env python scripts/exportar_indicadores.py --base contenedor
+uv run --env-file .env python scripts/validar_resultados.py --base contenedor
+uv run --env-file .env pytest
 ```
 
+Las pruebas de Oracle leen la conexión de las variables de entorno, así que `pytest` necesita `--env-file .env`; sin esa opción, uv no carga el archivo y las pruebas se omiten. La base debe ser Oracle Database 23ai o posterior: el DDL usa `BOOLEAN` y `CREATE TABLE IF NOT EXISTS`, que no existen en 19c.
+
 Los conteos de filas y los cuadres esperados tras la carga están en el diccionario de datos ([`docs/03_diccionario_datos.md`](docs/03_diccionario_datos.md), sección 5). El tablero no necesita Oracle: lee los CSV versionados de `data/processed/` y se abre con Power BI Desktop en Windows según la guía de [`dashboards/powerbi/README.md`](dashboards/powerbi/README.md).
+
+## Cómo se construyó
+
+El proyecto se desarrolló con asistencia de inteligencia artificial: Claude Code (Anthropic) escribió la mayor parte del código, las pruebas y los commits, y abrió los pull request; Claude, en un chat aparte, ayudó a planificar y revisó cada PR. José Caycho A. definió el problema, aprobó el plan y cada cambio de alcance, validó los resultados y fusionó los PR. La rama `main` exige que la integración continua (ruff y pytest) pase y un estado de revisión (`revision/claude`) que se publica solo después de esa revisión. Las cifras centrales no dependen del criterio de la IA: las pruebas automáticas contrastan los índices calculados con los que publica la SBS y verifican que las contribuciones por riesgo sumen el cambio del sistema.
 
 ## Estructura
 

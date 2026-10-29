@@ -18,8 +18,9 @@
 --   - Comentarios de tabla y de columna (COMMENT ON).
 --
 -- Orden de ejecución
---   1. Es el primer script de sql/oracle/; después van 02_vistas_*,
---      03_plsql_* y 04_cargas_*.
+--   1. Es el primer script de sql/oracle/; después van 02_vistas.sql,
+--      03_carga_modelo.sql y 04_vistas_analisis.sql. Requiere Oracle
+--      Database 23ai o posterior (BOOLEAN y IF NOT EXISTS).
 --   2. Dentro del script: tablas stg_, tablas dim_, tablas fct_, columnas
 --      agregadas después de la primera versión (3b), llaves primarias, llaves
 --      foráneas, restricciones CHECK, índices y comentarios. Las llaves

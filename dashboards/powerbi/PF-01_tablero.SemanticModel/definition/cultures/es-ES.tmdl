@@ -172,6 +172,69 @@ cultureInfo es-ES
 			          }
 			        }
 			      ]
+			    },
+			    "matriz_riesgos.riesgo_comparable": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "matriz_riesgos",
+			          "ConceptualProperty": "riesgo_comparable"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Fuera de escala": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "matriz_riesgos.siniestralidad_fuera_de_escala": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "matriz_riesgos",
+			          "ConceptualProperty": "Siniestralidad fuera de escala"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Siniestralidad": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "matriz_riesgos.variación_fuera_de_escala": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "matriz_riesgos",
+			          "ConceptualProperty": "Variación fuera de escala"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Variación": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
 			    }
 			  }
 			}

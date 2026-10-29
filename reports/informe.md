@@ -18,7 +18,7 @@ La serie usa el Total ampliado del catálogo de empresas, que incorpora a Rigel 
 
 ## 3. El sistema, 2019-2026
 
-La siniestralidad directa del sistema pasó de 53.0 % en diciembre de 2019 a un máximo de 59.3 % en diciembre de 2021, bajó en los cuatro cortes anuales siguientes hasta 39.4 % en diciembre de 2025 y repuntó a 48.9 % en agosto de 2026, 7.5 p. p. por encima de agosto de 2025 (tabla 1 y figura 1). La sección 4 muestra qué explica ese repunte. La retenida alcanzó su propio máximo en 2021 (52.9 %), corre por debajo de la directa desde 2022 y cerró agosto de 2026 en 45.7 %, 5.5 p. p. más que un año antes. Las primas netas cayeron 0.7 % en 2020 y crecieron todos los años desde 2021; el acumulado de agosto de 2026 supera en 9.0 % al de agosto de 2025.
+La siniestralidad directa del sistema pasó de 53.0 % en diciembre de 2019 a un máximo de 59.3 % en diciembre de 2021, el año en que Vida Ley Trabajadores llegó a 147.7 %, en plena pandemia de COVID-19, y bajó en los cuatro cortes anuales siguientes hasta 39.4 % en diciembre de 2025 (tabla 1 y figura 1). Agosto de 2026 acumula 8 meses y no se compara con diciembre: frente a agosto de 2025 la directa subió 7.5 p. p., a 48.9 %, y en los 12 meses a agosto de 2026 (diciembre de 2025 más enero a agosto de 2026 menos enero a agosto de 2025) fue de 44.5 %. La sección 4 muestra qué explica ese repunte. La retenida alcanzó su propio máximo en 2021 (52.9 %), corre por debajo de la directa desde 2022 y cerró agosto de 2026 en 45.7 %, 5.5 p. p. más que un año antes. Las primas netas cayeron 0.7 % en 2020 y crecieron todos los años desde 2021; el acumulado de agosto de 2026 supera en 9.0 % al de agosto de 2025.
 
 **Tabla 1**
 
@@ -135,7 +135,7 @@ Las figuras 4 y 5 muestran la página «Matriz de riesgos» del tablero Power BI
 
 ![Página «Matriz de riesgos» del tablero con la medida Directa: 9 de 35 riesgos crecen con una siniestralidad directa mayor que el corte de 44.0 %](figures/PF-01_tablero_directa.png)
 
-*Nota.* Elaboración propia con datos de SBS (s. f.-a). Los ejes se recortan en 60 % de variación y 100 % de siniestralidad (D-PF01-13): 3 de los 35 riesgos clasificados quedan fuera de escala y no se dibujan, aunque cuentan en las tablas.
+*Nota.* Elaboración propia con datos de SBS (s. f.-a). Los ejes se recortan en 60 % de variación y 100 % de siniestralidad (D-PF01-13): 3 de los 35 riesgos clasificados quedan fuera de escala; no se dibujan, se listan sobre el gráfico y cuentan en las tablas.
 
 **Figura 5**
 
@@ -145,15 +145,15 @@ Las figuras 4 y 5 muestran la página «Matriz de riesgos» del tablero Power BI
 
 *Nota.* Elaboración propia con datos de SBS (s. f.-a). Misma página que la figura 4, con la medida Retenida; 2 de los 35 riesgos clasificados quedan fuera de escala.
 
-## 6. El proceso: de 95.0 a 9.9 minutos por corte
+## 6. El proceso: del reporte manual al flujo reproducible
 
-Reproducir este reporte a mano (descargar los boletines, consolidar las hojas, homologar empresas, alinear riesgos, armar fórmulas y cuadrar totales) toma 95.0 minutos por corte, según la estimación del autor con las cantidades del proyecto. El flujo del repositorio ejecuta las mismas actividades en 9.9 minutos: 3.9 de scripts medidos (mediana de tres corridas que reprocesan los 9 cortes) y 6.0 estimados de lectura de las dos notas de validación. El ahorro es de 85.1 minutos por corte (89.6 %), y el flujo agrega lo que el proceso manual no tenía: manifiesto de descarga, catálogos versionados y 27 pruebas automatizadas (figura 6).
+Según la estimación del autor, producir este reporte a mano (descargar los boletines, consolidar las hojas, homologar empresas, alinear riesgos, armar fórmulas y cuadrar totales) toma unos 95 minutos. El flujo del repositorio ejecuta las mismas actividades en 9.9 minutos: 3.9 de scripts medidos (mediana de tres corridas que reprocesan los 9 cortes, con Oracle Database 23ai Free nativo) y 6.0 estimados de lectura de las dos notas de validación (figura 6). La comparación enfrenta una estimación con una medición, así que el ahorro es indicativo; lo que el flujo agrega con certeza es lo que el proceso manual no tenía: manifiesto de descarga, catálogos versionados y pruebas automatizadas. El flujo no está programado: los scripts se ejecutan a mano y un corte nuevo exige editar la lista de cortes de `fuentes.py`.
 
 **Figura 6**
 
-*Tiempo del reporte de siniestralidad por corte, AS-IS frente a TO-BE*
+*Tiempo del reporte de siniestralidad, AS-IS estimado frente a TO-BE medido*
 
-![Tabla comparada de tiempos: el proceso manual AS-IS toma 95.0 minutos por corte y el flujo reproducible TO-BE, 9.9; el ahorro es de 85.1 minutos (89.6 %)](../docs/procesos/PF-01_tiempos.svg)
+![Tabla comparada de tiempos: el proceso manual AS-IS se estima en 95.0 minutos y el flujo reproducible TO-BE se midió en 9.9; el ahorro indicativo es de 85.1 minutos (89.6 %)](../docs/procesos/PF-01_tiempos.svg)
 
 *Nota.* Elaboración propia. Medición del 2026-10-19 descrita en `docs/procesos/PF-01_tiempos.csv`; diagramas BPMN del proceso en `docs/procesos/`.
 
@@ -161,6 +161,10 @@ Reproducir este reporte a mano (descargar los boletines, consolidar las hojas, h
 
 - Los cortes de agosto acumulan 8 meses y los de diciembre, 12; el índice no está anualizado, así que las comparaciones interanuales válidas son entre cortes del mismo mes.
 - Desde la información de marzo de 2026, los siniestros incluyen «otras obligaciones» por la Resolución SBS N.º 00085-2026 (SBS, s. f.-d, 2026): el corte de agosto de 2026 no es comparable con los anteriores en Vida Individual de Largo Plazo, y probablemente tampoco en Renta Particular, cuyo efecto no se aisló. No se pudo leer el Anexo de la resolución con el detalle de las cuentas, así que la atribución del quiebre es una inferencia de la fuente y del mes en que ocurre.
+- El 48.9 % del sistema incluye las rentas y los seguros del Sistema Privado de Pensiones (29.8 % de las primas del corte); el corte de la matriz (44.0 %) solo incluye los riesgos clasificados. Cada cifra indica a cuál agregado corresponde.
+- La matriz clasifica el crecimiento con la variación interanual: con la tasa de crecimiento anual compuesta 2019-2025, 17 de los 35 riesgos cambian de cuadrante y el cuadrante 1 tendría 15 riesgos en lugar de 9. Vida Ley Trabajadores entra como «crece» con una variación de +0.03 %. La matriz mide el nivel de la siniestralidad frente al conjunto, no su tendencia: 6 de los 9 riesgos del cuadrante 1 bajaron su índice frente a agosto de 2025.
+- Los montos son nominales, en soles y sin deflactar; no se separan la moneda nacional y la extranjera.
+- El análisis no incluye la apertura por empresa ni índices de concentración; la vista `vw_participacion_empresa_riesgo` y su CSV existen, pero el informe no los analiza.
 - La matriz usa un solo corte (agosto de 2026). Para otro corte hay que regenerar los CSV con `uv run python scripts/exportar_indicadores.py`.
 - 5 riesgos previsionales (4 993.5 millones de soles de primas) y 8 riesgos bajo el umbral (8.3 millones) quedan fuera de la clasificación por cuadrante.
 - En diciembre de 2020, 5 celdas del índice publicado por riesgo difieren del calculado porque la fuente usó el Total simple, sin Rigel ni Coface; la serie usa el Total ampliado en todos los cortes (D-PF01-18).

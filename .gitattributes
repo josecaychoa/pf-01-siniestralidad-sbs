@@ -22,3 +22,7 @@ reports/figures/*.svg -text
 # desde un entorno sin autocrlf (p. ej., la sesión de Claude en Linux), el blob quedaría
 # con CRLF y el árbol de Windows aparecería modificado tras cada checkout.
 gestion/cronograma/*.xml text eol=lf
+
+# Notebook de exploración (3.1): se cuenta como documentación y no como lenguaje del
+# repositorio; sin esta regla, GitHub clasifica el proyecto como «Jupyter Notebook».
+*.ipynb linguist-documentation
