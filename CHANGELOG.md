@@ -1,6 +1,10 @@
 # Changelog
 
 ## [Sin publicar]
+
+## [1.1.0] - 2026-10-29
+- Figura 6 (tabla de tiempos): titular sin «corte nuevo»; el flujo reproducible medido frente a la estimación del reporte manual, con ahorro indicativo (#57).
+- Dependencias con alertas de seguridad actualizadas: pillow 13.0.0, filelock 4.2.4, virtualenv 21.15.1, pypdf 6.21.4 y tornado 6.6; 82 alertas corregidas (#63).
 - Tablero (A-05, #57): nombre en cada burbuja, tabla de los riesgos fuera de escala sobre el gráfico (medidas `Fuera de escala`, `Siniestralidad fuera de escala` y `Variación fuera de escala`), etiquetas de referencia en las cuatro tarjetas (+7.5 p. p. y +5.5 p. p. frente a agosto de 2025; medidas `Nota corte actual` y `Nota corte anterior`) y página «Matriz de riesgos»; capturas regeneradas.
 - Figura 1 de arquitectura 1.1 en Visio (B-02, #57): doce vistas `vw_`, `scripts/exportar_indicadores.py` y los CSV de `data/processed/` como fuente del informe y del tablero, serie mensual de 4.4 y DDL propio para Oracle 23ai o superior; SVG y PDF reexportados.
 - Correcciones de la auditoría integral (#57, CC-PF-01-02): README con la receta completa (`uv run --env-file .env`, validaciones de datos y de resultados), versión mínima de Oracle (23ai) y sección «Cómo se construyó» sobre el uso de IA; tabla 1 sin la frase «por corte».
