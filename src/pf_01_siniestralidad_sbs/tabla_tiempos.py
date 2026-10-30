@@ -151,14 +151,14 @@ def construir_svg(totales: dict[str, dict[str, float]]) -> str:
     y = 64
     # Titular en dos tonos: la idea en Grafito y la continuación en Gris, mismo tamaño
     idea = (
-        f"La actualización con un corte nuevo pasa de {numero(total.asis)} "
-        f"a {numero(total.tobe)} minutos."
+        f"El flujo reproducible tomó {numero(total.tobe)} minutos; "
+        f"el manual se estima en {numero(total.asis)}."
     )
     piezas.append(texto(MARGEN, y, escape(idea), 28, GRAFITO, 600, extra=titular))
     y += 38
     continuacion = (
-        f"Ahorro estimado de {numero(total.ahorro)} minutos "
-        f"({numero(total.porcentaje)} %) con el flujo reproducible."
+        f"Ahorro indicativo de {numero(total.ahorro)} minutos "
+        f"({numero(total.porcentaje)} %) frente a la estimación manual."
     )
     piezas.append(texto(MARGEN, y, escape(continuacion), 28, GRIS, 600, extra=titular))
     y += 36
