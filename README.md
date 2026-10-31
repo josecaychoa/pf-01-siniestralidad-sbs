@@ -207,5 +207,5 @@ Código bajo licencia MIT. Los datos conservan las condiciones de uso de su fuen
 
 ## Autor
 
-José Caycho A. · Business Analyst Senior · Procesos · Datos
+José Caycho A. · Business Analyst Senior y DBA · Procesos · Datos
 linkedin.com/in/jcaychoasin · github.com/josecaychoa
