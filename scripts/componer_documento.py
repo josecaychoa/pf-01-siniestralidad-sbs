@@ -37,6 +37,8 @@ REPOSITORIO = "github.com/josecaychoa/pf-01-siniestralidad-sbs"
 FIRMA = "José Caycho A. · Business Analyst Senior y DBA · Procesos · Datos"
 PERFILES = "linkedin.com/in/jcaychoasin · github.com/josecaychoa"
 PORTAFOLIO = "github.com/josecaychoa"
+LIMITACIONES_IDEA = "La SBS cambió los rubros de siniestros;"
+LIMITACIONES_CONT = "su peso en el alza no está aislado."
 
 REFERENCIAS = [
     "Superintendencia de Banca, Seguros y AFP. (s. f.-a). <i>Boletín mensual</i> [Conjunto de "
@@ -52,8 +54,8 @@ REFERENCIAS = [
     "netas, cedidas y retenidas según riesgos</i> [Conjunto de datos]. Recuperado el 11 y el 27 de "
     "octubre de 2026, de https://www.sbs.gob.pe/app/stats_net/stats/"
     "EstadisticaSistemaFinancieroResultados.aspx?c=S-402",
-    "Superintendencia de Banca, Seguros y AFP. (2026). <i>Resolución S.B.S. N.º 00085-2026: "
-    "Modifica el Plan de Cuentas para las Empresas del Sistema Asegurador</i>. "
+    "Superintendencia de Banca, Seguros y AFP. (2026, 14 de enero). <i>Resolución S.B.S. "
+    "N.º&nbsp;00085-2026</i>. "
     "https://intranet2.sbs.gob.pe/dv_int_cn/2551/v1.0/Adjuntos/R.%2000085-2026.pdf",
 ]
 
@@ -199,22 +201,18 @@ def paginas() -> list[str]:
         "indicadores en vistas SQL.</td></tr>"
         "<tr><td>Control</td><td>Índice del sistema cuadrado con el publicado en los 9 cortes; "
         "pruebas automatizadas, entre ellas que las contribuciones suman el cambio.</td></tr>"
-        "</table>"
-        '<div class="recuadro"><strong>Lo que corregí.</strong> La primera versión del informe '
-        "decía que la siniestralidad «rompió la tendencia» en 2026. Al descomponer el cambio por "
-        "riesgo vi que el alza se concentraba en dos riesgos, y que uno coincidía con un cambio "
-        "contable. Ahora descompongo toda variación agregada antes de escribir una conclusión."
-        "</div></div>"
+        "</table></div>"
         f"{pie(7, nota_metodo)}"
         "</section>"
     )
     limitaciones = (
         f'<section class="pagina">{cabecera()}'
-        f"{titular('El quiebre contable es una inferencia,', 'no un dato confirmado por la SBS.')}"
+        f"{titular(LIMITACIONES_IDEA, LIMITACIONES_CONT)}"
         '<div class="tarjeta"><div class="texto">'
-        "<p>No pude leer el Anexo de la Resolución SBS N.º 00085-2026 (SBS, 2026). "
-        "La atribución se apoya en el mes, en el título y en la nota del cuadro de "
-        "siniestros (SBS, s. f.-d).</p>"
+        "<p>Desde la información de marzo de 2026, la Resolución SBS N.º&nbsp;00085-2026 cambia el "
+        "registro de rescates y vencimientos de los seguros de vida con ahorro y los rubros de "
+        "siniestros (SBS, 2026). El salto de Vida Individual coincide con la norma, pero no separé "
+        "qué parte se debe a ella.</p>"
         "<p>Renta Particular (+1.60 p.&nbsp;p.), otro seguro de vida con ahorro, también sube en "
         "marzo de 2026; su efecto no está aislado.</p>"
         "<p>Los cortes de agosto acumulan 8 meses y solo se comparan entre sí. Los montos son "
