@@ -1,6 +1,6 @@
 # Cierre · PF-01: Producción y siniestralidad por riesgo del mercado asegurador peruano, 2019-2026
 
-`Portafolio · PF-01` · Versión 0.4 · 2026-10-27 · Cambio v0.4: valor ganado en horas (sección 3.3), conciliación del total de horas, release v1.0.0 marcado y paquetes 4.4 y 4.5 de CC-PF-01-02 (auditoría integral) · Paquete 1.3 (#13) terminado y «Listo para cierre» recibido el 2026-10-27; faltan la publicación (O3) y la fecha de cierre del proyecto.
+`Portafolio · PF-01` · Versión 0.5 · 2026-11-02 · Cambio v0.5: versión pública de la documentación (CC-PF-01-04) · Cambio v0.4: valor ganado en horas (sección 3.3), conciliación del total de horas, release v1.0.0 marcado y paquetes 4.4 y 4.5 de CC-PF-01-02 (auditoría integral) · Paquete 1.3 (#13) terminado y «Listo para cierre» recibido el 2026-10-27; faltan la publicación (O3) y la fecha de cierre del proyecto.
 
 ## 1. Criterios de cierre
 
@@ -8,7 +8,7 @@
 - [x] Repositorio reproducible desde un clon limpio: `uv sync --locked` y `uv run pytest` con 129 pruebas superadas y 50 omitidas sin Oracle ni `data/raw/` (PR #51).
 - [x] «Listo para cierre» (puerta 2) recibido del director del proyecto el 2026-10-27.
 - [x] Release v1.0.0 etiquetado y CHANGELOG actualizado (versión 1.0.0 del 2026-10-27); v1.1.0 con CC-PF-01-02.
-- [ ] Post publicado, añadido a Destacados y registrado en el tablero de indicadores.
+- [ ] Post y documento publicados en LinkedIn y añadidos a Destacados.
 - [x] Gantt de seguimiento exportado de Project (`gestion/cronograma/PF-01_seguimiento.pdf`) y tabla de desvíos (`gestion/cronograma/PF-01_desvios.csv`), generada desde el XML del cronograma (sección 3.1).
 
 ## 2. Evaluación de objetivos
@@ -99,36 +99,26 @@ Project no registra trabajo ni costo (sin recursos asignados), así que el valor
 
 Resumen de las lecciones L-PF01-01 a L-PF01-85; el detalle está en el registro de lecciones del portafolio.
 
-| Qué funcionó | Qué no funcionó | Causa | Acción para el siguiente proyecto | ¿Cambia instrucciones, plantillas, fichas o skills? |
-|---|---|---|---|---|
-| Adelantar el inicio y replanificar en la Baseline1 dejó el núcleo terminado entre 16 y 19 días hábiles antes de la v1.0 | La Baseline2 repite las fechas reales y no sirve para medir desvíos | Se fijó sobre todo el proyecto cuando la mayoría de los paquetes ya tenía avance | Un cambio de horas sin tareas nuevas se registra en la columna «Horas» y en el control de cambios; si se fija otra línea base, se declara cuál es la de control | Sí: skill `portafolio-ms-project` |
-| La doble implementación de las reglas (SQL y Python) con pruebas cruzadas y cifras de oráculo convirtió la validación de O2 en una comprobación mecánica (L-PF01-42 y L-PF01-50) | No aplica | No aplica | Repetirlo en todo PF con vistas analíticas | No |
-| No aplica | 2.3 y 2.4 superaron su estimación en 6.8 h y 5.9 h | Herramientas sin uso previo en el portafolio (Data Modeler, Visio) y alcance de páginas decidido durante la ejecución (L-PF01-32) | Estimar con margen las herramientas nuevas y cerrar el alcance de cada diagrama, con su boceto, en la Fase 1 | Sí: skill `portafolio-acta-proyecto` |
-| No aplica | Las horas reales no se cronometraron y hubo que reconstruirlas al cierre | Ni los resúmenes ni el GitHub Project tenían un campo de horas reales (D15 pendiente) | Registrar el inicio y el fin de cada sesión en su resumen y las horas reales al cerrar cada issue | Sí: skill `portafolio-cierre-retro` y `14_indicadores_gestion.md` |
-| El estado de commit requerido `revision/claude` impidió fusionar antes de la revisión (L-PF01-82) | Siete PR (#43 y #45 a #50) se fusionaron antes del «Conforme para fusionar» (L-PF01-57, L-PF01-66, L-PF01-76 y L-PF01-79) | El control era solo conversacional | Proteger `main` con el estado requerido desde el primer PR | Ya incorporado: instrucciones v1.13 |
-| Las excepciones de la fuente registradas en un catálogo mantuvieron la serie comparable sin ocultar diferencias (L-PF01-54) | La SBS no usa un criterio único para el índice publicado ni un formato único de archivo (L-PF01-12) | Cada corte se publica con la herramienta y el criterio de ese momento | Validar la estructura por corte y registrar las excepciones antes de calcular | Ya incorporado: catálogo 05 |
-| No aplica | Trabajar fuera del horario del calendario convirtió tareas en hitos de duración 0 en cinco paquetes (3.1 a 3.3, 4.2 y 4.3) (L-PF01-06, L-PF01-52 y L-PF01-78) | El calendario del PF tiene la jornada predeterminada, no las horas reales de trabajo | Definir en la Fase 1 un calendario con las horas reales de trabajo | Sí: skill `portafolio-ms-project` |
-| Las reglas de `.gitattributes` por tipo de archivo evitaron cambios espurios entre Windows y Linux (L-PF01-10, L-PF01-64 y L-PF01-83) | Cada tipo nuevo (CSV, SVG, BPMN, XML) necesitó un PR propio para su regla | La plantilla no traía las reglas | Plantilla con todas las reglas desde el inicio | Sí: skill `portafolio-repo-scaffold` |
-| Con las carpetas conectadas, Claude escribió y verificó en el equipo, y el ciclo de un issue de documentación cupo en el chat (L-PF01-37, L-PF01-80 y L-PF01-85) | No aplica | No aplica | Conectar la carpeta del repositorio al iniciar cada sesión | Ya incorporado: instrucciones v1.11 y v1.13 |
-| La tabla de desvíos se generó desde el XML exportado por Project, con los mismos campos y sin tocar la seguridad del equipo | Guardar como CSV falló por la opción «Formatos heredados» del Centro de confianza y, al habilitarla, el asistente usó el mapa genérico de tareas (separado por tabulaciones, en ANSI y sin las variaciones de comienzo y fin) | Project trata el CSV como formato heredado y el asistente no parte de la tabla activa | Generar `PF-XX_desvios.csv` desde el XML del cronograma con un script, en UTF-8 y con LF | Sí: skill `portafolio-ms-project`, sección C.2 |
+| Qué funcionó | Qué no funcionó | Causa | Acción para el siguiente proyecto |
+|---|---|---|---|
+| Adelantar el inicio y replanificar en la Baseline1 dejó el núcleo terminado entre 16 y 19 días hábiles antes de la v1.0 | La Baseline2 repite las fechas reales y no sirve para medir desvíos | Se fijó sobre todo el proyecto cuando la mayoría de los paquetes ya tenía avance | Un cambio de horas sin tareas nuevas se registra en la columna «Horas» y en el control de cambios; si se fija otra línea base, se declara cuál es la de control |
+| La doble implementación de las reglas (SQL y Python) con pruebas cruzadas y cifras de oráculo convirtió la validación de O2 en una comprobación mecánica (L-PF01-42 y L-PF01-50) | No aplica | No aplica | Repetirlo en todo PF con vistas analíticas |
+| No aplica | 2.3 y 2.4 superaron su estimación en 6.8 h y 5.9 h | Herramientas sin uso previo en el portafolio (Data Modeler, Visio) y alcance de páginas decidido durante la ejecución (L-PF01-32) | Estimar con margen las herramientas nuevas y cerrar el alcance de cada diagrama, con su boceto, en la Fase 1 |
+| No aplica | Las horas reales no se cronometraron y hubo que reconstruirlas al cierre | Ni los resúmenes ni el GitHub Project tenían un campo de horas reales (D15 pendiente) | Registrar el inicio y el fin de cada sesión en su resumen y las horas reales al cerrar cada issue |
+| El estado de commit requerido `revision/claude` impidió fusionar antes de la revisión (L-PF01-82) | Siete PR (#43 y #45 a #50) se fusionaron antes del «Conforme para fusionar» (L-PF01-57, L-PF01-66, L-PF01-76 y L-PF01-79) | El control era solo conversacional | Proteger `main` con el estado requerido desde el primer PR |
+| Las excepciones de la fuente registradas en un catálogo mantuvieron la serie comparable sin ocultar diferencias (L-PF01-54) | La SBS no usa un criterio único para el índice publicado ni un formato único de archivo (L-PF01-12) | Cada corte se publica con la herramienta y el criterio de ese momento | Validar la estructura por corte y registrar las excepciones antes de calcular |
+| No aplica | Trabajar fuera del horario del calendario convirtió tareas en hitos de duración 0 en cinco paquetes (3.1 a 3.3, 4.2 y 4.3) (L-PF01-06, L-PF01-52 y L-PF01-78) | El calendario del PF tiene la jornada predeterminada, no las horas reales de trabajo | Definir en la Fase 1 un calendario con las horas reales de trabajo |
+| Las reglas de `.gitattributes` por tipo de archivo evitaron cambios espurios entre Windows y Linux (L-PF01-10, L-PF01-64 y L-PF01-83) | Cada tipo nuevo (CSV, SVG, BPMN, XML) necesitó un PR propio para su regla | La plantilla no traía las reglas | Plantilla con todas las reglas desde el inicio |
+| Con las carpetas conectadas, Claude escribió y verificó en el equipo, y el ciclo de un issue de documentación cupo en el chat (L-PF01-37, L-PF01-80 y L-PF01-85) | No aplica | No aplica | Conectar la carpeta del repositorio al iniciar cada sesión |
+| La tabla de desvíos se generó desde el XML exportado por Project, con los mismos campos y sin tocar la seguridad del equipo | Guardar como CSV falló por la opción «Formatos heredados» del Centro de confianza y, al habilitarla, el asistente usó el mapa genérico de tareas (separado por tabulaciones, en ANSI y sin las variaciones de comienzo y fin) | Project trata el CSV como formato heredado y el asistente no parte de la tabla activa | Generar `PF-XX_desvios.csv` desde el XML del cronograma con un script, en UTF-8 y con LF |
 
 ## 5. Retrospectiva de la colaboración con Claude
 
-- Instrucciones o datos que faltaron: un registro de horas reales por sesión; el calendario real de trabajo para Project; un control mecánico de fusión, que llegó recién con la versión 1.13 de las instrucciones; y la regla de qué línea base se usa para medir desvíos.
-- Prompts de Claude Code que conviene reutilizar: el prompt base con verificación del punto de partida (`git status -sb`, `git log -1 --oneline`) y parada si no coincide (L-PF01-58); commits con rutas explícitas y sin `gestion/cronograma/` en los commits de código; toda afirmación de resultado acompañada de la salida real del comando (L-PF01-44 y L-PF01-48).
-- Skills que convendría crear o mejorar: mejorar `portafolio-ms-project` (calendario y línea base de control), `portafolio-cierre-retro` (horas reales) y `portafolio-repo-scaffold` (reglas de `.gitattributes` y protección de `main`). Crear una skill de carga en Oracle solo si PF-02 vuelve a usar el mismo flujo (sección 7 de las instrucciones: dos proyectos o más).
+- Lo que faltó al inicio: un registro de horas reales por sesión, el calendario real de trabajo para Project, un control automático de fusión (el estado requerido `revision/claude`, que se agregó durante la ejecución) y la regla de qué línea base se usa para medir desvíos.
 
 ## 6. Limitaciones conocidas
 
 - En P001 de diciembre de 2021, la nota al pie «*Actualizado al 01/09/2022» entra como cuenta en `dim_cuenta` porque trae un 0 en una columna de empresa; no afecta los cuadres. Se cerró como «no se hará» por la solicitud de cambio CC-PF-01-01 (#34).
-
-## 7. Propuestas de mejora (máximo 3)
-
-| N.º | Archivo afectado | Texto exacto del cambio | Nueva versión |
-|---|---|---|---|
-| 1 | Skill `portafolio-cierre-retro`, sección 1 | Agregar al reporte por sesión: «- Horas: inicio y fin de la sesión (hora de Lima) y horas atribuibles a cada issue». Agregar en la sección 3, paso 2: «Si faltan horas reales, se reconstruyen con las ventanas de sesión (resúmenes y marcas de hora de los chats; una pausa de más de 60 minutos abre una sesión nueva), se declaran como piso y José las valida» | v1.4 |
-| 2 | Skill `portafolio-ms-project`, sección A.3 y sección C | A.3: «El calendario del PF cubre las horas reales de trabajo de José, incluidas noches y fines de semana; si no, las tareas de ejecución usan el calendario "24 horas"». C.1: «La comparación de cierre usa la v1.0 y la última línea base fijada antes del primer avance real de cada paquete; una línea base fijada con fechas reales no se usa para medir desvíos» | v1.5 |
-| 3 | Skill `portafolio-acta-proyecto`, estimación de la EDT | «Los paquetes que usan una herramienta sin uso previo en el portafolio o que requieren boceto aprobado llevan su alcance de páginas cerrado en la Fase 1 y un margen de estimación declarado en el acta» | Siguiente versión |
 
 ## Referencias
 
