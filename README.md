@@ -73,6 +73,7 @@ El proceso que el proyecto reemplaza y el que propone están modelados en BPMN 2
 
 | Elemento | Archivo |
 |---|---|
+| Tablero público de seguimiento (issues, fases y horas) | [GitHub Project «Portafolio Profesional JC 2026-27»](https://github.com/users/josecaychoa/projects/1) |
 | Acta y objetivos SMART | [`docs/01_acta.md`](docs/01_acta.md) |
 | EDT y Gantt de la línea base v1.0 (vista resumida, congelada al aprobar el plan) | [`docs/02_edt_gantt.md`](docs/02_edt_gantt.md) |
 | Gantt de Microsoft Project con el avance real (PDF, se actualiza en cada registro de avance) | [`gestion/cronograma/PF-01_seguimiento.pdf`](gestion/cronograma/PF-01_seguimiento.pdf) |
@@ -162,7 +163,7 @@ Los conteos de filas y los cuadres esperados tras la carga están en el dicciona
 
 ## Cómo se construyó
 
-El proyecto se desarrolló con asistencia de inteligencia artificial: Claude Code (Anthropic) escribió la mayor parte del código, las pruebas y los commits, y abrió los pull request; Claude, en un chat aparte, ayudó a planificar y revisó cada PR. José Caycho A. definió el problema, aprobó el plan y cada cambio de alcance, validó los resultados y fusionó los PR. La rama `main` exige que la integración continua (ruff y pytest) pase y un estado de revisión (`revision/claude`) que se publica solo después de esa revisión. Las cifras centrales no dependen del criterio de la IA: las pruebas automáticas contrastan los índices calculados con los que publica la SBS y verifican que las contribuciones por riesgo sumen el cambio del sistema.
+José Caycho A. dirigió el proyecto: definió el problema, el alcance y el plan, construyó el cronograma en Microsoft Project, la arquitectura en Visio y los procesos AS-IS y TO-BE en Bizagi, tomó las decisiones de diseño registradas en `docs/04_arquitectura.md`, validó cada cifra contra la fuente y aprobó y fusionó cada cambio. La programación se hizo con asistencia de inteligencia artificial: Claude Code (Anthropic).
 
 ## Estructura
 
