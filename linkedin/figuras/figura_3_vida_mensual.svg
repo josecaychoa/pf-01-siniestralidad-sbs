@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="856" height="650" viewBox="0 0 856 650" font-family="Geist, Arial, 'Liberation Sans', Helvetica, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">Siniestros mensuales de Vida Individual de Largo Plazo</title>
+<desc id="d">Los siniestros mensuales de Vida Individual de Largo Plazo promedian 9.5 millones de soles de enero de 2025 a febrero de 2026, saltan a 310.6 millones en marzo de 2026 y promedian 120.9 millones de abril a agosto.</desc>
+<rect width="856" height="650" fill="#FFFFFF"/>
+<text x="0" y="26" font-size="22" font-weight="400" fill="#636975" text-anchor="start">Siniestros del mes, en millones de soles</text>
+<line x1="56.0" y1="560.0" x2="856" y2="560.0" stroke="#C8CBCF" stroke-width="1"/>
+<text x="0" y="568" font-size="22" font-weight="400" fill="#636975" text-anchor="start">0</text>
+<line x1="56.0" y1="442.8571428571429" x2="856" y2="442.8571428571429" stroke="#C8CBCF" stroke-width="1"/>
+<text x="0" y="450.857" font-size="22" font-weight="400" fill="#636975" text-anchor="start">100</text>
+<line x1="56.0" y1="325.7142857142857" x2="856" y2="325.7142857142857" stroke="#C8CBCF" stroke-width="1"/>
+<text x="0" y="333.714" font-size="22" font-weight="400" fill="#636975" text-anchor="start">200</text>
+<line x1="56.0" y1="208.57142857142856" x2="856" y2="208.57142857142856" stroke="#C8CBCF" stroke-width="1"/>
+<text x="0" y="216.571" font-size="22" font-weight="400" fill="#636975" text-anchor="start">300</text>
+<rect x="62.8" y="553.6" width="26.4" height="6.4" fill="#C8CBCF"/>
+<text x="76" y="592" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">Ene.</text>
+<text x="62.8" y="622" font-size="22" font-weight="600" fill="#141822" text-anchor="start">2025</text>
+<rect x="102.8" y="550.7" width="26.4" height="9.3" fill="#C8CBCF"/>
+<rect x="142.8" y="552.3" width="26.4" height="7.7" fill="#C8CBCF"/>
+<rect x="182.8" y="552.8" width="26.4" height="7.2" fill="#C8CBCF"/>
+<rect x="222.8" y="552.3" width="26.4" height="7.7" fill="#C8CBCF"/>
+<rect x="262.8" y="547.6" width="26.4" height="12.4" fill="#C8CBCF"/>
+<rect x="302.8" y="540.5" width="26.4" height="19.5" fill="#C8CBCF"/>
+<text x="316" y="592" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">Jul.</text>
+<rect x="342.8" y="548.6" width="26.4" height="11.4" fill="#C8CBCF"/>
+<rect x="382.8" y="551.6" width="26.4" height="8.4" fill="#C8CBCF"/>
+<rect x="422.8" y="550.2" width="26.4" height="9.8" fill="#C8CBCF"/>
+<rect x="462.8" y="538.7" width="26.4" height="21.3" fill="#C8CBCF"/>
+<rect x="502.8" y="549.2" width="26.4" height="10.8" fill="#C8CBCF"/>
+<rect x="542.8" y="550.7" width="26.4" height="9.3" fill="#C8CBCF"/>
+<text x="556" y="592" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">Ene.</text>
+<text x="542.8" y="622" font-size="22" font-weight="600" fill="#141822" text-anchor="start">2026</text>
+<rect x="582.8" y="545.1" width="26.4" height="14.9" fill="#C8CBCF"/>
+<rect x="622.8" y="196.1" width="26.4" height="363.9" fill="#2A5CDA"/>
+<text x="636" y="592" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">Mar.</text>
+<rect x="662.8" y="430.0" width="26.4" height="130.0" fill="#2A5CDA"/>
+<rect x="702.8" y="410.4" width="26.4" height="149.6" fill="#2A5CDA"/>
+<rect x="742.8" y="438.3" width="26.4" height="121.7" fill="#2A5CDA"/>
+<rect x="782.8" y="422.2" width="26.4" height="137.8" fill="#2A5CDA"/>
+<text x="796" y="592" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">Jul.</text>
+<rect x="822.8" y="391.2" width="26.4" height="168.8" fill="#2A5CDA"/>
+<line x1="614.0" y1="60" x2="614.0" y2="560.0" stroke="#636975" stroke-width="1.5"/>
+<text x="602" y="72" font-size="22" font-weight="400" fill="#141822" text-anchor="end">Marzo de 2026: rige la</text>
+<text x="602" y="100" font-size="22" font-weight="400" fill="#141822" text-anchor="end">Resolución SBS N.º 00085-2026</text>
+<text x="622" y="184.098" font-size="24" font-weight="600" fill="#2A5CDA" text-anchor="start">310.6</text>
+<text x="56" y="489.714" font-size="24" font-weight="600" fill="#141822" text-anchor="start">Promedio: 9.5</text>
+<text x="56" y="517.714" font-size="22" font-weight="400" fill="#636975" text-anchor="start">enero de 2025 a febrero de 2026</text>
+<text x="856" y="339.204" font-size="24" font-weight="600" fill="#2A5CDA" text-anchor="end">Promedio: 120.9</text>
+<text x="856" y="367.204" font-size="22" font-weight="400" fill="#636975" text-anchor="end">abril a agosto</text>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="856" height="650" viewBox="0 0 856 650" font-family="Geist, Arial, 'Liberation Sans', Helvetica, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">Incendio: siniestralidad directa frente a retenida</title>
+<desc id="d">En agosto de 2026, Incendio tiene una siniestralidad directa de 224.0 % y una retenida de 55.4 %; el 89.1 % de los siniestros se cedió en reaseguro.</desc>
+<rect width="856" height="650" fill="#FFFFFF"/>
+<text x="0" y="26" font-size="22" font-weight="400" fill="#636975" text-anchor="start">Incendio, índice de siniestralidad acumulado a agosto de 2026, en %</text>
+<text x="0" y="130" font-size="24" font-weight="600" fill="#141822" text-anchor="start">Directa: siniestros sobre primas netas</text>
+<rect x="0" y="146.0" width="681.1" height="72" fill="#2A5CDA"/>
+<text x="695.079" y="196" font-size="36" font-weight="600" fill="#2A5CDA" text-anchor="start">224.0 %</text>
+<text x="0" y="300" font-size="24" font-weight="600" fill="#141822" text-anchor="start">Retenida: sin la parte cedida en reaseguro</text>
+<rect x="0" y="316.0" width="168.6" height="72" fill="#0F1F45"/>
+<text x="182.559" y="366" font-size="36" font-weight="600" fill="#0F1F45" text-anchor="start">55.4 %</text>
+<line x1="304.0" y1="136.0" x2="304.0" y2="228.0" stroke="#636975" stroke-width="2"/>
+<line x1="304.0" y1="306.0" x2="304.0" y2="398.0" stroke="#636975" stroke-width="2"/>
+<line x1="304.0" y1="448.0" x2="304.0" y2="468.0" stroke="#636975" stroke-width="2"/>
+<text x="304" y="496" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">100 %: siniestros iguales a primas</text>
+<text x="0" y="540" font-size="24" font-weight="600" fill="#141822" text-anchor="start">El 89.1 % de los siniestros</text>
+<text x="0" y="572" font-size="24" font-weight="600" fill="#141822" text-anchor="start">acumulados del año se cedió en reaseguro.</text>
+</svg>

@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>PF-01 · Dos riesgos explican el alza de la siniestralidad de 2026</title><style>
+@font-face { font-family: Geist; src: url("fuentes/Geist-400.ttf"); font-weight: 400; }
+@font-face { font-family: Geist; src: url("fuentes/Geist-600.ttf"); font-weight: 600; }
+@font-face { font-family: Geist; src: url("fuentes/Geist-700.ttf"); font-weight: 700; }
+@font-face { font-family: "Geist Mono"; src: url("fuentes/GeistMono-400.ttf"); font-weight: 400; }
+@page { size: 1080px 1350px; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Geist, Arial, sans-serif; color: #141822; background: #F4F6F9; }
+.pagina { width: 1080px; height: 1350px; position: relative; overflow: hidden;
+  background: #F4F6F9; page-break-after: always; break-after: page; }
+.pagina:last-child { page-break-after: auto; break-after: auto; }
+.oscura { background: #0F1F45; color: #FFFFFF; }
+.marca { position: absolute; left: 72px; top: 52px; font-size: 44px; font-weight: 700;
+  letter-spacing: -0.05em; color: #141822; }
+.marca b { color: #2A5CDA; }
+.oscura .marca { color: #FFFFFF; } .oscura .marca b { color: #7379B4; }
+.etiqueta { position: absolute; right: 72px; top: 66px; font-size: 18px; color: #636975; }
+.oscura .etiqueta { color: #DAE9FF; }
+.figura-n { position: absolute; left: 72px; top: 118px; font-size: 18px; font-weight: 600;
+  color: #636975; }
+.titular { position: absolute; left: 72px; top: 150px; width: 936px; font-size: 54px;
+  font-weight: 600; line-height: 1.12; letter-spacing: -0.025em; color: #141822; }
+.titular span { color: #636975; }
+.tarjeta { position: absolute; left: 72px; top: 420px; width: 936px; height: 730px;
+  background: #FFFFFF; border-radius: 28px; padding: 40px; }
+.tarjeta svg { display: block; }
+.pie { position: absolute; left: 72px; right: 72px; bottom: 72px; display: flex;
+  justify-content: space-between; align-items: flex-end; gap: 32px; font-size: 18px;
+  line-height: 1.4; color: #636975; }
+.pie .folio { white-space: nowrap; }
+.pie p + p { margin-top: 4px; }
+.texto { font-size: 28px; line-height: 1.42; color: #141822; }
+.texto p + p { margin-top: 24px; }
+.recuadro { margin-top: 36px; background: #EFE9FE; border-radius: 24px; padding: 28px 32px;
+  font-size: 25px; line-height: 1.42; color: #0F1F45; }
+.recuadro.cielo { background: #DAE9FF; }
+.recuadro strong { font-weight: 600; }
+table { width: 100%; border-collapse: collapse; font-size: 24px; line-height: 1.35; }
+th { background: #0F1F45; color: #FFFFFF; font-weight: 600; text-align: left; padding: 12px 16px; }
+td { padding: 12px 16px; vertical-align: top; color: #141822; }
+tr:nth-child(even) td { background: #F4F6F9; }
+td:first-child { font-weight: 600; width: 160px; }
+.referencias { position: absolute; left: 72px; top: 260px; width: 936px; height: 960px;
+  background: #FFFFFF; border-radius: 28px; padding: 48px 48px; }
+.referencias p { font-size: 20px; line-height: 1.45; padding-left: 40px; text-indent: -40px;
+  color: #141822; overflow-wrap: anywhere; }
+.referencias p + p { margin-top: 22px; }
+.portada-titular { position: absolute; left: 72px; top: 250px; width: 936px; font-size: 90px;
+  font-weight: 600; line-height: 1.06; letter-spacing: -0.03em; color: #FFFFFF; }
+.portada-titular span { color: #DAE9FF; }
+.cifra { position: absolute; left: 72px; top: 640px; font-size: 220px; font-weight: 600;
+  letter-spacing: -0.04em; color: #00B4A4; line-height: 1; }
+.cifra-frase { position: absolute; left: 72px; top: 900px; width: 860px; font-size: 30px;
+  line-height: 1.35; color: #DAE9FF; }
+.firma { position: absolute; left: 72px; right: 72px; bottom: 72px; font-size: 22px;
+  line-height: 1.45; color: #DAE9FF; }
+.firma strong { color: #FFFFFF; font-weight: 600; }
+.firma .fuente { margin-top: 18px; font-size: 18px; }
+.cierre-titular { position: absolute; left: 72px; top: 250px; width: 936px; font-size: 72px;
+  font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; color: #FFFFFF; }
+.cierre-titular span { color: #DAE9FF; }
+.cierre-datos { position: absolute; left: 72px; top: 620px; width: 936px; font-size: 30px;
+  line-height: 1.5; color: #DAE9FF; }
+.cierre-datos .url { color: #FFFFFF; font-weight: 600; font-size: 36px; }
+.cierre-datos code { font-family: "Geist Mono", Consolas, monospace; font-size: 26px;
+  color: #FFFFFF; }
+</style></head><body>
+<section class="pagina oscura"><div class="marca">JC<b>.</b></div><div class="etiqueta">Portafolio · PF-01</div><h1 class="portada-titular">Dos riesgos explican el alza <span>de la siniestralidad de 2026.</span></h1><div class="cifra">+7.5 p.&nbsp;p.</div><p class="cifra-frase">La siniestralidad directa del sistema asegurador peruano pasó de 41.4 % a 48.9 % entre agosto de 2025 y agosto de 2026.</p><div class="firma"><strong>José Caycho A. · Business Analyst Senior y DBA · Procesos · Datos</strong><br>linkedin.com/in/jcaychoasin · github.com/josecaychoa<br>Noviembre de 2026<p class="fuente">Elaboración propia con datos de la Superintendencia de Banca, Seguros y AFP [SBS] (s. f.-a).</p></div></section>
+<section class="pagina"><div class="marca">JC<b>.</b></div><div class="etiqueta">Portafolio · PF-01</div><div class="figura-n">Figura 1</div><h1 class="titular">Vida Individual e Incendio suman +8.0 p.&nbsp;p.; <span>los otros 46 riesgos restan 0.5.</span></h1><div class="tarjeta"><svg xmlns="http://www.w3.org/2000/svg" width="856" height="650" viewBox="0 0 856 650" font-family="Geist, Arial, 'Liberation Sans', Helvetica, sans-serif" role="img" aria-labelledby="t1 d1">
+<title id="t1">Contribución de cada riesgo al cambio del índice directo</title>
+<desc id="d1">El índice directo del sistema subió +7.54 p. p.: Vida Individual de Largo Plazo aporta +5.12 e Incendio +2.91; Renta Particular +1.60 y los otros 45 riesgos −2.09.</desc>
+<rect width="856" height="650" fill="#FFFFFF"/>
+<text x="0" y="26" font-size="22" font-weight="400" fill="#636975" text-anchor="start">Contribución al cambio del índice directo, en p. p.</text>
+<text x="0" y="92" font-size="24" font-weight="600" fill="#141822" text-anchor="start">Vida Individual de Largo Plazo</text>
+<rect x="224.0" y="106.0" width="286.8" height="40.0" fill="#2A5CDA"/>
+<line x1="224.0" y1="98.0" x2="224.0" y2="154.0" stroke="#636975" stroke-width="1.5"/>
+<text x="522.773" y="138" font-size="30" font-weight="600" fill="#2A5CDA" text-anchor="start">+5.12</text>
+<text x="0" y="196" font-size="24" font-weight="600" fill="#141822" text-anchor="start">Incendio</text>
+<rect x="224.0" y="210.0" width="162.8" height="40.0" fill="#2A5CDA"/>
+<line x1="224.0" y1="202.0" x2="224.0" y2="258.0" stroke="#636975" stroke-width="1.5"/>
+<text x="398.791" y="242" font-size="30" font-weight="600" fill="#2A5CDA" text-anchor="start">+2.91</text>
+<text x="0" y="300" font-size="24" font-weight="600" fill="#141822" text-anchor="start">Renta Particular</text>
+<rect x="224.0" y="314.0" width="89.7" height="40.0" fill="#C8CBCF"/>
+<line x1="224.0" y1="306.0" x2="224.0" y2="362.0" stroke="#636975" stroke-width="1.5"/>
+<text x="325.712" y="346" font-size="30" font-weight="600" fill="#141822" text-anchor="start">+1.60</text>
+<text x="0" y="404" font-size="24" font-weight="600" fill="#141822" text-anchor="start">Otros 45 riesgos</text>
+<rect x="107.1" y="418.0" width="116.9" height="40.0" fill="#C8CBCF"/>
+<line x1="224.0" y1="410.0" x2="224.0" y2="466.0" stroke="#636975" stroke-width="1.5"/>
+<text x="95.1126" y="450" font-size="30" font-weight="600" fill="#141822" text-anchor="end">−2.09</text>
+<line x1="716.0" y1="314.0" x2="716.0" y2="458.0" stroke="#636975" stroke-width="2"/>
+<line x1="704.0" y1="314.0" x2="716.0" y2="314.0" stroke="#636975" stroke-width="2"/>
+<line x1="704.0" y1="458.0" x2="716.0" y2="458.0" stroke="#636975" stroke-width="2"/>
+<text x="730" y="380" font-size="22" font-weight="400" fill="#636975" text-anchor="start">46 riesgos</text>
+<text x="730" y="408" font-size="22" font-weight="600" fill="#636975" text-anchor="start">−0.49</text>
+<line x1="0" y1="474.0" x2="856" y2="474.0" stroke="#C8CBCF" stroke-width="2"/>
+<text x="0" y="514" font-size="24" font-weight="600" fill="#141822" text-anchor="start">Sistema</text>
+<rect x="224.0" y="528.0" width="422.4" height="40.0" fill="#0F1F45"/>
+<text x="658.389" y="560" font-size="30" font-weight="600" fill="#0F1F45" text-anchor="start">+7.54</text>
+<line x1="224.0" y1="520.0" x2="224.0" y2="576.0" stroke="#636975" stroke-width="1.5"/>
+</svg>
+</div><div class="pie"><div><p><i>Nota.</i> Elaboración propia con datos de SBS (s. f.-a, s. f.-c, s. f.-d). Contribución = siniestros del riesgo sobre las primas del sistema en cada corte; suman el cambio total.</p><p>Datos al 31 de agosto de 2026 · Boletín mensual y cuadros por riesgo de la SBS</p></div><div class="folio">02 / 10</div></div></section>
+<section class="pagina"><div class="marca">JC<b>.</b></div><div class="etiqueta">Portafolio · PF-01</div><div class="figura-n">Figura 2</div><h1 class="titular">Sin esos dos riesgos, <span>el índice pasa de 44.7 % a 45.0 %.</span></h1><div class="tarjeta"><svg xmlns="http://www.w3.org/2000/svg" width="856" height="650" viewBox="0 0 856 650" font-family="Geist, Arial, 'Liberation Sans', Helvetica, sans-serif" role="img" aria-labelledby="t2 d2">
+<title id="t2">Índice directo con y sin los dos riesgos</title>
+<desc id="d2">De agosto de 2025 a agosto de 2026, el índice directo del sistema pasa de 41.4 % a 48.9 %; sin Vida Individual de Largo Plazo ni Incendio, pasa de 44.7 % a 45.0 %.</desc>
+<rect width="856" height="650" fill="#FFFFFF"/>
+<text x="0" y="26" font-size="22" font-weight="400" fill="#636975" text-anchor="start">Índice de siniestralidad directa acumulado a agosto, en %</text>
+<line x1="60" y1="590.0" x2="856" y2="590.0" stroke="#C8CBCF" stroke-width="1"/>
+<text x="0" y="598" font-size="22" font-weight="400" fill="#636975" text-anchor="start">35</text>
+<line x1="60" y1="460.0" x2="856" y2="460.0" stroke="#C8CBCF" stroke-width="1"/>
+<text x="0" y="468" font-size="22" font-weight="400" fill="#636975" text-anchor="start">40</text>
+<line x1="60" y1="330.0" x2="856" y2="330.0" stroke="#C8CBCF" stroke-width="1"/>
+<text x="0" y="338" font-size="22" font-weight="400" fill="#636975" text-anchor="start">45</text>
+<line x1="60" y1="200.0" x2="856" y2="200.0" stroke="#C8CBCF" stroke-width="1"/>
+<text x="0" y="208" font-size="22" font-weight="400" fill="#636975" text-anchor="start">50</text>
+<line x1="60" y1="70.0" x2="856" y2="70.0" stroke="#C8CBCF" stroke-width="1"/>
+<text x="0" y="78" font-size="22" font-weight="400" fill="#636975" text-anchor="start">55</text>
+<text x="150" y="634" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">Ago. 2025</text>
+<text x="520" y="634" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">Ago. 2026</text>
+<line x1="150" y1="424.343" x2="520" y2="228.234" stroke="#2A5CDA" stroke-width="4" stroke-linecap="round"/>
+<circle cx="150" cy="424.343" r="9" fill="#2A5CDA"/>
+<circle cx="520" cy="228.234" r="9" fill="#2A5CDA"/>
+<text x="128" y="434.343" font-size="30" font-weight="600" fill="#2A5CDA" text-anchor="end">41.4 %</text>
+<text x="542" y="238.234" font-size="30" font-weight="600" fill="#2A5CDA" text-anchor="start">48.9 %</text>
+<text x="542" y="270.234" font-size="22" font-weight="400" fill="#2A5CDA" text-anchor="start">Sistema</text>
+<text x="542" y="296.234" font-size="22" font-weight="400" fill="#2A5CDA" text-anchor="start">completo</text>
+<line x1="150" y1="337.665" x2="520" y2="329.051" stroke="#0F1F45" stroke-width="4" stroke-linecap="round"/>
+<circle cx="150" cy="337.665" r="9" fill="#0F1F45"/>
+<circle cx="520" cy="329.051" r="9" fill="#0F1F45"/>
+<text x="128" y="347.665" font-size="30" font-weight="600" fill="#0F1F45" text-anchor="end">44.7 %</text>
+<text x="542" y="339.051" font-size="30" font-weight="600" fill="#0F1F45" text-anchor="start">45.0 %</text>
+<text x="542" y="371.051" font-size="22" font-weight="400" fill="#0F1F45" text-anchor="start">Sin Vida Individual</text>
+<text x="542" y="397.051" font-size="22" font-weight="400" fill="#0F1F45" text-anchor="start">ni Incendio</text>
+<text x="315" y="302.289" font-size="24" font-weight="600" fill="#2A5CDA" text-anchor="end">+7.5 p. p.</text>
+<text x="335" y="373.358" font-size="24" font-weight="600" fill="#0F1F45" text-anchor="middle">+0.3 p. p.</text>
+</svg>
+</div><div class="pie"><div><p><i>Nota.</i> Elaboración propia con datos de SBS (s. f.-a, s. f.-c, s. f.-d). Índice directo acumulado de enero a agosto.</p><p>Datos al 31 de agosto de 2026 · Boletín mensual y cuadros por riesgo de la SBS</p></div><div class="folio">03 / 10</div></div></section>
+<section class="pagina"><div class="marca">JC<b>.</b></div><div class="etiqueta">Portafolio · PF-01</div><div class="figura-n">Figura 3</div><h1 class="titular">Vida Individual salta en marzo de 2026, <span>cuando cambia el plan de cuentas.</span></h1><div class="tarjeta"><svg xmlns="http://www.w3.org/2000/svg" width="856" height="650" viewBox="0 0 856 650" font-family="Geist, Arial, 'Liberation Sans', Helvetica, sans-serif" role="img" aria-labelledby="t3 d3">
+<title id="t3">Siniestros mensuales de Vida Individual de Largo Plazo</title>
+<desc id="d3">Los siniestros mensuales de Vida Individual de Largo Plazo promedian 9.5 millones de soles de enero de 2025 a febrero de 2026, saltan a 310.6 millones en marzo de 2026 y promedian 120.9 millones de abril a agosto.</desc>
+<rect width="856" height="650" fill="#FFFFFF"/>
+<text x="0" y="26" font-size="22" font-weight="400" fill="#636975" text-anchor="start">Siniestros del mes, en millones de soles</text>
+<line x1="56.0" y1="560.0" x2="856" y2="560.0" stroke="#C8CBCF" stroke-width="1"/>
+<text x="0" y="568" font-size="22" font-weight="400" fill="#636975" text-anchor="start">0</text>
+<line x1="56.0" y1="442.8571428571429" x2="856" y2="442.8571428571429" stroke="#C8CBCF" stroke-width="1"/>
+<text x="0" y="450.857" font-size="22" font-weight="400" fill="#636975" text-anchor="start">100</text>
+<line x1="56.0" y1="325.7142857142857" x2="856" y2="325.7142857142857" stroke="#C8CBCF" stroke-width="1"/>
+<text x="0" y="333.714" font-size="22" font-weight="400" fill="#636975" text-anchor="start">200</text>
+<line x1="56.0" y1="208.57142857142856" x2="856" y2="208.57142857142856" stroke="#C8CBCF" stroke-width="1"/>
+<text x="0" y="216.571" font-size="22" font-weight="400" fill="#636975" text-anchor="start">300</text>
+<rect x="62.8" y="553.6" width="26.4" height="6.4" fill="#C8CBCF"/>
+<text x="76" y="592" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">Ene.</text>
+<text x="62.8" y="622" font-size="22" font-weight="600" fill="#141822" text-anchor="start">2025</text>
+<rect x="102.8" y="550.7" width="26.4" height="9.3" fill="#C8CBCF"/>
+<rect x="142.8" y="552.3" width="26.4" height="7.7" fill="#C8CBCF"/>
+<rect x="182.8" y="552.8" width="26.4" height="7.2" fill="#C8CBCF"/>
+<rect x="222.8" y="552.3" width="26.4" height="7.7" fill="#C8CBCF"/>
+<rect x="262.8" y="547.6" width="26.4" height="12.4" fill="#C8CBCF"/>
+<rect x="302.8" y="540.5" width="26.4" height="19.5" fill="#C8CBCF"/>
+<text x="316" y="592" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">Jul.</text>
+<rect x="342.8" y="548.6" width="26.4" height="11.4" fill="#C8CBCF"/>
+<rect x="382.8" y="551.6" width="26.4" height="8.4" fill="#C8CBCF"/>
+<rect x="422.8" y="550.2" width="26.4" height="9.8" fill="#C8CBCF"/>
+<rect x="462.8" y="538.7" width="26.4" height="21.3" fill="#C8CBCF"/>
+<rect x="502.8" y="549.2" width="26.4" height="10.8" fill="#C8CBCF"/>
+<rect x="542.8" y="550.7" width="26.4" height="9.3" fill="#C8CBCF"/>
+<text x="556" y="592" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">Ene.</text>
+<text x="542.8" y="622" font-size="22" font-weight="600" fill="#141822" text-anchor="start">2026</text>
+<rect x="582.8" y="545.1" width="26.4" height="14.9" fill="#C8CBCF"/>
+<rect x="622.8" y="196.1" width="26.4" height="363.9" fill="#2A5CDA"/>
+<text x="636" y="592" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">Mar.</text>
+<rect x="662.8" y="430.0" width="26.4" height="130.0" fill="#2A5CDA"/>
+<rect x="702.8" y="410.4" width="26.4" height="149.6" fill="#2A5CDA"/>
+<rect x="742.8" y="438.3" width="26.4" height="121.7" fill="#2A5CDA"/>
+<rect x="782.8" y="422.2" width="26.4" height="137.8" fill="#2A5CDA"/>
+<text x="796" y="592" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">Jul.</text>
+<rect x="822.8" y="391.2" width="26.4" height="168.8" fill="#2A5CDA"/>
+<line x1="614.0" y1="60" x2="614.0" y2="560.0" stroke="#636975" stroke-width="1.5"/>
+<text x="602" y="72" font-size="22" font-weight="400" fill="#141822" text-anchor="end">Marzo de 2026: rige la</text>
+<text x="602" y="100" font-size="22" font-weight="400" fill="#141822" text-anchor="end">Resolución SBS N.º 00085-2026</text>
+<text x="622" y="184.098" font-size="24" font-weight="600" fill="#2A5CDA" text-anchor="start">310.6</text>
+<text x="56" y="489.714" font-size="24" font-weight="600" fill="#141822" text-anchor="start">Promedio: 9.5</text>
+<text x="56" y="517.714" font-size="22" font-weight="400" fill="#636975" text-anchor="start">enero de 2025 a febrero de 2026</text>
+<text x="856" y="339.204" font-size="24" font-weight="600" fill="#2A5CDA" text-anchor="end">Promedio: 120.9</text>
+<text x="856" y="367.204" font-size="22" font-weight="400" fill="#636975" text-anchor="end">abril a agosto</text>
+</svg>
+</div><div class="pie"><div><p><i>Nota.</i> Elaboración propia con datos de SBS (s. f.-c, s. f.-d, 2026). Siniestros del mes: diferencia entre acumulados; marzo mezcla el criterio nuevo y el anterior.</p><p>Datos al 31 de agosto de 2026 · Boletín mensual y cuadros por riesgo de la SBS</p></div><div class="folio">04 / 10</div></div></section>
+<section class="pagina"><div class="marca">JC<b>.</b></div><div class="etiqueta">Portafolio · PF-01</div><div class="figura-n">Figura 4</div><h1 class="titular">Incendio: 224.0 % de siniestralidad directa; <span>55.4 % en lo que se retuvo.</span></h1><div class="tarjeta"><svg xmlns="http://www.w3.org/2000/svg" width="856" height="650" viewBox="0 0 856 650" font-family="Geist, Arial, 'Liberation Sans', Helvetica, sans-serif" role="img" aria-labelledby="t4 d4">
+<title id="t4">Incendio: siniestralidad directa frente a retenida</title>
+<desc id="d4">En agosto de 2026, Incendio tiene una siniestralidad directa de 224.0 % y una retenida de 55.4 %; el 89.1 % de los siniestros se cedió en reaseguro.</desc>
+<rect width="856" height="650" fill="#FFFFFF"/>
+<text x="0" y="26" font-size="22" font-weight="400" fill="#636975" text-anchor="start">Incendio, índice de siniestralidad acumulado a agosto de 2026, en %</text>
+<text x="0" y="130" font-size="24" font-weight="600" fill="#141822" text-anchor="start">Directa: siniestros sobre primas netas</text>
+<rect x="0" y="146.0" width="681.1" height="72" fill="#2A5CDA"/>
+<text x="695.079" y="196" font-size="36" font-weight="600" fill="#2A5CDA" text-anchor="start">224.0 %</text>
+<text x="0" y="300" font-size="24" font-weight="600" fill="#141822" text-anchor="start">Retenida: sin la parte cedida en reaseguro</text>
+<rect x="0" y="316.0" width="168.6" height="72" fill="#0F1F45"/>
+<text x="182.559" y="366" font-size="36" font-weight="600" fill="#0F1F45" text-anchor="start">55.4 %</text>
+<line x1="304.0" y1="136.0" x2="304.0" y2="228.0" stroke="#636975" stroke-width="2"/>
+<line x1="304.0" y1="306.0" x2="304.0" y2="398.0" stroke="#636975" stroke-width="2"/>
+<line x1="304.0" y1="448.0" x2="304.0" y2="468.0" stroke="#636975" stroke-width="2"/>
+<text x="304" y="496" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">100 %: siniestros iguales a primas</text>
+<text x="0" y="540" font-size="24" font-weight="600" fill="#141822" text-anchor="start">El 89.1 % de los siniestros</text>
+<text x="0" y="572" font-size="24" font-weight="600" fill="#141822" text-anchor="start">acumulados del año se cedió en reaseguro.</text>
+</svg>
+</div><div class="pie"><div><p><i>Nota.</i> Elaboración propia con datos de SBS (s. f.-a, s. f.-c, s. f.-d).</p><p>Datos al 31 de agosto de 2026 · Boletín mensual y cuadros por riesgo de la SBS</p></div><div class="folio">05 / 10</div></div></section>
+<section class="pagina"><div class="marca">JC<b>.</b></div><div class="etiqueta">Portafolio · PF-01</div><div class="figura-n">Figura 5</div><h1 class="titular">Doce meses a agosto de 2026: 44.5 %, <span>tras cuatro años de descenso hasta 39.4 %.</span></h1><div class="tarjeta"><svg xmlns="http://www.w3.org/2000/svg" width="856" height="650" viewBox="0 0 856 650" font-family="Geist, Arial, 'Liberation Sans', Helvetica, sans-serif" role="img" aria-labelledby="t5 d5">
+<title id="t5">Índice directo del sistema en períodos de 12 meses</title>
+<desc id="d5">Índice directo del sistema en períodos de 12 meses: 2019 53.0 %; 2020 51.7 %; 2021 59.3 %; 2022 54.0 %; 2023 47.8 %; 2024 43.1 %; 2025 39.4 %; 12 meses a agosto de 2026, 44.5 %.</desc>
+<rect width="856" height="650" fill="#FFFFFF"/>
+<text x="0" y="26" font-size="22" font-weight="400" fill="#636975" text-anchor="start">Índice de siniestralidad directa del sistema, 12 meses, en %</text>
+<line x1="50.0" y1="560.0" x2="856" y2="560.0" stroke="#C8CBCF" stroke-width="1"/>
+<text x="0" y="568" font-size="22" font-weight="400" fill="#636975" text-anchor="start">30</text>
+<line x1="50.0" y1="425.7142857142857" x2="856" y2="425.7142857142857" stroke="#C8CBCF" stroke-width="1"/>
+<text x="0" y="433.714" font-size="22" font-weight="400" fill="#636975" text-anchor="start">40</text>
+<line x1="50.0" y1="291.42857142857144" x2="856" y2="291.42857142857144" stroke="#C8CBCF" stroke-width="1"/>
+<text x="0" y="299.429" font-size="22" font-weight="400" fill="#636975" text-anchor="start">50</text>
+<line x1="50.0" y1="157.14285714285717" x2="856" y2="157.14285714285717" stroke="#C8CBCF" stroke-width="1"/>
+<text x="0" y="165.143" font-size="22" font-weight="400" fill="#636975" text-anchor="start">60</text>
+<line x1="70" y1="251.227" x2="172.667" y2="268.653" stroke="#0F1F45" stroke-width="4" stroke-linecap="round"/>
+<line x1="172.667" y1="268.653" x2="275.333" y2="166.403" stroke="#0F1F45" stroke-width="4" stroke-linecap="round"/>
+<line x1="275.333" y1="166.403" x2="378" y2="238.32" stroke="#0F1F45" stroke-width="4" stroke-linecap="round"/>
+<line x1="378" y1="238.32" x2="480.667" y2="321.531" stroke="#0F1F45" stroke-width="4" stroke-linecap="round"/>
+<line x1="480.667" y1="321.531" x2="583.333" y2="384.419" stroke="#0F1F45" stroke-width="4" stroke-linecap="round"/>
+<line x1="583.333" y1="384.419" x2="686" y2="433.545" stroke="#0F1F45" stroke-width="4" stroke-linecap="round"/>
+<line x1="686" y1="433.545" x2="832" y2="365.237" stroke="#636975" stroke-width="3" stroke-dasharray="8 8"/>
+<circle cx="70" cy="251.227" r="8" fill="#0F1F45"/>
+<text x="70" y="229.227" font-size="24" font-weight="600" fill="#0F1F45" text-anchor="middle">53.0</text>
+<text x="70" y="596" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">2019</text>
+<circle cx="172.667" cy="268.653" r="8" fill="#0F1F45"/>
+<text x="172.667" y="310.653" font-size="24" font-weight="600" fill="#0F1F45" text-anchor="middle">51.7</text>
+<text x="172.667" y="596" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">2020</text>
+<circle cx="275.333" cy="166.403" r="8" fill="#0F1F45"/>
+<text x="275.333" y="144.403" font-size="24" font-weight="600" fill="#0F1F45" text-anchor="middle">59.3</text>
+<text x="275.333" y="596" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">2021</text>
+<circle cx="378" cy="238.32" r="8" fill="#0F1F45"/>
+<text x="394" y="224.32" font-size="24" font-weight="600" fill="#0F1F45" text-anchor="start">54.0</text>
+<text x="378" y="596" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">2022</text>
+<circle cx="480.667" cy="321.531" r="8" fill="#0F1F45"/>
+<text x="496.667" y="307.531" font-size="24" font-weight="600" fill="#0F1F45" text-anchor="start">47.8</text>
+<text x="480.667" y="596" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">2023</text>
+<circle cx="583.333" cy="384.419" r="8" fill="#0F1F45"/>
+<text x="599.333" y="370.419" font-size="24" font-weight="600" fill="#0F1F45" text-anchor="start">43.1</text>
+<text x="583.333" y="596" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">2024</text>
+<circle cx="686" cy="433.545" r="8" fill="#0F1F45"/>
+<text x="686" y="475.545" font-size="24" font-weight="600" fill="#0F1F45" text-anchor="middle">39.4</text>
+<text x="686" y="596" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">2025</text>
+<circle cx="832" cy="365.237" r="10" fill="#2A5CDA"/>
+<text x="832" y="343.237" font-size="24" font-weight="600" fill="#2A5CDA" text-anchor="middle">44.5</text>
+<text x="856" y="596" font-size="22" font-weight="600" fill="#2A5CDA" text-anchor="end">12 meses</text>
+<text x="856" y="622" font-size="22" font-weight="600" fill="#2A5CDA" text-anchor="end">a ago. 2026</text>
+<text x="297.333" y="174.403" font-size="22" font-weight="400" fill="#636975" text-anchor="start">Pandemia de COVID-19</text>
+</svg>
+</div><div class="pie"><div><p><i>Nota.</i> Elaboración propia con datos de SBS (s. f.-a, s. f.-b, s. f.-c, s. f.-d). Doce meses, para comparar con los cierres anuales; el 48.9 % de la portada y de la figura 2 es el acumulado de enero a agosto. Último punto: diciembre de 2025 más enero a agosto de 2026, menos enero a agosto de 2025.</p><p>Datos al 31 de agosto de 2026 · Boletín mensual y cuadros por riesgo de la SBS</p></div><div class="folio">06 / 10</div></div></section>
+<section class="pagina"><div class="marca">JC<b>.</b></div><div class="etiqueta">Portafolio · PF-01</div><div class="figura-n">Tabla 1</div><h1 class="titular">El índice calculado replica el de la SBS <span>con una diferencia máxima de 0.0015 p.&nbsp;p.</span></h1><div class="tarjeta"><table><tr><th>Etapa</th><th>Qué hice</th></tr><tr><td>Datos</td><td>Cuatro conjuntos públicos de la SBS: 9 cortes de 2019 a 2026 y los cuadros mensuales de 2025 y 2026, con un manifiesto de URL, fecha y SHA-256.</td></tr><tr><td>Proceso</td><td>Python 3.13 con uv, carga en Oracle Database 23ai Free e indicadores en vistas SQL.</td></tr><tr><td>Control</td><td>Índice del sistema cuadrado con el publicado en los 9 cortes; pruebas automatizadas, entre ellas que las contribuciones suman el cambio.</td></tr></table><div class="recuadro"><strong>Lo que corregí.</strong> La primera versión del informe decía que la siniestralidad «rompió la tendencia» en 2026. Al descomponer el cambio por riesgo vi que el alza se concentraba en dos riesgos, y que uno coincidía con un cambio contable. Ahora descompongo toda variación agregada antes de escribir una conclusión.</div></div><div class="pie"><div><p><i>Nota.</i> Elaboración propia con datos de SBS (s. f.-a, s. f.-b, s. f.-c, s. f.-d). Validación en reports/validacion_resultados.md.</p><p>Datos al 31 de agosto de 2026 · Boletín mensual y cuadros por riesgo de la SBS</p></div><div class="folio">07 / 10</div></div></section>
+<section class="pagina"><div class="marca">JC<b>.</b></div><div class="etiqueta">Portafolio · PF-01</div><h1 class="titular">El quiebre contable es una inferencia, <span>no un dato confirmado por la SBS.</span></h1><div class="tarjeta"><div class="texto"><p>No pude leer el Anexo de la Resolución SBS N.º 00085-2026 (SBS, 2026). La atribución se apoya en el mes, en el título y en la nota del cuadro de siniestros (SBS, s. f.-d).</p><p>Renta Particular (+1.60 p.&nbsp;p.), otro seguro de vida con ahorro, también sube en marzo de 2026; su efecto no está aislado.</p><p>Los cortes de agosto acumulan 8 meses y solo se comparan entre sí. Los montos son nominales y el análisis no evalúa a las empresas.</p></div><div class="recuadro cielo"><strong>Qué implica.</strong> Antes de comparar el índice de 2026 con años anteriores, conviene separar el efecto contable del técnico. Sin ese ajuste, la comparación probablemente sobrestima el deterioro.</div></div><div class="pie"><div><p><i>Nota.</i> Elaboración propia con datos de SBS (s. f.-a, s. f.-d, 2026).</p><p>Datos al 31 de agosto de 2026 · Boletín mensual y cuadros por riesgo de la SBS</p></div><div class="folio">08 / 10</div></div></section>
+<section class="pagina"><div class="marca">JC<b>.</b></div><div class="etiqueta">Portafolio · PF-01</div><h1 class="titular">Referencias</h1><div class="referencias"><p>Superintendencia de Banca, Seguros y AFP. (s. f.-a). <i>Boletín mensual</i> [Conjunto de datos]. Recuperado el 11 de octubre de 2026, de https://www.sbs.gob.pe/app/stats_net/stats/EstadisticaSistemaFinancieroResultados.aspx?c=S-367</p><p>Superintendencia de Banca, Seguros y AFP. (s. f.-b). <i>Índice de siniestralidad directa y retenida según riesgos</i> [Conjunto de datos]. Recuperado el 11 de octubre de 2026, de https://www.sbs.gob.pe/app/stats_net/stats/EstadisticaSistemaFinancieroResultados.aspx?c=S-403</p><p>Superintendencia de Banca, Seguros y AFP. (s. f.-c). <i>Primas de seguros netas, cedidas y retenidas según riesgos</i> [Conjunto de datos]. Recuperado el 11 y el 27 de octubre de 2026, de https://www.sbs.gob.pe/app/stats_net/stats/EstadisticaSistemaFinancieroResultados.aspx?c=S-401</p><p>Superintendencia de Banca, Seguros y AFP. (s. f.-d). <i>Siniestros de primas de seguros netas, cedidas y retenidas según riesgos</i> [Conjunto de datos]. Recuperado el 11 y el 27 de octubre de 2026, de https://www.sbs.gob.pe/app/stats_net/stats/EstadisticaSistemaFinancieroResultados.aspx?c=S-402</p><p>Superintendencia de Banca, Seguros y AFP. (2026). <i>Resolución S.B.S. N.º 00085-2026: Modifica el Plan de Cuentas para las Empresas del Sistema Asegurador</i>. https://intranet2.sbs.gob.pe/dv_int_cn/2551/v1.0/Adjuntos/R.%2000085-2026.pdf</p></div><div class="pie"><div></div><div class="folio">09 / 10</div></div></section>
+<section class="pagina oscura"><div class="marca">JC<b>.</b></div><div class="etiqueta">Portafolio · PF-01</div><h1 class="cierre-titular">Los datos, el código y las pruebas <span>están en el repositorio público.</span></h1><div class="cierre-datos"><p class="url">github.com/josecaychoa/pf-01-siniestralidad-sbs</p><p>Para reproducirlo: <code>uv sync</code> y los pasos de «Cómo reproducir» del README.</p><p>Todos los proyectos del portafolio: <strong>github.com/josecaychoa</strong></p></div><div class="firma"><strong>José Caycho A. · Business Analyst Senior y DBA · Procesos · Datos</strong><br>linkedin.com/in/jcaychoasin · github.com/josecaychoa<br>Estrategia, procesos y datos.</div></section>
+</body></html>

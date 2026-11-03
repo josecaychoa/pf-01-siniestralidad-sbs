@@ -4,6 +4,8 @@
 
 > En agosto de 2026, la siniestralidad directa del sistema asegurador peruano subió a 48.9 %, 7.5 puntos porcentuales (p. p.) más que un año antes (Superintendencia de Banca, Seguros y AFP [SBS], s. f.-a). Dos riesgos explican el alza: Vida Individual de Largo Plazo aporta 5.1 p. p. y su salto coincide con el cambio contable de marzo de 2026 que incorpora «otras obligaciones» de los seguros de vida con ahorro (SBS, s. f.-d, 2026); Incendio aporta 2.9 p. p. Sin ambos, el índice del resto del sistema pasa de 44.7 % a 45.0 %, con Renta Particular, que también sube en marzo de 2026, incluida. Este repositorio reproduce el análisis completo, de la descarga de los boletines al tablero, y valida cada cifra contra la fuente.
 
+Resumen visual de 10 páginas: [`linkedin/documento.pdf`](linkedin/documento.pdf).
+
 ## Problema
 
 ¿Qué riesgos del sistema asegurador peruano crecen en primas con una siniestralidad mayor que la del conjunto, y cómo evolucionó el índice del sistema entre 2019 y 2026? Es una pregunta de monitoreo del mercado que un analista responde cada mes con los boletines de la SBS (s. f.-a). El proyecto la contesta con un flujo reproducible que valida sus propias cifras y separa, en una matriz de cuadrantes, los riesgos que crecen con siniestralidad contenida de los que crecen por encima del corte del sistema. El alcance describe cifras agregadas por riesgo; excluye juicios sobre la gestión de las empresas y cualquier dato personal ([`docs/01_acta.md`](docs/01_acta.md), sección 4).
@@ -134,7 +136,7 @@ De los 48 riesgos del corte, 35 quedan clasificados en la matriz de cuadrantes: 
 
 ## Cómo reproducir
 
-Sin Oracle, con [uv](https://docs.astral.sh/uv/) instalado (verificado desde un clon limpio el 27 de octubre de 2026: 154 pruebas superadas y 51 omitidas en 3 s):
+Sin Oracle, con [uv](https://docs.astral.sh/uv/) instalado (verificado desde un clon limpio el 2 de noviembre de 2026: 168 pruebas superadas y 51 omitidas en 2 s):
 
 ```bash
 git clone https://github.com/josecaychoa/pf-01-siniestralidad-sbs.git
@@ -173,12 +175,13 @@ José Caycho A. dirigió el proyecto: definió el problema, el alcance y el plan
 ├── data/                          # raw (inmutable, no versionada), interim y processed (CSV versionados)
 ├── docs/                          # acta · EDT y Gantt · diccionario · arquitectura · diagramas · modelo · procesos
 ├── gestion/cronograma/            # cronograma de Microsoft Project (.mpp, XML y PDF)
+├── linkedin/                      # documento PDF de LinkedIn, sus figuras y fuentes
 ├── notebooks/                     # exploración de las vistas vw_
 ├── reports/                       # informe de resultados, notas de validación y figuras
 ├── scripts/                       # descarga, validación, carga, exportación, figuras y lint de texto
 ├── sql/oracle/                    # scripts idempotentes: DDL · vistas · carga (prefijos stg_, dim_, fct_, vw_)
 ├── src/pf_01_siniestralidad_sbs/  # paquete Python del flujo
-└── tests/                         # 205 pruebas (154 se ejecutan sin Oracle ni datos descargados)
+└── tests/                         # 219 pruebas (168 se ejecutan sin Oracle ni datos descargados)
 ```
 
 ## Limitaciones

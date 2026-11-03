@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="856" height="650" viewBox="0 0 856 650" font-family="Geist, Arial, 'Liberation Sans', Helvetica, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">Índice directo del sistema en períodos de 12 meses</title>
+<desc id="d">Índice directo del sistema en períodos de 12 meses: 2019 53.0 %; 2020 51.7 %; 2021 59.3 %; 2022 54.0 %; 2023 47.8 %; 2024 43.1 %; 2025 39.4 %; 12 meses a agosto de 2026, 44.5 %.</desc>
+<rect width="856" height="650" fill="#FFFFFF"/>
+<text x="0" y="26" font-size="22" font-weight="400" fill="#636975" text-anchor="start">Índice de siniestralidad directa del sistema, 12 meses, en %</text>
+<line x1="50.0" y1="560.0" x2="856" y2="560.0" stroke="#C8CBCF" stroke-width="1"/>
+<text x="0" y="568" font-size="22" font-weight="400" fill="#636975" text-anchor="start">30</text>
+<line x1="50.0" y1="425.7142857142857" x2="856" y2="425.7142857142857" stroke="#C8CBCF" stroke-width="1"/>
+<text x="0" y="433.714" font-size="22" font-weight="400" fill="#636975" text-anchor="start">40</text>
+<line x1="50.0" y1="291.42857142857144" x2="856" y2="291.42857142857144" stroke="#C8CBCF" stroke-width="1"/>
+<text x="0" y="299.429" font-size="22" font-weight="400" fill="#636975" text-anchor="start">50</text>
+<line x1="50.0" y1="157.14285714285717" x2="856" y2="157.14285714285717" stroke="#C8CBCF" stroke-width="1"/>
+<text x="0" y="165.143" font-size="22" font-weight="400" fill="#636975" text-anchor="start">60</text>
+<line x1="70" y1="251.227" x2="172.667" y2="268.653" stroke="#0F1F45" stroke-width="4" stroke-linecap="round"/>
+<line x1="172.667" y1="268.653" x2="275.333" y2="166.403" stroke="#0F1F45" stroke-width="4" stroke-linecap="round"/>
+<line x1="275.333" y1="166.403" x2="378" y2="238.32" stroke="#0F1F45" stroke-width="4" stroke-linecap="round"/>
+<line x1="378" y1="238.32" x2="480.667" y2="321.531" stroke="#0F1F45" stroke-width="4" stroke-linecap="round"/>
+<line x1="480.667" y1="321.531" x2="583.333" y2="384.419" stroke="#0F1F45" stroke-width="4" stroke-linecap="round"/>
+<line x1="583.333" y1="384.419" x2="686" y2="433.545" stroke="#0F1F45" stroke-width="4" stroke-linecap="round"/>
+<line x1="686" y1="433.545" x2="832" y2="365.237" stroke="#636975" stroke-width="3" stroke-dasharray="8 8"/>
+<circle cx="70" cy="251.227" r="8" fill="#0F1F45"/>
+<text x="70" y="229.227" font-size="24" font-weight="600" fill="#0F1F45" text-anchor="middle">53.0</text>
+<text x="70" y="596" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">2019</text>
+<circle cx="172.667" cy="268.653" r="8" fill="#0F1F45"/>
+<text x="172.667" y="310.653" font-size="24" font-weight="600" fill="#0F1F45" text-anchor="middle">51.7</text>
+<text x="172.667" y="596" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">2020</text>
+<circle cx="275.333" cy="166.403" r="8" fill="#0F1F45"/>
+<text x="275.333" y="144.403" font-size="24" font-weight="600" fill="#0F1F45" text-anchor="middle">59.3</text>
+<text x="275.333" y="596" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">2021</text>
+<circle cx="378" cy="238.32" r="8" fill="#0F1F45"/>
+<text x="394" y="224.32" font-size="24" font-weight="600" fill="#0F1F45" text-anchor="start">54.0</text>
+<text x="378" y="596" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">2022</text>
+<circle cx="480.667" cy="321.531" r="8" fill="#0F1F45"/>
+<text x="496.667" y="307.531" font-size="24" font-weight="600" fill="#0F1F45" text-anchor="start">47.8</text>
+<text x="480.667" y="596" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">2023</text>
+<circle cx="583.333" cy="384.419" r="8" fill="#0F1F45"/>
+<text x="599.333" y="370.419" font-size="24" font-weight="600" fill="#0F1F45" text-anchor="start">43.1</text>
+<text x="583.333" y="596" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">2024</text>
+<circle cx="686" cy="433.545" r="8" fill="#0F1F45"/>
+<text x="686" y="475.545" font-size="24" font-weight="600" fill="#0F1F45" text-anchor="middle">39.4</text>
+<text x="686" y="596" font-size="22" font-weight="400" fill="#636975" text-anchor="middle">2025</text>
+<circle cx="832" cy="365.237" r="10" fill="#2A5CDA"/>
+<text x="832" y="343.237" font-size="24" font-weight="600" fill="#2A5CDA" text-anchor="middle">44.5</text>
+<text x="856" y="596" font-size="22" font-weight="600" fill="#2A5CDA" text-anchor="end">12 meses</text>
+<text x="856" y="622" font-size="22" font-weight="600" fill="#2A5CDA" text-anchor="end">a ago. 2026</text>
+<text x="297.333" y="174.403" font-size="22" font-weight="400" fill="#636975" text-anchor="start">Pandemia de COVID-19</text>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="856" height="650" viewBox="0 0 856 650" font-family="Geist, Arial, 'Liberation Sans', Helvetica, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">Contribución de cada riesgo al cambio del índice directo</title>
+<desc id="d">El índice directo del sistema subió +7.54 p. p.: Vida Individual de Largo Plazo aporta +5.12 e Incendio +2.91; Renta Particular +1.60 y los otros 45 riesgos −2.09.</desc>
+<rect width="856" height="650" fill="#FFFFFF"/>
+<text x="0" y="26" font-size="22" font-weight="400" fill="#636975" text-anchor="start">Contribución al cambio del índice directo, en p. p.</text>
+<text x="0" y="92" font-size="24" font-weight="600" fill="#141822" text-anchor="start">Vida Individual de Largo Plazo</text>
+<rect x="224.0" y="106.0" width="286.8" height="40.0" fill="#2A5CDA"/>
+<line x1="224.0" y1="98.0" x2="224.0" y2="154.0" stroke="#636975" stroke-width="1.5"/>
+<text x="522.773" y="138" font-size="30" font-weight="600" fill="#2A5CDA" text-anchor="start">+5.12</text>
+<text x="0" y="196" font-size="24" font-weight="600" fill="#141822" text-anchor="start">Incendio</text>
+<rect x="224.0" y="210.0" width="162.8" height="40.0" fill="#2A5CDA"/>
+<line x1="224.0" y1="202.0" x2="224.0" y2="258.0" stroke="#636975" stroke-width="1.5"/>
+<text x="398.791" y="242" font-size="30" font-weight="600" fill="#2A5CDA" text-anchor="start">+2.91</text>
+<text x="0" y="300" font-size="24" font-weight="600" fill="#141822" text-anchor="start">Renta Particular</text>
+<rect x="224.0" y="314.0" width="89.7" height="40.0" fill="#C8CBCF"/>
+<line x1="224.0" y1="306.0" x2="224.0" y2="362.0" stroke="#636975" stroke-width="1.5"/>
+<text x="325.712" y="346" font-size="30" font-weight="600" fill="#141822" text-anchor="start">+1.60</text>
+<text x="0" y="404" font-size="24" font-weight="600" fill="#141822" text-anchor="start">Otros 45 riesgos</text>
+<rect x="107.1" y="418.0" width="116.9" height="40.0" fill="#C8CBCF"/>
+<line x1="224.0" y1="410.0" x2="224.0" y2="466.0" stroke="#636975" stroke-width="1.5"/>
+<text x="95.1126" y="450" font-size="30" font-weight="600" fill="#141822" text-anchor="end">−2.09</text>
+<line x1="716.0" y1="314.0" x2="716.0" y2="458.0" stroke="#636975" stroke-width="2"/>
+<line x1="704.0" y1="314.0" x2="716.0" y2="314.0" stroke="#636975" stroke-width="2"/>
+<line x1="704.0" y1="458.0" x2="716.0" y2="458.0" stroke="#636975" stroke-width="2"/>
+<text x="730" y="380" font-size="22" font-weight="400" fill="#636975" text-anchor="start">46 riesgos</text>
+<text x="730" y="408" font-size="22" font-weight="600" fill="#636975" text-anchor="start">−0.49</text>
+<line x1="0" y1="474.0" x2="856" y2="474.0" stroke="#C8CBCF" stroke-width="2"/>
+<text x="0" y="514" font-size="24" font-weight="600" fill="#141822" text-anchor="start">Sistema</text>
+<rect x="224.0" y="528.0" width="422.4" height="40.0" fill="#0F1F45"/>
+<text x="658.389" y="560" font-size="30" font-weight="600" fill="#0F1F45" text-anchor="start">+7.54</text>
+<line x1="224.0" y1="520.0" x2="224.0" y2="576.0" stroke="#636975" stroke-width="1.5"/>
+</svg>
