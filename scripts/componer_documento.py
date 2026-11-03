@@ -37,6 +37,20 @@ REPOSITORIO = "github.com/josecaychoa/pf-01-siniestralidad-sbs"
 FIRMA = "José Caycho A. · Business Analyst Senior y DBA · Procesos · Datos"
 PERFILES = "linkedin.com/in/jcaychoasin · github.com/josecaychoa"
 PORTAFOLIO = "github.com/josecaychoa"
+
+
+def enlace(direccion: str) -> str:
+    """Texto de la dirección con su hipervínculo, para que sea clicable en el PDF."""
+    url = direccion if direccion.startswith("https://") else f"https://{direccion}"
+    return f'<a href="{url}">{direccion}</a>'
+
+
+def enlazar_urls(texto: str) -> str:
+    """Convierte cada URL de una referencia en hipervínculo."""
+    return re.sub(r"(https://\S+)", lambda m: enlace(m.group(1)), texto)
+
+
+PERFILES_HTML = " · ".join(enlace(d) for d in PERFILES.split(" · "))
 LIMITACIONES_IDEA = "La SBS cambió los rubros de siniestros;"
 LIMITACIONES_CONT = "su peso en el alza no está aislado."
 
@@ -71,6 +85,7 @@ body { font-family: Geist, Arial, sans-serif; color: #141822; background: #F4F6F
   background: #F4F6F9; page-break-after: always; break-after: page; }
 .pagina:last-child { page-break-after: auto; break-after: auto; }
 .oscura { background: #0F1F45; color: #FFFFFF; }
+a { color: inherit; text-decoration: none; }
 .marca { position: absolute; left: 72px; top: 52px; font-size: 44px; font-weight: 700;
   letter-spacing: -0.05em; color: #141822; }
 .marca b { color: #2A5CDA; }
@@ -174,7 +189,7 @@ def paginas() -> list[str]:
         '<div class="cifra">+7.5 p.&nbsp;p.</div>'
         '<p class="cifra-frase">La siniestralidad directa del sistema asegurador peruano pasó de '
         f"41.4{P} a 48.9{P} entre agosto de 2025 y agosto de 2026.</p>"
-        f'<div class="firma"><strong>{FIRMA}</strong><br>{PERFILES}<br>Noviembre de 2026'
+        f'<div class="firma"><strong>{FIRMA}</strong><br>{PERFILES_HTML}<br>Noviembre de 2026'
         '<p class="fuente">Elaboración propia con datos de la Superintendencia de Banca, '
         "Seguros y AFP [SBS] (s. f.-a).</p></div></section>"
     )
@@ -226,7 +241,7 @@ def paginas() -> list[str]:
     referencias = (
         f'<section class="pagina">{cabecera()}'
         '<h1 class="titular">Referencias</h1><div class="referencias">'
-        + "".join(f"<p>{r}</p>" for r in REFERENCIAS)
+        + "".join(f"<p>{enlazar_urls(r)}</p>" for r in REFERENCIAS)
         + f'</div><div class="pie"><div></div><div class="folio">09 / {TOTAL:02d}</div></div>'
         "</section>"
     )
@@ -235,11 +250,11 @@ def paginas() -> list[str]:
         f"{cabecera(True)}"
         '<h1 class="cierre-titular">Los datos, el código y las pruebas '
         "<span>están en el repositorio público.</span></h1>"
-        f'<div class="cierre-datos"><p class="url">{REPOSITORIO}</p>'
+        f'<div class="cierre-datos"><p class="url">{enlace(REPOSITORIO)}</p>'
         "<p>Para reproducirlo: <code>uv sync</code> y los pasos de «Cómo reproducir» del "
         "README.</p>"
-        f"<p>Todos los proyectos del portafolio: <strong>{PORTAFOLIO}</strong></p></div>"
-        f'<div class="firma"><strong>{FIRMA}</strong><br>{PERFILES}<br>'
+        f"<p>Todos los proyectos del portafolio: <strong>{enlace(PORTAFOLIO)}</strong></p></div>"
+        f'<div class="firma"><strong>{FIRMA}</strong><br>{PERFILES_HTML}<br>'
         "Estrategia, procesos y datos.</div></section>"
     )
     return [
